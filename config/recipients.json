@@ -1,0 +1,14 @@
+{
+  "recipients": [
+    {
+      "name": "Nabil",
+      "email": "nabilahazman249@gmail.com",
+      "active": true
+    },
+    {
+      "name": "Nabil",
+      "email": "nabilahazman20@gmail.com",
+      "active": true
+    }
+  ]
+}

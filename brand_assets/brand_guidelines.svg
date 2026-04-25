@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 700" font-family="Arial, sans-serif">
+
+  <!-- ═══════════════════════════════════════
+       HEADER
+  ═══════════════════════════════════════ -->
+  <rect width="600" height="70" fill="#1A1A2E"/>
+  <text x="30" y="34" font-family="Georgia, serif" font-size="22" font-weight="700" fill="#C9A84C" letter-spacing="6">BELL</text>
+  <text x="30" y="55" font-size="12" fill="#a0a8c0" letter-spacing="2">Brand Identity Guidelines</text>
+  <text x="572" y="44" font-size="10" fill="#a0a8c0" text-anchor="end">v1.0  ·  2026</text>
+
+  <!-- ═══════════════════════════════════════
+       LOGO USAGE
+  ═══════════════════════════════════════ -->
+  <text x="20" y="86" font-size="10" fill="#888888" font-weight="700" letter-spacing="2">LOGO USAGE</text>
+
+  <!-- Box 1: Primary — white background -->
+  <rect x="20" y="95" width="270" height="200" fill="#ffffff" stroke="#e8e8f0" stroke-width="1" rx="4"/>
+  <svg x="95" y="110" width="120" height="162" viewBox="0 0 200 270">
+    <path d="M 88 50 L 88 28 Q 88 14 100 14 Q 112 14 112 28 L 112 50 Z" fill="#C9A84C"/>
+    <path d="M 88 50 C 55 58 26 92 22 132 C 20 150 26 168 40 172 L 160 172 C 174 168 180 150 178 132 C 174 92 145 58 112 50 Z" fill="#1A1A2E"/>
+    <circle cx="100" cy="183" r="9" fill="#C9A84C"/>
+    <text x="100" y="228" font-family="Georgia, serif" font-size="34" font-weight="700" fill="#1A1A2E" text-anchor="middle" letter-spacing="10">BELL</text>
+    <text x="100" y="252" font-family="Arial, sans-serif" font-size="10" fill="#888888" text-anchor="middle" letter-spacing="4">NEWSLETTER</text>
+  </svg>
+  <text x="155" y="308" font-size="10" fill="#888888" text-anchor="middle">Primary — Use on light backgrounds</text>
+
+  <!-- Box 2: Inverse — dark background -->
+  <rect x="310" y="95" width="270" height="200" fill="#1A1A2E" rx="4"/>
+  <svg x="385" y="110" width="120" height="162" viewBox="0 0 200 270">
+    <path d="M 88 50 L 88 28 Q 88 14 100 14 Q 112 14 112 28 L 112 50 Z" fill="#C9A84C"/>
+    <path d="M 88 50 C 55 58 26 92 22 132 C 20 150 26 168 40 172 L 160 172 C 174 168 180 150 178 132 C 174 92 145 58 112 50 Z" fill="#ffffff"/>
+    <circle cx="100" cy="183" r="9" fill="#C9A84C"/>
+    <text x="100" y="228" font-family="Georgia, serif" font-size="34" font-weight="700" fill="#ffffff" text-anchor="middle" letter-spacing="10">BELL</text>
+    <text x="100" y="252" font-family="Arial, sans-serif" font-size="10" fill="#a0a8c0" text-anchor="middle" letter-spacing="4">NEWSLETTER</text>
+  </svg>
+  <text x="445" y="308" font-size="10" fill="#888888" text-anchor="middle">Inverse — Use on dark backgrounds</text>
+
+  <!-- Divider -->
+  <line x1="20" y1="324" x2="580" y2="324" stroke="#e8e8f0" stroke-width="1"/>
+
+  <!-- ═══════════════════════════════════════
+       COLOR PALETTE
+  ═══════════════════════════════════════ -->
+  <text x="20" y="348" font-size="10" fill="#888888" font-weight="700" letter-spacing="2">COLOR PALETTE</text>
+
+  <!-- Navy -->
+  <rect x="20"  y="358" width="96" height="58" fill="#1A1A2E" rx="4"/>
+  <text x="68"  y="430" font-size="10" fill="#1A1A2E" font-weight="700" text-anchor="middle">#1A1A2E</text>
+  <text x="68"  y="444" font-size="9"  fill="#888888" text-anchor="middle">Navy — Primary</text>
+
+  <!-- Gold -->
+  <rect x="136" y="358" width="96" height="58" fill="#C9A84C" rx="4"/>
+  <text x="184" y="430" font-size="10" fill="#1A1A2E" font-weight="700" text-anchor="middle">#C9A84C</text>
+  <text x="184" y="444" font-size="9"  fill="#888888" text-anchor="middle">Gold — Accent</text>
+
+  <!-- White -->
+  <rect x="252" y="358" width="96" height="58" fill="#ffffff" stroke="#e8e8f0" stroke-width="1" rx="4"/>
+  <text x="300" y="430" font-size="10" fill="#1A1A2E" font-weight="700" text-anchor="middle">#FFFFFF</text>
+  <text x="300" y="444" font-size="9"  fill="#888888" text-anchor="middle">White — Background</text>
+
+  <!-- Light Grey -->
+  <rect x="368" y="358" width="96" height="58" fill="#F4F4F4" stroke="#e8e8f0" stroke-width="1" rx="4"/>
+  <text x="416" y="430" font-size="10" fill="#1A1A2E" font-weight="700" text-anchor="middle">#F4F4F4</text>
+  <text x="416" y="444" font-size="9"  fill="#888888" text-anchor="middle">Light Grey — Surface</text>
+
+  <!-- Mid Grey -->
+  <rect x="484" y="358" width="96" height="58" fill="#888888" rx="4"/>
+  <text x="532" y="430" font-size="10" fill="#1A1A2E" font-weight="700" text-anchor="middle">#888888</text>
+  <text x="532" y="444" font-size="9"  fill="#888888" text-anchor="middle">Grey — Secondary</text>
+
+  <!-- Divider -->
+  <line x1="20" y1="460" x2="580" y2="460" stroke="#e8e8f0" stroke-width="1"/>
+
+  <!-- ═══════════════════════════════════════
+       TYPOGRAPHY
+  ═══════════════════════════════════════ -->
+  <text x="20" y="484" font-size="10" fill="#888888" font-weight="700" letter-spacing="2">TYPOGRAPHY</text>
+
+  <!-- Heading sample -->
+  <text x="20" y="516" font-family="Georgia, serif" font-size="22" font-weight="700" fill="#1A1A2E">This Week in Markets</text>
+  <text x="20" y="532" font-size="9" fill="#C9A84C" letter-spacing="2">HEADING — GEORGIA SERIF, BOLD, 22PX</text>
+
+  <!-- Separator -->
+  <line x1="20" y1="544" x2="580" y2="544" stroke="#f4f4f4" stroke-width="1"/>
+
+  <!-- Body sample -->
+  <text x="20" y="562" font-family="Georgia, serif" font-size="15" fill="#222222">The economy continues to evolve as investors look</text>
+  <text x="20" y="580" font-family="Georgia, serif" font-size="15" fill="#222222">for clarity amid shifting market conditions.</text>
+  <text x="20" y="596" font-size="9" fill="#C9A84C" letter-spacing="2">BODY — GEORGIA SERIF, REGULAR, 16PX / 1.7 LINE HEIGHT</text>
+
+  <!-- Separator -->
+  <line x1="20" y1="608" x2="580" y2="608" stroke="#f4f4f4" stroke-width="1"/>
+
+  <!-- Caption sample -->
+  <text x="20" y="626" font-family="Arial, sans-serif" font-size="11" fill="#888888" letter-spacing="1">Issue No. 1  ·  April 25, 2026  ·  5 min read</text>
+  <text x="20" y="642" font-size="9" fill="#C9A84C" letter-spacing="2">CAPTION — ARIAL SANS-SERIF, REGULAR, 11PX</text>
+
+  <!-- Divider -->
+  <line x1="20" y1="658" x2="580" y2="658" stroke="#e8e8f0" stroke-width="1"/>
+
+  <!-- Footer -->
+  <text x="20"  y="678" font-size="9" fill="#888888">BELL Newsletter — Internal Brand Reference</text>
+  <text x="580" y="678" font-size="9" fill="#888888" text-anchor="end">© 2026 Bell</text>
+
+</svg>

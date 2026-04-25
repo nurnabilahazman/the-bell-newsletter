@@ -1,0 +1,46 @@
+{
+  "themes": [
+    {
+      "id": "productivity",
+      "name": "Productivity & Trackers",
+      "description": "Budget trackers, habit planners, goal sheets, finance dashboards, meal planners",
+      "platforms": ["Etsy", "Gumroad", "Payhip"],
+      "format": "Google Sheets or Canva PDF printable",
+      "price_range": "$3 - $15",
+      "search_queries": [
+        "best selling budget tracker Etsy 2024 2025",
+        "top selling habit tracker printable Etsy reviews",
+        "Google Sheets budget template Etsy what customers love",
+        "productivity planner printable Etsy bestseller reviews"
+      ]
+    },
+    {
+      "id": "language_learning",
+      "name": "Language Learning",
+      "description": "Mandarin, Japanese, Korean workbooks, vocabulary sheets, grammar cheat sheets, study planners, character practice sheets",
+      "platforms": ["Etsy", "Gumroad", "Teachers Pay Teachers"],
+      "format": "PDF printable workbook or worksheet pack",
+      "price_range": "$3 - $20",
+      "search_queries": [
+        "best selling Japanese hiragana practice sheets Etsy reviews",
+        "Korean vocabulary workbook Etsy top seller",
+        "Mandarin Chinese printable worksheet Etsy bestseller",
+        "language learning study planner Etsy what customers love"
+      ]
+    },
+    {
+      "id": "children",
+      "name": "Children's Activities",
+      "description": "Busy book pages, alphabet tracing, colouring sheets, educational activity packs, homeschool worksheets, number practice",
+      "platforms": ["Etsy", "Teachers Pay Teachers", "Payhip"],
+      "format": "PDF printable activity pack",
+      "price_range": "$3 - $18",
+      "search_queries": [
+        "best selling children busy book printable Etsy reviews",
+        "alphabet tracing worksheet Etsy top sales 2024 2025",
+        "kids activity printable Etsy bestseller what parents love",
+        "homeschool worksheet bundle Etsy customer reviews"
+      ]
+    }
+  ]
+}

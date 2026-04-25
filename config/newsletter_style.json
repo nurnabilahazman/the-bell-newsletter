@@ -1,0 +1,44 @@
+{
+  "theme": {
+    "primary_color": "#1a1a2e",
+    "accent_color": "#C9A84C",
+    "accent_alt_color": "#0066cc",
+    "background_color": "#f4f4f4",
+    "surface_color": "#ffffff",
+    "footer_color": "#f8f8fc",
+    "text_primary": "#222222",
+    "text_secondary": "#888888",
+    "border_color": "#e8e8f0"
+  },
+  "typography": {
+    "font_family": "Georgia, serif",
+    "heading_font": "Georgia, serif",
+    "base_font_size": "16px",
+    "line_height": "1.7",
+    "heading_color": "#1a1a2e"
+  },
+  "layout": {
+    "max_width": "600px",
+    "header_padding": "28px 32px",
+    "body_padding": "28px 32px",
+    "footer_padding": "18px 32px",
+    "border_radius": "8px"
+  },
+  "header": {
+    "show_logo": false,
+    "show_tagline": true,
+    "tagline": "Your weekly briefing"
+  },
+  "footer": {
+    "show_unsubscribe": true,
+    "unsubscribe_text": "You're receiving this because you subscribed. Unsubscribe at any time.",
+    "show_address": false,
+    "address": ""
+  },
+  "infographics": {
+    "chart_color_palette": ["#0066cc", "#1a1a2e", "#4caf50", "#ff9800", "#e91e63"],
+    "chart_background": "#ffffff",
+    "chart_width": 560,
+    "chart_height": 300
+  }
+}

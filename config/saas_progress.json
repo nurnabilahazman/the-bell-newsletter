@@ -1,0 +1,73 @@
+{
+  "app_name": "Bell Transcript",
+  "tagline": "YouTube & Podcast Summaries in Seconds",
+  "description": "A clean web app that extracts transcripts from YouTube videos and podcasts, then generates structured AI summaries. Free tier: 3 per month. Pro: $9/month unlimited.",
+  "current_week": 1,
+  "overall_status": "Planning",
+  "milestones": [
+    {
+      "week": 1,
+      "phase": "Research",
+      "task": "Competitor research — study the top 5 transcript tools, find their weaknesses, and define your unique angle",
+      "status": "current",
+      "completed": false,
+      "task_prompt": "I am building a SaaS called Bell Transcript — a YouTube and podcast transcript + summary tool. I need you to help me research the market before I start building.\n\nPlease research and give me a detailed breakdown of:\n1. The top 5 existing YouTube/podcast transcript tools (include: Otter.ai, Descript, Tactiq, NoteGPT, and one more you find). For each: what they charge, what their free tier includes, what their most common customer complaints are, what they do well\n2. Based on the complaints and gaps, what are the 3 biggest opportunities for a new tool to be better?\n3. What should my unique angle be — what can Bell Transcript do that others don't, or do cheaper/simpler?\n4. Who is my ideal customer? (be specific — job title, use case, how often they need this)\n5. What features should be in Version 1 (MVP) vs saved for later?\n6. What should I charge? Suggest a pricing model with specific numbers.\n\nGive me real, specific answers — not generic advice. I want to start building next week."
+    },
+    {
+      "week": 2,
+      "phase": "Research",
+      "task": "Define MVP features and build the core transcript extraction script (foundation from Week 4 project)",
+      "status": "upcoming",
+      "completed": false,
+      "task_prompt": null
+    },
+    {
+      "week": 3,
+      "phase": "Build",
+      "task": "Build a simple web interface using Flask so users can paste a YouTube URL and get a summary in the browser",
+      "status": "upcoming",
+      "completed": false,
+      "task_prompt": null
+    },
+    {
+      "week": 4,
+      "phase": "Build",
+      "task": "Add user accounts — sign up, log in, track how many transcripts each user has used",
+      "status": "upcoming",
+      "completed": false,
+      "task_prompt": null
+    },
+    {
+      "week": 5,
+      "phase": "Build",
+      "task": "Add Stripe payment integration for the $9/month Pro plan",
+      "status": "upcoming",
+      "completed": false,
+      "task_prompt": null
+    },
+    {
+      "week": 6,
+      "phase": "Launch",
+      "task": "Deploy to the internet using a free hosting service, get a domain name, write the landing page",
+      "status": "upcoming",
+      "completed": false,
+      "task_prompt": null
+    },
+    {
+      "week": 7,
+      "phase": "Launch",
+      "task": "Get first 10 users — post in 5 relevant Reddit communities, reach out to 10 YouTubers directly",
+      "status": "upcoming",
+      "completed": false,
+      "task_prompt": null
+    },
+    {
+      "week": 8,
+      "phase": "Growth",
+      "task": "First revenue review — how many free users, how many paid, what do they say, what to improve",
+      "status": "upcoming",
+      "completed": false,
+      "task_prompt": null
+    }
+  ]
+}

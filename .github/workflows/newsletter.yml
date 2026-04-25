@@ -1,0 +1,48 @@
+name: The Bell — Weekly Newsletter
+
+on:
+  schedule:
+    # Every Monday 1:00 AM Malaysia time (= Sunday 17:00 UTC)
+    - cron: "0 17 * * 0"
+  workflow_dispatch:
+    # Allows manual trigger from GitHub website (useful for testing)
+
+jobs:
+  send-newsletter:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          pip install groq python-dotenv gspread google-auth \
+                      requests tavily-python feedparser
+
+      - name: Create .env from secrets
+        run: |
+          cat > .env << EOF
+          GROQ_API_KEY=${{ secrets.GROQ_API_KEY }}
+          GMAIL_ADDRESS=${{ secrets.GMAIL_ADDRESS }}
+          GMAIL_APP_PASSWORD=${{ secrets.GMAIL_APP_PASSWORD }}
+          RECIPIENT_EMAILS=${{ secrets.RECIPIENT_EMAILS }}
+          TAVILY_API_KEY=${{ secrets.TAVILY_API_KEY }}
+          GOOGLE_SHEET_ID=${{ secrets.GOOGLE_SHEET_ID }}
+          RSS_FEEDS=https://feeds.marketwatch.com/marketwatch/topstories/,https://www.cnbc.com/id/10000664/device/rss/rss.html
+          EOF
+
+      - name: Create credentials.json from secret
+        run: echo '${{ secrets.GOOGLE_CREDENTIALS_JSON }}' > credentials.json
+
+      - name: Create log directory
+        run: mkdir -p .tmp/logs
+
+      - name: Run newsletter pipeline
+        run: bash run_newsletter.sh

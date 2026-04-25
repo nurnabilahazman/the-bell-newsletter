@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 270">
+
+  <!-- Crown / Handle -->
+  <path d="M 88 50 L 88 28 Q 88 14 100 14 Q 112 14 112 28 L 112 50 Z" fill="#C9A84C"/>
+
+  <!-- Bell Body -->
+  <path d="M 88 50 C 55 58 26 92 22 132 C 20 150 26 168 40 172 L 160 172 C 174 168 180 150 178 132 C 174 92 145 58 112 50 Z" fill="#1A1A2E"/>
+
+  <!-- Clapper -->
+  <circle cx="100" cy="183" r="9" fill="#C9A84C"/>
+
+  <!-- Wordmark -->
+  <text
+    x="100" y="228"
+    font-family="Georgia, serif"
+    font-size="34"
+    font-weight="700"
+    fill="#1A1A2E"
+    text-anchor="middle"
+    letter-spacing="10">BELL</text>
+
+  <!-- Tagline -->
+  <text
+    x="100" y="252"
+    font-family="Arial, sans-serif"
+    font-size="10"
+    fill="#888888"
+    text-anchor="middle"
+    letter-spacing="4">NEWSLETTER</text>
+
+</svg>
