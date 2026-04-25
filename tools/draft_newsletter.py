@@ -245,7 +245,7 @@ def assemble_draft(s1: dict, themes: list, s3: dict, tips: dict, today: str) -> 
     lines.append(">>>END")
     lines.append("")
     lines.append(">>>DOC")
-    lines.append("docs/section1_projects_guide.md")
+    lines.append("https://github.com/nurnabilahazman/the-bell-newsletter/blob/main/docs/section1_projects_guide.md")
     lines.append("How to work with Claude on projects, common errors, and the 12-week learning arc.")
     lines.append(">>>END")
     lines.append("")
@@ -292,7 +292,7 @@ def assemble_draft(s1: dict, themes: list, s3: dict, tips: dict, today: str) -> 
         lines.append("")
 
     lines.append(">>>DOC")
-    lines.append("docs/section2_products_guide.md")
+    lines.append("https://github.com/nurnabilahazman/the-bell-newsletter/blob/main/docs/section2_products_guide.md")
     lines.append("How to create printables in Canva, set up your store, price your products, and get first sales.")
     lines.append(">>>END")
     lines.append("")
@@ -318,7 +318,7 @@ def assemble_draft(s1: dict, themes: list, s3: dict, tips: dict, today: str) -> 
 
     lines.append("")
     lines.append(">>>DOC")
-    lines.append("docs/section3_saas_guide.md")
+    lines.append("https://github.com/nurnabilahazman/the-bell-newsletter/blob/main/docs/section3_saas_guide.md")
     lines.append("Full Bell Transcript roadmap, tech stack, competitor analysis, and how to get first customers.")
     lines.append(">>>END")
     lines.append("")
