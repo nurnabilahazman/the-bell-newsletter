@@ -53,7 +53,7 @@ BLOCK1_PRODUCTS = [
         ],
         "price": "$5.99",
         "etsy_title": "Monthly Budget Tracker Printable | 2025–2026 | Income Expense Log | Instant Download PDF",
-        "etsy_tags": ["budget tracker", "expense tracker", "monthly planner", "finance printable", "budget printable", "savings tracker", "money tracker"],
+        "etsy_tags": ["budget tracker", "expense tracker", "monthly planner", "finance printable", "budget printable", "savings tracker", "money tracker", "monthly budget", "household budget", "spending tracker", "bills tracker", "budget template", "personal finance"],
         "what_to_build": "A 60+ page annual budget tracker with monthly overviews, weekly expense logs, and bonus finance pages. Buyers use it to track every dollar in and out for the full year.",
         "why_it_sells": "Budget trackers are a top-5 Etsy bestseller year-round — people search for them every January and after every payday.",
     },
@@ -69,7 +69,7 @@ BLOCK1_PRODUCTS = [
         ],
         "price": "$4.99",
         "etsy_title": "Daily Productivity Planner Printable | Undated | Top 3 Priorities + Hourly Schedule | PDF",
-        "etsy_tags": ["daily planner", "productivity planner", "printable planner", "undated planner", "daily schedule", "planner printable", "time management"],
+        "etsy_tags": ["daily planner", "productivity planner", "printable planner", "undated planner", "daily schedule", "planner printable", "time management", "to do list", "daily organizer", "schedule printable", "planner pages", "hourly planner", "work planner"],
         "what_to_build": "An undated daily planner with hourly time blocks, top priorities, water tracker, and gratitude section. Available as a 90-day or 365-day set.",
         "why_it_sells": "Undated planners sell year-round (no expiry date) and consistently rank in Etsy's top printables — every planner buyer needs a daily layout.",
     },
@@ -85,7 +85,7 @@ BLOCK1_PRODUCTS = [
         ],
         "price": "$3.99",
         "etsy_title": "30 Day Habit Tracker Printable | Monthly Habit Log | Undated | Instant Download PDF",
-        "etsy_tags": ["habit tracker", "30 day habit", "monthly tracker", "habit log printable", "goal tracker", "self improvement", "wellness tracker"],
+        "etsy_tags": ["habit tracker", "30 day habit", "monthly tracker", "habit log printable", "goal tracker", "self improvement", "wellness tracker", "daily habits", "habit journal", "routine tracker", "morning routine", "self care", "habit challenge"],
         "what_to_build": "An undated 30-day habit tracker with 10 habit slots, daily checkboxes, and a monthly reflection section. Sold as a 5-pack so buyers can track multiple months.",
         "why_it_sells": "Habit trackers are among the most searched printables on Etsy — they spike in January and September but sell consistently all year.",
     },
@@ -101,7 +101,7 @@ BLOCK1_PRODUCTS = [
         ],
         "price": "$3.99",
         "etsy_title": "Weekly Meal Planner Printable + Grocery List | Undated | 52 Week Set | Instant Download",
-        "etsy_tags": ["meal planner", "grocery list printable", "weekly meal plan", "meal planning printable", "food planner", "family meal planner", "dinner planner"],
+        "etsy_tags": ["meal planner", "grocery list", "weekly meal plan", "meal planning", "food planner", "family meal planner", "dinner planner", "meal prep planner", "weekly menu", "recipe organizer", "healthy eating", "shopping list", "meal organizer"],
         "what_to_build": "A 52-week undated meal planner with a 7-day grid for all meals, a categorised grocery list, and a monthly planning overview. Buyers print weekly.",
         "why_it_sells": "Meal planners are one of Etsy's top-10 most-purchased printables — families buy them repeatedly because they use a new one every week.",
     },
@@ -117,7 +117,7 @@ BLOCK1_PRODUCTS = [
         ],
         "price": "$6.99",
         "etsy_title": "Goal Setting Workbook Printable | Quarterly Planner | Vision + Goals + Weekly Review | PDF",
-        "etsy_tags": ["goal setting workbook", "quarterly planner", "goal planner printable", "vision board workbook", "self improvement", "life goals planner", "mindset journal"],
+        "etsy_tags": ["goal setting", "quarterly planner", "goal planner", "vision board", "self improvement", "life goals", "mindset journal", "goals worksheet", "year planner", "new year goals", "goal tracker", "annual planner", "bucket list"],
         "what_to_build": "A 30+ page quarterly goal-setting workbook with vision statement, goal breakdowns, monthly milestones, and weekly check-ins. Buyers use it every 3 months.",
         "why_it_sells": "Goal workbooks are a premium product — buyers are willing to pay more because the content is deeper than a single tracker, and they spike every quarter.",
     },
@@ -728,11 +728,31 @@ def _extra_sections_html(product: dict, rank: int, week_num: int) -> str:
     html += '<span id="' + card_id + '_arrow" style="transition:transform .25s;">&#9660;</span>'
     html += '</button>'
     html += '\n        <div id="' + card_id + '" style="display:none;margin-top:10px;">'
+    # ── Tags chips ──
+    tags     = product.get("etsy_tags", [])
+    tags_csv = ", ".join(tags)
+    tags_esc = tags_csv.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+    html += '\n          <div style="margin-bottom:14px;">'
+    html += '\n            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">'
+    html += '\n              <div style="color:#3DD68C;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Etsy Tags (' + str(len(tags)) + ')</div>'
+    html += '\n              <button onclick="copyTA(\'' + card_id + '_tags\', this)" '
+    html += 'style="background:#1e1e30;color:#3DD68C;border:1px solid #3DD68C;border-radius:6px;'
+    html += 'padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy All</button>'
+    html += '\n            </div>'
+    html += '\n            <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px;">'
+    for _t in tags:
+        _te = _t.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+        html += ('<span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;'
+                 'border-radius:20px;padding:3px 10px;font-size:0.75rem;">' + _te + '</span>')
+    html += '</div>'
+    html += '\n            <textarea id="' + card_id + '_tags" readonly style="display:none;">' + tags_esc + '</textarea>'
+    html += '\n          </div>'
+
 
     html += '\n          <div style="margin-bottom:14px;">'
     html += '\n            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">'
     html += '\n              <div style="color:#4EA8DE;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Full Etsy Description</div>'
-    html += '\n              <button onclick="copyTA(\'' + card_id + '_desc\')" '
+    html += '\n              <button onclick="copyTA(\'' + card_id + '_desc\', this)" '
     html += 'style="background:#1e1e30;color:#4EA8DE;border:1px solid #4EA8DE;border-radius:6px;'
     html += 'padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy</button>'
     html += '\n            </div>'
@@ -747,7 +767,7 @@ def _extra_sections_html(product: dict, rank: int, week_num: int) -> str:
     html += '\n          <div>'
     html += '\n            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">'
     html += '\n              <div style="color:#9B72CF;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Modification Prompt</div>'
-    html += '\n              <button onclick="copyTA(\'' + card_id + '_prompt\')" '
+    html += '\n              <button onclick="copyTA(\'' + card_id + '_prompt\', this)" '
     html += 'style="background:#1e1e30;color:#9B72CF;border:1px solid #9B72CF;border-radius:6px;'
     html += 'padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy</button>'
     html += '\n            </div>'
@@ -774,12 +794,16 @@ def _extra_sections_js() -> str:
       el.style.display = open ? 'none' : 'block';
       if (arrow) arrow.style.transform = open ? '' : 'rotate(180deg)';
     };
-    window.copyTA = function(id) {
+    window.copyTA = function(id, btn) {
       var el = document.getElementById(id);
       if (!el) return;
-      navigator.clipboard.writeText(el.value).catch(function() {
-        el.select(); document.execCommand('copy');
-      });
+      el.select();
+      try { document.execCommand('copy'); } catch(e) {}
+      if (btn) {
+        var orig = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(function(){ btn.textContent = orig; }, 1500);
+      }
     };
   </script>
 """

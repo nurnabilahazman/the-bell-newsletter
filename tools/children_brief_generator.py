@@ -56,7 +56,7 @@ BLOCK1_PRODUCTS = [
         ],
         "price": "$3.99",
         "etsy_title": "Alphabet Tracing Workbook for Preschool — Themed Edition | 52 Pages | Printable PDF",
-        "etsy_tags": ["alphabet tracing", "tracing workbook", "preschool ABC", "letter practice", "kids printable", "pre-k worksheet", "homeschool"],
+        "etsy_tags": ["alphabet tracing", "tracing workbook", "preschool ABC", "letter practice", "kids printable", "pre-k worksheet", "homeschool", "ABC printable", "tracing sheets", "kindergarten prep", "toddler learning", "letter tracing", "pre-k activity"],
         "what_to_build": "A 52-page themed workbook covering all 26 letters (upper + lower case) with dotted trace lines, themed illustrations, and a 'My First Words' bonus section.",
         "why_it_sells": "Alphabet tracing is Etsy's #1 children's printable year-round — every parent starting pre-K prep or homeschool searches for these.",
     },
@@ -72,7 +72,7 @@ BLOCK1_PRODUCTS = [
         ],
         "price": "$4.99",
         "etsy_title": "Ocean Explorer Busy Book for Toddlers | 20+ Activity Pages | Printable PDF",
-        "etsy_tags": ["busy book", "toddler activities", "ocean theme", "printable busy book", "preschool activity", "no-prep activity", "ocean worksheet"],
+        "etsy_tags": ["busy book", "toddler activities", "ocean theme", "printable busy book", "preschool activity", "no-prep activity", "ocean worksheet", "busy book pages", "toddler busy book", "quiet book pages", "activity pack kids", "screen free kids", "ocean animals"],
         "what_to_build": "A 20+ page ocean-themed activity pack with matching, colouring, tracing, counting, and puzzle pages — each built around vibrant sea creatures.",
         "why_it_sells": "Busy books are bought by parents of toddlers for screen-free activity time — they spike at back-to-school season and holiday gift-giving.",
     },
@@ -88,7 +88,7 @@ BLOCK1_PRODUCTS = [
         ],
         "price": "$4.99",
         "etsy_title": "Number Tracing Workbook 1-20 for Preschoolers | 30 Pages | Printable PDF",
-        "etsy_tags": ["number tracing", "counting worksheet", "number recognition", "preschool math", "number workbook", "kindergarten prep", "math printable"],
+        "etsy_tags": ["number tracing", "counting worksheet", "number recognition", "preschool math", "number workbook", "kindergarten prep", "math printable", "counting printable", "trace and count", "preschool numbers", "number learning", "early math", "number practice"],
         "what_to_build": "A 30+ page workbook covering numbers 1–20 — each page has a traceable digit, counting objects to circle, and bonus number-bond and ordering exercises.",
         "why_it_sells": "Number tracing workbooks are consistently in Etsy's top-20 educational printables — parents buy them the moment their child starts learning numbers.",
     },
@@ -104,7 +104,7 @@ BLOCK1_PRODUCTS = [
         ],
         "price": "$3.99",
         "etsy_title": "Sight Word Flashcards Dolch Pre-K and Kindergarten | 92 Cards | Printable PDF",
-        "etsy_tags": ["sight words", "Dolch flashcards", "kindergarten reading", "sight word cards", "reading practice", "early literacy", "phonics printable"],
+        "etsy_tags": ["sight words", "Dolch flashcards", "kindergarten reading", "sight word cards", "reading practice", "early literacy", "phonics printable", "sight word game", "pre-k reading", "flash cards kids", "word recognition", "dolch words", "literacy center"],
         "what_to_build": "92 double-sided flashcards covering all 40 Dolch Pre-K words and 52 Dolch Kindergarten words, each with the word + a small illustration on the front and a sample sentence on the back.",
         "why_it_sells": "Sight word flashcards are bought by parents of early readers and kindergarten teachers year-round — they're a staple educational resource.",
     },
@@ -120,7 +120,7 @@ BLOCK1_PRODUCTS = [
         ],
         "price": "$4.99",
         "etsy_title": "Editable Kids Reward Chart | 5 Designs | Printable Behavior Chart | Stars Animals Space",
-        "etsy_tags": ["reward chart", "behavior chart", "kids chore chart", "printable chart", "star chart", "potty training", "editable chart"],
+        "etsy_tags": ["reward chart", "behavior chart", "kids chore chart", "printable chart", "star chart", "potty training", "editable chart", "chore chart kids", "good behavior", "kids sticker chart", "parenting tool", "daily routine chart", "responsibility chart"],
         "what_to_build": "Five editable chart designs (stars, animals, space, rainbow, superhero) — each with space for a child's name, 30 days of tracking, and a matching Certificate of Achievement.",
         "why_it_sells": "Editable reward charts are an impulse buy — parents search after a behaviour challenge, making them evergreen and fast-converting.",
     },
@@ -742,12 +742,32 @@ def _extra_sections_html(product: dict, rank: int, week_num: int) -> str:
     html += '<span id="' + card_id + '_arrow" style="transition:transform .25s;">&#9660;</span>'
     html += '</button>'
     html += '\n        <div id="' + card_id + '" style="display:none;margin-top:10px;">'
+    # ── Tags chips ──
+    tags     = product.get("etsy_tags", [])
+    tags_csv = ", ".join(tags)
+    tags_esc = tags_csv.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+    html += '\n          <div style="margin-bottom:14px;">'
+    html += '\n            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">'
+    html += '\n              <div style="color:#3DD68C;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Etsy Tags (' + str(len(tags)) + ')</div>'
+    html += '\n              <button onclick="copyTA(\'' + card_id + '_tags\', this)" '
+    html += 'style="background:#1e1e30;color:#3DD68C;border:1px solid #3DD68C;border-radius:6px;'
+    html += 'padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy All</button>'
+    html += '\n            </div>'
+    html += '\n            <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px;">'
+    for _t in tags:
+        _te = _t.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+        html += ('<span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;'
+                 'border-radius:20px;padding:3px 10px;font-size:0.75rem;">' + _te + '</span>')
+    html += '</div>'
+    html += '\n            <textarea id="' + card_id + '_tags" readonly style="display:none;">' + tags_esc + '</textarea>'
+    html += '\n          </div>'
+
 
     # Description block
     html += '\n          <div style="margin-bottom:14px;">'
     html += '\n            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">'
     html += '\n              <div style="color:#4EA8DE;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Full Etsy Description</div>'
-    html += '\n              <button onclick="copyTA(\'' + card_id + '_desc\')" '
+    html += '\n              <button onclick="copyTA(\'' + card_id + '_desc\', this)" '
     html += 'style="background:#1e1e30;color:#4EA8DE;border:1px solid #4EA8DE;border-radius:6px;'
     html += 'padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy</button>'
     html += '\n            </div>'
@@ -763,7 +783,7 @@ def _extra_sections_html(product: dict, rank: int, week_num: int) -> str:
     html += '\n          <div>'
     html += '\n            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">'
     html += '\n              <div style="color:#9B72CF;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Modification Prompt</div>'
-    html += '\n              <button onclick="copyTA(\'' + card_id + '_prompt\')" '
+    html += '\n              <button onclick="copyTA(\'' + card_id + '_prompt\', this)" '
     html += 'style="background:#1e1e30;color:#9B72CF;border:1px solid #9B72CF;border-radius:6px;'
     html += 'padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy</button>'
     html += '\n            </div>'
@@ -790,12 +810,16 @@ def _extra_sections_js() -> str:
       el.style.display = open ? 'none' : 'block';
       if (arrow) arrow.style.transform = open ? '' : 'rotate(180deg)';
     };
-    window.copyTA = function(id) {
+    window.copyTA = function(id, btn) {
       var el = document.getElementById(id);
       if (!el) return;
-      navigator.clipboard.writeText(el.value).catch(function() {
-        el.select(); document.execCommand('copy');
-      });
+      el.select();
+      try { document.execCommand('copy'); } catch(e) {}
+      if (btn) {
+        var orig = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(function(){ btn.textContent = orig; }, 1500);
+      }
     };
   </script>
 """

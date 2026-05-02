@@ -53,7 +53,7 @@ BLOCK1_PRODUCTS = [
         ],
         "price": "$4.99",
         "etsy_title": "Spanish Vocabulary Flashcards Beginner | 100 Words | Printable PDF | Instant Download",
-        "etsy_tags": ["spanish flashcards", "spanish vocabulary", "learn spanish", "spanish printable", "spanish beginner", "vocabulary cards", "language learning"],
+        "etsy_tags": ["spanish flashcards", "spanish vocabulary", "learn spanish", "spanish printable", "spanish beginner", "vocabulary cards", "language learning", "spanish words", "basic spanish", "spanish teaching", "esl resources", "spanish study", "bilingual learning"],
         "what_to_build": "100 double-sided flashcards covering core beginner Spanish vocabulary across 8 categories (greetings, numbers, food, colors, family, body, verbs, adjectives). Each card has the Spanish word + pronunciation on the front and English + an example sentence on the back.",
         "why_it_sells": "Spanish is the #1 most-studied language on Etsy — beginner vocabulary flashcards are a top-10 printable category with consistent year-round demand.",
     },
@@ -69,7 +69,7 @@ BLOCK1_PRODUCTS = [
         ],
         "price": "$3.99",
         "etsy_title": "Japanese Hiragana Practice Sheets | 46 Characters + Stroke Order | Printable PDF Worksheet",
-        "etsy_tags": ["hiragana practice", "japanese writing", "hiragana worksheet", "learn japanese", "japanese printable", "stroke order", "hiragana chart"],
+        "etsy_tags": ["hiragana practice", "japanese writing", "hiragana worksheet", "learn japanese", "japanese printable", "stroke order", "hiragana chart", "japanese alphabet", "hiragana learning", "japanese language", "kana worksheet", "jlpt study", "japanese beginner"],
         "what_to_build": "48 pages: 46 character practice sheets with stroke-order guide, trace lines, and blank practice boxes, plus a 2-page full hiragana reference chart. Covers the complete hiragana syllabary for absolute beginners.",
         "why_it_sells": "Japanese is the fastest-growing language learning niche on Etsy — hiragana is the first step every beginner takes, and practice sheet searches are consistent and high-volume.",
     },
@@ -85,7 +85,7 @@ BLOCK1_PRODUCTS = [
         ],
         "price": "$5.99",
         "etsy_title": "French Grammar Cheat Sheets | 10 Essential Rules | Study Guide | Printable PDF Instant Download",
-        "etsy_tags": ["french grammar", "french cheat sheet", "learn french", "french study guide", "french printable", "grammar reference", "french conjugation"],
+        "etsy_tags": ["french grammar", "french cheat sheet", "learn french", "french study guide", "french printable", "grammar reference", "french conjugation", "french language", "french learning", "french teacher", "french worksheet", "learn francais", "french beginner"],
         "what_to_build": "10 single-page reference sheets covering the most essential French grammar rules, each with the rule, formula, examples, and a common mistake callout. Plus a bonus double-sided summary card.",
         "why_it_sells": "Grammar reference sheets are a high-perceived-value product — buyers pay more because they feel like a study resource, not just a flashcard, and they get used repeatedly over months of study.",
     },
@@ -101,7 +101,7 @@ BLOCK1_PRODUCTS = [
         ],
         "price": "$4.99",
         "etsy_title": "Korean Hangul Practice Workbook | Writing Sheets + Stroke Order | Printable PDF Instant Download",
-        "etsy_tags": ["hangul practice", "korean writing", "hangul worksheet", "learn korean", "korean printable", "hangul workbook", "korean alphabet"],
+        "etsy_tags": ["hangul practice", "korean writing", "hangul worksheet", "learn korean", "korean printable", "hangul workbook", "korean alphabet", "korean language", "hangul learning", "topik study", "korean beginner", "hangul chart", "korean worksheet"],
         "what_to_build": "A 47-page workbook covering all 40 Hangul characters with stroke-order guides, trace lines, blank practice grids, and a romanisation key. Includes a full Hangul reference chart and 5 pages of common beginner words.",
         "why_it_sells": "Korean is the second-fastest growing language niche on Etsy, driven by K-pop and K-drama interest — Hangul writing practice is the entry point for most beginners and consistently tops language learning searches.",
     },
@@ -117,7 +117,7 @@ BLOCK1_PRODUCTS = [
         ],
         "price": "$6.99",
         "etsy_title": "Travel Phrasebook Printable | 5 Languages Spanish French Italian German Portuguese | Instant Download",
-        "etsy_tags": ["travel phrasebook", "language phrases", "travel printable", "phrasebook printable", "travel essentials", "language guide", "europe travel"],
+        "etsy_tags": ["travel phrasebook", "language phrases", "travel printable", "phrasebook printable", "travel essentials", "language guide", "europe travel", "travel guide", "vacation phrases", "backpacker tips", "tourist phrases", "multilingual", "phrase guide"],
         "what_to_build": "A 40+ page compact phrasebook covering 5 European languages across 7 travel scenarios (50 phrases per language = 250 phrases total), plus a wallet-sized quick reference card for each language.",
         "why_it_sells": "Multi-language travel phrasebooks have a distinct buyer (pre-trip travelers) who searches for them in spring/summer — the 5-language bundle justifies a higher price and competes well against single-language products.",
     },
@@ -739,11 +739,31 @@ def _extra_sections_html(product: dict, rank: int, week_num: int) -> str:
     html += '<span id="' + card_id + '_arrow" style="transition:transform .25s;">&#9660;</span>'
     html += '</button>'
     html += '\n        <div id="' + card_id + '" style="display:none;margin-top:10px;">'
+    # ── Tags chips ──
+    tags     = product.get("etsy_tags", [])
+    tags_csv = ", ".join(tags)
+    tags_esc = tags_csv.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+    html += '\n          <div style="margin-bottom:14px;">'
+    html += '\n            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">'
+    html += '\n              <div style="color:#3DD68C;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Etsy Tags (' + str(len(tags)) + ')</div>'
+    html += '\n              <button onclick="copyTA(\'' + card_id + '_tags\', this)" '
+    html += 'style="background:#1e1e30;color:#3DD68C;border:1px solid #3DD68C;border-radius:6px;'
+    html += 'padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy All</button>'
+    html += '\n            </div>'
+    html += '\n            <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px;">'
+    for _t in tags:
+        _te = _t.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+        html += ('<span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;'
+                 'border-radius:20px;padding:3px 10px;font-size:0.75rem;">' + _te + '</span>')
+    html += '</div>'
+    html += '\n            <textarea id="' + card_id + '_tags" readonly style="display:none;">' + tags_esc + '</textarea>'
+    html += '\n          </div>'
+
 
     html += '\n          <div style="margin-bottom:14px;">'
     html += '\n            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">'
     html += '\n              <div style="color:#4EA8DE;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Full Etsy Description</div>'
-    html += '\n              <button onclick="copyTA(\'' + card_id + '_desc\')" '
+    html += '\n              <button onclick="copyTA(\'' + card_id + '_desc\', this)" '
     html += 'style="background:#1e1e30;color:#4EA8DE;border:1px solid #4EA8DE;border-radius:6px;'
     html += 'padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy</button>'
     html += '\n            </div>'
@@ -758,7 +778,7 @@ def _extra_sections_html(product: dict, rank: int, week_num: int) -> str:
     html += '\n          <div>'
     html += '\n            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">'
     html += '\n              <div style="color:#9B72CF;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Modification Prompt</div>'
-    html += '\n              <button onclick="copyTA(\'' + card_id + '_prompt\')" '
+    html += '\n              <button onclick="copyTA(\'' + card_id + '_prompt\', this)" '
     html += 'style="background:#1e1e30;color:#9B72CF;border:1px solid #9B72CF;border-radius:6px;'
     html += 'padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy</button>'
     html += '\n            </div>'
@@ -785,12 +805,16 @@ def _extra_sections_js() -> str:
       el.style.display = open ? 'none' : 'block';
       if (arrow) arrow.style.transform = open ? '' : 'rotate(180deg)';
     };
-    window.copyTA = function(id) {
+    window.copyTA = function(id, btn) {
       var el = document.getElementById(id);
       if (!el) return;
-      navigator.clipboard.writeText(el.value).catch(function() {
-        el.select(); document.execCommand('copy');
-      });
+      el.select();
+      try { document.execCommand('copy'); } catch(e) {}
+      if (btn) {
+        var orig = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(function(){ btn.textContent = orig; }, 1500);
+      }
     };
   </script>
 """
