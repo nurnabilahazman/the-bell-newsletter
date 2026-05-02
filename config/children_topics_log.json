@@ -1,13 +1,19 @@
 {
   "used_topics": [],
-  "current_week": 1,
+  "current_week": 2,
   "history": [
     {
       "week": 1,
       "topic": "Alphabet Tracing Workbook \u2014 Themed Edition",
       "date": "2026-05-02",
       "block": 1
+    },
+    {
+      "week": 2,
+      "topic": "Ocean Explorer Busy Book",
+      "date": "2026-05-02",
+      "block": 1
     }
   ],
-  "last_run": "2026-05-02T13:45:52.548326"
+  "last_run": "2026-05-02T18:15:38.463171"
 }

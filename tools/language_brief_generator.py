@@ -34,6 +34,7 @@ LOG_PATH         = Path("config/language_topics_log.json")
 BLOCK_STATE_PATH = Path("config/language_block_state.json")
 BRIEF_PATH       = Path(".tmp/unified_language_brief.html")
 DOCS_PATH        = Path("docs/current_language_brief.html")
+BASE_HTML_PATH   = Path("docs/unified_product_brief_language_base.html")
 DATA_PATH        = Path(".tmp/language_brief_data.json")
 MODEL            = "llama-3.3-70b-versatile"
 BRIEF_URL        = "https://htmlpreview.github.io/?https://github.com/nurnabilahazman/the-bell-newsletter/blob/main/docs/current_language_brief.html"
@@ -573,8 +574,34 @@ def _action_plan_section_html(product_name: str, week_num: int) -> str:
 """
 
 
+def build_block1_html(week_in_block: int, week_num: int) -> str:
+    """Block 1: read the static base brief, inject progress bar + highlight card + dynamic action plan."""
+    with open(BASE_HTML_PATH) as f:
+        html = f.read()
+
+    progress = _progress_bar_html(BLOCK1_PRODUCTS, week_in_block, week_num)
+    target  = "  </div>\n\n  <!-- ── SECTION 1: COMPETITOR MAP ── -->"
+    replace = "  </div>\n" + progress + "  <!-- ── SECTION 1: COMPETITOR MAP ── -->"
+    html    = html.replace(target, replace, 1)
+
+    rank_class  = f'class="product-card rank-{week_in_block}"'
+    highlighted = (
+        f'class="product-card rank-{week_in_block}" '
+        'style="box-shadow:0 0 0 2px #C9A84C,0 0 28px rgba(201,168,76,0.18);border-color:#C9A84C;"'
+    )
+    html = html.replace(rank_class, highlighted, 1)
+
+    action_start = html.find('  <section id="action">')
+    action_end   = html.find('  </section>', action_start) + len('  </section>')
+    product_name = BLOCK1_PRODUCTS[week_in_block - 1]["topic"]
+    new_action   = _action_plan_section_html(product_name, week_num)
+    html         = html[:action_start] + new_action + html[action_end:]
+
+    return html
+
+
 def build_block_html(products: list, week_in_block: int, week_num: int, block_num: int) -> str:
-    """Build unified brief HTML for any block."""
+    """Build unified brief HTML for Blocks 2+."""
     date_str       = datetime.now().strftime("%B %d, %Y")
     progress_block = _progress_bar_html(products, week_in_block, week_num)
     action_plan    = _action_plan_section_html(products[week_in_block - 1]["topic"], week_num)
@@ -768,10 +795,34 @@ def run():
 
     print(f"Language Learning — Week {week_num} (Block {block_num}, position {week_in_block}/5)")
 
+    # ── Block 1 (weeks 1–5): static base brief, no API call ──────────────────
     if block_num == 1:
-        products = BLOCK1_PRODUCTS
-        product  = products[week_in_block - 1]
+        product = BLOCK1_PRODUCTS[week_in_block - 1]
         print(f"  Phase 1: {product['topic']}")
+
+        log["current_week"] = week_num
+        log["last_run"]     = datetime.now().isoformat()
+        log.setdefault("history", []).append({
+            "week": week_num, "topic": product["topic"],
+            "date": datetime.now().strftime("%Y-%m-%d"), "block": 1,
+        })
+        save_log(log)
+
+        page = build_block1_html(week_in_block, week_num)
+        data = {
+            "topic":       product["topic"],
+            "language":    product.get("language", ""),
+            "format":      product["format"],
+            "week_num":    week_num,
+            "build_steps": product["build_steps"],
+            "price":       product["price"],
+            "etsy_title":  product["etsy_title"],
+            "etsy_tags":   product["etsy_tags"],
+            "brief_url":   BRIEF_URL,
+            "block":       1,
+        }
+
+    # ── Blocks 2+ (weeks 6, 11, 16 …): generate or reuse block brief ─────────
     else:
         block_state = load_block_state()
 
@@ -798,27 +849,27 @@ def run():
         product = products[week_in_block - 1]
         print(f"  This week: {product['topic']}")
 
-    log["current_week"] = week_num
-    log["last_run"]     = datetime.now().isoformat()
-    log.setdefault("history", []).append({
-        "week":  week_num, "topic": products[week_in_block - 1]["topic"],
-        "date":  datetime.now().strftime("%Y-%m-%d"), "block": block_num,
-    })
-    save_log(log)
+        log["current_week"] = week_num
+        log["last_run"]     = datetime.now().isoformat()
+        log.setdefault("history", []).append({
+            "week":  week_num, "topic": product["topic"],
+            "date":  datetime.now().strftime("%Y-%m-%d"), "block": block_num,
+        })
+        save_log(log)
 
-    page = build_block_html(products, week_in_block, week_num, block_num)
-    data = {
-        "topic":       products[week_in_block - 1]["topic"],
-        "language":    products[week_in_block - 1].get("language", ""),
-        "format":      products[week_in_block - 1].get("format", ""),
-        "week_num":    week_num,
-        "build_steps": products[week_in_block - 1].get("build_steps", []),
-        "price":       products[week_in_block - 1].get("price", ""),
-        "etsy_title":  products[week_in_block - 1].get("etsy_title", ""),
-        "etsy_tags":   products[week_in_block - 1].get("etsy_tags", []),
-        "brief_url":   BRIEF_URL,
-        "block":       block_num,
-    }
+        page = build_block_html(products, week_in_block, week_num, block_num)
+        data = {
+            "topic":       product["topic"],
+            "language":    product.get("language", ""),
+            "format":      product.get("format", ""),
+            "week_num":    week_num,
+            "build_steps": product.get("build_steps", []),
+            "price":       product.get("price", ""),
+            "etsy_title":  product.get("etsy_title", ""),
+            "etsy_tags":   product.get("etsy_tags", []),
+            "brief_url":   BRIEF_URL,
+            "block":       block_num,
+        }
 
     BRIEF_PATH.parent.mkdir(exist_ok=True)
     DOCS_PATH.parent.mkdir(exist_ok=True)
