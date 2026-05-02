@@ -19,7 +19,8 @@ load_dotenv()
 CURRICULUM_PATH = Path("config/curriculum.json")
 SAAS_PATH       = Path("config/saas_progress.json")
 RESEARCH_PATH   = Path(".tmp/product_research.json")
-OUTPUT_PATH     = Path(".tmp/draft.md")
+OUTPUT_PATH          = Path(".tmp/draft.md")
+CHILDREN_DATA_PATH   = Path(".tmp/children_brief_data.json")
 
 MODEL = "llama-3.3-70b-versatile"
 
@@ -64,7 +65,7 @@ def get_section3(saas: dict) -> dict:
 
 # ── groq call for section 2 (products) + section 4 (tips) ─────────────────────
 
-def generate_dynamic_sections(client: Groq, research: dict) -> str:
+def generate_dynamic_sections(client: Groq, research: dict, children_topic: str = "") -> str:
     themes_text = ""
     for t in research.get("themes", []):
         research_snippets = "\n".join(
@@ -79,6 +80,12 @@ Price range: {t['price_range']}
 Research findings:
 {research_snippets}
 """
+
+    children_override = (
+        f"SPECIAL INSTRUCTION: For the 'children' theme, this week's assigned topic is '{children_topic}'. "
+        f"Build every field (PRODUCT, STORE_INSPO, BUYERS_LOVE, YOUR_EDGE, PROMPT) specifically around '{children_topic}'. "
+        "Do not substitute a different children's product."
+    ) if children_topic else ""
 
     prompt = f"""You are writing two sections of The Bell — a weekly newsletter for someone building and selling digital products. They have zero design experience and use AI to create everything.
 
@@ -134,6 +141,7 @@ TIP3_TITLE: [short title]
 TIP3_BODY: [1-2 specific, actionable sentences about getting first sales or visibility]
 SECTION4_END
 
+{children_override}
 Rules:
 - Be specific. Real product names, real price points ($3–$18), real strategies.
 - Creation prompts must be detailed enough for someone with zero design skills.
@@ -290,6 +298,9 @@ def assemble_draft(s1: dict, themes: list, s3: dict, tips: dict, today: str) -> 
         lines.append(theme['prompt'])
         lines.append(">>>END")
         lines.append("")
+        if theme["id"] == "children":
+            lines.append("📋 **Your build brief is ready:** Open `.tmp/unified_product_brief.html` in your browser — full step-by-step Canva guide for this week's topic.")
+            lines.append("")
 
     lines.append(">>>DOC")
     lines.append("https://github.com/nurnabilahazman/the-bell-newsletter/blob/main/docs/section2_products_guide.md")
@@ -345,13 +356,20 @@ def assemble_draft(s1: dict, themes: list, s3: dict, tips: dict, today: str) -> 
 # ── main ───────────────────────────────────────────────────────────────────────
 
 def main():
-    curriculum = load_json(CURRICULUM_PATH)
-    saas       = load_json(SAAS_PATH)
-    research   = load_json(RESEARCH_PATH)
+    curriculum    = load_json(CURRICULUM_PATH)
+    saas          = load_json(SAAS_PATH)
+    research      = load_json(RESEARCH_PATH)
+    children_data = load_json(CHILDREN_DATA_PATH)
 
     if not curriculum:
         print("ERROR: config/curriculum.json not found.")
         raise SystemExit(1)
+
+    children_topic = children_data.get("topic", "")
+    if children_topic:
+        print(f"Children's topic (Week {children_data.get('week_num', '?')}): {children_topic}")
+    else:
+        print("No children's topic found — run children_brief_generator.py first for a specific topic.")
 
     today = datetime.now().strftime("%B %d, %Y")
     s1    = get_section1(curriculum)
@@ -366,7 +384,7 @@ def main():
         tips   = {}
     else:
         print("Generating product recommendations and tips with Groq...")
-        raw_dynamic    = generate_dynamic_sections(client, research)
+        raw_dynamic    = generate_dynamic_sections(client, research, children_topic)
         themes, tips   = parse_dynamic(raw_dynamic)
         print(f"  → {len(themes)} products generated")
 

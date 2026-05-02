@@ -5,7 +5,18 @@ on:
     # Every Monday 1:00 AM Malaysia time (= Sunday 17:00 UTC)
     - cron: "0 17 * * 0"
   workflow_dispatch:
-    # Allows manual trigger from GitHub website (useful for testing)
+    inputs:
+      dry_run:
+        description: 'Dry run — runs everything but does NOT send the email'
+        required: false
+        default: 'false'
+        type: choice
+        options:
+          - 'false'
+          - 'true'
+
+permissions:
+  contents: write   # needed to commit children_topics_log.json back to repo
 
 jobs:
   send-newsletter:
@@ -15,6 +26,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -45,4 +58,21 @@ jobs:
         run: mkdir -p .tmp/logs
 
       - name: Run newsletter pipeline
-        run: bash run_newsletter.sh
+        run: |
+          if [[ "${{ github.event.inputs.dry_run }}" == "true" ]]; then
+            bash run_newsletter.sh --dry-run
+          else
+            bash run_newsletter.sh
+          fi
+
+      - name: Save children's topics log back to repo
+        # This is what makes the no-repeat system work across weeks.
+        # Every run updates config/children_topics_log.json — we commit
+        # it back so next week GitHub starts from the updated list.
+        if: always()
+        run: |
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+          git add config/children_topics_log.json
+          git diff --staged --quiet || git commit -m "chore: advance children topic log [skip ci]"
+          git push

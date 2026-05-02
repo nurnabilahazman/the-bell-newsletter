@@ -15,14 +15,31 @@ Produce and send a weekly personal finance newsletter by scraping RSS feeds and 
 ## Intermediate Files (all in `.tmp/`, regenerated each run)
 | File | Produced By | Consumed By |
 |---|---|---|
+| `unified_product_brief.html` | `children_brief_generator.py` | You (open in browser) |
+| `children_brief_data.json` | `children_brief_generator.py` | `draft_newsletter.py` |
 | `rss_content.json` | `scrape_rss.py` | `draft_newsletter.py` |
 | `reddit_content.json` | `scrape_reddit.py` | `draft_newsletter.py` |
 | `draft.md` | `draft_newsletter.py` | `format_email.py`, `send_email.py`, `log_to_sheets.py` |
 | `formatted_email.html` | `format_email.py` | `send_email.py` |
 
+## Persistent Files (survive across runs)
+| File | Purpose |
+|---|---|
+| `config/children_topics_log.json` | Tracks which children's topics have been used (no-repeat system) |
+
 ---
 
 ## Steps
+
+### Step 0 — Generate Children's Brief (NEW — run this first)
+```bash
+python tools/children_brief_generator.py
+```
+- Picks this week's children's activity topic from a list of 52 (no repeats)
+- Updates `config/children_topics_log.json` with the used topic
+- Output: `.tmp/unified_product_brief.html` (open in browser — your weekly build guide)
+- Output: `.tmp/children_brief_data.json` (passes topic to draft_newsletter.py)
+- If all 52 topics are used, the list resets automatically
 
 ### Step 1 — Scrape RSS Feeds
 ```bash
@@ -84,6 +101,8 @@ python tools/log_to_sheets.py
 
 ## Running It All at Once
 ```bash
+python tools/children_brief_generator.py && \
+python tools/research_products.py && \
 python tools/scrape_rss.py && \
 python tools/scrape_reddit.py && \
 python tools/draft_newsletter.py && \
@@ -94,6 +113,7 @@ Review the dry run, then send for real:
 ```bash
 python tools/send_email.py && python tools/log_to_sheets.py
 ```
+After running: open `.tmp/unified_product_brief.html` in your browser — this week's children's activity build guide.
 
 ---
 

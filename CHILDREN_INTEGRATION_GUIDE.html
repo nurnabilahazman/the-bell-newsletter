@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Children's Activities × The Bell — Complete Integration Guide</title>
+<style>
+  :root {
+    --bg:    #1A1A2E;
+    --card:  #24243E;
+    --card2: #1e1e38;
+    --gold:  #C9A84C;
+    --text:  #E8E0D0;
+    --muted: #888;
+    --green: #4CAF7C;
+    --red:   #e05252;
+    --blue:  #6ba3d6;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: Georgia, serif;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+    line-height: 1.75;
+  }
+  /* ── Typography ── */
+  h1 { color: var(--gold); font-size: 2rem; margin-bottom: 6px; }
+  h2 { color: var(--gold); font-size: 1.25rem; margin: 44px 0 14px; text-transform: uppercase; letter-spacing: .07em; }
+  h3 { color: #ddd; font-size: 1rem; margin: 20px 0 8px; }
+  p  { margin-bottom: 12px; }
+  ul, ol { padding-left: 22px; margin-bottom: 14px; }
+  li { margin-bottom: 7px; }
+  strong { color: #ddd; }
+  a  { color: var(--gold); }
+
+  /* ── Components ── */
+  .subtitle { color: var(--muted); font-size: 1rem; margin-bottom: 32px; }
+  .divider  { border: none; border-top: 1px solid #2e2e50; margin: 40px 0; }
+
+  .badge {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--bg);
+    font-size: 11px;
+    font-weight: bold;
+    padding: 3px 12px;
+    border-radius: 20px;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .badge-green { background: var(--green); }
+  .badge-blue  { background: var(--blue); color: #1A1A2E; }
+
+  .card {
+    background: var(--card);
+    border-radius: 10px;
+    padding: 22px 24px;
+    margin-bottom: 18px;
+  }
+  .card-title {
+    color: var(--gold);
+    font-size: .85rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    margin-bottom: 10px;
+  }
+
+  /* ── Flow diagram ── */
+  .flow {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 18px 0 10px;
+  }
+  .flow-box {
+    background: var(--card2);
+    border: 1px solid #3a3a60;
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-size: 13px;
+    text-align: center;
+    min-width: 120px;
+  }
+  .flow-box strong { color: var(--gold); display: block; font-size: 12px; margin-bottom: 3px; }
+  .flow-arrow { color: var(--gold); font-size: 18px; }
+
+  /* ── Step boxes ── */
+  .step {
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+    margin-bottom: 22px;
+  }
+  .step-num {
+    background: var(--gold);
+    color: var(--bg);
+    border-radius: 50%;
+    width: 34px;
+    height: 34px;
+    min-width: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 15px;
+    margin-top: 2px;
+  }
+  .step-body h3 { margin-top: 0; color: var(--gold); }
+
+  /* ── Code blocks ── */
+  .code {
+    background: #0f0f1e;
+    border: 1px solid #2e2e50;
+    border-radius: 8px;
+    padding: 16px 18px;
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    color: #b0c4de;
+    white-space: pre;
+    overflow-x: auto;
+    margin: 10px 0 16px;
+    line-height: 1.6;
+  }
+  .code .comment { color: #555; }
+  .code .cmd     { color: #C9A84C; }
+  .code .path    { color: #6ba3d6; }
+
+  /* ── The big prompt box ── */
+  .prompt-box {
+    background: #0d0d1e;
+    border: 2px solid var(--gold);
+    border-radius: 10px;
+    padding: 24px;
+    margin: 20px 0;
+  }
+  .prompt-box .prompt-label {
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .prompt-box .prompt-label::before {
+    content: "▶";
+    font-size: 9px;
+  }
+  .prompt-text {
+    font-family: 'Courier New', monospace;
+    font-size: 12.5px;
+    color: #c8d8e8;
+    line-height: 1.7;
+    white-space: pre-wrap;
+  }
+
+  /* ── Callouts ── */
+  .callout {
+    border-left: 3px solid var(--gold);
+    background: var(--card2);
+    padding: 14px 18px;
+    border-radius: 0 8px 8px 0;
+    margin: 16px 0;
+  }
+  .callout-green { border-left-color: var(--green); }
+  .callout-blue  { border-left-color: var(--blue); }
+  .callout-title { font-weight: bold; color: var(--gold); margin-bottom: 5px; }
+  .callout-green .callout-title { color: var(--green); }
+  .callout-blue  .callout-title { color: var(--blue); }
+
+  /* ── File table ── */
+  table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 13.5px; }
+  th { background: var(--card2); color: var(--gold); text-align: left; padding: 10px 14px; font-size: 11px; text-transform: uppercase; letter-spacing: .06em; }
+  td { padding: 10px 14px; border-bottom: 1px solid #2a2a40; vertical-align: top; }
+  td:first-child { font-family: 'Courier New', monospace; color: var(--blue); font-size: 12px; }
+  tr:last-child td { border-bottom: none; }
+
+  /* ── FAQ ── */
+  .faq-q { color: #ddd; font-weight: bold; margin-bottom: 4px; }
+  .faq-a { color: var(--muted); font-size: 14px; margin-bottom: 18px; }
+  .faq-a code { background: #2a2a40; padding: 1px 6px; border-radius: 4px; font-family: 'Courier New', monospace; color: var(--blue); font-size: 12px; }
+
+  /* ── No-repeat visual ── */
+  .topic-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 0;
+    border-bottom: 1px solid #2a2a3a;
+    font-size: 13px;
+  }
+  .topic-row:last-child { border-bottom: none; }
+  .topic-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); flex-shrink: 0; }
+  .topic-dot.used { background: #444; }
+  .topic-name { flex: 1; }
+  .topic-week { color: var(--muted); font-size: 11px; }
+
+  .footer {
+    text-align: center;
+    color: #555;
+    font-size: 12px;
+    margin-top: 60px;
+    border-top: 1px solid #2a2a3e;
+    padding-top: 20px;
+  }
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════
+     HEADER
+════════════════════════════════════════════════ -->
+<span class="badge">Complete Guide</span>
+<h1>Children's Activities × The Bell</h1>
+<p class="subtitle">How the weekly topic system connects to your newsletter — explained simply, from scratch.</p>
+
+<hr class="divider">
+
+
+<!-- ════════════════════════════════════════════════
+     1. WHAT YOU'RE BUILDING
+════════════════════════════════════════════════ -->
+<h2>1. What We Built</h2>
+
+<p>Before this integration, the newsletter picked a random children's product idea every week. There was no system, no guidance on what to actually build, and topics could repeat.</p>
+
+<p>Now, every week automatically gets:</p>
+
+<ol>
+  <li>A <strong>specific, pre-picked topic</strong> from a curated list of 52 (one per week for a full year)</li>
+  <li>A <strong>one-page brief</strong> that tells you exactly what to build, how to build it in Canva, and how to price it</li>
+  <li>The <strong>newsletter's Children's Activities section</strong> uses that same topic and links you back to the brief</li>
+  <li>A <strong>no-repeat tracker</strong> that remembers every topic used so nothing comes up twice</li>
+</ol>
+
+<h3>The Full Flow (What Happens Each Week)</h3>
+
+<div class="flow">
+  <div class="flow-box"><strong>Step 1</strong>Pick Topic</div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-box"><strong>Step 2</strong>Check Log<br><span style="color:#aaa;font-size:11px">(used before?)</span></div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-box"><strong>Step 3</strong>Generate Brief<br><span style="color:#aaa;font-size:11px">(.html file)</span></div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-box"><strong>Step 4</strong>Newsletter<br><span style="color:#aaa;font-size:11px">uses that topic</span></div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-box"><strong>Step 5</strong>You open brief<br><span style="color:#aaa;font-size:11px">+ build in Canva</span></div>
+</div>
+
+<hr class="divider">
+
+
+<!-- ════════════════════════════════════════════════
+     2. THE NO-REPEAT SYSTEM
+════════════════════════════════════════════════ -->
+<h2>2. How the No-Repeat System Works</h2>
+
+<p>There are <strong>52 topics</strong> in a list inside the script — one for every week of the year. A simple JSON file (<code style="background:#2a2a40;padding:1px 6px;border-radius:4px;font-family:'Courier New',monospace;color:#6ba3d6;font-size:12px">config/children_topics_log.json</code>) acts as a memory log.</p>
+
+<div class="card">
+  <div class="card-title">How It Tracks Topics</div>
+  <div class="topic-row"><div class="topic-dot used"></div><div class="topic-name">Alphabet Tracing Workbook</div><div class="topic-week">Week 1 · Jan 06</div></div>
+  <div class="topic-row"><div class="topic-dot used"></div><div class="topic-name">Number Tracing Workbook</div><div class="topic-week">Week 2 · Jan 13</div></div>
+  <div class="topic-row"><div class="topic-dot used"></div><div class="topic-name">Ocean Explorer Busy Book</div><div class="topic-week">Week 3 · Jan 20</div></div>
+  <div class="topic-row"><div class="topic-dot"></div><div class="topic-name">Preschool Activity Binder</div><div class="topic-week">← next up</div></div>
+  <div class="topic-row"><div class="topic-dot"></div><div class="topic-name">Color and Shape Flashcards</div><div class="topic-week"></div></div>
+  <div class="topic-row" style="color:#555;font-size:12px;border:none;padding-top:10px"><em>... 47 more topics waiting ...</em></div>
+</div>
+
+<p>Every time the script runs, it:</p>
+<ol>
+  <li>Opens the log file and reads which topics have been used</li>
+  <li>Picks the <em>first one not in the list</em></li>
+  <li>Adds it to the log with today's date</li>
+  <li>Generates the brief for that topic</li>
+</ol>
+
+<div class="callout callout-green">
+  <div class="callout-title">After 52 Weeks</div>
+  The log resets automatically and the cycle starts over from Topic 1. You get a full year of unique topics with zero manual tracking.
+</div>
+
+<div class="callout callout-blue">
+  <div class="callout-title">How to Check What's Been Used</div>
+  Open <code style="background:#2a2a40;padding:1px 6px;border-radius:4px;font-family:'Courier New',monospace;color:#6ba3d6;font-size:12px">config/children_topics_log.json</code> in any text editor. The <code style="background:#2a2a40;padding:1px 6px;border-radius:4px;font-family:'Courier New',monospace;color:#6ba3d6;font-size:12px">history</code> array shows every topic, week number, and date used.
+</div>
+
+<hr class="divider">
+
+
+<!-- ════════════════════════════════════════════════
+     3. YOUR WEEKLY WORKFLOW
+════════════════════════════════════════════════ -->
+<h2>3. Your Weekly Workflow</h2>
+
+<p>The only change to your existing routine is running <strong>one extra command at the beginning</strong>. Everything else stays the same.</p>
+
+<h3>Old Pipeline (what you ran before)</h3>
+<div class="code"><span class="cmd">python tools/research_products.py</span>  <span class="comment"># research product themes</span>
+<span class="cmd">python tools/scrape_rss.py</span>          <span class="comment"># scrape news feeds</span>
+<span class="cmd">python tools/scrape_reddit.py</span>       <span class="comment"># scrape Reddit</span>
+<span class="cmd">python tools/draft_newsletter.py</span>    <span class="comment"># write newsletter draft</span>
+<span class="cmd">python tools/format_email.py</span>        <span class="comment"># format as HTML email</span>
+<span class="cmd">python tools/send_email.py --dry-run</span><span class="comment"># preview before sending</span></div>
+
+<h3>New Pipeline (run this instead — copy and paste the whole thing)</h3>
+<div class="code"><span class="comment"># NEW: generate children's brief first (picks this week's topic)</span>
+<span class="cmd">python tools/children_brief_generator.py</span>
+
+<span class="comment"># then everything as before</span>
+<span class="cmd">python tools/research_products.py && \</span>
+<span class="cmd">python tools/scrape_rss.py && \</span>
+<span class="cmd">python tools/scrape_reddit.py && \</span>
+<span class="cmd">python tools/draft_newsletter.py && \</span>
+<span class="cmd">python tools/format_email.py && \</span>
+<span class="cmd">python tools/send_email.py --dry-run</span></div>
+
+<div class="callout">
+  <div class="callout-title">After reviewing the dry run</div>
+  Run <code style="background:#2a2a40;padding:1px 6px;border-radius:4px;font-family:'Courier New',monospace;color:#6ba3d6;font-size:12px">python tools/send_email.py &amp;&amp; python tools/log_to_sheets.py</code> to send for real and log the edition.
+</div>
+
+<h3>After the Pipeline Runs</h3>
+<ol>
+  <li>Open <code style="background:#2a2a40;padding:1px 6px;border-radius:4px;font-family:'Courier New',monospace;color:#6ba3d6;font-size:12px">.tmp/unified_product_brief.html</code> in your browser — this is your week's brief</li>
+  <li>The brief tells you exactly what to build, step by step, in Canva</li>
+  <li>Your newsletter (in <code style="background:#2a2a40;padding:1px 6px;border-radius:4px;font-family:'Courier New',monospace;color:#6ba3d6;font-size:12px">.tmp/draft.md</code>) already has the Children's section built around the same topic</li>
+</ol>
+
+<hr class="divider">
+
+
+<!-- ════════════════════════════════════════════════
+     4. YOUR FILES — WHAT EACH ONE DOES
+════════════════════════════════════════════════ -->
+<h2>4. Your Files — What Each One Does</h2>
+
+<p>Three files were added to your Newsletter folder. You don't need to edit any of them — just know they exist.</p>
+
+<table>
+  <tr>
+    <th>File</th>
+    <th>What It Does</th>
+    <th>Do You Edit It?</th>
+  </tr>
+  <tr>
+    <td>tools/children_brief_generator.py</td>
+    <td>The main script. Picks this week's topic, generates the brief, saves everything.</td>
+    <td>No. Just run it.</td>
+  </tr>
+  <tr>
+    <td>config/children_topics_log.json</td>
+    <td>The memory. Keeps track of every topic used so far. Gets updated automatically every run.</td>
+    <td>No. The script writes to it.</td>
+  </tr>
+  <tr>
+    <td>.tmp/unified_product_brief.html</td>
+    <td>This week's brief. Opens in your browser. Gets overwritten each week with the new topic.</td>
+    <td>No. Open it, don't edit it.</td>
+  </tr>
+  <tr>
+    <td>.tmp/children_brief_data.json</td>
+    <td>A small data file that passes the topic from the brief generator to draft_newsletter.py.</td>
+    <td>No. Internal use only.</td>
+  </tr>
+</table>
+
+<p>And one existing file was updated:</p>
+
+<table>
+  <tr>
+    <th>File</th>
+    <th>What Changed</th>
+  </tr>
+  <tr>
+    <td>tools/draft_newsletter.py</td>
+    <td>Now reads <code style="background:#2a2a40;padding:1px 6px;border-radius:4px;font-family:'Courier New',monospace;color:#6ba3d6;font-size:12px">.tmp/children_brief_data.json</code> before calling Groq. Passes this week's topic into the prompt so the newsletter's Children's section matches your brief. Also adds a "📋 brief ready" note in that section.</td>
+  </tr>
+</table>
+
+<hr class="divider">
+
+
+<!-- ════════════════════════════════════════════════
+     5. WHAT THE BRIEF LOOKS LIKE
+════════════════════════════════════════════════ -->
+<h2>5. What the Brief Looks Like</h2>
+
+<p>When you open <code style="background:#2a2a40;padding:1px 6px;border-radius:4px;font-family:'Courier New',monospace;color:#6ba3d6;font-size:12px">.tmp/unified_product_brief.html</code>, you'll see a one-page guide with:</p>
+
+<div class="card">
+  <div class="card-title">Brief Contents</div>
+  <ul style="margin:0">
+    <li><strong>Week badge + topic name</strong> — e.g. "WEEK 4 · Preschool Activity Binder"</li>
+    <li><strong>Progress bar</strong> — shows how many topics remain before the list resets</li>
+    <li><strong>What To Build</strong> — specific description of the product</li>
+    <li><strong>Why It Sells</strong> — who buys it, when they search, what problem it solves</li>
+    <li><strong>What Competitors Are Doing</strong> — what's already on Etsy</li>
+    <li><strong>How To Make Yours Better</strong> — specific differentiators</li>
+    <li><strong>How To Build It In Canva</strong> — numbered steps, beginner-friendly</li>
+    <li><strong>Pricing &amp; Listing</strong> — suggested price, Etsy title, 5 tags</li>
+  </ul>
+</div>
+
+<div class="callout callout-green">
+  <div class="callout-title">How To Open It</div>
+  In VS Code: right-click <code style="background:#2a2a40;padding:1px 6px;border-radius:4px;font-family:'Courier New',monospace;color:#6ba3d6;font-size:12px">.tmp/unified_product_brief.html</code> → "Reveal in Finder" → double-click the file → it opens in Chrome/Safari.<br><br>
+  Or in terminal: <code style="background:#2a2a40;padding:1px 6px;border-radius:4px;font-family:'Courier New',monospace;color:#6ba3d6;font-size:12px">open .tmp/unified_product_brief.html</code>
+</div>
+
+<hr class="divider">
+
+
+<!-- ════════════════════════════════════════════════
+     6. IF SOMETHING BREAKS — PASTE THIS INTO CLAUDE
+════════════════════════════════════════════════ -->
+<h2>6. If Something Breaks — Use This Prompt</h2>
+
+<p>If the integration ever stops working or you need to reset it, open Claude in this folder and paste the prompt below. It will diagnose the problem and fix it.</p>
+
+<div class="prompt-box">
+  <div class="prompt-label">Copy and paste this into Claude (in the Newsletter folder)</div>
+  <div class="prompt-text">I'm running the newsletter pipeline for The Bell and the Children's Activities integration isn't working correctly.
+
+Please check the following:
+
+1. Does tools/children_brief_generator.py exist? If not, recreate it. It should:
+   - Have a list of 52 children's educational activity topics
+   - Read config/children_topics_log.json to track which topics have been used
+   - Pick the next unused topic in order (not random)
+   - Log the used topic back to children_topics_log.json
+   - Generate a one-page HTML brief and save it to .tmp/unified_product_brief.html
+   - Write {topic, age_range, format, week_num} to .tmp/children_brief_data.json
+   - Use GROQ_API_KEY from .env, model llama-3.3-70b-versatile
+
+2. Does config/children_topics_log.json exist? If not, create it with:
+   {"used_topics": [], "current_week": 0, "history": []}
+
+3. In tools/draft_newsletter.py, check that:
+   - CHILDREN_DATA_PATH = Path(".tmp/children_brief_data.json") is defined
+   - main() loads children_data = load_json(CHILDREN_DATA_PATH)
+   - generate_dynamic_sections() accepts a children_topic="" parameter
+   - The Groq prompt uses children_topic to constrain the children theme
+   - assemble_draft() adds a "📋 brief ready" note after the children section
+
+4. Run python tools/children_brief_generator.py and show me the terminal output.
+
+Tell me what was missing or broken and what you fixed.</div>
+</div>
+
+<hr class="divider">
+
+
+<!-- ════════════════════════════════════════════════
+     7. RESETTING OR SKIPPING A TOPIC
+════════════════════════════════════════════════ -->
+<h2>7. Resetting or Skipping a Topic</h2>
+
+<p>Occasionally you might want to skip a topic or reset the whole list. Here's how:</p>
+
+<div class="step">
+  <div class="step-num">?</div>
+  <div class="step-body">
+    <h3>Skip a topic you don't want this week</h3>
+    <p>Open <code style="background:#2a2a40;padding:1px 6px;border-radius:4px;font-family:'Courier New',monospace;color:#6ba3d6;font-size:12px">config/children_topics_log.json</code> in a text editor. In the <code style="background:#2a2a40;padding:1px 6px;border-radius:4px;font-family:'Courier New',monospace;color:#6ba3d6;font-size:12px">used_topics</code> array, manually add the topic name you want to skip (copy it exactly as it appears in the script). The script will skip it and pick the next one.</p>
+  </div>
+</div>
+
+<div class="step">
+  <div class="step-num">↺</div>
+  <div class="step-body">
+    <h3>Start the whole list over from the beginning</h3>
+    <p>Delete the contents of <code style="background:#2a2a40;padding:1px 6px;border-radius:4px;font-family:'Courier New',monospace;color:#6ba3d6;font-size:12px">config/children_topics_log.json</code> and replace with:</p>
+    <div class="code">{"used_topics": [], "current_week": 0, "history": []}</div>
+    <p>The next run will start again from Topic 1: Alphabet Tracing Workbook.</p>
+  </div>
+</div>
+
+<div class="step">
+  <div class="step-num">+</div>
+  <div class="step-body">
+    <h3>Add your own topics to the list</h3>
+    <p>Open <code style="background:#2a2a40;padding:1px 6px;border-radius:4px;font-family:'Courier New',monospace;color:#6ba3d6;font-size:12px">tools/children_brief_generator.py</code>. Find the <code style="background:#2a2a40;padding:1px 6px;border-radius:4px;font-family:'Courier New',monospace;color:#6ba3d6;font-size:12px">ALL_TOPICS</code> list. Add a new entry in this format:</p>
+    <div class="code">{"topic": "Your Topic Name", "age": "3–6", "format": "PDF printable"},</div>
+  </div>
+</div>
+
+<hr class="divider">
+
+
+<!-- ════════════════════════════════════════════════
+     8. FAQ
+════════════════════════════════════════════════ -->
+<h2>8. FAQ</h2>
+
+<div class="faq-q">Why do I run children_brief_generator.py BEFORE research_products.py?</div>
+<div class="faq-a">The brief generator saves this week's topic to <code>.tmp/children_brief_data.json</code>. Then when <code>draft_newsletter.py</code> runs, it reads that file and tells Groq which specific children's topic to use. If you run them the other way, the newsletter won't have the topic yet.</div>
+
+<div class="faq-q">What happens if I forget to run children_brief_generator.py?</div>
+<div class="faq-a">The newsletter still runs fine — the children's section just won't be locked to a specific topic. You'll see the message: <code>No children's topic found — run children_brief_generator.py first for a specific topic.</code></div>
+
+<div class="faq-q">Will it use the same topic twice if I run the script twice in the same week?</div>
+<div class="faq-a">No — the log is updated on the first run. Running it again immediately would advance to the NEXT topic. So only run <code>children_brief_generator.py</code> once per week, at the start of the pipeline.</div>
+
+<div class="faq-q">The brief is a local file — can I share it or link to it in the email?</div>
+<div class="faq-a">The brief is just for you — it's your reference while building in Canva. The newsletter email itself already contains all the key information (product, build prompt, pricing tips) in the Children's Activities section. Your subscribers get everything they need in the email. You get the detailed brief locally.</div>
+
+<div class="faq-q">How do I see all the topics in advance?</div>
+<div class="faq-a">Open <code>tools/children_brief_generator.py</code> and look at the <code>ALL_TOPICS</code> list. All 52 topics are there in order. Topic 1 is Alphabet Tracing Workbook, Topic 52 is Multiplication Flashcards 1–5.</div>
+
+<div class="faq-q">What if the brief generation fails because of the Groq API?</div>
+<div class="faq-a">The topic is already saved to the log before the Groq call. So the topic won't repeat. Just re-run <code>python tools/children_brief_generator.py</code> to regenerate the brief. The log won't advance — it already has this week's topic recorded.</div>
+
+<hr class="divider">
+
+
+<!-- ════════════════════════════════════════════════
+     QUICK REFERENCE
+════════════════════════════════════════════════ -->
+<h2>Quick Reference</h2>
+
+<div class="card">
+  <div class="card-title">Weekly Command (copy this, run it every week)</div>
+  <div class="code" style="margin:0"><span class="cmd">python tools/children_brief_generator.py</span> && \
+<span class="cmd">python tools/research_products.py</span> && \
+<span class="cmd">python tools/scrape_rss.py</span> && \
+<span class="cmd">python tools/scrape_reddit.py</span> && \
+<span class="cmd">python tools/draft_newsletter.py</span> && \
+<span class="cmd">python tools/format_email.py</span> && \
+<span class="cmd">python tools/send_email.py --dry-run</span>
+
+<span class="comment"># Review the dry run — then send for real:</span>
+<span class="cmd">python tools/send_email.py && python tools/log_to_sheets.py</span></div>
+</div>
+
+<div class="card">
+  <div class="card-title">After Running — Your Checklist</div>
+  <ul style="margin:0">
+    <li>✅ Open <code style="background:#2a2a40;padding:1px 6px;border-radius:4px;font-family:'Courier New',monospace;color:#6ba3d6;font-size:12px">.tmp/unified_product_brief.html</code> — read this week's build guide</li>
+    <li>✅ Open <code style="background:#2a2a40;padding:1px 6px;border-radius:4px;font-family:'Courier New',monospace;color:#6ba3d6;font-size:12px">.tmp/draft.md</code> — check the newsletter draft looks right</li>
+    <li>✅ Review the dry run email before sending</li>
+    <li>✅ Build this week's product in Canva using the brief</li>
+    <li>✅ List it on Etsy using the title and tags from the brief</li>
+  </ul>
+</div>
+
+<div class="footer">
+  The Bell Newsletter · Children's Activities Integration Guide<br>
+  All code lives in <code style="background:#1a1a30;padding:1px 6px;border-radius:4px;font-family:'Courier New',monospace;color:#6ba3d6;font-size:12px">tools/children_brief_generator.py</code> · Log in <code style="background:#1a1a30;padding:1px 6px;border-radius:4px;font-family:'Courier New',monospace;color:#6ba3d6;font-size:12px">config/children_topics_log.json</code>
+</div>
+
+</body>
+</html>
