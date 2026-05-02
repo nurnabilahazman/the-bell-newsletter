@@ -67,15 +67,21 @@ jobs:
 
       - name: Commit state changes back to repo
         # Files committed every run:
-        # 1. children_topics_log.json  — week counter + topic history
-        # 2. children_block_state.json — current block's 5 products (regenerated every 5 weeks)
-        # 3. curriculum.json           — Section 1 week counter
-        # 4. saas_progress.json        — SaaS week counter
-        # 5. docs/current_brief.html   — this week's brief (accessible via htmlpreview URL)
+        # 1. children_topics_log.json       — children week counter + topic history
+        # 2. children_block_state.json      — children block's 5 products (every 5 weeks)
+        # 3. productivity_topics_log.json   — productivity week counter + topic history
+        # 4. productivity_block_state.json  — productivity block's 5 products (every 5 weeks)
+        # 5. curriculum.json                — Section 1 week counter
+        # 6. saas_progress.json             — SaaS week counter
+        # 7. docs/current_brief.html            — children's brief (htmlpreview URL)
+        # 8. docs/current_productivity_brief.html — productivity brief (htmlpreview URL)
         if: always()
         run: |
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git config user.name "github-actions[bot]"
-          git add config/children_topics_log.json config/children_block_state.json config/curriculum.json config/saas_progress.json docs/current_brief.html
+          git add config/children_topics_log.json config/children_block_state.json \
+                  config/productivity_topics_log.json config/productivity_block_state.json \
+                  config/curriculum.json config/saas_progress.json \
+                  docs/current_brief.html docs/current_productivity_brief.html
           git diff --staged --quiet || git commit -m "chore: advance week state [skip ci]"
           git push

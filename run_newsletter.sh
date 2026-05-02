@@ -28,8 +28,9 @@ fi
   echo "================================================"
 
   echo ""
-  echo "[1/7] Picking this week's children's activity topic..."
+  echo "[1/7] Generating this week's product briefs..."
   python3 tools/children_brief_generator.py
+  python3 tools/productivity_brief_generator.py
 
   echo ""
   echo "[2/7] Researching products (Tavily)..."
@@ -67,8 +68,9 @@ fi
 
 } 2>&1 | tee "$LOG_FILE"
 
-# On dry-run, open both previews directly in the browser so you can review without clicking links
+# On dry-run, open previews directly in the browser so you can review without clicking links
 if [[ -n "$DRY_RUN" ]] && command -v open &>/dev/null; then
   open "$SCRIPT_DIR/docs/current_brief.html"
+  open "$SCRIPT_DIR/docs/current_productivity_brief.html"
   open "$SCRIPT_DIR/.tmp/formatted_email.html"
 fi

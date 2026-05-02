@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Productivity & Trackers Brief — Block 1 (Weeks 1–5)</title>
+<style>
+  :root {
+    --bg:#0B0B14; --card:#12121F; --card2:#191928; --border:#252538;
+    --gold:#C9A84C; --gold-dim:rgba(201,168,76,0.12);
+    --green:#3DD68C; --green-dim:rgba(61,214,140,0.1);
+    --accent:#E94560; --blue:#4EA8DE; --purple:#9B72CF;
+    --text:#E2E2E2; --muted:#6B7280;
+    --tag-bg:rgba(201,168,76,0.14);
+  }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  html { scroll-behavior:smooth; }
+  body { background:var(--bg); color:var(--text); font-family:'Segoe UI',system-ui,-apple-system,sans-serif; font-size:15px; line-height:1.7; padding:32px 20px 80px; }
+  .container { max-width:1060px; margin:0 auto; }
+  .toc { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:20px 24px; margin-bottom:36px; display:flex; flex-wrap:wrap; gap:10px 24px; align-items:center; }
+  .toc-label { color:var(--muted); font-size:0.78rem; text-transform:uppercase; letter-spacing:1px; margin-right:8px; }
+  .toc a { color:var(--gold); text-decoration:none; font-size:0.88rem; }
+  .toc a:hover { text-decoration:underline; }
+  .hero { background:linear-gradient(135deg,#12121F 0%,#0D1A14 100%); border:1px solid var(--border); border-left:5px solid var(--gold); border-radius:16px; padding:40px 36px; margin-bottom:40px; position:relative; overflow:hidden; }
+  .hero::before { content:''; position:absolute; top:-60px; right:-60px; width:220px; height:220px; background:radial-gradient(circle,rgba(61,214,140,0.06) 0%,transparent 70%); border-radius:50%; }
+  .hero-badge { color:var(--green); font-size:0.78rem; text-transform:uppercase; letter-spacing:2px; margin-bottom:12px; }
+  .hero h1 { font-size:2.1rem; color:white; font-weight:800; line-height:1.25; margin-bottom:10px; }
+  .hero .subtitle { color:var(--muted); font-size:1rem; margin-bottom:28px; }
+  .hero-stats { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:16px; border-top:1px solid var(--border); padding-top:24px; }
+  .stat-label { color:var(--muted); font-size:0.78rem; text-transform:uppercase; letter-spacing:0.5px; }
+  .stat-value { color:white; font-size:1.4rem; font-weight:700; margin-top:2px; }
+  .stat-value.gold { color:var(--gold); }
+  .stat-value.green { color:var(--green); }
+  section { margin-bottom:48px; }
+  .section-header { display:flex; align-items:center; gap:12px; margin-bottom:20px; padding-bottom:12px; border-bottom:2px solid var(--border); }
+  .section-icon { font-size:1.5rem; }
+  .section-title { font-size:1.35rem; font-weight:700; color:white; }
+  .section-sub { color:var(--muted); font-size:0.88rem; margin-left:auto; }
+  .card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:22px 24px; margin-bottom:14px; }
+  .card-title { color:var(--gold); font-weight:600; font-size:0.9rem; margin-bottom:12px; text-transform:uppercase; letter-spacing:0.5px; }
+  .card p { color:var(--text); font-size:0.95rem; }
+  .product-card { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:28px; margin-bottom:20px; position:relative; overflow:hidden; }
+  .product-card::before { content:''; position:absolute; top:0; left:0; width:4px; height:100%; }
+  .product-card.rank-1::before { background:var(--gold); }
+  .product-card.rank-2::before { background:#A8A8A8; }
+  .product-card.rank-3::before { background:#CD7F32; }
+  .product-card.rank-4::before { background:var(--blue); }
+  .product-card.rank-5::before { background:var(--purple); }
+  .product-rank { font-size:2rem; line-height:1; margin-bottom:8px; }
+  .product-name { font-size:1.3rem; font-weight:800; color:white; margin-bottom:6px; }
+  .product-meta { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px; }
+  .meta-chip { background:var(--card2); border:1px solid var(--border); border-radius:20px; padding:4px 12px; font-size:0.8rem; color:var(--text); }
+  .meta-chip span { color:var(--gold); font-weight:600; }
+  .step-card { background:var(--card2); border:1px solid var(--border); border-radius:10px; padding:12px 16px; margin-bottom:8px; display:flex; gap:14px; align-items:flex-start; }
+  .step-num { background:var(--gold); color:#0B0B14; border-radius:50%; width:24px; height:24px; min-width:24px; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:0.8rem; margin-top:2px; }
+  .step-text { font-size:0.9rem; color:var(--text); }
+  .seo-block { background:var(--card2); border:1px solid var(--border); border-radius:10px; padding:16px; margin-top:14px; }
+  .seo-label { color:var(--muted); font-size:0.75rem; text-transform:uppercase; letter-spacing:1px; margin-bottom:6px; }
+  .seo-value { color:white; font-weight:600; font-size:0.95rem; }
+  .etsy-tag { display:inline-block; background:var(--tag-bg); border:1px solid var(--gold); color:var(--gold); padding:3px 10px; border-radius:20px; font-size:0.76rem; margin:2px; }
+  .footer { text-align:center; color:var(--muted); font-size:0.78rem; margin-top:60px; padding-top:20px; border-top:1px solid var(--border); }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <nav class="toc">
+    <span class="toc-label">Jump to</span>
+    <a href="#products">Top 5 Products</a>
+    <a href="#action">Action Plan</a>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-badge">📊 Productivity & Trackers Brief — Block 1</div>
+    <h1>Your Next 5 Products to Build</h1>
+    <div class="subtitle">Weeks 1–5 &nbsp;·&nbsp; 5 ready-to-build products with full specs</div>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-label">Products in Block</div>
+        <div class="stat-value gold">5</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Current Week</div>
+        <div class="stat-value gold">Week 1</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Sweet Spot Price</div>
+        <div class="stat-value green">$3.99 – $7.99</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Generated</div>
+        <div class="stat-value" style="font-size:0.95rem;color:var(--muted)">May 02, 2026</div>
+      </div>
+    </div>
+  </div>
+
+  
+  <div style="background:#12121F;border:1px solid #252538;border-radius:14px;padding:22px 26px;margin-bottom:36px;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;flex-wrap:wrap;gap:8px;">
+      <div>
+        <div style="color:#C9A84C;font-size:0.75rem;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:4px;">5-Week Block Progress</div>
+        <div style="color:#E2E2E2;font-size:1.05rem;font-weight:700;">Week 1 of 5 &nbsp;·&nbsp; This Week: Monthly Budget Tracker</div>
+      </div>
+      <div style="color:#6B7280;font-size:0.82rem;">4 weeks left in this block</div>
+    </div>
+    <div style="background:#1e1e30;border-radius:8px;height:7px;overflow:hidden;margin-bottom:18px;">
+      <div style="background:linear-gradient(90deg,#C9A84C,#e8c56a);height:100%;border-radius:8px;width:20%;"></div>
+    </div>
+    <div style="display:flex;gap:6px;justify-content:space-around;flex-wrap:wrap;">
+      
+          <div style="display:flex;flex-direction:column;align-items:center;gap:5px;flex:1;min-width:58px;max-width:112px;">
+            <div style="width:22px;height:22px;border-radius:50%;border:2px solid;background:#C9A84C;border-color:#C9A84C;box-shadow:0 0 8px rgba(201,168,76,0.6);"></div>
+            <div style="font-size:0.72rem;text-align:center;color:#C9A84C;font-weight:700;">▶ Wk 1</div>
+            <div style="font-size:0.67rem;color:#6B7280;text-align:center;line-height:1.3;">Monthly Budget Tracker</div>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:5px;flex:1;min-width:58px;max-width:112px;">
+            <div style="width:22px;height:22px;border-radius:50%;border:2px solid;background:transparent;border-color:#252538;"></div>
+            <div style="font-size:0.72rem;text-align:center;color:#6B7280;">Wk 2</div>
+            <div style="font-size:0.67rem;color:#6B7280;text-align:center;line-height:1.3;">Daily Productivity Planner</div>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:5px;flex:1;min-width:58px;max-width:112px;">
+            <div style="width:22px;height:22px;border-radius:50%;border:2px solid;background:transparent;border-color:#252538;"></div>
+            <div style="font-size:0.72rem;text-align:center;color:#6B7280;">Wk 3</div>
+            <div style="font-size:0.67rem;color:#6B7280;text-align:center;line-height:1.3;">30-Day Habit Tracker</div>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:5px;flex:1;min-width:58px;max-width:112px;">
+            <div style="width:22px;height:22px;border-radius:50%;border:2px solid;background:transparent;border-color:#252538;"></div>
+            <div style="font-size:0.72rem;text-align:center;color:#6B7280;">Wk 4</div>
+            <div style="font-size:0.67rem;color:#6B7280;text-align:center;line-height:1.3;">Weekly Meal Planner + Grocery List</div>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:5px;flex:1;min-width:58px;max-width:112px;">
+            <div style="width:22px;height:22px;border-radius:50%;border:2px solid;background:transparent;border-color:#252538;"></div>
+            <div style="font-size:0.72rem;text-align:center;color:#6B7280;">Wk 5</div>
+            <div style="font-size:0.67rem;color:#6B7280;text-align:center;line-height:1.3;">Goal Setting Workbook</div>
+          </div>
+    </div>
+  </div>
+
+
+  <section id="products">
+    <div class="section-header">
+      <span class="section-icon">🗂️</span>
+      <span class="section-title">5 Products — One Per Week</span>
+      <span class="section-sub">Complete specs · ready to open Canva</span>
+    </div>
+
+    
+    <div class="product-card rank-1" style="box-shadow:0 0 0 2px #C9A84C,0 0 28px rgba(201,168,76,0.18);border-color:#C9A84C;">
+      <div class="product-rank">🥇</div>
+      <div class="product-name">Monthly Budget Tracker<span style="display:inline-block;background:rgba(201,168,76,0.15);color:#C9A84C;border:1px solid #C9A84C;border-radius:20px;padding:2px 10px;font-size:0.72rem;font-weight:700;margin-left:10px;vertical-align:middle;">▶ THIS WEEK</span></div>
+      <div class="product-meta">
+        <span class="meta-chip">Price: <span>$5.99</span></span>
+        <span class="meta-chip">Format: <span>PDF printable</span></span>
+        <span class="meta-chip" style="border-color:var(--gold);color:var(--gold);">Week 1</span>
+      </div>
+      <div class="card" style="margin-bottom:14px;">
+        <div class="card-title">What To Build</div>
+        <p>A 60+ page annual budget tracker with monthly overviews, weekly expense logs, and bonus finance pages. Buyers use it to track every dollar in and out for the full year.</p>
+      </div>
+      <div class="card" style="margin-bottom:14px;">
+        <div class="card-title">Why It Sells</div>
+        <p>Budget trackers are a top-5 Etsy bestseller year-round — people search for them every January and after every payday.</p>
+      </div>
+      <div style="margin-bottom:14px;">
+        <div class="card-title" style="color:#C9A84C;font-size:0.85rem;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px;">How To Build in Canva</div>
+        <div class="step-card"><div class="step-num">1</div><div class="step-text">Open Canva → search 'budget tracker template' → pick a clean minimal design with a neutral color scheme</div></div><div class="step-card"><div class="step-num">2</div><div class="step-text">Create 12 monthly overview pages (one per month) — each with income vs expenses table, savings goal row</div></div><div class="step-card"><div class="step-num">3</div><div class="step-text">Add a weekly expense log section (4 pages per month × 12 months = 48 log pages)</div></div><div class="step-card"><div class="step-num">4</div><div class="step-text">Include bonus pages: Annual savings summary, Subscription tracker, Sinking funds tracker</div></div><div class="step-card"><div class="step-num">5</div><div class="step-text">Export as PDF Print (A4 or Letter) → upload to Etsy as a digital download</div></div>
+      </div>
+      <div class="seo-block">
+        <div class="seo-label">Etsy Title</div>
+        <div class="seo-value">Monthly Budget Tracker Printable | 2025–2026 | Income Expense Log | Instant Download PDF</div>
+        <div class="tag-row" style="margin-top:10px;"><span class="etsy-tag">budget tracker</span><span class="etsy-tag">expense tracker</span><span class="etsy-tag">monthly planner</span><span class="etsy-tag">finance printable</span><span class="etsy-tag">budget printable</span><span class="etsy-tag">savings tracker</span><span class="etsy-tag">money tracker</span></div>
+      </div>
+    </div>
+
+    <div class="product-card rank-2">
+      <div class="product-rank">🥈</div>
+      <div class="product-name">Daily Productivity Planner</div>
+      <div class="product-meta">
+        <span class="meta-chip">Price: <span>$4.99</span></span>
+        <span class="meta-chip">Format: <span>PDF printable</span></span>
+        <span class="meta-chip" style="border-color:#A8A8A8;color:#A8A8A8;">Week 2</span>
+      </div>
+      <div class="card" style="margin-bottom:14px;">
+        <div class="card-title">What To Build</div>
+        <p>An undated daily planner with hourly time blocks, top priorities, water tracker, and gratitude section. Available as a 90-day or 365-day set.</p>
+      </div>
+      <div class="card" style="margin-bottom:14px;">
+        <div class="card-title">Why It Sells</div>
+        <p>Undated planners sell year-round (no expiry date) and consistently rank in Etsy's top printables — every planner buyer needs a daily layout.</p>
+      </div>
+      <div style="margin-bottom:14px;">
+        <div class="card-title" style="color:#C9A84C;font-size:0.85rem;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px;">How To Build in Canva</div>
+        <div class="step-card"><div class="step-num">1</div><div class="step-text">Open Canva → search 'daily planner template' → pick a clean design with a top-priorities section</div></div><div class="step-card"><div class="step-num">2</div><div class="step-text">Create one master daily page with: date, top 3 priorities, hourly schedule (6am–10pm), notes, water tracker, gratitude line</div></div><div class="step-card"><div class="step-num">3</div><div class="step-text">Add a weekly overview page (Mon–Sun at a glance + weekly goal)</div></div><div class="step-card"><div class="step-num">4</div><div class="step-text">Create a 365-day set: duplicate the daily page 365× — or sell a 90-day version (more affordable)</div></div><div class="step-card"><div class="step-num">5</div><div class="step-text">Export as PDF Print → upload to Etsy with 'undated' in the title so it sells year-round</div></div>
+      </div>
+      <div class="seo-block">
+        <div class="seo-label">Etsy Title</div>
+        <div class="seo-value">Daily Productivity Planner Printable | Undated | Top 3 Priorities + Hourly Schedule | PDF</div>
+        <div class="tag-row" style="margin-top:10px;"><span class="etsy-tag">daily planner</span><span class="etsy-tag">productivity planner</span><span class="etsy-tag">printable planner</span><span class="etsy-tag">undated planner</span><span class="etsy-tag">daily schedule</span><span class="etsy-tag">planner printable</span><span class="etsy-tag">time management</span></div>
+      </div>
+    </div>
+
+    <div class="product-card rank-3">
+      <div class="product-rank">🥉</div>
+      <div class="product-name">30-Day Habit Tracker</div>
+      <div class="product-meta">
+        <span class="meta-chip">Price: <span>$3.99</span></span>
+        <span class="meta-chip">Format: <span>PDF printable</span></span>
+        <span class="meta-chip" style="border-color:#CD7F32;color:#CD7F32;">Week 3</span>
+      </div>
+      <div class="card" style="margin-bottom:14px;">
+        <div class="card-title">What To Build</div>
+        <p>An undated 30-day habit tracker with 10 habit slots, daily checkboxes, and a monthly reflection section. Sold as a 5-pack so buyers can track multiple months.</p>
+      </div>
+      <div class="card" style="margin-bottom:14px;">
+        <div class="card-title">Why It Sells</div>
+        <p>Habit trackers are among the most searched printables on Etsy — they spike in January and September but sell consistently all year.</p>
+      </div>
+      <div style="margin-bottom:14px;">
+        <div class="card-title" style="color:#C9A84C;font-size:0.85rem;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px;">How To Build in Canva</div>
+        <div class="step-card"><div class="step-num">1</div><div class="step-text">Open Canva → search 'habit tracker template' → pick a design with a grid layout and room for habit names</div></div><div class="step-card"><div class="step-num">2</div><div class="step-text">Create a single-page monthly habit tracker: 10 habit rows × 31 day columns, plus a monthly reflection section</div></div><div class="step-card"><div class="step-num">3</div><div class="step-text">Make it undated — include a blank 'Month:' field so it works for any month of any year</div></div><div class="step-card"><div class="step-num">4</div><div class="step-text">Add a bonus page: 'How to Build a Habit in 30 Days' — one-page guide with the habit loop explained simply</div></div><div class="step-card"><div class="step-num">5</div><div class="step-text">Export as PDF Print → list as a 5-pack (5 copies of the tracker page) for perceived value</div></div>
+      </div>
+      <div class="seo-block">
+        <div class="seo-label">Etsy Title</div>
+        <div class="seo-value">30 Day Habit Tracker Printable | Monthly Habit Log | Undated | Instant Download PDF</div>
+        <div class="tag-row" style="margin-top:10px;"><span class="etsy-tag">habit tracker</span><span class="etsy-tag">30 day habit</span><span class="etsy-tag">monthly tracker</span><span class="etsy-tag">habit log printable</span><span class="etsy-tag">goal tracker</span><span class="etsy-tag">self improvement</span><span class="etsy-tag">wellness tracker</span></div>
+      </div>
+    </div>
+
+    <div class="product-card rank-4">
+      <div class="product-rank">4️⃣</div>
+      <div class="product-name">Weekly Meal Planner + Grocery List</div>
+      <div class="product-meta">
+        <span class="meta-chip">Price: <span>$3.99</span></span>
+        <span class="meta-chip">Format: <span>PDF printable</span></span>
+        <span class="meta-chip" style="border-color:var(--blue);color:var(--blue);">Week 4</span>
+      </div>
+      <div class="card" style="margin-bottom:14px;">
+        <div class="card-title">What To Build</div>
+        <p>A 52-week undated meal planner with a 7-day grid for all meals, a categorised grocery list, and a monthly planning overview. Buyers print weekly.</p>
+      </div>
+      <div class="card" style="margin-bottom:14px;">
+        <div class="card-title">Why It Sells</div>
+        <p>Meal planners are one of Etsy's top-10 most-purchased printables — families buy them repeatedly because they use a new one every week.</p>
+      </div>
+      <div style="margin-bottom:14px;">
+        <div class="card-title" style="color:#C9A84C;font-size:0.85rem;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px;">How To Build in Canva</div>
+        <div class="step-card"><div class="step-num">1</div><div class="step-text">Open Canva → search 'meal planner template' → pick a design that shows all 7 days plus a grocery list column</div></div><div class="step-card"><div class="step-num">2</div><div class="step-text">Create a landscape A4 or letter-size page: left side = 7-day meal grid (breakfast/lunch/dinner/snack), right side = grocery list by category</div></div><div class="step-card"><div class="step-num">3</div><div class="step-text">Add a separate grocery list page organised by aisle: Produce, Dairy, Meat, Pantry, Frozen, Other</div></div><div class="step-card"><div class="step-num">4</div><div class="step-text">Include a monthly meal planning calendar page (30-day grid, one meal per box)</div></div><div class="step-card"><div class="step-num">5</div><div class="step-text">Export as PDF Print → sell as a 52-week set (undated, one page per week)</div></div>
+      </div>
+      <div class="seo-block">
+        <div class="seo-label">Etsy Title</div>
+        <div class="seo-value">Weekly Meal Planner Printable + Grocery List | Undated | 52 Week Set | Instant Download</div>
+        <div class="tag-row" style="margin-top:10px;"><span class="etsy-tag">meal planner</span><span class="etsy-tag">grocery list printable</span><span class="etsy-tag">weekly meal plan</span><span class="etsy-tag">meal planning printable</span><span class="etsy-tag">food planner</span><span class="etsy-tag">family meal planner</span><span class="etsy-tag">dinner planner</span></div>
+      </div>
+    </div>
+
+    <div class="product-card rank-5">
+      <div class="product-rank">5️⃣</div>
+      <div class="product-name">Goal Setting Workbook (Quarterly Edition)</div>
+      <div class="product-meta">
+        <span class="meta-chip">Price: <span>$6.99</span></span>
+        <span class="meta-chip">Format: <span>PDF workbook</span></span>
+        <span class="meta-chip" style="border-color:var(--purple);color:var(--purple);">Week 5</span>
+      </div>
+      <div class="card" style="margin-bottom:14px;">
+        <div class="card-title">What To Build</div>
+        <p>A 30+ page quarterly goal-setting workbook with vision statement, goal breakdowns, monthly milestones, and weekly check-ins. Buyers use it every 3 months.</p>
+      </div>
+      <div class="card" style="margin-bottom:14px;">
+        <div class="card-title">Why It Sells</div>
+        <p>Goal workbooks are a premium product — buyers are willing to pay more because the content is deeper than a single tracker, and they spike every quarter.</p>
+      </div>
+      <div style="margin-bottom:14px;">
+        <div class="card-title" style="color:#C9A84C;font-size:0.85rem;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px;">How To Build in Canva</div>
+        <div class="step-card"><div class="step-num">1</div><div class="step-text">Open Canva → search 'goal setting workbook' → pick a premium, clean design with journaling space</div></div><div class="step-card"><div class="step-num">2</div><div class="step-text">Create a 30+ page quarterly workbook: vision statement, 3 big goals, monthly breakdown, weekly check-ins, and a quarterly review</div></div><div class="step-card"><div class="step-num">3</div><div class="step-text">Add a 'wheel of life' assessment page, a values clarification exercise, and an affirmations page</div></div><div class="step-card"><div class="step-num">4</div><div class="step-text">Use a premium color scheme (navy + gold or charcoal + blush) to position it as a high-value product</div></div><div class="step-card"><div class="step-num">5</div><div class="step-text">Export as PDF Print → price at $6.99–$7.99 (workbooks command higher prices than single trackers)</div></div>
+      </div>
+      <div class="seo-block">
+        <div class="seo-label">Etsy Title</div>
+        <div class="seo-value">Goal Setting Workbook Printable | Quarterly Planner | Vision + Goals + Weekly Review | PDF</div>
+        <div class="tag-row" style="margin-top:10px;"><span class="etsy-tag">goal setting workbook</span><span class="etsy-tag">quarterly planner</span><span class="etsy-tag">goal planner printable</span><span class="etsy-tag">vision board workbook</span><span class="etsy-tag">self improvement</span><span class="etsy-tag">life goals planner</span><span class="etsy-tag">mindset journal</span></div>
+      </div>
+    </div>
+
+  </section>
+
+  
+  <!-- DYNAMIC ACTION PLAN — injected by productivity_brief_generator.py -->
+  <style>
+    .ap-item { cursor:pointer; display:flex; gap:14px; align-items:flex-start;
+               padding:11px 0; border-bottom:1px solid #252538;
+               transition:opacity .2s; -webkit-user-select:none; user-select:none; }
+    .ap-item:last-child { border-bottom:none; }
+    .ap-item:hover { opacity:.82; }
+    .ap-check { width:22px; height:22px; min-width:22px; border:2px solid #252538;
+                border-radius:50%; margin-top:3px; transition:all .25s;
+                background:transparent; flex-shrink:0; position:relative; }
+    .ap-item.ap-done .ap-check { background:#C9A84C; border-color:#C9A84C; }
+    .ap-item.ap-done .ap-check::after { content:"✓"; position:absolute;
+      top:50%; left:50%; transform:translate(-50%,-50%);
+      color:#0B0B14; font-size:12px; font-weight:800; }
+    .ap-item.ap-done .ap-text { color:#6B7280; text-decoration:line-through; }
+    .ap-text { color:#E2E2E2; font-size:0.9rem; line-height:1.6; }
+    .ap-time { color:#6B7280; font-size:0.72rem; background:#1e1e30;
+               border:1px solid #252538; border-radius:10px;
+               padding:2px 9px; display:inline-block; margin-top:5px; }
+    .ap-phase-hdr { display:flex; align-items:center; }
+  </style>
+
+  <section id="action">
+    <div class="section-header">
+      <span class="section-icon">✅</span>
+      <span class="section-title">This Week&#39;s Action Plan</span>
+      <span class="section-sub">Week 1 &nbsp;·&nbsp; Monthly Budget Tracker</span>
+    </div>
+
+    <div style="background:#12121F;border:1px solid #252538;border-radius:12px;
+                padding:18px 22px;margin-bottom:24px;display:flex;
+                align-items:center;gap:20px;flex-wrap:wrap;">
+      <div style="flex:1;min-width:180px;">
+        <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
+          <span style="color:#E2E2E2;font-size:0.88rem;font-weight:600;">Launch Progress</span>
+          <span style="color:#C9A84C;font-size:0.88rem;" id="pt-ap-text">0 of 15 steps complete</span>
+        </div>
+        <div style="background:#1e1e30;border-radius:6px;height:8px;overflow:hidden;">
+          <div id="pt-ap-fill" style="background:linear-gradient(90deg,#C9A84C,#e8c56a);
+               height:100%;border-radius:6px;width:0%;transition:width .3s;"></div>
+        </div>
+      </div>
+      <div style="text-align:center;min-width:52px;">
+        <div id="pt-ap-pct" style="font-size:1.55rem;font-weight:800;color:#C9A84C;line-height:1;">0%</div>
+        <div style="font-size:0.68rem;color:#6B7280;margin-top:2px;">complete</div>
+      </div>
+    </div>
+
+    
+        <div style="margin-bottom:18px;border:1px solid #252538;border-left:3px solid #4EA8DE;border-radius:0 10px 10px 0;overflow:hidden;">
+          <div class="ap-phase-hdr" style="background:#191928;padding:11px 18px;border-bottom:1px solid #252538;">
+            <span style="font-size:1.05rem;">🔍</span>
+            <span style="font-weight:700;color:white;font-size:0.95rem;margin-left:8px;">Research Your Market</span>
+            <span style="color:#6B7280;font-size:0.75rem;margin-left:auto;">3 steps</span>
+          </div>
+          <div style="padding:2px 18px 10px;">
+          <div class="ap-item" data-id="pt_ap_w1_s1" onclick="toggleAP('pt_ap_w1_s1')">
+            <div class="ap-check"></div>
+            <div style="flex:1;">
+              <div class="ap-text">Search Etsy for <strong>"monthly budget tracker"</strong> — screenshot the first 8 listings. Note each one's price, page count, review count, and what their thumbnail shows. This is your competitive landscape before you build anything.</div>
+              <div class="ap-time">~30 min</div>
+            </div>
+          </div>
+          <div class="ap-item" data-id="pt_ap_w1_s2" onclick="toggleAP('pt_ap_w1_s2')">
+            <div class="ap-check"></div>
+            <div style="flex:1;">
+              <div class="ap-text">Click the top 2–3 bestsellers and read ALL their 1–3 star reviews. Write down every complaint — those gaps are exactly where your product wins (e.g. 'wish there was more space to write', 'too generic', 'colours were different from preview').</div>
+              <div class="ap-time">~15 min</div>
+            </div>
+          </div>
+          <div class="ap-item" data-id="pt_ap_w1_s3" onclick="toggleAP('pt_ap_w1_s3')">
+            <div class="ap-check"></div>
+            <div style="flex:1;">
+              <div class="ap-text">Open Pinterest, search the same keyword, save 10–15 images to a mood-board folder in Canva: colors, layouts, fonts, and styles buyers are already engaging with.</div>
+              <div class="ap-time">~15 min</div>
+            </div>
+          </div>
+          </div>
+        </div>
+        <div style="margin-bottom:18px;border:1px solid #252538;border-left:3px solid #9B72CF;border-radius:0 10px 10px 0;overflow:hidden;">
+          <div class="ap-phase-hdr" style="background:#191928;padding:11px 18px;border-bottom:1px solid #252538;">
+            <span style="font-size:1.05rem;">📝</span>
+            <span style="font-weight:700;color:white;font-size:0.95rem;margin-left:8px;">Plan Before You Open Canva</span>
+            <span style="color:#6B7280;font-size:0.75rem;margin-left:auto;">2 steps</span>
+          </div>
+          <div style="padding:2px 18px 10px;">
+          <div class="ap-item" data-id="pt_ap_w1_s4" onclick="toggleAP('pt_ap_w1_s4')">
+            <div class="ap-check"></div>
+            <div style="flex:1;">
+              <div class="ap-text">Write your complete page list before touching Canva — e.g. <em>Cover · Page 2: How to use · Pages 3–14: Monthly overviews · Pages 15–26: Weekly logs · Page 27: Annual summary</em>. Target <strong>25+ pages minimum</strong> — buyers compare page count and mention it in reviews.</div>
+              <div class="ap-time">~15 min</div>
+            </div>
+          </div>
+          <div class="ap-item" data-id="pt_ap_w1_s5" onclick="toggleAP('pt_ap_w1_s5')">
+            <div class="ap-check"></div>
+            <div style="flex:1;">
+              <div class="ap-text">Commit to your one unique angle (from the brief above) — a bonus section, a design style, or a niche focus that competitors don't have. Write it on a sticky note where you can see it while building — it keeps every page decision consistent.</div>
+              <div class="ap-time">~5 min</div>
+            </div>
+          </div>
+          </div>
+        </div>
+        <div style="margin-bottom:18px;border:1px solid #252538;border-left:3px solid #C9A84C;border-radius:0 10px 10px 0;overflow:hidden;">
+          <div class="ap-phase-hdr" style="background:#191928;padding:11px 18px;border-bottom:1px solid #252538;">
+            <span style="font-size:1.05rem;">🎨</span>
+            <span style="font-weight:700;color:white;font-size:0.95rem;margin-left:8px;">Build in Canva</span>
+            <span style="color:#6B7280;font-size:0.75rem;margin-left:auto;">3 steps</span>
+          </div>
+          <div style="padding:2px 18px 10px;">
+          <div class="ap-item" data-id="pt_ap_w1_s6" onclick="toggleAP('pt_ap_w1_s6')">
+            <div class="ap-check"></div>
+            <div style="flex:1;">
+              <div class="ap-text">Open Canva → follow the 5 build steps in the brief above → work through every page on your content list in order. Use a clean neutral palette (cream, warm grey, one accent) — minimalist designs outsell busy ones for productivity products.</div>
+              <div class="ap-time">2–4 hrs</div>
+            </div>
+          </div>
+          <div class="ap-item" data-id="pt_ap_w1_s7" onclick="toggleAP('pt_ap_w1_s7')">
+            <div class="ap-check"></div>
+            <div style="flex:1;">
+              <div class="ap-text">Proof every page before exporting: consistent fonts, consistent colours, enough white space in every fill-in area (test-fill one page yourself first). Fix everything now — updating files after your first sale is much harder.</div>
+              <div class="ap-time">~20 min</div>
+            </div>
+          </div>
+          <div class="ap-item" data-id="pt_ap_w1_s8" onclick="toggleAP('pt_ap_w1_s8')">
+            <div class="ap-check"></div>
+            <div style="flex:1;">
+              <div class="ap-text"><strong>Export as "PDF Print"</strong> (not "Standard PDF"). PDF Print preserves 300 dpi resolution. Blurry or pixelated printables get 1-star reviews — sharp ones get 5-star ones.</div>
+              <div class="ap-time">~5 min</div>
+            </div>
+          </div>
+          </div>
+        </div>
+        <div style="margin-bottom:18px;border:1px solid #252538;border-left:3px solid #3DD68C;border-radius:0 10px 10px 0;overflow:hidden;">
+          <div class="ap-phase-hdr" style="background:#191928;padding:11px 18px;border-bottom:1px solid #252538;">
+            <span style="font-size:1.05rem;">📸</span>
+            <span style="font-weight:700;color:white;font-size:0.95rem;margin-left:8px;">Create Listing Images</span>
+            <span style="color:#6B7280;font-size:0.75rem;margin-left:auto;">2 steps</span>
+          </div>
+          <div style="padding:2px 18px 10px;">
+          <div class="ap-item" data-id="pt_ap_w1_s9" onclick="toggleAP('pt_ap_w1_s9')">
+            <div class="ap-check"></div>
+            <div style="flex:1;">
+              <div class="ap-text"><strong>Thumbnail first — it drives more Etsy clicks than any other factor.</strong> Show the product flat on a clean background with text callouts: page count, 'Instant Download', key benefit. Test it: open Etsy and compare your thumbnail side-by-side with competitors. Does yours stop the scroll?</div>
+              <div class="ap-time">~30 min</div>
+            </div>
+          </div>
+          <div class="ap-item" data-id="pt_ap_w1_s10" onclick="toggleAP('pt_ap_w1_s10')">
+            <div class="ap-check"></div>
+            <div style="flex:1;">
+              <div class="ap-text">Create 4–6 supporting images: 2 inside-page samples (your best pages), 1 lifestyle mockup on a desk with coffee/pen — use Canva's mockup feature (search 'planner mockup') or <strong>Placeit.net</strong> (free tier). Add one 'What's Inside' summary listing every section.</div>
+              <div class="ap-time">~30 min</div>
+            </div>
+          </div>
+          </div>
+        </div>
+        <div style="margin-bottom:18px;border:1px solid #252538;border-left:3px solid #E94560;border-radius:0 10px 10px 0;overflow:hidden;">
+          <div class="ap-phase-hdr" style="background:#191928;padding:11px 18px;border-bottom:1px solid #252538;">
+            <span style="font-size:1.05rem;">🚀</span>
+            <span style="font-weight:700;color:white;font-size:0.95rem;margin-left:8px;">Publish on Etsy</span>
+            <span style="color:#6B7280;font-size:0.75rem;margin-left:auto;">2 steps</span>
+          </div>
+          <div style="padding:2px 18px 10px;">
+          <div class="ap-item" data-id="pt_ap_w1_s11" onclick="toggleAP('pt_ap_w1_s11')">
+            <div class="ap-check"></div>
+            <div style="flex:1;">
+              <div class="ap-text">Create your Etsy listing. <strong>Paste the Etsy title exactly as shown</strong> in the brief. Description: lead with what's included and page count, then how to download and print, then FAQs. Use all 7 tags from the brief plus 6 more variations you can think of (aim for all 13 tags).</div>
+              <div class="ap-time">~25 min</div>
+            </div>
+          </div>
+          <div class="ap-item" data-id="pt_ap_w1_s12" onclick="toggleAP('pt_ap_w1_s12')">
+            <div class="ap-check"></div>
+            <div style="flex:1;">
+              <div class="ap-text">Set your launch price, upload all images (thumbnail goes first) and your PDF. Hit Publish. Then: test-download your own listing using a second browser — open the PDF and confirm every page looks correct before you promote it anywhere.</div>
+              <div class="ap-time">~15 min</div>
+            </div>
+          </div>
+          </div>
+        </div>
+        <div style="margin-bottom:18px;border:1px solid #252538;border-left:3px solid #4EA8DE;border-radius:0 10px 10px 0;overflow:hidden;">
+          <div class="ap-phase-hdr" style="background:#191928;padding:11px 18px;border-bottom:1px solid #252538;">
+            <span style="font-size:1.05rem;">📈</span>
+            <span style="font-weight:700;color:white;font-size:0.95rem;margin-left:8px;">Promote & Grow</span>
+            <span style="color:#6B7280;font-size:0.75rem;margin-left:auto;">3 steps</span>
+          </div>
+          <div style="padding:2px 18px 10px;">
+          <div class="ap-item" data-id="pt_ap_w1_s13" onclick="toggleAP('pt_ap_w1_s13')">
+            <div class="ap-check"></div>
+            <div style="flex:1;">
+              <div class="ap-text">Post 2–3 Pinterest pins linking to your Etsy listing — Pinterest is the #1 external traffic source for Etsy printables. Pin to boards like 'Printable Planners', 'Budget Tracker', 'Productivity Tools', 'Etsy Digital Downloads'.</div>
+              <div class="ap-time">~20 min</div>
+            </div>
+          </div>
+          <div class="ap-item" data-id="pt_ap_w1_s14" onclick="toggleAP('pt_ap_w1_s14')">
+            <div class="ap-check"></div>
+            <div style="flex:1;">
+              <div class="ap-text">After your first sale, message the buyer within 24 hours: <em>"Thanks so much! Hope the planner is useful. If you have a moment, a review means the world to a small shop 🙏"</em> — warm, brief, never pushy. Reviews are Etsy's #1 ranking signal.</div>
+              <div class="ap-time">~2 min</div>
+            </div>
+          </div>
+          <div class="ap-item" data-id="pt_ap_w1_s15" onclick="toggleAP('pt_ap_w1_s15')">
+            <div class="ap-check"></div>
+            <div style="flex:1;">
+              <div class="ap-text">At the 2-week mark: Etsy Stats → Search Terms. Terms with views but no sales = thumbnail or price issue. Terms that convert to sales = add them to your title and tags. After 3 reviews, raise your price by $1 as suggested in the brief.</div>
+              <div class="ap-time">~15 min</div>
+            </div>
+          </div>
+          </div>
+        </div>
+  </section>
+
+  <script>
+    (function() {
+      var KEY = 'bell_pt_ap_w1';
+      function save(id, val) {
+        var d = JSON.parse(localStorage.getItem(KEY) || '{}');
+        d[id] = val; localStorage.setItem(KEY, JSON.stringify(d));
+      }
+      window.toggleAP = function(id) {
+        var el = document.querySelector('[data-id="' + id + '"]');
+        el.classList.toggle('ap-done');
+        save(id, el.classList.contains('ap-done'));
+        refresh();
+      };
+      function refresh() {
+        var total = document.querySelectorAll('.ap-item').length;
+        var done  = document.querySelectorAll('.ap-item.ap-done').length;
+        document.getElementById('pt-ap-text').textContent = done + ' of ' + total + ' steps complete';
+        var pct = total ? Math.round(done / total * 100) : 0;
+        document.getElementById('pt-ap-fill').style.width = pct + '%';
+        document.getElementById('pt-ap-pct').textContent  = pct + '%';
+      }
+      var saved = JSON.parse(localStorage.getItem(KEY) || '{}');
+      document.querySelectorAll('.ap-item').forEach(function(el) {
+        if (saved[el.dataset.id]) el.classList.add('ap-done');
+      });
+      refresh();
+    })();
+  </script>
+
+
+  <div class="footer">
+    The Bell Newsletter &nbsp;·&nbsp; Productivity & Trackers Brief &nbsp;·&nbsp; Block 1 &nbsp;·&nbsp; May 02, 2026<br>
+    New brief generated every 5 weeks · New topic every Monday
+  </div>
+
+</div>
+</body>
+</html>

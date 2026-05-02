@@ -16,11 +16,12 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-CURRICULUM_PATH = Path("config/curriculum.json")
-SAAS_PATH       = Path("config/saas_progress.json")
-RESEARCH_PATH   = Path(".tmp/product_research.json")
+CURRICULUM_PATH      = Path("config/curriculum.json")
+SAAS_PATH            = Path("config/saas_progress.json")
+RESEARCH_PATH        = Path(".tmp/product_research.json")
 OUTPUT_PATH          = Path(".tmp/draft.md")
 CHILDREN_DATA_PATH   = Path(".tmp/children_brief_data.json")
+PRODUCTIVITY_DATA_PATH = Path(".tmp/productivity_brief_data.json")
 
 MODEL = "llama-3.3-70b-versatile"
 
@@ -222,7 +223,7 @@ def parse_dynamic(raw: str) -> tuple[list, dict]:
 
 # ── assemble draft ─────────────────────────────────────────────────────────────
 
-def assemble_draft(s1: dict, themes: list, s3: dict, tips: dict, today: str, children_data: dict = None) -> str:
+def assemble_draft(s1: dict, themes: list, s3: dict, tips: dict, today: str, children_data: dict = None, productivity_data: dict = None) -> str:
     lines = []
 
     # Title
@@ -294,13 +295,18 @@ def assemble_draft(s1: dict, themes: list, s3: dict, tips: dict, today: str, chi
             if item:
                 lines.append(f"- {item}")
         lines.append("")
+        brief_data = None
         if theme["id"] == "children" and children_data:
-            # Replace prompt box with brief content + link
-            build_steps = children_data.get("build_steps", [])
-            price       = children_data.get("price", "")
-            etsy_title  = children_data.get("etsy_title", "")
-            etsy_tags   = ", ".join(children_data.get("etsy_tags", []))
-            brief_url   = children_data.get("brief_url", "")
+            brief_data = children_data
+        elif theme["id"] == "productivity" and productivity_data:
+            brief_data = productivity_data
+
+        if brief_data:
+            build_steps = brief_data.get("build_steps", [])
+            price       = brief_data.get("price", "")
+            etsy_title  = brief_data.get("etsy_title", "")
+            etsy_tags   = ", ".join(brief_data.get("etsy_tags", []))
+            brief_url   = brief_data.get("brief_url", "")
             if build_steps:
                 lines.append("**How to build it in Canva:**")
                 for i, step in enumerate(build_steps, 1):
@@ -371,10 +377,11 @@ def assemble_draft(s1: dict, themes: list, s3: dict, tips: dict, today: str, chi
 # ── main ───────────────────────────────────────────────────────────────────────
 
 def main():
-    curriculum    = load_json(CURRICULUM_PATH)
-    saas          = load_json(SAAS_PATH)
-    research      = load_json(RESEARCH_PATH)
-    children_data = load_json(CHILDREN_DATA_PATH)
+    curriculum        = load_json(CURRICULUM_PATH)
+    saas              = load_json(SAAS_PATH)
+    research          = load_json(RESEARCH_PATH)
+    children_data     = load_json(CHILDREN_DATA_PATH)
+    productivity_data = load_json(PRODUCTIVITY_DATA_PATH)
 
     if not curriculum:
         print("ERROR: config/curriculum.json not found.")
@@ -385,6 +392,12 @@ def main():
         print(f"Children's topic (Week {children_data.get('week_num', '?')}): {children_topic}")
     else:
         print("No children's topic found — run children_brief_generator.py first for a specific topic.")
+
+    productivity_topic = productivity_data.get("topic", "")
+    if productivity_topic:
+        print(f"Productivity topic (Week {productivity_data.get('week_num', '?')}): {productivity_topic}")
+    else:
+        print("No productivity topic found — run productivity_brief_generator.py first.")
 
     today = datetime.now().strftime("%B %d, %Y")
     s1    = get_section1(curriculum)
@@ -404,7 +417,7 @@ def main():
         print(f"  → {len(themes)} products generated")
 
     print("Assembling newsletter...")
-    draft = assemble_draft(s1, themes, s3, tips, today, children_data)
+    draft = assemble_draft(s1, themes, s3, tips, today, children_data, productivity_data)
 
     OUTPUT_PATH.parent.mkdir(exist_ok=True)
     with open(OUTPUT_PATH, "w") as f:
