@@ -1,19 +1,13 @@
 {
   "used_topics": [],
-  "current_week": 2,
+  "current_week": 1,
   "history": [
     {
       "week": 1,
       "topic": "Monthly Budget Tracker",
       "date": "2026-05-02",
       "block": 1
-    },
-    {
-      "week": 2,
-      "topic": "Daily Productivity Planner",
-      "date": "2026-05-03",
-      "block": 1
     }
   ],
-  "last_run": "2026-05-03T00:09:34.148978"
+  "last_run": "2026-05-03T00:48:25.354638"
 }

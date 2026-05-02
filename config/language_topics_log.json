@@ -1,19 +1,13 @@
 {
   "used_topics": [],
-  "current_week": 2,
+  "current_week": 1,
   "history": [
     {
       "week": 1,
       "topic": "Spanish Beginner Vocabulary Flashcards (100 Words)",
       "date": "2026-05-02",
       "block": 1
-    },
-    {
-      "week": 2,
-      "topic": "Japanese Hiragana Practice Sheets",
-      "date": "2026-05-03",
-      "block": 1
     }
   ],
-  "last_run": "2026-05-03T00:09:34.316254"
+  "last_run": "2026-05-03T00:48:25.523529"
 }
