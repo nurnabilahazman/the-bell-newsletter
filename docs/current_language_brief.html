@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Language Learning Brief — Block 1 (Weeks 1–5)</title>
+<style>
+  :root {
+    --bg:#0B0B14; --card:#12121F; --card2:#191928; --border:#252538;
+    --gold:#C9A84C; --gold-dim:rgba(201,168,76,0.12);
+    --green:#3DD68C; --green-dim:rgba(61,214,140,0.1);
+    --accent:#E94560; --blue:#4EA8DE; --purple:#9B72CF;
+    --text:#E2E2E2; --muted:#6B7280;
+    --tag-bg:rgba(201,168,76,0.14);
+  }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  html { scroll-behavior:smooth; }
+  body { background:var(--bg); color:var(--text); font-family:'Segoe UI',system-ui,-apple-system,sans-serif; font-size:15px; line-height:1.7; padding:32px 20px 80px; }
+  .container { max-width:1060px; margin:0 auto; }
+  .toc { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:20px 24px; margin-bottom:36px; display:flex; flex-wrap:wrap; gap:10px 24px; align-items:center; }
+  .toc-label { color:var(--muted); font-size:0.78rem; text-transform:uppercase; letter-spacing:1px; margin-right:8px; }
+  .toc a { color:var(--gold); text-decoration:none; font-size:0.88rem; }
+  .toc a:hover { text-decoration:underline; }
+  .hero { background:linear-gradient(135deg,#12121F 0%,#0D1220 100%); border:1px solid var(--border); border-left:5px solid var(--gold); border-radius:16px; padding:40px 36px; margin-bottom:40px; position:relative; overflow:hidden; }
+  .hero::before { content:''; position:absolute; top:-60px; right:-60px; width:220px; height:220px; background:radial-gradient(circle,rgba(78,168,222,0.07) 0%,transparent 70%); border-radius:50%; }
+  .hero-badge { color:var(--blue); font-size:0.78rem; text-transform:uppercase; letter-spacing:2px; margin-bottom:12px; }
+  .hero h1 { font-size:2.1rem; color:white; font-weight:800; line-height:1.25; margin-bottom:10px; }
+  .hero .subtitle { color:var(--muted); font-size:1rem; margin-bottom:28px; }
+  .hero-stats { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:16px; border-top:1px solid var(--border); padding-top:24px; }
+  .stat-label { color:var(--muted); font-size:0.78rem; text-transform:uppercase; letter-spacing:0.5px; }
+  .stat-value { color:white; font-size:1.4rem; font-weight:700; margin-top:2px; }
+  .stat-value.gold { color:var(--gold); }
+  .stat-value.green { color:var(--green); }
+  section { margin-bottom:48px; }
+  .section-header { display:flex; align-items:center; gap:12px; margin-bottom:20px; padding-bottom:12px; border-bottom:2px solid var(--border); }
+  .section-icon { font-size:1.5rem; }
+  .section-title { font-size:1.35rem; font-weight:700; color:white; }
+  .section-sub { color:var(--muted); font-size:0.88rem; margin-left:auto; }
+  .card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:22px 24px; margin-bottom:14px; }
+  .card-title { color:var(--gold); font-weight:600; font-size:0.9rem; margin-bottom:12px; text-transform:uppercase; letter-spacing:0.5px; }
+  .card p { color:var(--text); font-size:0.95rem; }
+  .product-card { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:28px; margin-bottom:20px; position:relative; overflow:hidden; }
+  .product-card::before { content:''; position:absolute; top:0; left:0; width:4px; height:100%; }
+  .product-card.rank-1::before { background:var(--gold); }
+  .product-card.rank-2::before { background:#A8A8A8; }
+  .product-card.rank-3::before { background:#CD7F32; }
+  .product-card.rank-4::before { background:var(--blue); }
+  .product-card.rank-5::before { background:var(--purple); }
+  .product-rank { font-size:2rem; line-height:1; margin-bottom:8px; }
+  .product-name { font-size:1.3rem; font-weight:800; color:white; margin-bottom:6px; }
+  .product-meta { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px; }
+  .meta-chip { background:var(--card2); border:1px solid var(--border); border-radius:20px; padding:4px 12px; font-size:0.8rem; color:var(--text); }
+  .meta-chip span { color:var(--gold); font-weight:600; }
+  .step-card { background:var(--card2); border:1px solid var(--border); border-radius:10px; padding:12px 16px; margin-bottom:8px; display:flex; gap:14px; align-items:flex-start; }
+  .step-num { background:var(--gold); color:#0B0B14; border-radius:50%; width:24px; height:24px; min-width:24px; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:0.8rem; margin-top:2px; }
+  .step-text { font-size:0.9rem; color:var(--text); }
+  .seo-block { background:var(--card2); border:1px solid var(--border); border-radius:10px; padding:16px; margin-top:14px; }
+  .seo-label { color:var(--muted); font-size:0.75rem; text-transform:uppercase; letter-spacing:1px; margin-bottom:6px; }
+  .seo-value { color:white; font-weight:600; font-size:0.95rem; }
+  .etsy-tag { display:inline-block; background:var(--tag-bg); border:1px solid var(--gold); color:var(--gold); padding:3px 10px; border-radius:20px; font-size:0.76rem; margin:2px; }
+  .footer { text-align:center; color:var(--muted); font-size:0.78rem; margin-top:60px; padding-top:20px; border-top:1px solid var(--border); }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <nav class="toc">
+    <span class="toc-label">Jump to</span>
+    <a href="#products">Top 5 Products</a>
+    <a href="#action">Action Plan</a>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-badge">📚 Language Learning Brief — Block 1</div>
+    <h1>Your Next 5 Products to Build</h1>
+    <div class="subtitle">Weeks 1–5 &nbsp;·&nbsp; 5 ready-to-build products with full specs</div>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-label">Products in Block</div>
+        <div class="stat-value gold">5</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Current Week</div>
+        <div class="stat-value gold">Week 1</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Sweet Spot Price</div>
+        <div class="stat-value green">$3.99 – $7.99</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Generated</div>
+        <div class="stat-value" style="font-size:0.95rem;color:var(--muted)">May 02, 2026</div>
+      </div>
+    </div>
+  </div>
+
+  
+  <div style="background:#12121F;border:1px solid #252538;border-radius:14px;padding:22px 26px;margin-bottom:36px;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;flex-wrap:wrap;gap:8px;">
+      <div>
+        <div style="color:#C9A84C;font-size:0.75rem;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:4px;">5-Week Block Progress</div>
+        <div style="color:#E2E2E2;font-size:1.05rem;font-weight:700;">Week 1 of 5 &nbsp;·&nbsp; This Week: Spanish Beginner Vocabulary Flashcards (100 Words)</div>
+      </div>
+      <div style="color:#6B7280;font-size:0.82rem;">4 weeks left in this block</div>
+    </div>
+    <div style="background:#1e1e30;border-radius:8px;height:7px;overflow:hidden;margin-bottom:18px;">
+      <div style="background:linear-gradient(90deg,#C9A84C,#e8c56a);height:100%;border-radius:8px;width:20%;"></div>
+    </div>
+    <div style="display:flex;gap:6px;justify-content:space-around;flex-wrap:wrap;">
+      
+          <div style="display:flex;flex-direction:column;align-items:center;gap:5px;flex:1;min-width:58px;max-width:112px;">
+            <div style="width:22px;height:22px;border-radius:50%;border:2px solid;background:#C9A84C;border-color:#C9A84C;box-shadow:0 0 8px rgba(201,168,76,0.6);"></div>
+            <div style="font-size:0.72rem;text-align:center;color:#C9A84C;font-weight:700;">▶ Wk 1</div>
+            <div style="font-size:0.67rem;color:#6B7280;text-align:center;line-height:1.3;">Spanish Beginner Vocabulary Flashcards</div>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:5px;flex:1;min-width:58px;max-width:112px;">
+            <div style="width:22px;height:22px;border-radius:50%;border:2px solid;background:transparent;border-color:#252538;"></div>
+            <div style="font-size:0.72rem;text-align:center;color:#6B7280;">Wk 2</div>
+            <div style="font-size:0.67rem;color:#6B7280;text-align:center;line-height:1.3;">Japanese Hiragana Practice Sheets</div>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:5px;flex:1;min-width:58px;max-width:112px;">
+            <div style="width:22px;height:22px;border-radius:50%;border:2px solid;background:transparent;border-color:#252538;"></div>
+            <div style="font-size:0.72rem;text-align:center;color:#6B7280;">Wk 3</div>
+            <div style="font-size:0.67rem;color:#6B7280;text-align:center;line-height:1.3;">French Grammar Cheat Sheets</div>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:5px;flex:1;min-width:58px;max-width:112px;">
+            <div style="width:22px;height:22px;border-radius:50%;border:2px solid;background:transparent;border-color:#252538;"></div>
+            <div style="font-size:0.72rem;text-align:center;color:#6B7280;">Wk 4</div>
+            <div style="font-size:0.67rem;color:#6B7280;text-align:center;line-height:1.3;">Korean Hangul Writing Practice Workbook</div>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:5px;flex:1;min-width:58px;max-width:112px;">
+            <div style="width:22px;height:22px;border-radius:50%;border:2px solid;background:transparent;border-color:#252538;"></div>
+            <div style="font-size:0.72rem;text-align:center;color:#6B7280;">Wk 5</div>
+            <div style="font-size:0.67rem;color:#6B7280;text-align:center;line-height:1.3;">Travel Phrasebook</div>
+          </div>
+    </div>
+  </div>
+
+
+  <section id="products">
+    <div class="section-header">
+      <span class="section-icon">📖</span>
+      <span class="section-title">5 Products — One Per Week</span>
+      <span class="section-sub">Complete specs · ready to open Canva</span>
+    </div>
+
+    
+    <div class="product-card rank-1" style="box-shadow:0 0 0 2px #C9A84C,0 0 28px rgba(201,168,76,0.18);border-color:#C9A84C;">
+      <div class="product-rank">🥇</div>
+      <div class="product-name">Spanish Beginner Vocabulary Flashcards (100 Words)<span style="display:inline-block;background:rgba(201,168,76,0.15);color:#C9A84C;border:1px solid #C9A84C;border-radius:20px;padding:2px 10px;font-size:0.72rem;font-weight:700;margin-left:10px;vertical-align:middle;">▶ THIS WEEK</span></div>
+      <div class="product-meta">
+        <span class="meta-chip">Price: <span>$4.99</span></span>
+        <span class="meta-chip">Format: <span>PDF flashcards</span></span>
+        
+        <span class="meta-chip" style="border-color:var(--gold);color:var(--gold);">Week 1</span>
+      </div>
+      <div class="card" style="margin-bottom:14px;">
+        <div class="card-title">What To Build</div>
+        <p>100 double-sided flashcards covering core beginner Spanish vocabulary across 8 categories (greetings, numbers, food, colors, family, body, verbs, adjectives). Each card has the Spanish word + pronunciation on the front and English + an example sentence on the back.</p>
+      </div>
+      <div class="card" style="margin-bottom:14px;">
+        <div class="card-title">Why It Sells</div>
+        <p>Spanish is the #1 most-studied language on Etsy — beginner vocabulary flashcards are a top-10 printable category with consistent year-round demand.</p>
+      </div>
+      <div style="margin-bottom:14px;">
+        <div class="card-title" style="color:#C9A84C;font-size:0.85rem;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px;">How To Build in Canva</div>
+        <div class="step-card"><div class="step-num">1</div><div class="step-text">Open Canva → search 'flashcard template' → pick a clean design with space for a large word and a smaller back panel</div></div><div class="step-card"><div class="step-num">2</div><div class="step-text">Create 100 cards: front = Spanish word (large, centered) + pronunciation in brackets below; back = English translation + example sentence in italics</div></div><div class="step-card"><div class="step-num">3</div><div class="step-text">Color-code by category: nouns (soft blue), verbs (warm coral), adjectives (muted green) — add a small dot in the top corner</div></div><div class="step-card"><div class="step-num">4</div><div class="step-text">Add a 'How to study' bonus page explaining the spaced repetition method in 5 simple steps</div></div><div class="step-card"><div class="step-num">5</div><div class="step-text">Export as PDF Print → also export a '4-cards-per-page' layout as a second file for paper-saving printing</div></div>
+      </div>
+      <div class="seo-block">
+        <div class="seo-label">Etsy Title</div>
+        <div class="seo-value">Spanish Vocabulary Flashcards Beginner | 100 Words | Printable PDF | Instant Download</div>
+        <div class="tag-row" style="margin-top:10px;"><span class="etsy-tag">spanish flashcards</span><span class="etsy-tag">spanish vocabulary</span><span class="etsy-tag">learn spanish</span><span class="etsy-tag">spanish printable</span><span class="etsy-tag">spanish beginner</span><span class="etsy-tag">vocabulary cards</span><span class="etsy-tag">language learning</span></div>
+      </div>
+    </div>
+
+    <div class="product-card rank-2">
+      <div class="product-rank">🥈</div>
+      <div class="product-name">Japanese Hiragana Practice Sheets</div>
+      <div class="product-meta">
+        <span class="meta-chip">Price: <span>$3.99</span></span>
+        <span class="meta-chip">Format: <span>PDF worksheets</span></span>
+        
+        <span class="meta-chip" style="border-color:#A8A8A8;color:#A8A8A8;">Week 2</span>
+      </div>
+      <div class="card" style="margin-bottom:14px;">
+        <div class="card-title">What To Build</div>
+        <p>48 pages: 46 character practice sheets with stroke-order guide, trace lines, and blank practice boxes, plus a 2-page full hiragana reference chart. Covers the complete hiragana syllabary for absolute beginners.</p>
+      </div>
+      <div class="card" style="margin-bottom:14px;">
+        <div class="card-title">Why It Sells</div>
+        <p>Japanese is the fastest-growing language learning niche on Etsy — hiragana is the first step every beginner takes, and practice sheet searches are consistent and high-volume.</p>
+      </div>
+      <div style="margin-bottom:14px;">
+        <div class="card-title" style="color:#C9A84C;font-size:0.85rem;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px;">How To Build in Canva</div>
+        <div class="step-card"><div class="step-num">1</div><div class="step-text">Open Canva → search 'handwriting practice worksheet' → pick a clean grid-based template</div></div><div class="step-card"><div class="step-num">2</div><div class="step-text">Create 46 pages (one per hiragana character): large model character top-left with numbered stroke order, then 6 dotted-trace boxes, then 6 blank practice boxes</div></div><div class="step-card"><div class="step-num">3</div><div class="step-text">Add the romaji pronunciation and 2 example words using that character at the bottom of each page</div></div><div class="step-card"><div class="step-num">4</div><div class="step-text">Use Noto Sans JP font for the character — test it prints clearly at 72pt before building all 46 pages</div></div><div class="step-card"><div class="step-num">5</div><div class="step-text">Include a 2-page hiragana reference chart as a bonus: all 46 characters in a grid with romaji below each</div></div>
+      </div>
+      <div class="seo-block">
+        <div class="seo-label">Etsy Title</div>
+        <div class="seo-value">Japanese Hiragana Practice Sheets | 46 Characters + Stroke Order | Printable PDF Worksheet</div>
+        <div class="tag-row" style="margin-top:10px;"><span class="etsy-tag">hiragana practice</span><span class="etsy-tag">japanese writing</span><span class="etsy-tag">hiragana worksheet</span><span class="etsy-tag">learn japanese</span><span class="etsy-tag">japanese printable</span><span class="etsy-tag">stroke order</span><span class="etsy-tag">hiragana chart</span></div>
+      </div>
+    </div>
+
+    <div class="product-card rank-3">
+      <div class="product-rank">🥉</div>
+      <div class="product-name">French Grammar Cheat Sheets (10 Essential Rules)</div>
+      <div class="product-meta">
+        <span class="meta-chip">Price: <span>$5.99</span></span>
+        <span class="meta-chip">Format: <span>PDF reference sheets</span></span>
+        
+        <span class="meta-chip" style="border-color:#CD7F32;color:#CD7F32;">Week 3</span>
+      </div>
+      <div class="card" style="margin-bottom:14px;">
+        <div class="card-title">What To Build</div>
+        <p>10 single-page reference sheets covering the most essential French grammar rules, each with the rule, formula, examples, and a common mistake callout. Plus a bonus double-sided summary card.</p>
+      </div>
+      <div class="card" style="margin-bottom:14px;">
+        <div class="card-title">Why It Sells</div>
+        <p>Grammar reference sheets are a high-perceived-value product — buyers pay more because they feel like a study resource, not just a flashcard, and they get used repeatedly over months of study.</p>
+      </div>
+      <div style="margin-bottom:14px;">
+        <div class="card-title" style="color:#C9A84C;font-size:0.85rem;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px;">How To Build in Canva</div>
+        <div class="step-card"><div class="step-num">1</div><div class="step-text">Open Canva → search 'cheat sheet template' → pick a clean, information-dense single-page layout</div></div><div class="step-card"><div class="step-num">2</div><div class="step-text">Create 10 pages (one per grammar rule): present tense conjugation, gender + articles, adjective agreement, negation, question formation, past tense (passé composé), future tense, pronouns, prepositions, and common irregular verbs</div></div><div class="step-card"><div class="step-num">3</div><div class="step-text">Each page: rule headline → formula in a colored box → 5 example sentences in a table → 'common mistake to avoid' callout box</div></div><div class="step-card"><div class="step-num">4</div><div class="step-text">Use a clean academic color scheme: dark navy, white, gold accent — feels premium and study-worthy</div></div><div class="step-card"><div class="step-num">5</div><div class="step-text">Add a double-sided summary card (A5 size) as a bonus page — buyers can print it separately and keep it on their desk</div></div>
+      </div>
+      <div class="seo-block">
+        <div class="seo-label">Etsy Title</div>
+        <div class="seo-value">French Grammar Cheat Sheets | 10 Essential Rules | Study Guide | Printable PDF Instant Download</div>
+        <div class="tag-row" style="margin-top:10px;"><span class="etsy-tag">french grammar</span><span class="etsy-tag">french cheat sheet</span><span class="etsy-tag">learn french</span><span class="etsy-tag">french study guide</span><span class="etsy-tag">french printable</span><span class="etsy-tag">grammar reference</span><span class="etsy-tag">french conjugation</span></div>
+      </div>
+    </div>
+
+    <div class="product-card rank-4">
+      <div class="product-rank">4️⃣</div>
+      <div class="product-name">Korean Hangul Writing Practice Workbook</div>
+      <div class="product-meta">
+        <span class="meta-chip">Price: <span>$4.99</span></span>
+        <span class="meta-chip">Format: <span>PDF workbook</span></span>
+        
+        <span class="meta-chip" style="border-color:var(--blue);color:var(--blue);">Week 4</span>
+      </div>
+      <div class="card" style="margin-bottom:14px;">
+        <div class="card-title">What To Build</div>
+        <p>A 47-page workbook covering all 40 Hangul characters with stroke-order guides, trace lines, blank practice grids, and a romanisation key. Includes a full Hangul reference chart and 5 pages of common beginner words.</p>
+      </div>
+      <div class="card" style="margin-bottom:14px;">
+        <div class="card-title">Why It Sells</div>
+        <p>Korean is the second-fastest growing language niche on Etsy, driven by K-pop and K-drama interest — Hangul writing practice is the entry point for most beginners and consistently tops language learning searches.</p>
+      </div>
+      <div style="margin-bottom:14px;">
+        <div class="card-title" style="color:#C9A84C;font-size:0.85rem;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px;">How To Build in Canva</div>
+        <div class="step-card"><div class="step-num">1</div><div class="step-text">Open Canva → search 'handwriting practice worksheet' → pick a clean grid template</div></div><div class="step-card"><div class="step-num">2</div><div class="step-text">Create 40 pages: 24 consonant pages + 10 vowel pages + 6 combination practice pages — each with stroke order, trace lines, blank practice grid, and romanisation</div></div><div class="step-card"><div class="step-num">3</div><div class="step-text">Use Noto Sans KR font for all Korean characters — test at 72pt that every character is distinct and clear when printed</div></div><div class="step-card"><div class="step-num">4</div><div class="step-text">Add a 2-page 'Complete Hangul Chart' reference at the front showing all characters with their romanised sounds</div></div><div class="step-card"><div class="step-num">5</div><div class="step-text">Include 5 bonus pages of common beginner words to practice writing (annyeong, gamsahamnida, etc.)</div></div>
+      </div>
+      <div class="seo-block">
+        <div class="seo-label">Etsy Title</div>
+        <div class="seo-value">Korean Hangul Practice Workbook | Writing Sheets + Stroke Order | Printable PDF Instant Download</div>
+        <div class="tag-row" style="margin-top:10px;"><span class="etsy-tag">hangul practice</span><span class="etsy-tag">korean writing</span><span class="etsy-tag">hangul worksheet</span><span class="etsy-tag">learn korean</span><span class="etsy-tag">korean printable</span><span class="etsy-tag">hangul workbook</span><span class="etsy-tag">korean alphabet</span></div>
+      </div>
+    </div>
+
+    <div class="product-card rank-5">
+      <div class="product-rank">5️⃣</div>
+      <div class="product-name">Travel Phrasebook — 5 Languages (Spanish, French, Italian, German, Portuguese)</div>
+      <div class="product-meta">
+        <span class="meta-chip">Price: <span>$6.99</span></span>
+        <span class="meta-chip">Format: <span>PDF phrasebook</span></span>
+        
+        <span class="meta-chip" style="border-color:var(--purple);color:var(--purple);">Week 5</span>
+      </div>
+      <div class="card" style="margin-bottom:14px;">
+        <div class="card-title">What To Build</div>
+        <p>A 40+ page compact phrasebook covering 5 European languages across 7 travel scenarios (50 phrases per language = 250 phrases total), plus a wallet-sized quick reference card for each language.</p>
+      </div>
+      <div class="card" style="margin-bottom:14px;">
+        <div class="card-title">Why It Sells</div>
+        <p>Multi-language travel phrasebooks have a distinct buyer (pre-trip travelers) who searches for them in spring/summer — the 5-language bundle justifies a higher price and competes well against single-language products.</p>
+      </div>
+      <div style="margin-bottom:14px;">
+        <div class="card-title" style="color:#C9A84C;font-size:0.85rem;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px;">How To Build in Canva</div>
+        <div class="step-card"><div class="step-num">1</div><div class="step-text">Open Canva → search 'booklet template' → pick a compact, travel-guide-style layout (A5 or half-letter size)</div></div><div class="step-card"><div class="step-num">2</div><div class="step-text">Create 5 sections (one per language): Greetings, Numbers, Directions, Restaurant/Food, Shopping, Emergency, Hotel — 10 phrases per topic per language</div></div><div class="step-card"><div class="step-num">3</div><div class="step-text">Add pronunciation in brackets after each phrase (IPA not needed — use approximate English sounds, e.g. 'SAY: bon-ZHOOR')</div></div><div class="step-card"><div class="step-num">4</div><div class="step-text">Design a 'Quick Reference Card' single page per language — top 20 most essential phrases only — that buyers can print, fold, and carry in a wallet</div></div><div class="step-card"><div class="step-num">5</div><div class="step-text">Export as PDF Print → also offer a compact 'wallet card' export at A6 size as a second file</div></div>
+      </div>
+      <div class="seo-block">
+        <div class="seo-label">Etsy Title</div>
+        <div class="seo-value">Travel Phrasebook Printable | 5 Languages Spanish French Italian German Portuguese | Instant Download</div>
+        <div class="tag-row" style="margin-top:10px;"><span class="etsy-tag">travel phrasebook</span><span class="etsy-tag">language phrases</span><span class="etsy-tag">travel printable</span><span class="etsy-tag">phrasebook printable</span><span class="etsy-tag">travel essentials</span><span class="etsy-tag">language guide</span><span class="etsy-tag">europe travel</span></div>
+      </div>
+    </div>
+
+  </section>
+
+  
+  <!-- DYNAMIC ACTION PLAN — injected by language_brief_generator.py -->
+  <style>
+    .ap-item { cursor:pointer; display:flex; gap:14px; align-items:flex-start;
+               padding:11px 0; border-bottom:1px solid #252538;
+               transition:opacity .2s; -webkit-user-select:none; user-select:none; }
+    .ap-item:last-child { border-bottom:none; }
+    .ap-item:hover { opacity:.82; }
+    .ap-check { width:22px; height:22px; min-width:22px; border:2px solid #252538;
+                border-radius:50%; margin-top:3px; transition:all .25s;
+                background:transparent; flex-shrink:0; position:relative; }
+    .ap-item.ap-done .ap-check { background:#C9A84C; border-color:#C9A84C; }
+    .ap-item.ap-done .ap-check::after { content:"✓"; position:absolute;
+      top:50%; left:50%; transform:translate(-50%,-50%);
+      color:#0B0B14; font-size:12px; font-weight:800; }
+    .ap-item.ap-done .ap-text { color:#6B7280; text-decoration:line-through; }
+    .ap-text { color:#E2E2E2; font-size:0.9rem; line-height:1.6; }
+    .ap-time { color:#6B7280; font-size:0.72rem; background:#1e1e30;
+               border:1px solid #252538; border-radius:10px;
+               padding:2px 9px; display:inline-block; margin-top:5px; }
+    .ap-phase-hdr { display:flex; align-items:center; }
+  </style>
+
+  <section id="action">
+    <div class="section-header">
+      <span class="section-icon">✅</span>
+      <span class="section-title">This Week&#39;s Action Plan</span>
+      <span class="section-sub">Week 1 &nbsp;·&nbsp; Spanish Beginner Vocabulary Flashcards (100 Words)</span>
+    </div>
+
+    <div style="background:#12121F;border:1px solid #252538;border-radius:12px;
+                padding:18px 22px;margin-bottom:24px;display:flex;
+                align-items:center;gap:20px;flex-wrap:wrap;">
+      <div style="flex:1;min-width:180px;">
+        <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
+          <span style="color:#E2E2E2;font-size:0.88rem;font-weight:600;">Launch Progress</span>
+          <span style="color:#C9A84C;font-size:0.88rem;" id="ll-ap-text">0 of 15 steps complete</span>
+        </div>
+        <div style="background:#1e1e30;border-radius:6px;height:8px;overflow:hidden;">
+          <div id="ll-ap-fill" style="background:linear-gradient(90deg,#C9A84C,#e8c56a);
+               height:100%;border-radius:6px;width:0%;transition:width .3s;"></div>
+        </div>
+      </div>
+      <div style="text-align:center;min-width:52px;">
+        <div id="ll-ap-pct" style="font-size:1.55rem;font-weight:800;color:#C9A84C;line-height:1;">0%</div>
+        <div style="font-size:0.68rem;color:#6B7280;margin-top:2px;">complete</div>
+      </div>
+    </div>
+
+    
+        <div style="margin-bottom:18px;border:1px solid #252538;border-left:3px solid #4EA8DE;border-radius:0 10px 10px 0;overflow:hidden;">
+          <div class="ap-phase-hdr" style="background:#191928;padding:11px 18px;border-bottom:1px solid #252538;">
+            <span style="font-size:1.05rem;">🔍</span>
+            <span style="font-weight:700;color:white;font-size:0.95rem;margin-left:8px;">Research Your Market</span>
+            <span style="color:#6B7280;font-size:0.75rem;margin-left:auto;">3 steps</span>
+          </div>
+          <div style="padding:2px 18px 10px;">
+          <div class="ap-item" data-id="ll_ap_w1_s1" onclick="toggleAP('ll_ap_w1_s1')">
+            <div class="ap-check"></div>
+            <div style="flex:1;">
+              <div class="ap-text">Search Etsy for <strong>"spanish beginner vocabulary flashcards 100 words"</strong> — screenshot the first 8 listings. Note each one's price, card/page count, review count, and thumbnail style. This is your competitive landscape before you build anything.</div>
+              <div class="ap-time">~30 min</div>
+            </div>
+          </div>
+          <div class="ap-item" data-id="ll_ap_w1_s2" onclick="toggleAP('ll_ap_w1_s2')">
+            <div class="ap-check"></div>
+            <div style="flex:1;">
+              <div class="ap-text">Click the top 2–3 bestsellers and read ALL their 1–3 star reviews. Common language product complaints: 'font too hard to read', 'not enough example sentences', 'wish it had pronunciation guides', 'too basic'. Each complaint is a gap your product can fill.</div>
+              <div class="ap-time">~15 min</div>
+            </div>
+          </div>
+          <div class="ap-item" data-id="ll_ap_w1_s3" onclick="toggleAP('ll_ap_w1_s3')">
+            <div class="ap-check"></div>
+            <div style="flex:1;">
+              <div class="ap-text">Open Pinterest, search the same keyword, save 10–15 images to a mood-board folder in Canva: card layouts, color schemes, fonts for the target script, styles that feel study-worthy and approachable.</div>
+              <div class="ap-time">~15 min</div>
+            </div>
+          </div>
+          </div>
+        </div>
+        <div style="margin-bottom:18px;border:1px solid #252538;border-left:3px solid #9B72CF;border-radius:0 10px 10px 0;overflow:hidden;">
+          <div class="ap-phase-hdr" style="background:#191928;padding:11px 18px;border-bottom:1px solid #252538;">
+            <span style="font-size:1.05rem;">📝</span>
+            <span style="font-weight:700;color:white;font-size:0.95rem;margin-left:8px;">Plan Before You Open Canva</span>
+            <span style="color:#6B7280;font-size:0.75rem;margin-left:auto;">2 steps</span>
+          </div>
+          <div style="padding:2px 18px 10px;">
+          <div class="ap-item" data-id="ll_ap_w1_s4" onclick="toggleAP('ll_ap_w1_s4')">
+            <div class="ap-check"></div>
+            <div style="flex:1;">
+              <div class="ap-text">Write your complete content list before touching Canva — e.g. <em>100 vocabulary cards: front = word + pronunciation, back = English + example sentence; bonus: 2-page reference chart + study tips page</em>. Target <strong>50+ cards or 20+ pages minimum</strong> — buyers compare counts in reviews.</div>
+              <div class="ap-time">~15 min</div>
+            </div>
+          </div>
+          <div class="ap-item" data-id="ll_ap_w1_s5" onclick="toggleAP('ll_ap_w1_s5')">
+            <div class="ap-check"></div>
+            <div style="flex:1;">
+              <div class="ap-text">For non-Latin scripts (Japanese, Korean, Arabic, Chinese): open Canva NOW and test your chosen Noto font at your target print size. Type 5 sample characters and export a test page → confirm every character renders correctly and legibly. Fix the font before building 50 cards, not after.</div>
+              <div class="ap-time">~10 min</div>
+            </div>
+          </div>
+          </div>
+        </div>
+        <div style="margin-bottom:18px;border:1px solid #252538;border-left:3px solid #C9A84C;border-radius:0 10px 10px 0;overflow:hidden;">
+          <div class="ap-phase-hdr" style="background:#191928;padding:11px 18px;border-bottom:1px solid #252538;">
+            <span style="font-size:1.05rem;">🎨</span>
+            <span style="font-weight:700;color:white;font-size:0.95rem;margin-left:8px;">Build in Canva</span>
+            <span style="color:#6B7280;font-size:0.75rem;margin-left:auto;">3 steps</span>
+          </div>
+          <div style="padding:2px 18px 10px;">
+          <div class="ap-item" data-id="ll_ap_w1_s6" onclick="toggleAP('ll_ap_w1_s6')">
+            <div class="ap-check"></div>
+            <div style="flex:1;">
+              <div class="ap-text">Open Canva → follow the 5 build steps in the brief above → work through every card or page on your content list in order. Duplicate pages/cards rather than creating from scratch — one layout change propagates everywhere.</div>
+              <div class="ap-time">2–4 hrs</div>
+            </div>
+          </div>
+          <div class="ap-item" data-id="ll_ap_w1_s7" onclick="toggleAP('ll_ap_w1_s7')">
+            <div class="ap-check"></div>
+            <div style="flex:1;">
+              <div class="ap-text">Proof every card/page before exporting: consistent fonts, foreign characters rendering correctly, pronunciation guides accurate, example sentences grammatically correct (use DeepL or a native speaker check for key sentences). Fix everything now.</div>
+              <div class="ap-time">~20 min</div>
+            </div>
+          </div>
+          <div class="ap-item" data-id="ll_ap_w1_s8" onclick="toggleAP('ll_ap_w1_s8')">
+            <div class="ap-check"></div>
+            <div style="flex:1;">
+              <div class="ap-text"><strong>Export as "PDF Print"</strong> (not "Standard PDF"). PDF Print preserves 300 dpi — foreign script characters that look fine on screen can become blurry at Standard quality. If making flashcards, also export a '4-up per page' version as a second file.</div>
+              <div class="ap-time">~5 min</div>
+            </div>
+          </div>
+          </div>
+        </div>
+        <div style="margin-bottom:18px;border:1px solid #252538;border-left:3px solid #3DD68C;border-radius:0 10px 10px 0;overflow:hidden;">
+          <div class="ap-phase-hdr" style="background:#191928;padding:11px 18px;border-bottom:1px solid #252538;">
+            <span style="font-size:1.05rem;">📸</span>
+            <span style="font-weight:700;color:white;font-size:0.95rem;margin-left:8px;">Create Listing Images</span>
+            <span style="color:#6B7280;font-size:0.75rem;margin-left:auto;">2 steps</span>
+          </div>
+          <div style="padding:2px 18px 10px;">
+          <div class="ap-item" data-id="ll_ap_w1_s9" onclick="toggleAP('ll_ap_w1_s9')">
+            <div class="ap-check"></div>
+            <div style="flex:1;">
+              <div class="ap-text"><strong>Thumbnail first.</strong> Language learning thumbnails that convert show the foreign script prominently — a buyer searching 'Japanese flashcards' needs to immediately see Japanese characters. Add text callouts: card/page count, language name, 'Instant Download'. Test it: does your thumbnail clearly signal the language before a buyer can read the text?</div>
+              <div class="ap-time">~30 min</div>
+            </div>
+          </div>
+          <div class="ap-item" data-id="ll_ap_w1_s10" onclick="toggleAP('ll_ap_w1_s10')">
+            <div class="ap-check"></div>
+            <div style="flex:1;">
+              <div class="ap-text">Create 4–6 supporting images: 2 card/page samples showing front AND back, 1 lifestyle mockup (cards spread on a desk with a highlighter — use Canva's mockup feature or Placeit.net free tier), 1 'What's included' overview page, 1 close-up showing the foreign script clearly at full size.</div>
+              <div class="ap-time">~30 min</div>
+            </div>
+          </div>
+          </div>
+        </div>
+        <div style="margin-bottom:18px;border:1px solid #252538;border-left:3px solid #E94560;border-radius:0 10px 10px 0;overflow:hidden;">
+          <div class="ap-phase-hdr" style="background:#191928;padding:11px 18px;border-bottom:1px solid #252538;">
+            <span style="font-size:1.05rem;">🚀</span>
+            <span style="font-weight:700;color:white;font-size:0.95rem;margin-left:8px;">Publish on Etsy</span>
+            <span style="color:#6B7280;font-size:0.75rem;margin-left:auto;">2 steps</span>
+          </div>
+          <div style="padding:2px 18px 10px;">
+          <div class="ap-item" data-id="ll_ap_w1_s11" onclick="toggleAP('ll_ap_w1_s11')">
+            <div class="ap-check"></div>
+            <div style="flex:1;">
+              <div class="ap-text">Create your Etsy listing. <strong>Paste the Etsy title exactly as shown</strong> in the brief. Description: lead with what's included and card/page count, then how to download and print, then FAQs. Use all 7 tags from the brief plus 6 more variations (aim for all 13 Etsy slots).</div>
+              <div class="ap-time">~25 min</div>
+            </div>
+          </div>
+          <div class="ap-item" data-id="ll_ap_w1_s12" onclick="toggleAP('ll_ap_w1_s12')">
+            <div class="ap-check"></div>
+            <div style="flex:1;">
+              <div class="ap-text">Set your launch price, upload all images (thumbnail first) and your PDF. Hit Publish. Then: test-download your own listing → open the PDF → confirm all foreign characters render correctly in the downloaded file.</div>
+              <div class="ap-time">~15 min</div>
+            </div>
+          </div>
+          </div>
+        </div>
+        <div style="margin-bottom:18px;border:1px solid #252538;border-left:3px solid #4EA8DE;border-radius:0 10px 10px 0;overflow:hidden;">
+          <div class="ap-phase-hdr" style="background:#191928;padding:11px 18px;border-bottom:1px solid #252538;">
+            <span style="font-size:1.05rem;">📈</span>
+            <span style="font-weight:700;color:white;font-size:0.95rem;margin-left:8px;">Promote & Grow</span>
+            <span style="color:#6B7280;font-size:0.75rem;margin-left:auto;">3 steps</span>
+          </div>
+          <div style="padding:2px 18px 10px;">
+          <div class="ap-item" data-id="ll_ap_w1_s13" onclick="toggleAP('ll_ap_w1_s13')">
+            <div class="ap-check"></div>
+            <div style="flex:1;">
+              <div class="ap-text">Post 2–3 Pinterest pins linking to your Etsy listing. Pin to boards like 'Language Learning Resources', 'Learn [Language]', 'Study Printables'. Language learners are also active on Reddit — share a genuine free sample page in the relevant subreddit (r/languagelearning, r/LearnSpanish, r/LearnJapanese) as a resource to drive organic traffic.</div>
+              <div class="ap-time">~20 min</div>
+            </div>
+          </div>
+          <div class="ap-item" data-id="ll_ap_w1_s14" onclick="toggleAP('ll_ap_w1_s14')">
+            <div class="ap-check"></div>
+            <div style="flex:1;">
+              <div class="ap-text">After your first sale, message the buyer: <em>"Thanks so much! Hope the [product name] is helpful for your [language] studies. If you have a moment, a review means everything to a small shop 🙏"</em></div>
+              <div class="ap-time">~2 min</div>
+            </div>
+          </div>
+          <div class="ap-item" data-id="ll_ap_w1_s15" onclick="toggleAP('ll_ap_w1_s15')">
+            <div class="ap-check"></div>
+            <div style="flex:1;">
+              <div class="ap-text">At the 2-week mark: Etsy Stats → Search Terms. Language products often rank for the specific language name + product type. If you see searches for a related language (e.g., you sell Spanish flashcards but people find you searching 'French flashcards') — that's your next product to build.</div>
+              <div class="ap-time">~15 min</div>
+            </div>
+          </div>
+          </div>
+        </div>
+  </section>
+
+  <script>
+    (function() {
+      var KEY = 'bell_ll_ap_w1';
+      function save(id, val) {
+        var d = JSON.parse(localStorage.getItem(KEY) || '{}');
+        d[id] = val; localStorage.setItem(KEY, JSON.stringify(d));
+      }
+      window.toggleAP = function(id) {
+        var el = document.querySelector('[data-id="' + id + '"]');
+        el.classList.toggle('ap-done');
+        save(id, el.classList.contains('ap-done'));
+        refresh();
+      };
+      function refresh() {
+        var total = document.querySelectorAll('.ap-item').length;
+        var done  = document.querySelectorAll('.ap-item.ap-done').length;
+        document.getElementById('ll-ap-text').textContent = done + ' of ' + total + ' steps complete';
+        var pct = total ? Math.round(done / total * 100) : 0;
+        document.getElementById('ll-ap-fill').style.width = pct + '%';
+        document.getElementById('ll-ap-pct').textContent  = pct + '%';
+      }
+      var saved = JSON.parse(localStorage.getItem(KEY) || '{}');
+      document.querySelectorAll('.ap-item').forEach(function(el) {
+        if (saved[el.dataset.id]) el.classList.add('ap-done');
+      });
+      refresh();
+    })();
+  </script>
+
+
+  <div class="footer">
+    The Bell Newsletter &nbsp;·&nbsp; Language Learning Brief &nbsp;·&nbsp; Block 1 &nbsp;·&nbsp; May 02, 2026<br>
+    New brief generated every 5 weeks · New topic every Monday
+  </div>
+
+</div>
+</body>
+</html>

@@ -67,21 +67,26 @@ jobs:
 
       - name: Commit state changes back to repo
         # Files committed every run:
-        # 1. children_topics_log.json       — children week counter + topic history
-        # 2. children_block_state.json      — children block's 5 products (every 5 weeks)
-        # 3. productivity_topics_log.json   — productivity week counter + topic history
-        # 4. productivity_block_state.json  — productivity block's 5 products (every 5 weeks)
-        # 5. curriculum.json                — Section 1 week counter
-        # 6. saas_progress.json             — SaaS week counter
-        # 7. docs/current_brief.html            — children's brief (htmlpreview URL)
-        # 8. docs/current_productivity_brief.html — productivity brief (htmlpreview URL)
+        # 1. children_topics_log.json          — children week counter + topic history
+        # 2. children_block_state.json         — children block's 5 products (every 5 weeks)
+        # 3. productivity_topics_log.json      — productivity week counter + topic history
+        # 4. productivity_block_state.json     — productivity block's 5 products (every 5 weeks)
+        # 5. language_topics_log.json          — language week counter + topic history
+        # 6. language_block_state.json         — language block's 5 products (every 5 weeks)
+        # 7. curriculum.json                   — Section 1 week counter
+        # 8. saas_progress.json                — SaaS week counter
+        # 9. docs/current_brief.html           — children's brief (htmlpreview URL)
+        # 10. docs/current_productivity_brief.html — productivity brief (htmlpreview URL)
+        # 11. docs/current_language_brief.html     — language brief (htmlpreview URL)
         if: always()
         run: |
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git config user.name "github-actions[bot]"
           git add config/children_topics_log.json config/children_block_state.json \
                   config/productivity_topics_log.json config/productivity_block_state.json \
+                  config/language_topics_log.json config/language_block_state.json \
                   config/curriculum.json config/saas_progress.json \
-                  docs/current_brief.html docs/current_productivity_brief.html
+                  docs/current_brief.html docs/current_productivity_brief.html \
+                  docs/current_language_brief.html
           git diff --staged --quiet || git commit -m "chore: advance week state [skip ci]"
           git push

@@ -20,8 +20,9 @@ CURRICULUM_PATH      = Path("config/curriculum.json")
 SAAS_PATH            = Path("config/saas_progress.json")
 RESEARCH_PATH        = Path(".tmp/product_research.json")
 OUTPUT_PATH          = Path(".tmp/draft.md")
-CHILDREN_DATA_PATH   = Path(".tmp/children_brief_data.json")
+CHILDREN_DATA_PATH     = Path(".tmp/children_brief_data.json")
 PRODUCTIVITY_DATA_PATH = Path(".tmp/productivity_brief_data.json")
+LANGUAGE_DATA_PATH     = Path(".tmp/language_brief_data.json")
 
 MODEL = "llama-3.3-70b-versatile"
 
@@ -223,7 +224,7 @@ def parse_dynamic(raw: str) -> tuple[list, dict]:
 
 # ── assemble draft ─────────────────────────────────────────────────────────────
 
-def assemble_draft(s1: dict, themes: list, s3: dict, tips: dict, today: str, children_data: dict = None, productivity_data: dict = None) -> str:
+def assemble_draft(s1: dict, themes: list, s3: dict, tips: dict, today: str, children_data: dict = None, productivity_data: dict = None, language_data: dict = None) -> str:
     lines = []
 
     # Title
@@ -300,6 +301,8 @@ def assemble_draft(s1: dict, themes: list, s3: dict, tips: dict, today: str, chi
             brief_data = children_data
         elif theme["id"] == "productivity" and productivity_data:
             brief_data = productivity_data
+        elif theme["id"] == "language" and language_data:
+            brief_data = language_data
 
         if brief_data:
             build_steps = brief_data.get("build_steps", [])
@@ -382,6 +385,7 @@ def main():
     research          = load_json(RESEARCH_PATH)
     children_data     = load_json(CHILDREN_DATA_PATH)
     productivity_data = load_json(PRODUCTIVITY_DATA_PATH)
+    language_data     = load_json(LANGUAGE_DATA_PATH)
 
     if not curriculum:
         print("ERROR: config/curriculum.json not found.")
@@ -398,6 +402,12 @@ def main():
         print(f"Productivity topic (Week {productivity_data.get('week_num', '?')}): {productivity_topic}")
     else:
         print("No productivity topic found — run productivity_brief_generator.py first.")
+
+    language_topic = language_data.get("topic", "")
+    if language_topic:
+        print(f"Language topic (Week {language_data.get('week_num', '?')}): {language_topic}")
+    else:
+        print("No language topic found — run language_brief_generator.py first.")
 
     today = datetime.now().strftime("%B %d, %Y")
     s1    = get_section1(curriculum)
@@ -417,7 +427,7 @@ def main():
         print(f"  → {len(themes)} products generated")
 
     print("Assembling newsletter...")
-    draft = assemble_draft(s1, themes, s3, tips, today, children_data, productivity_data)
+    draft = assemble_draft(s1, themes, s3, tips, today, children_data, productivity_data, language_data)
 
     OUTPUT_PATH.parent.mkdir(exist_ok=True)
     with open(OUTPUT_PATH, "w") as f:

@@ -31,6 +31,7 @@ fi
   echo "[1/7] Generating this week's product briefs..."
   python3 tools/children_brief_generator.py
   python3 tools/productivity_brief_generator.py
+  python3 tools/language_brief_generator.py
 
   echo ""
   echo "[2/7] Researching products (Tavily)..."
@@ -72,5 +73,6 @@ fi
 if [[ -n "$DRY_RUN" ]] && command -v open &>/dev/null; then
   open "$SCRIPT_DIR/docs/current_brief.html"
   open "$SCRIPT_DIR/docs/current_productivity_brief.html"
+  open "$SCRIPT_DIR/docs/current_language_brief.html"
   open "$SCRIPT_DIR/.tmp/formatted_email.html"
 fi
