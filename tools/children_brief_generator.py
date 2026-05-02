@@ -112,40 +112,72 @@ def pick_topic(log: dict) -> dict:
 
 
 def generate_brief(topic_data: dict, week_num: int, client: Groq) -> dict:
-    """Single Groq call that returns structured data used by both the HTML file and the email."""
-    prompt = f"""You are writing a product brief for a solo digital product creator selling printables on Etsy.
+    """Single Groq call returning rich structured data for both the HTML brief and the newsletter email."""
+    prompt = f"""You are writing a weekly product brief for a solo digital products creator selling printables on Etsy.
 
 Topic: {topic_data['topic']}
 Age range: {topic_data['age']}
 Format: {topic_data['format']}
 
-Return ONLY valid JSON, no markdown, no code fences, no extra text:
+Return ONLY valid JSON. No markdown, no code fences, no extra text:
 {{
-  "what_to_build": "2 sentences describing the product specifically — what pages it contains, what kids do with it.",
-  "why_it_sells": ["who buys it", "when they search for it", "what problem it solves for parents"],
-  "competitors": ["what existing Etsy sellers are doing for this topic (1 sentence)", "a second observation"],
-  "differentiation": ["specific thing to add that competitors don't have", "another differentiator", "third differentiator"],
-  "build_steps": [
-    "Step 1: Open Canva and search templates for...",
-    "Step 2: ...",
-    "Step 3: ...",
-    "Step 4: ...",
-    "Step 5: Export as PDF Print and upload to Etsy"
+  "opportunity_score": 8,
+  "competition_level": "Medium",
+  "demand_level": "High",
+  "market_opportunity": "One sentence on why this specific niche is a good opportunity right now.",
+  "what_to_build": "2–3 sentences describing the product specifically — what pages it has, how many pages, what the child actually does with it.",
+  "why_it_sells": [
+    "Who buys it and when (e.g. parents of 3-5 year olds preparing for kindergarten)",
+    "The search trigger (e.g. searched year-round, peaks in August back-to-school season)",
+    "The emotional reason parents buy it (e.g. want structured screen-free activity)"
   ],
-  "price": "$X.XX",
-  "etsy_title": "Full Etsy listing title here (max 140 chars, keyword-rich)",
-  "etsy_tags": ["tag1", "tag2", "tag3", "tag4", "tag5"]
+  "top_competitors": [
+    {{"name": "Shop or product name", "insight": "What makes it sell — specific detail about their design or positioning"}},
+    {{"name": "Another shop or product", "insight": "What makes it sell"}}
+  ],
+  "market_gaps": [
+    "A specific gap in what competitors offer that you can fill",
+    "Another gap or opportunity"
+  ],
+  "differentiation": [
+    "Specific feature to add that competitors don't have (be concrete)",
+    "Another concrete differentiator",
+    "Third differentiator"
+  ],
+  "build_steps": [
+    "Open Canva → search 'kids {topic_data['topic'].lower()} worksheet template' → pick a clean, colourful template",
+    "Customise colours to a bright, child-friendly palette (e.g. sky blue, soft yellow, coral)",
+    "Add specific content detail for this product type",
+    "Check font size is minimum 18pt so children can read easily — add your shop name/logo in footer",
+    "Download as PDF Print → upload to Etsy as a digital download listing"
+  ],
+  "launch_checklist": [
+    "Create 25–30 pages minimum (buyers compare page count)",
+    "Add a free bonus page (e.g. certificate of completion) — mention in listing",
+    "Use all 13 Etsy tags — include age range in at least 3 tags",
+    "Upload 5–7 mockup images (use Canva or Placeit for lifestyle mockups)",
+    "Price at ${{"$4.99"}} for launch week, raise to ${{"$5.99"}} after first 3 reviews"
+  ],
+  "price": "$4.99",
+  "etsy_title": "Keyword-rich Etsy title here, max 140 characters, include age range and product type",
+  "etsy_tags": ["tag one", "tag two", "tag three", "tag four", "tag five", "tag six", "tag seven"]
 }}
 
-Rules: price between $3.99–$7.99. Build steps must be specific to this exact product. Tags are what parents type into Etsy search.
+Rules:
+- opportunity_score: integer 1–10
+- competition_level: exactly "Low", "Medium", or "High"
+- demand_level: exactly "Low", "Medium", or "High"
+- price: between $3.99–$7.99
+- build_steps: exactly 5 steps, each starting with an action verb, specific to THIS product
+- etsy_tags: exactly 7 tags, each under 20 characters, what parents actually search
+- All content must be specific to '{topic_data['topic']}' — no generic filler
 """
     response = client.chat.completions.create(
         model=MODEL,
         messages=[{"role": "user", "content": prompt}],
-        max_tokens=900,
+        max_tokens=1400,
     )
     raw = response.choices[0].message.content.strip()
-    # Strip markdown code fences if model added them
     if "```" in raw:
         raw = raw.split("```")[1]
         if raw.startswith("json"):
@@ -154,57 +186,267 @@ Rules: price between $3.99–$7.99. Build steps must be specific to this exact p
 
 
 def build_html_page(topic_data: dict, brief: dict, week_num: int, used_count: int) -> str:
-    remaining  = len(ALL_TOPICS) - used_count
-    steps_html = "".join(f"<li>{s}</li>" for s in brief.get("build_steps", []))
-    diff_html  = "".join(f"<li>{d}</li>" for d in brief.get("differentiation", []))
-    why_html   = "".join(f"<li>{w}</li>" for w in brief.get("why_it_sells", []))
-    comp_html  = "".join(f"<li>{c}</li>" for c in brief.get("competitors", []))
-    tags_str   = ", ".join(brief.get("etsy_tags", []))
+    remaining   = len(ALL_TOPICS) - used_count
+    bar_pct     = round(used_count / len(ALL_TOPICS) * 100)
+    score       = brief.get("opportunity_score", 8)
+    comp_level  = brief.get("competition_level", "Medium")
+    demand      = brief.get("demand_level", "High")
+    comp_color  = {"Low": "#3DD68C", "Medium": "#C9A84C", "High": "#E94560"}.get(comp_level, "#C9A84C")
+    demand_color= {"Low": "#888", "Medium": "#C9A84C", "High": "#3DD68C"}.get(demand, "#3DD68C")
+    date_str    = datetime.now().strftime("%B %d, %Y")
+
+    def li_list(items):
+        return "".join(f"<li>{i}</li>" for i in items if i)
+
+    def ol_list(items):
+        return "".join(f"<li>{i}</li>" for i in items if i)
+
+    competitors_html = ""
+    for c in brief.get("top_competitors", []):
+        competitors_html += f"""
+        <div class="comp-card">
+          <div class="comp-name">{c.get('name','')}</div>
+          <div class="comp-insight">{c.get('insight','')}</div>
+        </div>"""
+
+    checklist_html = "".join(
+        f'<div class="check-item"><span class="check-box"></span><span>{item}</span></div>'
+        for item in brief.get("launch_checklist", [])
+    )
+
+    tags_html = "".join(
+        f'<span class="etsy-tag">{t}</span>' for t in brief.get("etsy_tags", [])
+    )
 
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Children's Brief — Week {week_num}: {topic_data['topic']}</title>
+<title>Children's Activities Brief — Week {week_num}: {topic_data['topic']}</title>
 <style>
-  :root {{ --bg:#1A1A2E; --gold:#C9A84C; --text:#E8E0D0; --card:#24243E; --muted:#888; }}
+  :root {{
+    --bg:#0B0B14; --card:#12121F; --card2:#191928; --border:#252538;
+    --gold:#C9A84C; --gold-dim:rgba(201,168,76,0.12);
+    --green:#3DD68C; --green-dim:rgba(61,214,140,0.1);
+    --red:#E94560; --blue:#4EA8DE;
+    --text:#E2E2E2; --muted:#6B7280;
+  }}
   * {{ box-sizing:border-box; margin:0; padding:0; }}
-  body {{ background:var(--bg); color:var(--text); font-family:Georgia,serif; max-width:760px; margin:40px auto; padding:24px 20px; line-height:1.75; }}
-  h1   {{ color:var(--gold); font-size:1.7rem; margin-bottom:4px; }}
-  h2   {{ color:var(--gold); font-size:1rem; margin:26px 0 8px; border-bottom:1px solid #333; padding-bottom:4px; text-transform:uppercase; letter-spacing:.05em; }}
-  p    {{ margin-bottom:10px; }}
-  ul,ol{{ padding-left:20px; margin-bottom:10px; }}
-  li   {{ margin-bottom:6px; }}
-  strong {{ color:#ddd; }}
-  .badge {{ display:inline-block; background:var(--gold); color:var(--bg); font-size:12px; font-weight:bold; padding:3px 14px; border-radius:20px; margin-bottom:14px; letter-spacing:.05em; }}
-  .meta  {{ color:var(--muted); font-size:13px; margin-bottom:20px; }}
-  .progress {{ background:var(--card); border-radius:8px; padding:12px 16px; margin-bottom:28px; font-size:13px; color:#aaa; display:flex; justify-content:space-between; align-items:center; }}
-  .progress strong {{ color:var(--gold); }}
-  .bar-wrap {{ background:#333; border-radius:6px; height:6px; width:180px; overflow:hidden; }}
-  .bar-fill {{ background:var(--gold); height:100%; border-radius:6px; width:{round(used_count/len(ALL_TOPICS)*100)}%; }}
-  .tag {{ display:inline-block; background:#2a2a4e; color:var(--gold); padding:2px 10px; border-radius:12px; font-size:12px; margin:2px; }}
-  .footer {{ text-align:center; color:#555; font-size:12px; margin-top:44px; border-top:1px solid #2a2a3e; padding-top:16px; }}
+  html {{ scroll-behavior:smooth; }}
+  body {{ background:var(--bg); color:var(--text); font-family:'Segoe UI',system-ui,-apple-system,sans-serif; font-size:15px; line-height:1.7; padding:32px 20px 80px; }}
+  .container {{ max-width:960px; margin:0 auto; }}
+
+  /* ── NAV ── */
+  .toc {{ background:var(--card); border:1px solid var(--border); border-radius:12px; padding:16px 24px; margin-bottom:32px; display:flex; flex-wrap:wrap; gap:10px 24px; align-items:center; }}
+  .toc-label {{ color:var(--muted); font-size:.78rem; text-transform:uppercase; letter-spacing:1px; margin-right:8px; }}
+  .toc a {{ color:var(--gold); text-decoration:none; font-size:.88rem; }}
+  .toc a:hover {{ text-decoration:underline; }}
+
+  /* ── HERO ── */
+  .hero {{ background:linear-gradient(135deg,#12121F 0%,#1A1230 100%); border:1px solid var(--border); border-left:5px solid var(--gold); border-radius:16px; padding:36px 32px; margin-bottom:36px; position:relative; overflow:hidden; }}
+  .hero::before {{ content:''; position:absolute; top:-60px; right:-60px; width:220px; height:220px; background:radial-gradient(circle,rgba(201,168,76,.08) 0%,transparent 70%); border-radius:50%; }}
+  .hero-week {{ color:var(--gold); font-size:.78rem; text-transform:uppercase; letter-spacing:2px; margin-bottom:10px; }}
+  .hero h1 {{ font-size:1.9rem; color:white; font-weight:800; line-height:1.25; margin-bottom:6px; }}
+  .hero-sub {{ color:var(--muted); font-size:.95rem; margin-bottom:24px; }}
+  .hero-stats {{ display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr)); gap:16px; border-top:1px solid var(--border); padding-top:20px; }}
+  .stat-label {{ color:var(--muted); font-size:.75rem; text-transform:uppercase; letter-spacing:.5px; }}
+  .stat-value {{ font-size:1.35rem; font-weight:700; margin-top:2px; }}
+
+  /* ── PROGRESS BAR ── */
+  .progress-wrap {{ background:var(--card); border:1px solid var(--border); border-radius:12px; padding:16px 20px; margin-bottom:32px; }}
+  .progress-top {{ display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; font-size:.88rem; }}
+  .progress-top strong {{ color:var(--gold); }}
+  .progress-top .muted {{ color:var(--muted); font-size:.82rem; }}
+  .bar-track {{ background:#1e1e30; border-radius:8px; height:8px; overflow:hidden; }}
+  .bar-fill {{ background:linear-gradient(90deg,var(--gold),#e8c56a); height:100%; border-radius:8px; width:{bar_pct}%; transition:width .4s; }}
+
+  /* ── SECTIONS ── */
+  section {{ margin-bottom:40px; }}
+  .section-header {{ display:flex; align-items:center; gap:12px; margin-bottom:18px; padding-bottom:10px; border-bottom:2px solid var(--border); }}
+  .section-icon {{ font-size:1.4rem; }}
+  .section-title {{ font-size:1.2rem; font-weight:700; color:white; }}
+  .section-sub {{ color:var(--muted); font-size:.85rem; margin-left:auto; }}
+
+  /* ── CARDS ── */
+  .card {{ background:var(--card); border:1px solid var(--border); border-radius:12px; padding:20px 22px; margin-bottom:12px; }}
+  .card-title {{ color:var(--gold); font-weight:600; font-size:.85rem; margin-bottom:10px; text-transform:uppercase; letter-spacing:.5px; }}
+  .card p {{ color:var(--text); font-size:.95rem; }}
+  ul {{ padding-left:20px; margin:8px 0; }}
+  ul li {{ margin-bottom:7px; font-size:.93rem; }}
+  ol {{ padding-left:20px; margin:8px 0; }}
+  ol li {{ margin-bottom:8px; font-size:.93rem; }}
+
+  /* ── COMPETITOR CARDS ── */
+  .comp-card {{ background:var(--card2); border:1px solid var(--border); border-radius:10px; padding:14px 18px; margin-bottom:10px; }}
+  .comp-name {{ font-weight:700; color:white; font-size:.95rem; margin-bottom:4px; }}
+  .comp-insight {{ color:var(--muted); font-size:.88rem; }}
+
+  /* ── MARKET GAPS ── */
+  .gap-item {{ background:var(--green-dim); border:1px solid rgba(61,214,140,.2); border-radius:8px; padding:10px 16px; margin-bottom:8px; font-size:.9rem; color:var(--text); }}
+  .gap-item::before {{ content:'→ '; color:var(--green); font-weight:700; }}
+
+  /* ── BUILD STEPS ── */
+  .step-card {{ background:var(--card); border:1px solid var(--border); border-radius:10px; padding:14px 18px; margin-bottom:10px; display:flex; gap:14px; align-items:flex-start; }}
+  .step-num {{ background:var(--gold); color:#0B0B14; border-radius:50%; width:26px; height:26px; min-width:26px; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:.82rem; margin-top:1px; }}
+  .step-text {{ font-size:.93rem; color:var(--text); }}
+
+  /* ── CHECKLIST ── */
+  .check-item {{ display:flex; align-items:flex-start; gap:12px; padding:9px 0; border-bottom:1px solid var(--border); font-size:.9rem; }}
+  .check-item:last-child {{ border-bottom:none; }}
+  .check-box {{ width:18px; height:18px; min-width:18px; border:2px solid var(--border); border-radius:4px; margin-top:2px; }}
+
+  /* ── PRICING ── */
+  .price-big {{ font-size:2.2rem; font-weight:800; color:var(--gold); }}
+  .listing-box {{ background:var(--card2); border:1px solid var(--border); border-radius:10px; padding:16px 18px; margin-top:14px; }}
+  .listing-label {{ color:var(--muted); font-size:.78rem; text-transform:uppercase; letter-spacing:.5px; margin-bottom:5px; }}
+  .listing-value {{ color:var(--text); font-size:.92rem; }}
+  .etsy-tag {{ display:inline-block; background:var(--gold-dim); color:var(--gold); border:1px solid rgba(201,168,76,.3); padding:3px 10px; border-radius:20px; font-size:.8rem; margin:3px; }}
+
+  /* ── FOOTER ── */
+  .footer {{ text-align:center; color:var(--muted); font-size:.82rem; margin-top:60px; border-top:1px solid var(--border); padding-top:20px; }}
 </style>
 </head>
 <body>
-<span class="badge">WEEK {week_num}</span>
-<h1>Children's Activities Brief</h1>
-<div class="meta">{topic_data['topic']} &nbsp;·&nbsp; Ages {topic_data['age']} &nbsp;·&nbsp; {topic_data['format']} &nbsp;·&nbsp; {datetime.now().strftime("%B %d, %Y")}</div>
-<div class="progress">
-  <span>Topic <strong>{used_count}</strong> of <strong>{len(ALL_TOPICS)}</strong> &nbsp;—&nbsp; <strong>{remaining} left</strong> before reset</span>
-  <div class="bar-wrap"><div class="bar-fill"></div></div>
+<div class="container">
+
+<!-- NAV -->
+<nav class="toc">
+  <span class="toc-label">Jump to</span>
+  <a href="#opportunity">Opportunity</a>
+  <a href="#competitors">Competitors</a>
+  <a href="#gaps">Market Gaps</a>
+  <a href="#build">How To Build</a>
+  <a href="#checklist">Checklist</a>
+  <a href="#listing">Listing</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-week">The Bell Newsletter &nbsp;·&nbsp; Week {week_num} &nbsp;·&nbsp; {date_str}</div>
+  <h1>{topic_data['topic']}</h1>
+  <div class="hero-sub">Ages {topic_data['age']} &nbsp;·&nbsp; {topic_data['format']} &nbsp;·&nbsp; Children's Activities Niche</div>
+  <div class="hero-stats">
+    <div>
+      <div class="stat-label">Opportunity Score</div>
+      <div class="stat-value" style="color:var(--gold)">{score}/10</div>
+    </div>
+    <div>
+      <div class="stat-label">Competition</div>
+      <div class="stat-value" style="color:{comp_color}">{comp_level}</div>
+    </div>
+    <div>
+      <div class="stat-label">Demand</div>
+      <div class="stat-value" style="color:{demand_color}">{demand}</div>
+    </div>
+    <div>
+      <div class="stat-label">Launch Price</div>
+      <div class="stat-value" style="color:var(--green)">{brief.get('price','')}</div>
+    </div>
+  </div>
 </div>
-<h2>What To Build</h2><p>{brief.get("what_to_build","")}</p>
-<h2>Why It Sells</h2><ul>{why_html}</ul>
-<h2>What Competitors Are Doing</h2><ul>{comp_html}</ul>
-<h2>How To Make Yours Better</h2><ul>{diff_html}</ul>
-<h2>How To Build It In Canva</h2><ol>{steps_html}</ol>
-<h2>Pricing and Listing</h2>
-<p><strong>Launch price:</strong> {brief.get("price","")}</p>
-<p><strong>Etsy title:</strong> {brief.get("etsy_title","")}</p>
-<p><strong>Tags:</strong> {"".join(f'<span class="tag">{t}</span>' for t in brief.get("etsy_tags",[]))}</p>
-<div class="footer">The Bell Newsletter &nbsp;·&nbsp; Children's Activities &nbsp;·&nbsp; Week {week_num}</div>
+
+<!-- PROGRESS BAR -->
+<div class="progress-wrap">
+  <div class="progress-top">
+    <span>Topic <strong>{used_count}</strong> of <strong>{len(ALL_TOPICS)}</strong> &nbsp;·&nbsp; Year 1 Progress</span>
+    <span class="muted"><strong style="color:var(--gold)">{remaining}</strong> topics remaining before reset</span>
+  </div>
+  <div class="bar-track"><div class="bar-fill"></div></div>
+</div>
+
+<!-- OPPORTUNITY -->
+<section id="opportunity">
+  <div class="section-header">
+    <span class="section-icon">💡</span>
+    <span class="section-title">Market Opportunity</span>
+  </div>
+  <div class="card">
+    <div class="card-title">Why This Topic Now</div>
+    <p>{brief.get('market_opportunity','')}</p>
+  </div>
+  <div class="card">
+    <div class="card-title">What To Build</div>
+    <p>{brief.get('what_to_build','')}</p>
+  </div>
+  <div class="card">
+    <div class="card-title">Why It Sells</div>
+    <ul>{li_list(brief.get('why_it_sells',[]))}</ul>
+  </div>
+</section>
+
+<!-- COMPETITORS -->
+<section id="competitors">
+  <div class="section-header">
+    <span class="section-icon">🔍</span>
+    <span class="section-title">Competitor Analysis</span>
+    <span class="section-sub">What's already selling on Etsy</span>
+  </div>
+  {competitors_html}
+  <div class="card" style="margin-top:10px">
+    <div class="card-title">Your Differentiators</div>
+    <ul>{li_list(brief.get('differentiation',[]))}</ul>
+  </div>
+</section>
+
+<!-- MARKET GAPS -->
+<section id="gaps">
+  <div class="section-header">
+    <span class="section-icon">🎯</span>
+    <span class="section-title">Market Gaps</span>
+    <span class="section-sub">What competitors are missing</span>
+  </div>
+  {"".join(f'<div class="gap-item">{g}</div>' for g in brief.get('market_gaps',[]))}
+</section>
+
+<!-- BUILD GUIDE -->
+<section id="build">
+  <div class="section-header">
+    <span class="section-icon">🛠️</span>
+    <span class="section-title">How To Build It in Canva</span>
+    <span class="section-sub">Step by step</span>
+  </div>
+  {"".join(f'<div class="step-card"><div class="step-num">{i+1}</div><div class="step-text">{s}</div></div>' for i,s in enumerate(brief.get('build_steps',[])))}
+</section>
+
+<!-- LAUNCH CHECKLIST -->
+<section id="checklist">
+  <div class="section-header">
+    <span class="section-icon">✅</span>
+    <span class="section-title">Launch Checklist</span>
+  </div>
+  <div class="card">
+    {checklist_html}
+  </div>
+</section>
+
+<!-- LISTING -->
+<section id="listing">
+  <div class="section-header">
+    <span class="section-icon">🏷️</span>
+    <span class="section-title">Pricing and Listing</span>
+  </div>
+  <div class="card">
+    <div class="card-title">Launch Price</div>
+    <div class="price-big">{brief.get('price','')}</div>
+    <p style="color:var(--muted);font-size:.88rem;margin-top:6px">Raise by $1 after your first 3 reviews.</p>
+  </div>
+  <div class="listing-box">
+    <div class="listing-label">Etsy Title</div>
+    <div class="listing-value">{brief.get('etsy_title','')}</div>
+  </div>
+  <div class="listing-box" style="margin-top:10px">
+    <div class="listing-label">Etsy Tags</div>
+    <div style="margin-top:6px">{tags_html}</div>
+  </div>
+</section>
+
+<div class="footer">
+  The Bell Newsletter &nbsp;·&nbsp; Children's Activities Brief &nbsp;·&nbsp; Week {week_num} &nbsp;·&nbsp; {date_str}<br>
+  Generated weekly · New topic every Monday
+</div>
+
+</div>
 </body>
 </html>"""
 
