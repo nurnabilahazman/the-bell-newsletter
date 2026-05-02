@@ -65,14 +65,16 @@ jobs:
             bash run_newsletter.sh
           fi
 
-      - name: Save children's topics log back to repo
-        # This is what makes the no-repeat system work across weeks.
-        # Every run updates config/children_topics_log.json — we commit
-        # it back so next week GitHub starts from the updated list.
+      - name: Commit state changes back to repo
+        # Commits three things that change every run:
+        # 1. children_topics_log.json  — no-repeat topic tracker
+        # 2. curriculum.json           — week counter (so Section 1 advances)
+        # 3. saas_progress.json        — SaaS week counter
+        # 4. docs/current_brief.html   — this week's brief (accessible via URL)
         if: always()
         run: |
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git config user.name "github-actions[bot]"
-          git add config/children_topics_log.json
-          git diff --staged --quiet || git commit -m "chore: advance children topic log [skip ci]"
+          git add config/children_topics_log.json config/curriculum.json config/saas_progress.json docs/current_brief.html
+          git diff --staged --quiet || git commit -m "chore: advance week state [skip ci]"
           git push

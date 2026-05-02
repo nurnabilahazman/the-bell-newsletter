@@ -222,7 +222,7 @@ def parse_dynamic(raw: str) -> tuple[list, dict]:
 
 # ── assemble draft ─────────────────────────────────────────────────────────────
 
-def assemble_draft(s1: dict, themes: list, s3: dict, tips: dict, today: str) -> str:
+def assemble_draft(s1: dict, themes: list, s3: dict, tips: dict, today: str, children_data: dict = None) -> str:
     lines = []
 
     # Title
@@ -294,12 +294,32 @@ def assemble_draft(s1: dict, themes: list, s3: dict, tips: dict, today: str) -> 
             if item:
                 lines.append(f"- {item}")
         lines.append("")
-        lines.append(">>>PROMPT")
-        lines.append(theme['prompt'])
-        lines.append(">>>END")
-        lines.append("")
-        if theme["id"] == "children":
-            lines.append("📋 **Your build brief is ready:** Open `.tmp/unified_product_brief.html` in your browser — full step-by-step Canva guide for this week's topic.")
+        if theme["id"] == "children" and children_data:
+            # Replace prompt box with brief content + link
+            build_steps = children_data.get("build_steps", [])
+            price       = children_data.get("price", "")
+            etsy_title  = children_data.get("etsy_title", "")
+            etsy_tags   = ", ".join(children_data.get("etsy_tags", []))
+            brief_url   = children_data.get("brief_url", "")
+            if build_steps:
+                lines.append("**How to build it in Canva:**")
+                for i, step in enumerate(build_steps, 1):
+                    lines.append(f"{i}. {step}")
+                lines.append("")
+            if price or etsy_title:
+                lines.append(f"**Launch price:** {price}")
+                if etsy_title:
+                    lines.append(f"**Etsy title:** {etsy_title}")
+                if etsy_tags:
+                    lines.append(f"**Tags:** {etsy_tags}")
+                lines.append("")
+            if brief_url:
+                lines.append(f"[📋 View this week's full brief →]({brief_url})")
+                lines.append("")
+        else:
+            lines.append(">>>PROMPT")
+            lines.append(theme['prompt'])
+            lines.append(">>>END")
             lines.append("")
 
     lines.append(">>>DOC")
@@ -389,7 +409,7 @@ def main():
         print(f"  → {len(themes)} products generated")
 
     print("Assembling newsletter...")
-    draft = assemble_draft(s1, themes, s3, tips, today)
+    draft = assemble_draft(s1, themes, s3, tips, today, children_data)
 
     OUTPUT_PATH.parent.mkdir(exist_ok=True)
     with open(OUTPUT_PATH, "w") as f:

@@ -1,5 +1,20 @@
 {
-  "used_topics": [],
-  "current_week": 0,
-  "history": []
+  "used_topics": [
+    "Alphabet Tracing Workbook",
+    "Number Tracing Workbook"
+  ],
+  "current_week": 2,
+  "history": [
+    {
+      "week": 1,
+      "topic": "Alphabet Tracing Workbook",
+      "date": "2026-05-02"
+    },
+    {
+      "week": 2,
+      "topic": "Number Tracing Workbook",
+      "date": "2026-05-02"
+    }
+  ],
+  "last_run": "2026-05-02T10:06:18.734199"
 }
