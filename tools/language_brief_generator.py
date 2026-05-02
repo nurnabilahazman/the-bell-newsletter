@@ -574,6 +574,228 @@ def _action_plan_section_html(product_name: str, week_num: int) -> str:
 """
 
 
+def _build_etsy_description(product: dict) -> str:
+    """Build a ready-to-paste Etsy description for a language learning product."""
+    name   = product.get("topic", "")
+    fmt    = product.get("format", "printable")
+    price  = product.get("price", "$4.99")
+    tags   = product.get("etsy_tags", [])
+    title  = product.get("etsy_title", name)
+    what   = product.get("what_to_build", f"A ready-to-print {fmt}.")
+    lang   = product.get("language", "")
+
+    primary  = tags[0] if tags else name.lower()
+    lang_str = f" for {lang}" if lang else ""
+
+    lines = []
+    lines.append(name + " | Printable PDF | Instant Download")
+    lines.append("")
+    lines.append(what)
+    lines.append("")
+    lines.append("─" * 40)
+    lines.append("WHAT'S INCLUDED")
+    lines.append("─" * 40)
+    lines.append("• Format: " + fmt)
+    lines.append("• High resolution: 300 dpi — prints sharp at home")
+    lines.append("• Size: US Letter (8.5 x 11 in) — easy to resize to A4")
+    lines.append("• Instant digital download — no physical item is shipped")
+    lines.append("")
+    lines.append("─" * 40)
+    lines.append("HOW TO DOWNLOAD & PRINT")
+    lines.append("─" * 40)
+    lines.append("1. Complete your purchase on Etsy")
+    lines.append("2. Click the download link in your confirmation email (or go to Etsy > Purchases & Reviews)")
+    lines.append("3. Open the PDF on your computer or tablet")
+    lines.append("4. Print at home or at a local print shop — standard paper works great")
+    lines.append("Print and cut out flashcards, or study from the screen on your tablet")
+    lines.append("")
+    lines.append("─" * 40)
+    lines.append("FILE DETAILS")
+    lines.append("─" * 40)
+    lines.append("• File type: PDF")
+    lines.append("• Resolution: 300 dpi")
+    lines.append("• Compatible with Adobe Reader (free) and most PDF viewers")
+    lines.append("• Digital product only — no physical item will be mailed")
+    lines.append("")
+    lines.append("─" * 40)
+    lines.append("FAQ")
+    lines.append("─" * 40)
+    lines.append("Q: Can I print multiple copies?")
+    lines.append("A: Yes! Your purchase covers unlimited personal-use prints.")
+    lines.append("")
+    lines.append("Q: Can I print on A4 paper?")
+    lines.append("A: Yes — in your print settings, select 'Fit to Page' or 'Scale to A4' and it will resize automatically.")
+    lines.append("")
+    lines.append("Q: I can't find my download. Help?")
+    lines.append("A: Check your Etsy account under Purchases & Reviews, or look for the Etsy confirmation email. Still stuck? Message me and I'll help within 24 hours.")
+    lines.append("")
+    lines.append("Q: Can I share this file with others?")
+    lines.append("A: This file is licensed for personal use only. Please do not redistribute or resell.")
+    lines.append("")
+    lines.append("─" * 40)
+    lines.append("Loved it? A quick review means the world to a small shop and helps other learners find this resource. Thank you!")
+    lines.append("Questions? I respond within 24 hours.")
+
+    return "\n".join(lines)
+
+
+def _build_modification_prompt(product: dict) -> str:
+    """Build a Claude/ChatGPT modification prompt for a language learning product."""
+    name  = product.get("topic", "")
+    fmt   = product.get("format", "printable")
+    price = product.get("price", "$4.99")
+    title = product.get("etsy_title", name)
+    tags  = product.get("etsy_tags", [])
+    lang  = product.get("language", "")
+
+    tags_str = ", ".join(tags)
+    lang_line = f"Language: {lang}\n" if lang else ""
+
+    lines = []
+    lines.append("I have an Etsy digital printable product with the following details:")
+    lines.append("")
+    lines.append("Product name: " + name)
+    lines.append(lang_line.rstrip())
+    lines.append("Format: " + fmt)
+    lines.append("Current price: " + price)
+    lines.append("Current Etsy title: " + title)
+    lines.append("Current tags: " + tags_str)
+    lines.append("")
+    lines.append("I want to modify this product as follows:")
+    lines.append("[DESCRIBE YOUR CHANGES HERE]")
+    lines.append("")
+    lines.append("Please return:")
+    lines.append("1. Updated Etsy title (max 140 chars; put the primary keyword in the first 30 characters)")
+    lines.append("2. All 13 Etsy tags (use synonyms — do NOT repeat words already in the title)")
+    lines.append("3. Full Etsy description with: hook sentence, what's included, who it's for, how to download & print, file details, FAQ (4 Q&As), review request")
+    lines.append("4. Suggested price (with brief reasoning)")
+
+    return "\n".join(lines)
+
+
+def _seo_tip_html(product: dict) -> str:
+    """Build the SEO Quick-Tips box for a product card (language generator)."""
+    tags    = product.get("etsy_tags", [])
+    title   = product.get("etsy_title", "")
+    fmt     = product.get("format", "").lower()
+    primary = tags[0] if tags else ""
+    first30 = title[:30] if title else ""
+
+    if "flashcard" in fmt:
+        category = "Paper &amp; Party Supplies &rarr; Stationery &rarr; Flashcards"
+    elif "workbook" in fmt or "worksheet" in fmt:
+        category = "Paper &amp; Party Supplies &rarr; Stationery &rarr; Printables"
+    elif "planner" in fmt:
+        category = "Paper &amp; Party Supplies &rarr; Stationery &rarr; Planner Pages"
+    elif "phrasebook" in fmt:
+        category = "Books, Movies &amp; Music &rarr; Books &rarr; Language Instruction"
+    elif "journal" in fmt:
+        category = "Paper &amp; Party Supplies &rarr; Stationery &rarr; Journals"
+    else:
+        category = "Paper &amp; Party Supplies &rarr; Stationery &rarr; Printables"
+
+    primary_esc = primary.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+    first30_esc = first30.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+
+    html  = '      <div style="border-left:3px solid #3DD68C;background:#0f1f18;'
+    html += 'border-radius:0 8px 8px 0;padding:12px 16px;margin-top:14px;">'
+    html += '<div style="color:#3DD68C;font-size:0.75rem;font-weight:700;'
+    html += 'text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">'
+    html += 'SEO Quick-Tips</div>'
+    html += '<div style="display:grid;gap:5px;font-size:0.82rem;">'
+    html += '<div><span style="color:#6B7280;">Primary keyword:</span> '
+    html += '<span style="color:#E2E2E2;font-weight:600;">' + primary_esc + '</span></div>'
+    html += '<div><span style="color:#6B7280;">Title first 30 chars</span> '
+    html += '<span style="color:#6B7280;font-size:0.74rem;">(shows on mobile)</span>'
+    html += '<span style="color:#6B7280;">:</span> '
+    html += '<span style="color:#E2E2E2;font-weight:600;">' + first30_esc + '</span></div>'
+    html += '<div><span style="color:#6B7280;">Etsy category:</span> '
+    html += '<span style="color:#E2E2E2;">' + category + '</span></div>'
+    html += '<div style="color:#6B7280;font-size:0.78rem;margin-top:4px;border-top:1px solid #252538;padding-top:6px;">'
+    html += 'Put primary keyword in first 30 title chars. Tags &ne; title words &mdash; use synonyms.</div>'
+    html += '</div></div>'
+    return html
+
+
+def _extra_sections_html(product: dict, rank: int, week_num: int) -> str:
+    """Build the SEO tip box + collapsible description/prompt section for one product card."""
+    card_id = "ex_r" + str(rank) + "_w" + str(week_num)
+
+    desc_raw   = _build_etsy_description(product)
+    prompt_raw = _build_modification_prompt(product)
+
+    desc_escaped   = desc_raw.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+    prompt_escaped = prompt_raw.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+
+    seo_box = _seo_tip_html(product)
+
+    html  = seo_box
+    html += '\n      <div style="margin-top:14px;">'
+    html += '\n        <button onclick="toggleExtra(\'' + card_id + '\')" '
+    html += 'style="background:#C9A84C;color:#0B0B14;border:none;border-radius:8px;'
+    html += 'padding:8px 16px;font-size:0.82rem;font-weight:700;cursor:pointer;'
+    html += 'display:flex;align-items:center;gap:6px;">'
+    html += '&#128203; Listing Description &amp; Modification Tools'
+    html += '<span id="' + card_id + '_arrow" style="transition:transform .25s;">&#9660;</span>'
+    html += '</button>'
+    html += '\n        <div id="' + card_id + '" style="display:none;margin-top:10px;">'
+
+    html += '\n          <div style="margin-bottom:14px;">'
+    html += '\n            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">'
+    html += '\n              <div style="color:#4EA8DE;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Full Etsy Description</div>'
+    html += '\n              <button onclick="copyTA(\'' + card_id + '_desc\')" '
+    html += 'style="background:#1e1e30;color:#4EA8DE;border:1px solid #4EA8DE;border-radius:6px;'
+    html += 'padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy</button>'
+    html += '\n            </div>'
+    html += '\n            <textarea id="' + card_id + '_desc" readonly '
+    html += 'style="width:100%;min-height:260px;background:#1e1e30;color:#E2E2E2;'
+    html += 'border:1px solid #252538;border-radius:8px;padding:12px;font-family:monospace;'
+    html += 'font-size:0.8rem;line-height:1.5;resize:vertical;">'
+    html += desc_escaped
+    html += '</textarea>'
+    html += '\n          </div>'
+
+    html += '\n          <div>'
+    html += '\n            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">'
+    html += '\n              <div style="color:#9B72CF;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Modification Prompt</div>'
+    html += '\n              <button onclick="copyTA(\'' + card_id + '_prompt\')" '
+    html += 'style="background:#1e1e30;color:#9B72CF;border:1px solid #9B72CF;border-radius:6px;'
+    html += 'padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy</button>'
+    html += '\n            </div>'
+    html += '\n            <textarea id="' + card_id + '_prompt" readonly '
+    html += 'style="width:100%;min-height:280px;background:#1e1e30;color:#E2E2E2;'
+    html += 'border:1px solid #252538;border-radius:8px;padding:12px;font-family:monospace;'
+    html += 'font-size:0.8rem;line-height:1.5;resize:vertical;">'
+    html += prompt_escaped
+    html += '</textarea>'
+    html += '\n          </div>'
+
+    html += '\n        </div>'
+    html += '\n      </div>\n'
+    return html
+
+
+def _extra_sections_js() -> str:
+    """Return the JS block for toggleExtra and copyTA (injected once per page)."""
+    return """  <script>
+    window.toggleExtra = function(id) {
+      var el = document.getElementById(id);
+      var arrow = document.getElementById(id + '_arrow');
+      var open = el.style.display === 'block';
+      el.style.display = open ? 'none' : 'block';
+      if (arrow) arrow.style.transform = open ? '' : 'rotate(180deg)';
+    };
+    window.copyTA = function(id) {
+      var el = document.getElementById(id);
+      if (!el) return;
+      navigator.clipboard.writeText(el.value).catch(function() {
+        el.select(); document.execCommand('copy');
+      });
+    };
+  </script>
+"""
+
+
 def build_block1_html(week_in_block: int, week_num: int) -> str:
     """Block 1: read the static base brief, inject progress bar + highlight card + dynamic action plan."""
     with open(BASE_HTML_PATH) as f:
@@ -591,11 +813,29 @@ def build_block1_html(week_in_block: int, week_num: int) -> str:
     )
     html = html.replace(rank_class, highlighted, 1)
 
+    # Inject extra sections into each product card
+    for rank in range(1, 6):
+        product     = BLOCK1_PRODUCTS[rank - 1]
+        extras      = _extra_sections_html(product, rank, week_num)
+        next_marker = (f'class="product-card rank-{rank + 1}"' if rank < 5
+                       else '  <section id="action">')
+        next_pos    = html.find(next_marker)
+        if next_pos == -1:
+            continue
+        insert_at   = html.rfind('      </div>\n', 0, next_pos)
+        if insert_at == -1:
+            continue
+        insert_after = insert_at + len('      </div>\n')
+        html         = html[:insert_after] + extras + html[insert_after:]
+
     action_start = html.find('  <section id="action">')
     action_end   = html.find('  </section>', action_start) + len('  </section>')
     product_name = BLOCK1_PRODUCTS[week_in_block - 1]["topic"]
     new_action   = _action_plan_section_html(product_name, week_num)
     html         = html[:action_start] + new_action + html[action_end:]
+
+    # Inject JS once before </body>
+    html = html.replace('</body>\n</html>', _extra_sections_js() + '</body>\n</html>')
 
     return html
 
@@ -663,7 +903,7 @@ def build_block_html(products: list, week_in_block: int, week_num: int, block_nu
         <div class="seo-value">{p.get("etsy_title", "")}</div>
         <div class="tag-row" style="margin-top:10px;">{tags_html}</div>
       </div>
-    </div>
+{_extra_sections_html(p, rank, week_num)}    </div>
 """
 
     return f"""<!DOCTYPE html>
@@ -782,7 +1022,7 @@ def build_block_html(products: list, week_in_block: int, week_num: int, block_nu
   </div>
 
 </div>
-</body>
+{_extra_sections_js()}</body>
 </html>"""
 
 

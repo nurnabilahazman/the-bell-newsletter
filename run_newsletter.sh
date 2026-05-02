@@ -29,9 +29,22 @@ fi
 
   echo ""
   echo "[1/7] Generating this week's product briefs..."
+  # In dry-run mode, back up the week-counter log files before running the generators
+  # so that the week counters don't permanently advance during a test run.
+  if [[ -n "$DRY_RUN" ]]; then
+    cp config/children_topics_log.json    /tmp/_bell_children_log_bak.json
+    cp config/productivity_topics_log.json /tmp/_bell_productivity_log_bak.json
+    cp config/language_topics_log.json    /tmp/_bell_language_log_bak.json
+  fi
   python3 tools/children_brief_generator.py
   python3 tools/productivity_brief_generator.py
   python3 tools/language_brief_generator.py
+  # Restore log files after generation (dry run only) so counters stay unchanged
+  if [[ -n "$DRY_RUN" ]]; then
+    cp /tmp/_bell_children_log_bak.json    config/children_topics_log.json
+    cp /tmp/_bell_productivity_log_bak.json config/productivity_topics_log.json
+    cp /tmp/_bell_language_log_bak.json    config/language_topics_log.json
+  fi
 
   echo ""
   echo "[2/7] Researching products (Tavily)..."

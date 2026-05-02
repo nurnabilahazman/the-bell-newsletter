@@ -1,6 +1,6 @@
 {
   "used_topics": [],
-  "current_week": 3,
+  "current_week": 2,
   "history": [
     {
       "week": 1,
@@ -11,15 +11,9 @@
     {
       "week": 2,
       "topic": "Daily Productivity Planner",
-      "date": "2026-05-02",
-      "block": 1
-    },
-    {
-      "week": 3,
-      "topic": "30-Day Habit Tracker",
-      "date": "2026-05-02",
+      "date": "2026-05-03",
       "block": 1
     }
   ],
-  "last_run": "2026-05-02T18:45:56.091504"
+  "last_run": "2026-05-03T00:09:34.148978"
 }
