@@ -66,15 +66,16 @@ jobs:
           fi
 
       - name: Commit state changes back to repo
-        # Commits three things that change every run:
-        # 1. children_topics_log.json  — no-repeat topic tracker
-        # 2. curriculum.json           — week counter (so Section 1 advances)
-        # 3. saas_progress.json        — SaaS week counter
-        # 4. docs/current_brief.html   — this week's brief (accessible via URL)
+        # Files committed every run:
+        # 1. children_topics_log.json  — week counter + topic history
+        # 2. children_block_state.json — current block's 5 products (regenerated every 5 weeks)
+        # 3. curriculum.json           — Section 1 week counter
+        # 4. saas_progress.json        — SaaS week counter
+        # 5. docs/current_brief.html   — this week's brief (accessible via htmlpreview URL)
         if: always()
         run: |
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git config user.name "github-actions[bot]"
-          git add config/children_topics_log.json config/curriculum.json config/saas_progress.json docs/current_brief.html
+          git add config/children_topics_log.json config/children_block_state.json config/curriculum.json config/saas_progress.json docs/current_brief.html
           git diff --staged --quiet || git commit -m "chore: advance week state [skip ci]"
           git push

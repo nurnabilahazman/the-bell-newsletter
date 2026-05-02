@@ -66,3 +66,9 @@ fi
   echo "================================================"
 
 } 2>&1 | tee "$LOG_FILE"
+
+# On dry-run, open both previews directly in the browser so you can review without clicking links
+if [[ -n "$DRY_RUN" ]] && command -v open &>/dev/null; then
+  open "$SCRIPT_DIR/docs/current_brief.html"
+  open "$SCRIPT_DIR/.tmp/formatted_email.html"
+fi

@@ -2,16 +2,23 @@
 """
 Children's Activities Weekly Brief Generator
 
-Picks the next unused topic from a list of 52, generates a one-page
-HTML brief for it, and writes topic data to .tmp/children_brief_data.json
-so that draft_newsletter.py can use the topic in the children's section.
+Every 5 weeks a new unified brief is generated (top 5 products for that block).
+The same brief is reused for all 5 weeks in the block, with only the progress
+bar updating each week to show the current position.
 
-Run this FIRST, before draft_newsletter.py:
+Block 1  (weeks  1– 5): static base brief  (no API call — brief already researched)
+Block 2  (weeks  6–10): generate new brief at week  6, reuse through week 10
+Block 3  (weeks 11–15): generate new brief at week 11, reuse through week 15
+... and so on through week 52.
+
+Run FIRST, before draft_newsletter.py:
   python tools/children_brief_generator.py
 
-No-repeat tracking: config/children_topics_log.json
-Weekly brief output: .tmp/unified_product_brief.html
-Newsletter data:     .tmp/children_brief_data.json
+State files:
+  config/children_topics_log.json   — week counter + topic history
+  config/children_block_state.json  — current block products (committed to repo)
+  docs/unified_product_brief_base.html — Block 1 static brief (committed to repo)
+  docs/current_brief.html           — this week's brief (committed to repo → URL)
 """
 
 import json
@@ -24,21 +31,95 @@ from groq import Groq
 
 load_dotenv()
 
-LOG_PATH    = Path("config/children_topics_log.json")
-BRIEF_PATH  = Path(".tmp/unified_product_brief.html")
-DOCS_PATH   = Path("docs/current_brief.html")   # committed to repo → accessible via GitHub
-DATA_PATH   = Path(".tmp/children_brief_data.json")
-MODEL       = "llama-3.3-70b-versatile"
-BRIEF_URL   = "https://htmlpreview.github.io/?https://github.com/nurnabilahazman/the-bell-newsletter/blob/main/docs/current_brief.html"
+LOG_PATH         = Path("config/children_topics_log.json")
+BLOCK_STATE_PATH = Path("config/children_block_state.json")
+BRIEF_PATH       = Path(".tmp/unified_product_brief.html")
+DOCS_PATH        = Path("docs/current_brief.html")
+BASE_HTML_PATH   = Path("docs/unified_product_brief_base.html")
+DATA_PATH        = Path(".tmp/children_brief_data.json")
+MODEL      = "llama-3.3-70b-versatile"
+# This URL always points to the latest committed brief on GitHub.
+# Every run regenerates docs/current_brief.html and commits it → the link is always current.
+BRIEF_URL  = "https://htmlpreview.github.io/?https://github.com/nurnabilahazman/the-bell-newsletter/blob/main/docs/current_brief.html"
 
-# 52 topics — one per week for a full year, then auto-resets
+# Block 1 products — fixed (matches the researched unified_product_brief_base.html)
+BLOCK1_PRODUCTS = [
+    {
+        "topic": "Alphabet Tracing Workbook — Themed Edition",
+        "rank": 1, "age": "3–5", "format": "PDF printable",
+        "build_steps": [
+            "Open Canva → search 'alphabet tracing worksheet' → pick a clean, colourful template",
+            "Pick ONE theme: 🦁 Safari, 🚀 Space, or 🌊 Ocean — every letter uses themed illustrations",
+            "Create 26 letter pages (upper + lower case) with dotted tracing lines and themed illustration",
+            "Add a 'My First Words' bonus section (5 vocab words per letter) — competitors don't have this",
+            "Export as PDF Print (8.5×11\") → upload to Etsy as a digital download",
+        ],
+        "price": "$3.99",
+        "etsy_title": "Alphabet Tracing Workbook for Preschool — Themed Edition | 52 Pages | Printable PDF",
+        "etsy_tags": ["alphabet tracing", "tracing workbook", "preschool ABC", "letter practice", "kids printable", "pre-k worksheet", "homeschool"],
+    },
+    {
+        "topic": "Ocean Explorer Busy Book",
+        "rank": 2, "age": "2–4", "format": "PDF activity pack",
+        "build_steps": [
+            "Open Canva → search 'busy book pages' → pick a bright ocean-themed template",
+            "Create 10+ activity pages: matching, colouring, tracing, counting, puzzles — all ocean-themed",
+            "Use vibrant blues, teals, and corals — make every page visually exciting for toddlers",
+            "Add lamination instructions on the cover page (many parents laminate busy book pages)",
+            "Export as PDF Print → upload to Etsy with 'busy book' prominently in the title",
+        ],
+        "price": "$4.99",
+        "etsy_title": "Ocean Explorer Busy Book for Toddlers | 20+ Activity Pages | Printable PDF",
+        "etsy_tags": ["busy book", "toddler activities", "ocean theme", "printable busy book", "preschool activity", "no-prep activity", "ocean worksheet"],
+    },
+    {
+        "topic": "Number Tracing + Counting Workbook (1–20)",
+        "rank": 3, "age": "3–5", "format": "PDF workbook",
+        "build_steps": [
+            "Open Canva → search 'number tracing worksheet' → pick a clean, colourful template",
+            "Create 20+ pages: one per number with a large traceable digit + counting objects to circle",
+            "Add a 'count and circle' activity on each page to reinforce number recognition",
+            "Include bonus pages: number bonds, number ordering, and a certificate of completion",
+            "Export as PDF Print → upload to Etsy with age range (3–5) in title and all tags",
+        ],
+        "price": "$4.99",
+        "etsy_title": "Number Tracing Workbook 1-20 for Preschoolers | 30 Pages | Printable PDF",
+        "etsy_tags": ["number tracing", "counting worksheet", "number recognition", "preschool math", "number workbook", "kindergarten prep", "math printable"],
+    },
+    {
+        "topic": "Sight Words Flashcard Set (Dolch Pre-K + K)",
+        "rank": 4, "age": "4–6", "format": "PDF flashcards",
+        "build_steps": [
+            "Open Canva → search 'flashcard template' → pick a clean, readable design",
+            "Create one card per Dolch Pre-K word (40 words) + Dolch Kindergarten (52 words)",
+            "Add a small illustration on each card to create a visual memory hook for the word",
+            "Include a progress tracker sheet parents can use to check off mastered words",
+            "Export as PDF Print with cutting guide → upload to Etsy",
+        ],
+        "price": "$3.99",
+        "etsy_title": "Sight Word Flashcards Dolch Pre-K and Kindergarten | 92 Cards | Printable PDF",
+        "etsy_tags": ["sight words", "Dolch flashcards", "kindergarten reading", "sight word cards", "reading practice", "early literacy", "phonics printable"],
+    },
+    {
+        "topic": "Editable Kids Reward Chart (5 Designs)",
+        "rank": 5, "age": "3–8", "format": "PDF + editable",
+        "build_steps": [
+            "Open Canva → create 5 chart designs: stars, animals, space, rainbow, superhero themes",
+            "Make each chart editable — add text boxes for child's name and weekly goal",
+            "Include sticker dots or checkboxes for 30 days of tracking on each design",
+            "Add a matching 'Certificate of Achievement' for each of the 5 themes",
+            "Export as PDF Print → mention '5 designs included' in the Etsy listing title",
+        ],
+        "price": "$4.99",
+        "etsy_title": "Editable Kids Reward Chart | 5 Designs | Printable Behavior Chart | Stars Animals Space",
+        "etsy_tags": ["reward chart", "behavior chart", "kids chore chart", "printable chart", "star chart", "potty training", "editable chart"],
+    },
+]
+
+# 52-topic pool for blocks 2+ (AI-generated briefs pick 5 at a time, no repeat)
 ALL_TOPICS = [
-    {"topic": "Alphabet Tracing Workbook",         "age": "3–5", "format": "PDF printable"},
-    {"topic": "Number Tracing Workbook",            "age": "3–5", "format": "PDF printable"},
-    {"topic": "Ocean Explorer Busy Book",           "age": "2–4", "format": "PDF activity pack"},
     {"topic": "Preschool Activity Binder",          "age": "3–5", "format": "PDF binder set"},
     {"topic": "Color and Shape Flashcards",         "age": "2–4", "format": "PDF flashcards"},
-    {"topic": "Sight Word Flashcards",              "age": "4–7", "format": "PDF flashcards"},
     {"topic": "Scissor Skills Practice Sheets",     "age": "3–5", "format": "PDF printable"},
     {"topic": "Farm Animals Coloring Pages",        "age": "2–5", "format": "PDF coloring"},
     {"topic": "Safari Animals Coloring Pages",      "age": "2–5", "format": "PDF coloring"},
@@ -88,6 +169,8 @@ ALL_TOPICS = [
 ]
 
 
+# ── State helpers ──────────────────────────────────────────────────────────────
+
 def load_log() -> dict:
     if not LOG_PATH.exists():
         return {"used_topics": [], "current_week": 0, "history": []}
@@ -101,383 +184,689 @@ def save_log(log: dict):
         json.dump(log, f, indent=2)
 
 
-def pick_topic(log: dict) -> dict:
+def load_block_state() -> dict:
+    if not BLOCK_STATE_PATH.exists():
+        return {}
+    with open(BLOCK_STATE_PATH) as f:
+        return json.load(f)
+
+
+def save_block_state(state: dict):
+    BLOCK_STATE_PATH.parent.mkdir(exist_ok=True)
+    with open(BLOCK_STATE_PATH, "w") as f:
+        json.dump(state, f, indent=2)
+
+
+def get_block_info(week_num: int) -> tuple:
+    """Returns (block_num, week_in_block) — both 1-based."""
+    block_num     = (week_num - 1) // 5 + 1
+    week_in_block = (week_num - 1) % 5 + 1
+    return block_num, week_in_block
+
+
+def pick_5_topics(log: dict) -> list:
     used_names = set(log.get("used_topics", []))
     available  = [t for t in ALL_TOPICS if t["topic"] not in used_names]
-    if not available:
-        print("  → All 52 topics used — resetting pool from the beginning.")
+    if len(available) < 5:
+        print("  → Topic pool exhausted — resetting for next cycle.")
         log["used_topics"] = []
         available = ALL_TOPICS[:]
-    return available[0]
+    return available[:5]
 
 
-def generate_brief(topic_data: dict, week_num: int, client: Groq) -> dict:
-    """Single Groq call returning rich structured data for both the HTML brief and the newsletter email."""
-    prompt = f"""You are writing a weekly product brief for a solo digital products creator selling printables on Etsy.
+# ── API call ───────────────────────────────────────────────────────────────────
 
-Topic: {topic_data['topic']}
-Age range: {topic_data['age']}
-Format: {topic_data['format']}
+def generate_block_products(topics: list, block_num: int, client: Groq) -> list:
+    """One Groq call → 5 product specs for a new 5-week block."""
+    topics_str = "\n".join(
+        f"{i+1}. {t['topic']} (ages {t['age']}, {t['format']})"
+        for i, t in enumerate(topics)
+    )
+    prompt = f"""You are writing product specs for a solo digital products creator selling printables on Etsy.
+Generate exactly 5 product briefs for these children's activity products (Block {block_num}):
 
-Return ONLY valid JSON. No markdown, no code fences, no extra text:
-{{
-  "opportunity_score": 8,
-  "competition_level": "Medium",
-  "demand_level": "High",
-  "market_opportunity": "One sentence on why this specific niche is a good opportunity right now.",
-  "what_to_build": "2–3 sentences describing the product specifically — what pages it has, how many pages, what the child actually does with it.",
-  "why_it_sells": [
-    "Who buys it and when (e.g. parents of 3-5 year olds preparing for kindergarten)",
-    "The search trigger (e.g. searched year-round, peaks in August back-to-school season)",
-    "The emotional reason parents buy it (e.g. want structured screen-free activity)"
-  ],
-  "top_competitors": [
-    {{"name": "Shop or product name", "insight": "What makes it sell — specific detail about their design or positioning"}},
-    {{"name": "Another shop or product", "insight": "What makes it sell"}}
-  ],
-  "market_gaps": [
-    "A specific gap in what competitors offer that you can fill",
-    "Another gap or opportunity"
-  ],
-  "differentiation": [
-    "Specific feature to add that competitors don't have (be concrete)",
-    "Another concrete differentiator",
-    "Third differentiator"
-  ],
-  "build_steps": [
-    "Open Canva → search 'kids {topic_data['topic'].lower()} worksheet template' → pick a clean, colourful template",
-    "Customise colours to a bright, child-friendly palette (e.g. sky blue, soft yellow, coral)",
-    "Add specific content detail for this product type",
-    "Check font size is minimum 18pt so children can read easily — add your shop name/logo in footer",
-    "Download as PDF Print → upload to Etsy as a digital download listing"
-  ],
-  "launch_checklist": [
-    "Create 25–30 pages minimum (buyers compare page count)",
-    "Add a free bonus page (e.g. certificate of completion) — mention in listing",
-    "Use all 13 Etsy tags — include age range in at least 3 tags",
-    "Upload 5–7 mockup images (use Canva or Placeit for lifestyle mockups)",
-    "Price at ${{"$4.99"}} for launch week, raise to ${{"$5.99"}} after first 3 reviews"
-  ],
-  "price": "$4.99",
-  "etsy_title": "Keyword-rich Etsy title here, max 140 characters, include age range and product type",
-  "etsy_tags": ["tag one", "tag two", "tag three", "tag four", "tag five", "tag six", "tag seven"]
-}}
+{topics_str}
+
+Return ONLY a valid JSON array of 5 objects. No markdown, no code fences:
+[
+  {{
+    "topic": "exact topic name",
+    "age": "age range",
+    "format": "format type",
+    "price": "$4.99",
+    "etsy_title": "Keyword-rich title, max 140 chars, include age range and product type",
+    "etsy_tags": ["tag1", "tag2", "tag3", "tag4", "tag5", "tag6", "tag7"],
+    "build_steps": [
+      "Open Canva → search relevant template → pick clean colourful design",
+      "Step 2 starting with action verb, specific to this product",
+      "Step 3",
+      "Step 4",
+      "Export as PDF Print → upload to Etsy as a digital download"
+    ],
+    "what_to_build": "2 sentences: what pages the product has and what the child does with it.",
+    "why_it_sells": "1 sentence: who buys it, when, and why."
+  }}
+]
 
 Rules:
-- opportunity_score: integer 1–10
-- competition_level: exactly "Low", "Medium", or "High"
-- demand_level: exactly "Low", "Medium", or "High"
-- price: between $3.99–$7.99
-- build_steps: exactly 5 steps, each starting with an action verb, specific to THIS product
+- Exactly 5 objects in the same order as the input list
+- price: $3.99–$7.99
+- build_steps: exactly 5 steps, action verb first, highly specific to EACH product
 - etsy_tags: exactly 7 tags, each under 20 characters, what parents actually search
-- All content must be specific to '{topic_data['topic']}' — no generic filler
+- All content specific to each individual product — no generic filler
 """
     response = client.chat.completions.create(
         model=MODEL,
         messages=[{"role": "user", "content": prompt}],
-        max_tokens=1400,
+        max_tokens=2500,
     )
     raw = response.choices[0].message.content.strip()
     if "```" in raw:
         raw = raw.split("```")[1]
         if raw.startswith("json"):
             raw = raw[4:]
-    return json.loads(raw.strip())
+    products = json.loads(raw.strip())
+    for i, p in enumerate(products):
+        p["rank"]   = i + 1
+        p["age"]    = topics[i]["age"]
+        p["format"] = topics[i]["format"]
+    return products
 
 
-def build_html_page(topic_data: dict, brief: dict, week_num: int, used_count: int) -> str:
-    remaining   = len(ALL_TOPICS) - used_count
-    bar_pct     = round(used_count / len(ALL_TOPICS) * 100)
-    score       = brief.get("opportunity_score", 8)
-    comp_level  = brief.get("competition_level", "Medium")
-    demand      = brief.get("demand_level", "High")
-    comp_color  = {"Low": "#3DD68C", "Medium": "#C9A84C", "High": "#E94560"}.get(comp_level, "#C9A84C")
-    demand_color= {"Low": "#888", "Medium": "#C9A84C", "High": "#3DD68C"}.get(demand, "#3DD68C")
-    date_str    = datetime.now().strftime("%B %d, %Y")
+# ── HTML builders ──────────────────────────────────────────────────────────────
 
-    def li_list(items):
-        return "".join(f"<li>{i}</li>" for i in items if i)
+RANK_COLORS = ["var(--gold)", "#A8A8A8", "#CD7F32", "var(--blue)", "var(--purple)"]
+RANK_EMOJIS = ["🥇", "🥈", "🥉", "4️⃣", "5️⃣"]
 
-    def ol_list(items):
-        return "".join(f"<li>{i}</li>" for i in items if i)
 
-    competitors_html = ""
-    for c in brief.get("top_competitors", []):
-        competitors_html += f"""
-        <div class="comp-card">
-          <div class="comp-name">{c.get('name','')}</div>
-          <div class="comp-insight">{c.get('insight','')}</div>
-        </div>"""
+def _progress_bar_html(products: list, week_in_block: int, week_num: int) -> str:
+    """Shared progress bar HTML used by both block-1 (injected) and block-2+ (inline)."""
+    steps_html = ""
+    block_start_week = week_num - week_in_block + 1
 
-    checklist_html = "".join(
-        f'<div class="check-item"><span class="check-box"></span><span>{item}</span></div>'
-        for item in brief.get("launch_checklist", [])
+    for i, p in enumerate(products):
+        pos = i + 1
+        abs_week = block_start_week + i
+        if pos < week_in_block:
+            dot   = "background:#3DD68C;border-color:#3DD68C;"
+            label = "color:#3DD68C;"
+            wlabel = f"✓ Wk {abs_week}"
+        elif pos == week_in_block:
+            dot   = "background:#C9A84C;border-color:#C9A84C;box-shadow:0 0 8px rgba(201,168,76,0.6);"
+            label = "color:#C9A84C;font-weight:700;"
+            wlabel = f"▶ Wk {abs_week}"
+        else:
+            dot   = "background:transparent;border-color:#252538;"
+            label = "color:#6B7280;"
+            wlabel = f"Wk {abs_week}"
+
+        short = p["topic"].split(" — ")[0].split(" (")[0].strip()
+        steps_html += f"""
+          <div style="display:flex;flex-direction:column;align-items:center;gap:5px;flex:1;min-width:58px;max-width:112px;">
+            <div style="width:22px;height:22px;border-radius:50%;border:2px solid;{dot}"></div>
+            <div style="font-size:0.72rem;text-align:center;{label}">{wlabel}</div>
+            <div style="font-size:0.67rem;color:#6B7280;text-align:center;line-height:1.3;">{short}</div>
+          </div>"""
+
+    bar_pct    = round(week_in_block / 5 * 100)
+    weeks_left = 5 - week_in_block
+    current_name = products[week_in_block - 1]["topic"]
+
+    return f"""
+  <div style="background:#12121F;border:1px solid #252538;border-radius:14px;padding:22px 26px;margin-bottom:36px;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;flex-wrap:wrap;gap:8px;">
+      <div>
+        <div style="color:#C9A84C;font-size:0.75rem;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:4px;">5-Week Block Progress</div>
+        <div style="color:#E2E2E2;font-size:1.05rem;font-weight:700;">Week {week_in_block} of 5 &nbsp;·&nbsp; This Week: {current_name}</div>
+      </div>
+      <div style="color:#6B7280;font-size:0.82rem;">{weeks_left} week{"s" if weeks_left != 1 else ""} left in this block</div>
+    </div>
+    <div style="background:#1e1e30;border-radius:8px;height:7px;overflow:hidden;margin-bottom:18px;">
+      <div style="background:linear-gradient(90deg,#C9A84C,#e8c56a);height:100%;border-radius:8px;width:{bar_pct}%;"></div>
+    </div>
+    <div style="display:flex;gap:6px;justify-content:space-around;flex-wrap:wrap;">
+      {steps_html}
+    </div>
+  </div>
+"""
+
+
+def _action_plan_section_html(product_name: str, week_num: int) -> str:
+    """Dynamic interactive launch checklist focused on the current week's product."""
+    keyword = (product_name
+               .replace("—", "").replace("–", "")
+               .replace("(", "").replace(")", "")
+               .replace("  ", " ").strip().lower())
+
+    # 15 steps across 6 phases — written for a complete beginner
+    phases = [
+        {
+            "phase": "Research Your Market",
+            "icon": "🔍",
+            "color": "#4EA8DE",
+            "steps": [
+                (f'Search Etsy for <strong>"{keyword}"</strong> — screenshot the first 8 listings. '
+                 "Note each one's price, page count, review count, and what their thumbnail shows. "
+                 "This is your competitive landscape before you build anything.",
+                 "~30 min"),
+                ("Click the top 2–3 bestsellers and read ALL their 1–3 star reviews. "
+                 "Write down every complaint — those gaps are exactly where your product can win.",
+                 "~15 min"),
+                ("Open Pinterest, search the same keyword, save 10–15 images to a mood-board folder in Canva: "
+                 "colors, layouts, fonts, and styles you want to reference while building.",
+                 "~15 min"),
+            ],
+        },
+        {
+            "phase": "Plan Before You Open Canva",
+            "icon": "📝",
+            "color": "#9B72CF",
+            "steps": [
+                ("Write your complete page list before touching Canva — e.g. "
+                 "<em>Cover · Pages 2–27: A–Z tracing (upper + lower) · Pages 28–30: bonus section · Page 31: certificate</em>. "
+                 "Target <strong>30+ pages minimum</strong> — buyers compare page count and often mention it in reviews.",
+                 "~15 min"),
+                ("Commit to your one unique angle from the brief above "
+                 "(a specific theme, a bonus section, a differentiator competitors don't have). "
+                 "Write it on a sticky note where you can see it while building — it keeps every design decision consistent.",
+                 "~5 min"),
+            ],
+        },
+        {
+            "phase": "Build in Canva",
+            "icon": "🎨",
+            "color": "#C9A84C",
+            "steps": [
+                ("Open Canva → follow the 5 build steps shown in the brief above → "
+                 "work through every page on your content list in order. "
+                 "Don't rush — a polished 35-page product will outsell a hurried 20-page one for months.",
+                 "2–4 hrs"),
+                ("Proof every page before exporting: check spelling, consistent fonts and colors, "
+                 "and minimum 18pt font for any text a child will read. "
+                 "Fix everything now — it's much harder to update files after your first sale.",
+                 "~20 min"),
+                ('<strong>Export as "PDF Print"</strong> (not "Standard PDF"). '
+                 "PDF Print preserves 300 dpi resolution for home printing. "
+                 "Blurry pages get 1-star reviews; sharp pages get 5-star ones.",
+                 "~5 min"),
+            ],
+        },
+        {
+            "phase": "Create Listing Images",
+            "icon": "📸",
+            "color": "#3DD68C",
+            "steps": [
+                ("<strong>Thumbnail first — it drives more Etsy clicks than any other factor.</strong> "
+                 "Show the product clearly on a bright background. Add text callouts: page count, age range, "
+                 '"Instant Download." Test it: open Etsy and compare your thumbnail side-by-side with competitors. Does yours stop the scroll?',
+                 "~30 min"),
+                ("Create 4–6 supporting images: 2 inside-page samples (your best, most polished pages), "
+                 "1 lifestyle mockup showing it printed on a desk — use Canva's mockup feature "
+                 "(search 'worksheet mockup') or <strong>Placeit.net</strong> (free tier). "
+                 "Add one 'What's Inside' summary image that lists every section.",
+                 "~30 min"),
+            ],
+        },
+        {
+            "phase": "Publish on Etsy",
+            "icon": "🚀",
+            "color": "#E94560",
+            "steps": [
+                ("Create your Etsy listing. <strong>Paste the Etsy title exactly as shown</strong> in the brief. "
+                 "Description: lead with what's included and page count, then how to download and print, then FAQs. "
+                 "Use all 7 tags from the brief plus 6 more variations you can think of (aim for all 13 tags).",
+                 "~25 min"),
+                ("Set your launch price, upload all images (thumbnail goes first) and your PDF. Hit Publish. "
+                 "Then: test-download your own listing using a second browser or ask a friend — "
+                 "open the PDF and confirm the quality looks right before you promote it anywhere.",
+                 "~15 min"),
+            ],
+        },
+        {
+            "phase": "Promote & Grow",
+            "icon": "📈",
+            "color": "#4EA8DE",
+            "steps": [
+                ("Post 2–3 Pinterest pins linking to your Etsy listing — "
+                 "Pinterest is the #1 external traffic source for Etsy printables. "
+                 "Use Canva's Pinterest template. Pin to boards like 'Preschool Activities,' 'Homeschool Printables,' 'Kids Worksheets.'",
+                 "~20 min"),
+                ("After your first sale, message the buyer within 24 hours: "
+                 "<em>\"Thanks so much! Hope your little one enjoys it. "
+                 "If you have a moment, a review means the world to a small shop 🙏\"</em> "
+                 "— warm, brief, never pushy. Reviews are Etsy's #1 ranking signal.",
+                 "~2 min"),
+                ("At the 2-week mark: Etsy Stats → Shop Manager → Stats → Search Terms. "
+                 "Terms with views but no sales = thumbnail or price issue. "
+                 "Terms that convert to sales = feature them prominently in your title and tags. "
+                 "After 3 reviews, raise your price by $1 as suggested in the brief.",
+                 "~15 min"),
+            ],
+        },
+    ]
+
+    total_steps = sum(len(p["steps"]) for p in phases)
+
+    # Build phase blocks — using concatenation, not f-string, to avoid brace-escaping issues
+    phases_html = ""
+    step_num = 0
+    for ph in phases:
+        color = ph["color"]
+        items_html = ""
+        for text, time_est in ph["steps"]:
+            step_num += 1
+            item_id = "ap_w" + str(week_num) + "_s" + str(step_num)
+            items_html += (
+                '\n          <div class="ap-item" data-id="' + item_id + '" '
+                'onclick="toggleAP(\'' + item_id + '\')">'
+                '\n            <div class="ap-check"></div>'
+                '\n            <div style="flex:1;">'
+                '\n              <div class="ap-text">' + text + '</div>'
+                '\n              <div class="ap-time">' + time_est + '</div>'
+                '\n            </div>'
+                '\n          </div>'
+            )
+        n = len(ph["steps"])
+        phases_html += (
+            '\n        <div style="margin-bottom:18px;border:1px solid #252538;'
+            'border-left:3px solid ' + color + ';border-radius:0 10px 10px 0;overflow:hidden;">'
+            '\n          <div class="ap-phase-hdr" style="background:#191928;padding:11px 18px;'
+            'border-bottom:1px solid #252538;">'
+            '\n            <span style="font-size:1.05rem;">' + ph["icon"] + '</span>'
+            '\n            <span style="font-weight:700;color:white;font-size:0.95rem;margin-left:8px;">'
+            + ph["phase"] + '</span>'
+            '\n            <span style="color:#6B7280;font-size:0.75rem;margin-left:auto;">'
+            + str(n) + ' step' + ('s' if n != 1 else '') + '</span>'
+            '\n          </div>'
+            '\n          <div style="padding:2px 18px 10px;">' + items_html + '\n          </div>'
+            '\n        </div>'
+        )
+
+    # The full section — JS uses {{ / }} escape because this IS an f-string
+    return f"""
+  <!-- DYNAMIC ACTION PLAN — injected by children_brief_generator.py -->
+  <style>
+    .ap-item {{ cursor:pointer; display:flex; gap:14px; align-items:flex-start;
+               padding:11px 0; border-bottom:1px solid #252538;
+               transition:opacity .2s; -webkit-user-select:none; user-select:none; }}
+    .ap-item:last-child {{ border-bottom:none; }}
+    .ap-item:hover {{ opacity:.82; }}
+    .ap-check {{ width:22px; height:22px; min-width:22px; border:2px solid #252538;
+                border-radius:50%; margin-top:3px; transition:all .25s;
+                background:transparent; flex-shrink:0; position:relative; }}
+    .ap-item.ap-done .ap-check {{ background:#C9A84C; border-color:#C9A84C; }}
+    .ap-item.ap-done .ap-check::after {{ content:"✓"; position:absolute;
+      top:50%; left:50%; transform:translate(-50%,-50%);
+      color:#0B0B14; font-size:12px; font-weight:800; }}
+    .ap-item.ap-done .ap-text {{ color:#6B7280; text-decoration:line-through; }}
+    .ap-text {{ color:#E2E2E2; font-size:0.9rem; line-height:1.6; }}
+    .ap-time {{ color:#6B7280; font-size:0.72rem; background:#1e1e30;
+               border:1px solid #252538; border-radius:10px;
+               padding:2px 9px; display:inline-block; margin-top:5px; }}
+    .ap-phase-hdr {{ display:flex; align-items:center; }}
+  </style>
+
+  <section id="action">
+    <div class="section-header">
+      <span class="section-icon">✅</span>
+      <span class="section-title">This Week&#39;s Action Plan</span>
+      <span class="section-sub">Week {week_num} &nbsp;·&nbsp; {product_name}</span>
+    </div>
+
+    <!-- Launch progress tracker -->
+    <div style="background:#12121F;border:1px solid #252538;border-radius:12px;
+                padding:18px 22px;margin-bottom:24px;display:flex;
+                align-items:center;gap:20px;flex-wrap:wrap;">
+      <div style="flex:1;min-width:180px;">
+        <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
+          <span style="color:#E2E2E2;font-size:0.88rem;font-weight:600;">Launch Progress</span>
+          <span style="color:#C9A84C;font-size:0.88rem;" id="ap-text">0 of {total_steps} steps complete</span>
+        </div>
+        <div style="background:#1e1e30;border-radius:6px;height:8px;overflow:hidden;">
+          <div id="ap-fill" style="background:linear-gradient(90deg,#C9A84C,#e8c56a);
+               height:100%;border-radius:6px;width:0%;transition:width .3s;"></div>
+        </div>
+      </div>
+      <div style="text-align:center;min-width:52px;">
+        <div id="ap-pct" style="font-size:1.55rem;font-weight:800;color:#C9A84C;line-height:1;">0%</div>
+        <div style="font-size:0.68rem;color:#6B7280;margin-top:2px;">complete</div>
+      </div>
+    </div>
+
+    {phases_html}
+  </section>
+
+  <script>
+    (function() {{
+      var KEY = 'bell_ap_w{week_num}';
+      function save(id, val) {{
+        var d = JSON.parse(localStorage.getItem(KEY) || '{{}}');
+        d[id] = val; localStorage.setItem(KEY, JSON.stringify(d));
+      }}
+      window.toggleAP = function(id) {{
+        var el = document.querySelector('[data-id="' + id + '"]');
+        el.classList.toggle('ap-done');
+        save(id, el.classList.contains('ap-done'));
+        refresh();
+      }};
+      function refresh() {{
+        var total = document.querySelectorAll('.ap-item').length;
+        var done  = document.querySelectorAll('.ap-item.ap-done').length;
+        document.getElementById('ap-text').textContent = done + ' of ' + total + ' steps complete';
+        var pct = total ? Math.round(done / total * 100) : 0;
+        document.getElementById('ap-fill').style.width = pct + '%';
+        document.getElementById('ap-pct').textContent  = pct + '%';
+      }}
+      var saved = JSON.parse(localStorage.getItem(KEY) || '{{}}');
+      document.querySelectorAll('.ap-item').forEach(function(el) {{
+        if (saved[el.dataset.id]) el.classList.add('ap-done');
+      }});
+      refresh();
+    }})();
+  </script>
+"""
+
+
+def build_block1_html(week_in_block: int, week_num: int) -> str:
+    """Block 1: read the static base brief, inject progress bar + highlight card + dynamic action plan."""
+    with open(BASE_HTML_PATH) as f:
+        html = f.read()
+
+    # 1. Inject progress bar between hero closing tag and Section 1 comment
+    progress = _progress_bar_html(BLOCK1_PRODUCTS, week_in_block, week_num)
+    target  = "  </div>\n\n  <!-- ── SECTION 1: COMPETITOR MAP ── -->"
+    replace = "  </div>\n" + progress + "  <!-- ── SECTION 1: COMPETITOR MAP ── -->"
+    html    = html.replace(target, replace, 1)
+
+    # 2. Highlight current week's product card
+    rank_class  = f'class="product-card rank-{week_in_block}"'
+    highlighted = (
+        f'class="product-card rank-{week_in_block}" '
+        'style="box-shadow:0 0 0 2px #C9A84C,0 0 28px rgba(201,168,76,0.18);border-color:#C9A84C;"'
     )
+    html = html.replace(rank_class, highlighted, 1)
 
-    tags_html = "".join(
-        f'<span class="etsy-tag">{t}</span>' for t in brief.get("etsy_tags", [])
-    )
+    # 3. Replace static action plan section with dynamic interactive one
+    action_start = html.find('  <section id="action">')
+    action_end   = html.find('  </section>', action_start) + len('  </section>')
+    product_name = BLOCK1_PRODUCTS[week_in_block - 1]["topic"]
+    new_action   = _action_plan_section_html(product_name, week_num)
+    html         = html[:action_start] + new_action + html[action_end:]
+
+    return html
+
+
+def build_generated_block_html(products: list, week_in_block: int, week_num: int, block_num: int) -> str:
+    """Blocks 2+: build a full unified brief HTML from AI-generated product specs."""
+    date_str       = datetime.now().strftime("%B %d, %Y")
+    progress_block = _progress_bar_html(products, week_in_block, week_num)
+    action_plan    = _action_plan_section_html(products[week_in_block - 1]["topic"], week_num)
+
+    cards_html = ""
+    for i, p in enumerate(products):
+        rank       = i + 1
+        is_current = (rank == week_in_block)
+        highlight  = (
+            ' style="box-shadow:0 0 0 2px #C9A84C,0 0 28px rgba(201,168,76,0.18);border-color:#C9A84C;"'
+            if is_current else ""
+        )
+        current_badge = (
+            '<span style="display:inline-block;background:rgba(201,168,76,0.15);'
+            'color:#C9A84C;border:1px solid #C9A84C;border-radius:20px;'
+            'padding:2px 10px;font-size:0.72rem;font-weight:700;margin-left:10px;'
+            'vertical-align:middle;">▶ THIS WEEK</span>'
+            if is_current else ""
+        )
+        steps_html = "".join(
+            f'<div class="step-card"><div class="step-num">{j+1}</div><div class="step-text">{s}</div></div>'
+            for j, s in enumerate(p.get("build_steps", []))
+        )
+        tags_html = "".join(
+            f'<span class="etsy-tag">{t}</span>' for t in p.get("etsy_tags", [])
+        )
+        abs_week   = week_num - week_in_block + rank
+        rank_color = RANK_COLORS[i]
+
+        cards_html += f"""
+    <!-- PRODUCT {rank} -->
+    <div class="product-card rank-{rank}"{highlight}>
+      <div class="product-rank">{RANK_EMOJIS[i]}</div>
+      <div class="product-name">{p["topic"]}{current_badge}</div>
+      <div class="product-meta">
+        <span class="meta-chip">Price: <span>{p.get("price", "$4.99")}</span></span>
+        <span class="meta-chip">Ages: <span>{p.get("age", "")}</span></span>
+        <span class="meta-chip">Format: <span>{p.get("format", "")}</span></span>
+        <span class="meta-chip" style="border-color:{rank_color};color:{rank_color};">Week {abs_week}</span>
+      </div>
+      <div class="card" style="margin-bottom:14px;">
+        <div class="card-title">What To Build</div>
+        <p>{p.get("what_to_build", "")}</p>
+      </div>
+      <div class="card" style="margin-bottom:14px;">
+        <div class="card-title">Why It Sells</div>
+        <p>{p.get("why_it_sells", "")}</p>
+      </div>
+      <div style="margin-bottom:14px;">
+        <div class="card-title" style="color:#C9A84C;font-size:0.85rem;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px;">How To Build in Canva</div>
+        {steps_html}
+      </div>
+      <div class="seo-block">
+        <div class="seo-label">Etsy Title</div>
+        <div class="seo-value">{p.get("etsy_title", "")}</div>
+        <div class="tag-row" style="margin-top:10px;">{tags_html}</div>
+      </div>
+    </div>
+"""
 
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Children's Activities Brief — Week {week_num}: {topic_data['topic']}</title>
+<title>Children's Activities Brief — Block {block_num} (Weeks {week_num - week_in_block + 1}–{week_num - week_in_block + 5})</title>
 <style>
   :root {{
     --bg:#0B0B14; --card:#12121F; --card2:#191928; --border:#252538;
     --gold:#C9A84C; --gold-dim:rgba(201,168,76,0.12);
     --green:#3DD68C; --green-dim:rgba(61,214,140,0.1);
-    --red:#E94560; --blue:#4EA8DE;
+    --accent:#E94560; --blue:#4EA8DE; --purple:#9B72CF;
     --text:#E2E2E2; --muted:#6B7280;
+    --tag-bg:rgba(201,168,76,0.14);
   }}
   * {{ box-sizing:border-box; margin:0; padding:0; }}
   html {{ scroll-behavior:smooth; }}
   body {{ background:var(--bg); color:var(--text); font-family:'Segoe UI',system-ui,-apple-system,sans-serif; font-size:15px; line-height:1.7; padding:32px 20px 80px; }}
-  .container {{ max-width:960px; margin:0 auto; }}
-
-  /* ── NAV ── */
-  .toc {{ background:var(--card); border:1px solid var(--border); border-radius:12px; padding:16px 24px; margin-bottom:32px; display:flex; flex-wrap:wrap; gap:10px 24px; align-items:center; }}
-  .toc-label {{ color:var(--muted); font-size:.78rem; text-transform:uppercase; letter-spacing:1px; margin-right:8px; }}
-  .toc a {{ color:var(--gold); text-decoration:none; font-size:.88rem; }}
+  .container {{ max-width:1060px; margin:0 auto; }}
+  .toc {{ background:var(--card); border:1px solid var(--border); border-radius:12px; padding:20px 24px; margin-bottom:36px; display:flex; flex-wrap:wrap; gap:10px 24px; align-items:center; }}
+  .toc-label {{ color:var(--muted); font-size:0.78rem; text-transform:uppercase; letter-spacing:1px; margin-right:8px; }}
+  .toc a {{ color:var(--gold); text-decoration:none; font-size:0.88rem; }}
   .toc a:hover {{ text-decoration:underline; }}
-
-  /* ── HERO ── */
-  .hero {{ background:linear-gradient(135deg,#12121F 0%,#1A1230 100%); border:1px solid var(--border); border-left:5px solid var(--gold); border-radius:16px; padding:36px 32px; margin-bottom:36px; position:relative; overflow:hidden; }}
-  .hero::before {{ content:''; position:absolute; top:-60px; right:-60px; width:220px; height:220px; background:radial-gradient(circle,rgba(201,168,76,.08) 0%,transparent 70%); border-radius:50%; }}
-  .hero-week {{ color:var(--gold); font-size:.78rem; text-transform:uppercase; letter-spacing:2px; margin-bottom:10px; }}
-  .hero h1 {{ font-size:1.9rem; color:white; font-weight:800; line-height:1.25; margin-bottom:6px; }}
-  .hero-sub {{ color:var(--muted); font-size:.95rem; margin-bottom:24px; }}
-  .hero-stats {{ display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr)); gap:16px; border-top:1px solid var(--border); padding-top:20px; }}
-  .stat-label {{ color:var(--muted); font-size:.75rem; text-transform:uppercase; letter-spacing:.5px; }}
-  .stat-value {{ font-size:1.35rem; font-weight:700; margin-top:2px; }}
-
-  /* ── PROGRESS BAR ── */
-  .progress-wrap {{ background:var(--card); border:1px solid var(--border); border-radius:12px; padding:16px 20px; margin-bottom:32px; }}
-  .progress-top {{ display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; font-size:.88rem; }}
-  .progress-top strong {{ color:var(--gold); }}
-  .progress-top .muted {{ color:var(--muted); font-size:.82rem; }}
-  .bar-track {{ background:#1e1e30; border-radius:8px; height:8px; overflow:hidden; }}
-  .bar-fill {{ background:linear-gradient(90deg,var(--gold),#e8c56a); height:100%; border-radius:8px; width:{bar_pct}%; transition:width .4s; }}
-
-  /* ── SECTIONS ── */
-  section {{ margin-bottom:40px; }}
-  .section-header {{ display:flex; align-items:center; gap:12px; margin-bottom:18px; padding-bottom:10px; border-bottom:2px solid var(--border); }}
-  .section-icon {{ font-size:1.4rem; }}
-  .section-title {{ font-size:1.2rem; font-weight:700; color:white; }}
-  .section-sub {{ color:var(--muted); font-size:.85rem; margin-left:auto; }}
-
-  /* ── CARDS ── */
-  .card {{ background:var(--card); border:1px solid var(--border); border-radius:12px; padding:20px 22px; margin-bottom:12px; }}
-  .card-title {{ color:var(--gold); font-weight:600; font-size:.85rem; margin-bottom:10px; text-transform:uppercase; letter-spacing:.5px; }}
-  .card p {{ color:var(--text); font-size:.95rem; }}
-  ul {{ padding-left:20px; margin:8px 0; }}
-  ul li {{ margin-bottom:7px; font-size:.93rem; }}
-  ol {{ padding-left:20px; margin:8px 0; }}
-  ol li {{ margin-bottom:8px; font-size:.93rem; }}
-
-  /* ── COMPETITOR CARDS ── */
-  .comp-card {{ background:var(--card2); border:1px solid var(--border); border-radius:10px; padding:14px 18px; margin-bottom:10px; }}
-  .comp-name {{ font-weight:700; color:white; font-size:.95rem; margin-bottom:4px; }}
-  .comp-insight {{ color:var(--muted); font-size:.88rem; }}
-
-  /* ── MARKET GAPS ── */
-  .gap-item {{ background:var(--green-dim); border:1px solid rgba(61,214,140,.2); border-radius:8px; padding:10px 16px; margin-bottom:8px; font-size:.9rem; color:var(--text); }}
-  .gap-item::before {{ content:'→ '; color:var(--green); font-weight:700; }}
-
-  /* ── BUILD STEPS ── */
-  .step-card {{ background:var(--card); border:1px solid var(--border); border-radius:10px; padding:14px 18px; margin-bottom:10px; display:flex; gap:14px; align-items:flex-start; }}
-  .step-num {{ background:var(--gold); color:#0B0B14; border-radius:50%; width:26px; height:26px; min-width:26px; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:.82rem; margin-top:1px; }}
-  .step-text {{ font-size:.93rem; color:var(--text); }}
-
-  /* ── CHECKLIST ── */
-  .check-item {{ display:flex; align-items:flex-start; gap:12px; padding:9px 0; border-bottom:1px solid var(--border); font-size:.9rem; }}
-  .check-item:last-child {{ border-bottom:none; }}
-  .check-box {{ width:18px; height:18px; min-width:18px; border:2px solid var(--border); border-radius:4px; margin-top:2px; }}
-
-  /* ── PRICING ── */
-  .price-big {{ font-size:2.2rem; font-weight:800; color:var(--gold); }}
-  .listing-box {{ background:var(--card2); border:1px solid var(--border); border-radius:10px; padding:16px 18px; margin-top:14px; }}
-  .listing-label {{ color:var(--muted); font-size:.78rem; text-transform:uppercase; letter-spacing:.5px; margin-bottom:5px; }}
-  .listing-value {{ color:var(--text); font-size:.92rem; }}
-  .etsy-tag {{ display:inline-block; background:var(--gold-dim); color:var(--gold); border:1px solid rgba(201,168,76,.3); padding:3px 10px; border-radius:20px; font-size:.8rem; margin:3px; }}
-
-  /* ── FOOTER ── */
-  .footer {{ text-align:center; color:var(--muted); font-size:.82rem; margin-top:60px; border-top:1px solid var(--border); padding-top:20px; }}
+  .hero {{ background:linear-gradient(135deg,#12121F 0%,#1A1230 100%); border:1px solid var(--border); border-left:5px solid var(--gold); border-radius:16px; padding:40px 36px; margin-bottom:40px; position:relative; overflow:hidden; }}
+  .hero::before {{ content:''; position:absolute; top:-60px; right:-60px; width:220px; height:220px; background:radial-gradient(circle,rgba(201,168,76,0.08) 0%,transparent 70%); border-radius:50%; }}
+  .hero-badge {{ color:var(--gold); font-size:0.78rem; text-transform:uppercase; letter-spacing:2px; margin-bottom:12px; }}
+  .hero h1 {{ font-size:2.1rem; color:white; font-weight:800; line-height:1.25; margin-bottom:10px; }}
+  .hero .subtitle {{ color:var(--muted); font-size:1rem; margin-bottom:28px; }}
+  .hero-stats {{ display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:16px; border-top:1px solid var(--border); padding-top:24px; }}
+  .stat-label {{ color:var(--muted); font-size:0.78rem; text-transform:uppercase; letter-spacing:0.5px; }}
+  .stat-value {{ color:white; font-size:1.4rem; font-weight:700; margin-top:2px; }}
+  .stat-value.gold {{ color:var(--gold); }}
+  .stat-value.green {{ color:var(--green); }}
+  section {{ margin-bottom:48px; }}
+  .section-header {{ display:flex; align-items:center; gap:12px; margin-bottom:20px; padding-bottom:12px; border-bottom:2px solid var(--border); }}
+  .section-icon {{ font-size:1.5rem; }}
+  .section-title {{ font-size:1.35rem; font-weight:700; color:white; }}
+  .section-sub {{ color:var(--muted); font-size:0.88rem; margin-left:auto; }}
+  .card {{ background:var(--card); border:1px solid var(--border); border-radius:12px; padding:22px 24px; margin-bottom:14px; }}
+  .card-title {{ color:var(--gold); font-weight:600; font-size:0.9rem; margin-bottom:12px; text-transform:uppercase; letter-spacing:0.5px; }}
+  .card p {{ color:var(--text); font-size:0.95rem; }}
+  .product-card {{ background:var(--card); border:1px solid var(--border); border-radius:14px; padding:28px; margin-bottom:20px; position:relative; overflow:hidden; }}
+  .product-card::before {{ content:''; position:absolute; top:0; left:0; width:4px; height:100%; }}
+  .product-card.rank-1::before {{ background:var(--gold); }}
+  .product-card.rank-2::before {{ background:#A8A8A8; }}
+  .product-card.rank-3::before {{ background:#CD7F32; }}
+  .product-card.rank-4::before {{ background:var(--blue); }}
+  .product-card.rank-5::before {{ background:var(--purple); }}
+  .product-rank {{ font-size:2rem; line-height:1; margin-bottom:8px; }}
+  .product-name {{ font-size:1.3rem; font-weight:800; color:white; margin-bottom:6px; }}
+  .product-meta {{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px; }}
+  .meta-chip {{ background:var(--card2); border:1px solid var(--border); border-radius:20px; padding:4px 12px; font-size:0.8rem; color:var(--text); }}
+  .meta-chip span {{ color:var(--gold); font-weight:600; }}
+  .step-card {{ background:var(--card2); border:1px solid var(--border); border-radius:10px; padding:12px 16px; margin-bottom:8px; display:flex; gap:14px; align-items:flex-start; }}
+  .step-num {{ background:var(--gold); color:#0B0B14; border-radius:50%; width:24px; height:24px; min-width:24px; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:0.8rem; margin-top:2px; }}
+  .step-text {{ font-size:0.9rem; color:var(--text); }}
+  .seo-block {{ background:var(--card2); border:1px solid var(--border); border-radius:10px; padding:16px; margin-top:14px; }}
+  .seo-label {{ color:var(--muted); font-size:0.75rem; text-transform:uppercase; letter-spacing:1px; margin-bottom:6px; }}
+  .seo-value {{ color:white; font-weight:600; font-size:0.95rem; }}
+  .etsy-tag {{ display:inline-block; background:var(--tag-bg); border:1px solid var(--gold); color:var(--gold); padding:3px 10px; border-radius:20px; font-size:0.76rem; margin:2px; }}
+  .footer {{ text-align:center; color:var(--muted); font-size:0.78rem; margin-top:60px; padding-top:20px; border-top:1px solid var(--border); }}
 </style>
 </head>
 <body>
 <div class="container">
 
-<!-- NAV -->
-<nav class="toc">
-  <span class="toc-label">Jump to</span>
-  <a href="#opportunity">Opportunity</a>
-  <a href="#competitors">Competitors</a>
-  <a href="#gaps">Market Gaps</a>
-  <a href="#build">How To Build</a>
-  <a href="#checklist">Checklist</a>
-  <a href="#listing">Listing</a>
-</nav>
+  <nav class="toc">
+    <span class="toc-label">Jump to</span>
+    <a href="#products">Top 5 Products</a>
+    <a href="#action">Action Plan</a>
+  </nav>
 
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-week">The Bell Newsletter &nbsp;·&nbsp; Week {week_num} &nbsp;·&nbsp; {date_str}</div>
-  <h1>{topic_data['topic']}</h1>
-  <div class="hero-sub">Ages {topic_data['age']} &nbsp;·&nbsp; {topic_data['format']} &nbsp;·&nbsp; Children's Activities Niche</div>
-  <div class="hero-stats">
-    <div>
-      <div class="stat-label">Opportunity Score</div>
-      <div class="stat-value" style="color:var(--gold)">{score}/10</div>
-    </div>
-    <div>
-      <div class="stat-label">Competition</div>
-      <div class="stat-value" style="color:{comp_color}">{comp_level}</div>
-    </div>
-    <div>
-      <div class="stat-label">Demand</div>
-      <div class="stat-value" style="color:{demand_color}">{demand}</div>
-    </div>
-    <div>
-      <div class="stat-label">Launch Price</div>
-      <div class="stat-value" style="color:var(--green)">{brief.get('price','')}</div>
+  <div class="hero">
+    <div class="hero-badge">📋 Children's Activities Brief — Block {block_num}</div>
+    <h1>Your Next 5 Products to Build</h1>
+    <div class="subtitle">Weeks {week_num - week_in_block + 1}–{week_num - week_in_block + 5} &nbsp;·&nbsp; 5 ready-to-build products with full specs</div>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-label">Products in Block</div>
+        <div class="stat-value gold">5</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Current Week</div>
+        <div class="stat-value gold">Week {week_num}</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Sweet Spot Price</div>
+        <div class="stat-value green">$3.99 – $5.99</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Generated</div>
+        <div class="stat-value" style="font-size:0.95rem;color:var(--muted)">{date_str}</div>
+      </div>
     </div>
   </div>
-</div>
 
-<!-- PROGRESS BAR -->
-<div class="progress-wrap">
-  <div class="progress-top">
-    <span>Topic <strong>{used_count}</strong> of <strong>{len(ALL_TOPICS)}</strong> &nbsp;·&nbsp; Year 1 Progress</span>
-    <span class="muted"><strong style="color:var(--gold)">{remaining}</strong> topics remaining before reset</span>
-  </div>
-  <div class="bar-track"><div class="bar-fill"></div></div>
-</div>
+  {progress_block}
 
-<!-- OPPORTUNITY -->
-<section id="opportunity">
-  <div class="section-header">
-    <span class="section-icon">💡</span>
-    <span class="section-title">Market Opportunity</span>
-  </div>
-  <div class="card">
-    <div class="card-title">Why This Topic Now</div>
-    <p>{brief.get('market_opportunity','')}</p>
-  </div>
-  <div class="card">
-    <div class="card-title">What To Build</div>
-    <p>{brief.get('what_to_build','')}</p>
-  </div>
-  <div class="card">
-    <div class="card-title">Why It Sells</div>
-    <ul>{li_list(brief.get('why_it_sells',[]))}</ul>
-  </div>
-</section>
+  <section id="products">
+    <div class="section-header">
+      <span class="section-icon">🏗️</span>
+      <span class="section-title">5 Products — One Per Week</span>
+      <span class="section-sub">Complete specs · ready to open Canva</span>
+    </div>
 
-<!-- COMPETITORS -->
-<section id="competitors">
-  <div class="section-header">
-    <span class="section-icon">🔍</span>
-    <span class="section-title">Competitor Analysis</span>
-    <span class="section-sub">What's already selling on Etsy</span>
-  </div>
-  {competitors_html}
-  <div class="card" style="margin-top:10px">
-    <div class="card-title">Your Differentiators</div>
-    <ul>{li_list(brief.get('differentiation',[]))}</ul>
-  </div>
-</section>
+    {cards_html}
+  </section>
 
-<!-- MARKET GAPS -->
-<section id="gaps">
-  <div class="section-header">
-    <span class="section-icon">🎯</span>
-    <span class="section-title">Market Gaps</span>
-    <span class="section-sub">What competitors are missing</span>
-  </div>
-  {"".join(f'<div class="gap-item">{g}</div>' for g in brief.get('market_gaps',[]))}
-</section>
+  {action_plan}
 
-<!-- BUILD GUIDE -->
-<section id="build">
-  <div class="section-header">
-    <span class="section-icon">🛠️</span>
-    <span class="section-title">How To Build It in Canva</span>
-    <span class="section-sub">Step by step</span>
+  <div class="footer">
+    The Bell Newsletter &nbsp;·&nbsp; Children's Activities Brief &nbsp;·&nbsp; Block {block_num} &nbsp;·&nbsp; {date_str}<br>
+    New brief generated every 5 weeks · New topic every Monday
   </div>
-  {"".join(f'<div class="step-card"><div class="step-num">{i+1}</div><div class="step-text">{s}</div></div>' for i,s in enumerate(brief.get('build_steps',[])))}
-</section>
-
-<!-- LAUNCH CHECKLIST -->
-<section id="checklist">
-  <div class="section-header">
-    <span class="section-icon">✅</span>
-    <span class="section-title">Launch Checklist</span>
-  </div>
-  <div class="card">
-    {checklist_html}
-  </div>
-</section>
-
-<!-- LISTING -->
-<section id="listing">
-  <div class="section-header">
-    <span class="section-icon">🏷️</span>
-    <span class="section-title">Pricing and Listing</span>
-  </div>
-  <div class="card">
-    <div class="card-title">Launch Price</div>
-    <div class="price-big">{brief.get('price','')}</div>
-    <p style="color:var(--muted);font-size:.88rem;margin-top:6px">Raise by $1 after your first 3 reviews.</p>
-  </div>
-  <div class="listing-box">
-    <div class="listing-label">Etsy Title</div>
-    <div class="listing-value">{brief.get('etsy_title','')}</div>
-  </div>
-  <div class="listing-box" style="margin-top:10px">
-    <div class="listing-label">Etsy Tags</div>
-    <div style="margin-top:6px">{tags_html}</div>
-  </div>
-</section>
-
-<div class="footer">
-  The Bell Newsletter &nbsp;·&nbsp; Children's Activities Brief &nbsp;·&nbsp; Week {week_num} &nbsp;·&nbsp; {date_str}<br>
-  Generated weekly · New topic every Monday
-</div>
 
 </div>
 </body>
 </html>"""
 
 
+# ── Main entry point ───────────────────────────────────────────────────────────
+
 def run():
-    log        = load_log()
-    topic_data = pick_topic(log)
-    week_num   = log["current_week"] + 1
-    used_count = len(log["used_topics"]) + 1
+    log                    = load_log()
+    week_num               = log["current_week"] + 1
+    block_num, week_in_block = get_block_info(week_num)
 
-    # Update log before API call so a crash doesn't re-use the same topic
-    log["used_topics"].append(topic_data["topic"])
-    log["current_week"] = week_num
-    log["last_run"]     = datetime.now().isoformat()
-    log.setdefault("history", []).append({
-        "week":  week_num,
-        "topic": topic_data["topic"],
-        "date":  datetime.now().strftime("%Y-%m-%d"),
-    })
-    save_log(log)
+    print(f"Children's Activities — Week {week_num} (Block {block_num}, position {week_in_block}/5)")
 
-    remaining = len(ALL_TOPICS) - used_count
-    print(f"Children's Activities — Week {week_num}: {topic_data['topic']}")
-    print(f"  ({remaining} topics remaining before list resets)")
+    # ── Block 1 (weeks 1–5): static base brief, no API call ──────────────────
+    if block_num == 1:
+        product = BLOCK1_PRODUCTS[week_in_block - 1]
+        print(f"  Phase 1: {product['topic']}")
 
-    client = Groq(api_key=os.getenv("GROQ_API_KEY"))
-    brief  = generate_brief(topic_data, week_num, client)
+        log["current_week"] = week_num
+        log["last_run"]     = datetime.now().isoformat()
+        log.setdefault("history", []).append({
+            "week": week_num, "topic": product["topic"],
+            "date": datetime.now().strftime("%Y-%m-%d"), "block": 1,
+        })
+        save_log(log)
 
-    page = build_html_page(topic_data, brief, week_num, used_count)
+        page = build_block1_html(week_in_block, week_num)
+        data = {
+            "topic":       product["topic"],
+            "age_range":   product["age"],
+            "format":      product["format"],
+            "week_num":    week_num,
+            "build_steps": product["build_steps"],
+            "price":       product["price"],
+            "etsy_title":  product["etsy_title"],
+            "etsy_tags":   product["etsy_tags"],
+            "brief_url":   BRIEF_URL,
+            "block":       1,
+        }
 
-    # Save to .tmp/ (local use) AND docs/ (committed to repo → accessible via URL)
+    # ── Blocks 2+ (weeks 6, 11, 16 …): generate or reuse block brief ─────────
+    else:
+        block_state = load_block_state()
+
+        if block_state.get("block_num") == block_num:
+            # Same block — reuse existing products, just update progress bar
+            products = block_state["products"]
+            print(f"  Reusing block {block_num} brief ({week_in_block}/5)")
+        else:
+            # New block — pick 5 fresh topics and generate via Groq
+            topics = pick_5_topics(log)
+            print(f"  Generating new brief for block {block_num}: {[t['topic'] for t in topics]}")
+
+            client   = Groq(api_key=os.getenv("GROQ_API_KEY"))
+            products = generate_block_products(topics, block_num, client)
+
+            for t in topics:
+                log["used_topics"].append(t["topic"])
+
+            save_block_state({
+                "block_num":      block_num,
+                "products":       products,
+                "generated_week": week_num,
+                "generated_date": datetime.now().strftime("%Y-%m-%d"),
+            })
+
+        product = products[week_in_block - 1]
+        print(f"  This week: {product['topic']}")
+
+        log["current_week"] = week_num
+        log["last_run"]     = datetime.now().isoformat()
+        log.setdefault("history", []).append({
+            "week": week_num, "topic": product["topic"],
+            "date": datetime.now().strftime("%Y-%m-%d"), "block": block_num,
+        })
+        save_log(log)
+
+        page = build_generated_block_html(products, week_in_block, week_num, block_num)
+        data = {
+            "topic":          product["topic"],
+            "age_range":      product.get("age", ""),
+            "format":         product.get("format", ""),
+            "week_num":       week_num,
+            "what_to_build":  product.get("what_to_build", ""),
+            "build_steps":    product.get("build_steps", []),
+            "price":          product.get("price", ""),
+            "etsy_title":     product.get("etsy_title", ""),
+            "etsy_tags":      product.get("etsy_tags", []),
+            "brief_url":      BRIEF_URL,
+            "block":          block_num,
+        }
+
+    # Save HTML to .tmp/ (local) and docs/ (committed → accessible via URL)
     BRIEF_PATH.parent.mkdir(exist_ok=True)
     DOCS_PATH.parent.mkdir(exist_ok=True)
     with open(BRIEF_PATH, "w") as f:
@@ -485,19 +874,6 @@ def run():
     with open(DOCS_PATH, "w") as f:
         f.write(page)
 
-    # Save structured data for draft_newsletter.py to use directly in the email
-    data = {
-        "topic":          topic_data["topic"],
-        "age_range":      topic_data["age"],
-        "format":         topic_data["format"],
-        "week_num":       week_num,
-        "what_to_build":  brief.get("what_to_build", ""),
-        "build_steps":    brief.get("build_steps", []),
-        "price":          brief.get("price", ""),
-        "etsy_title":     brief.get("etsy_title", ""),
-        "etsy_tags":      brief.get("etsy_tags", []),
-        "brief_url":      BRIEF_URL,
-    }
     DATA_PATH.parent.mkdir(exist_ok=True)
     with open(DATA_PATH, "w") as f:
         json.dump(data, f, indent=2)

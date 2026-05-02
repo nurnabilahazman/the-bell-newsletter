@@ -322,11 +322,6 @@ def assemble_draft(s1: dict, themes: list, s3: dict, tips: dict, today: str, chi
             lines.append(">>>END")
             lines.append("")
 
-    lines.append(">>>DOC")
-    lines.append("https://github.com/nurnabilahazman/the-bell-newsletter/blob/main/docs/section2_products_guide.md")
-    lines.append("How to create printables in Canva, set up your store, price your products, and get first sales.")
-    lines.append(">>>END")
-    lines.append("")
     lines.append("---")
     lines.append("")
 

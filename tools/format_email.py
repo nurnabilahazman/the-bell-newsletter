@@ -109,10 +109,21 @@ SECTION_LABELS = {
 
 
 def inline_md(text: str) -> str:
-    text = re.sub(r'\[([^\]]+)\]\(([^)]+)\)', r'<a href="\2">\1</a>', text)
+    # Save links first so underscores inside URLs aren't treated as italic markers
+    saved, slots = [], []
+    def _save(m):
+        idx = len(saved)
+        saved.append(f'<a href="{m.group(2)}">{m.group(1)}</a>')
+        slots.append(f"\x00LINK{idx}\x00")
+        return slots[-1]
+    text = re.sub(r'\[([^\]]+)\]\(([^)]+)\)', _save, text)
+    # Apply bold/italic on text that no longer contains link URLs
     text = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', text)
-    text = re.sub(r'\*(.+?)\*', r'<em>\1</em>', text)
-    text = re.sub(r'_(.+?)_',   r'<em>\1</em>', text)
+    text = re.sub(r'\*(.+?)\*',     r'<em>\1</em>', text)
+    text = re.sub(r'_(.+?)_',       r'<em>\1</em>', text)
+    # Restore links
+    for slot, link in zip(slots, saved):
+        text = text.replace(slot, link)
     return text
 
 
