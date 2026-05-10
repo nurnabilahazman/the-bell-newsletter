@@ -974,6 +974,19 @@ def build_block_html(products: list, week_in_block: int, week_num: int, block_nu
   .seo-value {{ color:white; font-weight:600; font-size:0.95rem; }}
   .etsy-tag {{ display:inline-block; background:var(--tag-bg); border:1px solid var(--gold); color:var(--gold); padding:3px 10px; border-radius:20px; font-size:0.76rem; margin:2px; }}
   .footer {{ text-align:center; color:var(--muted); font-size:0.78rem; margin-top:60px; padding-top:20px; border-top:1px solid var(--border); }}
+  @media (max-width:768px) {{
+    body {{ font-size:14px; padding:16px 12px 60px; }}
+    .container {{ max-width:100%; }}
+    .hero {{ padding:22px 16px; margin-bottom:20px; }}
+    .hero h1 {{ font-size:1.45rem; }}
+    .hero .subtitle {{ font-size:0.86rem; }}
+    .hero-stats {{ grid-template-columns:repeat(2,1fr); gap:8px; padding-top:16px; }}
+    .product-card {{ padding:16px; }}
+    .card {{ padding:14px; }}
+    .toc {{ gap:6px 12px; padding:12px 14px; }}
+    table {{ display:block; overflow-x:auto; width:100%; }}
+    .step-card {{ flex-direction:column; gap:8px; }}
+  }}
 </style>
 </head>
 <body>
