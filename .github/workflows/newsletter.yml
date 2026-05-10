@@ -88,5 +88,6 @@ jobs:
                   config/curriculum.json config/saas_progress.json \
                   docs/current_brief.html docs/current_productivity_brief.html \
                   docs/current_language_brief.html
-          git diff --staged --quiet || git commit -m "chore: advance week state [skip ci]"
+          git add -f .tmp/draft.md
+          git diff --staged --quiet || git commit -m "chore: advance week state + publish draft [skip ci]"
           git push

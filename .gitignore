@@ -2,6 +2,7 @@
 credentials.json
 token.json
 .tmp/
+!.tmp/draft.md
 __pycache__/
 *.pyc
 .DS_Store
