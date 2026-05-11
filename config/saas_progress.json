@@ -2,7 +2,7 @@
   "app_name": "Bell Transcript",
   "tagline": "YouTube & Podcast Summaries in Seconds",
   "description": "A clean web app that extracts transcripts from YouTube videos and podcasts, then generates structured AI summaries. Free tier: 3 per month. Pro: $9/month unlimited.",
-  "current_week": 2,
+  "current_week": 4,
   "overall_status": "Planning",
   "milestones": [
     {
