@@ -76,6 +76,20 @@ fi
   fi
 
   echo ""
+  echo "[8/9] Generating LinkedIn post + carousel content..."
+  if [[ -n "$DRY_RUN" ]]; then
+    cp config/linkedin_content_log.json /tmp/_bell_linkedin_log_bak.json
+  fi
+  python3 tools/linkedin_post_generator.py
+  if [[ -n "$DRY_RUN" ]]; then
+    cp /tmp/_bell_linkedin_log_bak.json config/linkedin_content_log.json
+  fi
+
+  echo ""
+  echo "[9/9] Generating LinkedIn carousel PDF..."
+  python3 tools/linkedin_carousel_generator.py
+
+  echo ""
   echo "================================================"
   echo "DONE: $(date)"
   echo "================================================"
@@ -88,4 +102,6 @@ if [[ -n "$DRY_RUN" ]] && command -v open &>/dev/null; then
   open "$SCRIPT_DIR/docs/current_productivity_brief.html"
   open "$SCRIPT_DIR/docs/current_language_brief.html"
   open "$SCRIPT_DIR/.tmp/formatted_email.html"
+  open "$SCRIPT_DIR/.tmp/linkedin_post.md"
+  open "$SCRIPT_DIR/.tmp/linkedin_carousel.pdf"
 fi
