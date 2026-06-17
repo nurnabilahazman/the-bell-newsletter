@@ -82,14 +82,16 @@ jobs:
         run: |
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git config user.name "github-actions[bot]"
-          git add --ignore-missing \
-                  config/children_topics_log.json config/children_block_state.json \
-                  config/productivity_topics_log.json config/productivity_block_state.json \
-                  config/language_topics_log.json config/language_block_state.json \
-                  config/curriculum.json config/saas_progress.json \
-                  config/linkedin_content_log.json \
-                  docs/current_brief.html docs/current_productivity_brief.html \
-                  docs/current_language_brief.html
-          git add -f --ignore-missing .tmp/draft.md .tmp/linkedin_post.md .tmp/linkedin_carousel.pdf
+          for f in \
+            config/children_topics_log.json config/children_block_state.json \
+            config/productivity_topics_log.json config/productivity_block_state.json \
+            config/language_topics_log.json config/language_block_state.json \
+            config/curriculum.json config/saas_progress.json \
+            config/linkedin_content_log.json \
+            docs/current_brief.html docs/current_productivity_brief.html \
+            docs/current_language_brief.html \
+            .tmp/draft.md .tmp/linkedin_post.md .tmp/linkedin_carousel.pdf; do
+            [ -f "$f" ] && git add -f "$f" || true
+          done
           git diff --staged --quiet || git commit -m "chore: advance week state + publish draft [skip ci]"
           git push
