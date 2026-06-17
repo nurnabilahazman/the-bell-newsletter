@@ -47,6 +47,21 @@ def load_carousel(path: Path) -> dict:
         return json.load(f)
 
 
+def safe(text: str) -> str:
+    """Replace characters outside latin-1 range so Helvetica can render them."""
+    return (text
+            .replace("→", ">")   # →
+            .replace("←", "<")   # ←
+            .replace("•", "-")   # •
+            .replace("–", "-")   # en dash
+            .replace("—", "--")  # em dash
+            .replace("“", '"')   # "
+            .replace("”", '"')   # "
+            .replace("‘", "'")   # '
+            .replace("’", "'")   # '
+            .encode("latin-1", errors="replace").decode("latin-1"))
+
+
 class CarouselPDF(FPDF):
     def set_bg(self, r: int, g: int, b: int):
         self.set_fill_color(r, g, b)
@@ -64,7 +79,7 @@ class CarouselPDF(FPDF):
         self.set_font("Helvetica", "", FOOTER_SIZE)
         self.set_text_color(*MUTED_TEXT)
         self.set_xy(16, 16)
-        self.cell(0, 6, f"WEEK {week}", ln=True)
+        self.cell(0, 6, f"WEEK {week}")
 
         # Accent bar
         self.accent_bar(38)
@@ -73,14 +88,14 @@ class CarouselPDF(FPDF):
         self.set_font("Helvetica", "B", COVER_TITLE_SIZE)
         self.set_text_color(*WHITE)
         self.set_xy(16, 48)
-        self.multi_cell(W - 32, 12, title, align="L")
+        self.multi_cell(W - 32, 12, safe(title), align="L")
 
         # Subtitle
         y_after_title = self.get_y() + 10
         self.set_font("Helvetica", "", COVER_SUBTITLE_SIZE)
         self.set_text_color(*MUTED_TEXT)
         self.set_xy(16, y_after_title)
-        self.multi_cell(W - 32, 7, subtitle, align="L")
+        self.multi_cell(W - 32, 7, safe(subtitle), align="L")
 
         # Bottom branding
         self.set_font("Helvetica", "", FOOTER_SIZE)
@@ -90,7 +105,7 @@ class CarouselPDF(FPDF):
 
         # Swipe prompt
         self.set_xy(0, H - 20)
-        self.cell(W - 16, 6, "swipe →", align="R")
+        self.cell(W - 16, 6, "swipe >", align="R")
 
     def draw_slide(self, slide_num: int, total_slides: int, title: str, body: str, week: int):
         self.add_page()
@@ -109,7 +124,7 @@ class CarouselPDF(FPDF):
         self.set_font("Helvetica", "B", SLIDE_TITLE_SIZE)
         self.set_text_color(*DARK_TEXT)
         self.set_xy(16, 48)
-        self.multi_cell(W - 32, 9, title, align="L")
+        self.multi_cell(W - 32, 9, safe(title), align="L")
 
         # Divider line
         y_divider = self.get_y() + 6
@@ -121,7 +136,7 @@ class CarouselPDF(FPDF):
         self.set_font("Helvetica", "", SLIDE_BODY_SIZE)
         self.set_text_color(*DARK_TEXT)
         self.set_xy(16, y_divider + 10)
-        self.multi_cell(W - 32, 7, body, align="L")
+        self.multi_cell(W - 32, 7, safe(body), align="L")
 
         # Bottom nav
         self.set_font("Helvetica", "", FOOTER_SIZE)
@@ -129,7 +144,7 @@ class CarouselPDF(FPDF):
         self.set_xy(16, H - 20)
         self.cell(0, 6, "The Bell by Nabilah", align="L")
         self.set_xy(0, H - 20)
-        self.cell(W - 16, 6, "swipe →", align="R")
+        self.cell(W - 16, 6, "swipe >", align="R")
 
     def draw_last_slide(self, cta: str):
         self.add_page()
@@ -142,7 +157,7 @@ class CarouselPDF(FPDF):
         self.set_font("Helvetica", "B", LAST_CTA_SIZE)
         self.set_text_color(*WHITE)
         self.set_xy(16, H / 2 - 28)
-        self.multi_cell(W - 32, 9, cta, align="L")
+        self.multi_cell(W - 32, 9, safe(cta), align="L")
 
         # Branding
         self.set_font("Helvetica", "", FOOTER_SIZE)
