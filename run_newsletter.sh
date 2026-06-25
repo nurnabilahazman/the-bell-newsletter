@@ -80,14 +80,14 @@ fi
   if [[ -n "$DRY_RUN" ]]; then
     cp config/linkedin_content_log.json /tmp/_bell_linkedin_log_bak.json
   fi
-  python3 tools/linkedin_post_generator.py
+  python3 tools/linkedin_post_generator.py || echo "⚠️  LinkedIn post generation failed — skipping (email already sent)"
   if [[ -n "$DRY_RUN" ]]; then
     cp /tmp/_bell_linkedin_log_bak.json config/linkedin_content_log.json
   fi
 
   echo ""
   echo "[9/9] Generating LinkedIn carousel PDF..."
-  python3 tools/linkedin_carousel_generator.py
+  python3 tools/linkedin_carousel_generator.py || echo "⚠️  Carousel generation failed — skipping (email already sent)"
 
   echo ""
   echo "================================================"

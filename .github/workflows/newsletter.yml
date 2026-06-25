@@ -21,7 +21,7 @@ permissions:
 jobs:
   send-newsletter:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 20
 
     steps:
       - name: Checkout code
@@ -37,7 +37,11 @@ jobs:
       - name: Install dependencies
         run: |
           pip install groq python-dotenv gspread google-auth \
-                      requests tavily-python feedparser fpdf2
+                      requests tavily-python feedparser fpdf2 \
+                      playwright pillow
+
+      - name: Install Playwright browser
+        run: playwright install chromium --with-deps
 
       - name: Create .env from secrets
         run: |
@@ -90,7 +94,8 @@ jobs:
             config/linkedin_content_log.json \
             docs/current_brief.html docs/current_productivity_brief.html \
             docs/current_language_brief.html \
-            .tmp/draft.md .tmp/linkedin_post.md .tmp/linkedin_carousel.pdf; do
+            .tmp/draft.md .tmp/linkedin_post.md \
+            .tmp/linkedin_carousel_content.json .tmp/linkedin_carousel.pdf; do
             [ -f "$f" ] && git add -f "$f" || true
           done
           git diff --staged --quiet || git commit -m "chore: advance week state + publish draft [skip ci]"
