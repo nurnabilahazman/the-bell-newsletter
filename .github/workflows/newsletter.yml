@@ -82,10 +82,15 @@ jobs:
         # 9. docs/current_brief.html           — children's brief (htmlpreview URL)
         # 10. docs/current_productivity_brief.html — productivity brief (htmlpreview URL)
         # 11. docs/current_language_brief.html     — language brief (htmlpreview URL)
+        # 12. .github/last_run.txt             — heartbeat timestamp, always changes.
+        #     GitHub auto-disables scheduled workflows after 60 days with no commits
+        #     to the repo (separate from whether the workflow itself runs). This file
+        #     guarantees there is always something to commit, so that never happens.
         if: always()
         run: |
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git config user.name "github-actions[bot]"
+          echo "Last run: $(date -u +%Y-%m-%dT%H:%M:%SZ)" > .github/last_run.txt
           for f in \
             config/children_topics_log.json config/children_block_state.json \
             config/productivity_topics_log.json config/productivity_block_state.json \
@@ -95,7 +100,8 @@ jobs:
             docs/current_brief.html docs/current_productivity_brief.html \
             docs/current_language_brief.html \
             .tmp/draft.md .tmp/linkedin_post.md \
-            .tmp/linkedin_carousel_content.json .tmp/linkedin_carousel.pdf; do
+            .tmp/linkedin_carousel_content.json .tmp/linkedin_carousel.pdf \
+            .github/last_run.txt; do
             [ -f "$f" ] && git add -f "$f" || true
           done
           git diff --staged --quiet || git commit -m "chore: advance week state + publish draft [skip ci]"
