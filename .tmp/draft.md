@@ -1,4 +1,4 @@
-# The Bell — Week 3 · May 11, 2026
+# The Bell — Week 4 · October 08, 2026
 
 >>>TAGLINE
 Build. Ship. Earn.
@@ -6,28 +6,33 @@ Build. Ship. Earn.
 
 ## 🛠️ SECTION 1 — Project of the Week
 
-**Week 3 of 12: PDF Invoice Generator**
+**Week 4 of 12: YouTube Transcript + Summary Tool**
 
-*Document automation*
+*API integration*
 
 Paste the prompt below into Claude. Follow each step. You'll have a working tool by the end of the session.
 
 >>>PROMPT
-You are helping me build a Python script that automatically generates professional PDF invoices. Here is exactly what I need:
+You are helping me build a Python tool that extracts transcripts from YouTube videos and generates structured summaries. This will eventually become my SaaS product. Here is exactly what I need:
 
-1. Read invoice data from a CSV file (columns: client_name, client_email, service_description, quantity, unit_price, invoice_date, due_date, invoice_number)
-2. Generate one PDF per row with a professional layout including: my logo (logo.svg), invoice number, dates, itemised table, subtotal, tax (8%), total, payment instructions
-3. Save each PDF as invoice_[invoice_number].pdf in an /output folder
-4. Also send the PDF via email to the client_email automatically
-5. Use these libraries: reportlab (for PDF), smtplib (for email), pandas (for CSV), python-dotenv
-6. Email credentials come from .env file (GMAIL_ADDRESS, GMAIL_APP_PASSWORD)
+1. Accept a YouTube URL as input
+2. Extract the full transcript using the youtube-transcript-api library
+3. Send the transcript to Groq API (model: llama-3.3-70b-versatile) with this prompt structure:
+   - 3-sentence summary
+   - 5 key takeaways (bullet points)
+   - Action items mentioned
+   - Timestamps for the most important moments
+4. Save the output as both a .txt file and a .json file
+5. Also generate a clean HTML page showing the summary nicely formatted
+6. Use these libraries: youtube-transcript-api, groq, python-dotenv
+7. API key comes from GROQ_API_KEY in .env
 
 Please:
 a) Write the complete Python script
-b) List every pip install command I need
-c) Show me a sample CSV with 3 rows I can use to test it
-d) Walk me through running it step by step
-e) Tell me how I can customise the colours and fonts to match my brand
+b) List every pip install I need
+c) Handle these edge cases: video has no transcript, transcript is in wrong language, video is private
+d) Show me how to run it with a real YouTube URL
+e) Tell me what I would need to add to turn this into a simple web app someone could use in their browser
 >>>END
 
 >>>DOC
@@ -43,88 +48,88 @@ One product per theme. Research done. Prompt ready. Just paste and create.
 
 ### 🗂️ Productivity & Trackers
 
-**This week's product:** Monthly Budget Tracker
+**This week's product:** Paycheck-to-Paycheck Budget Tracker
 
-**Store inspiration:** [Best Selling Budget — The most popular budget trackers on Etsy are those that offer a simple, easy-to-use format with clear headings and sections for income, expenses, and savings](https://www.etsy.com/market/best_selling_budget)
+**Store inspiration:** [Budget Planner Google Sheet – Monthly Budget Spreadsheet by EtsyHunt — Simple, drag‑and‑drop layout with pre‑filled categories that auto‑calculate net worth and savings goals.](https://ehunt.ai/etsy-competitor-research/best-etsy-budget-planner)
 
 **What buyers love:**
-- Easy to use
-- Customizable
-- Affordable
+- Easy monthly overview
+- Automatic savings tracker
+- Clear debt payoff timeline
 
 **Your edge — make it better:**
-- Automated expense categorization
-- Budgeting tips and resources
-- Space for notes and goals
+- Add a “Year‑in‑Review” dashboard with charts
+- Include a “Flexible Paycheck Split” sheet that auto‑splits income between fixed and variable expenses
+- Offer a printable “Expense Snapshot” for quick review
 
 **How to build it in Canva:**
-1. Open Canva → search 'daily planner template' → pick a clean design with a top-priorities section
-2. Create one master daily page with: date, top 3 priorities, hourly schedule (6am–10pm), notes, water tracker, gratitude line
-3. Add a weekly overview page (Mon–Sun at a glance + weekly goal)
-4. Create a 365-day set: duplicate the daily page 365× — or sell a 90-day version (more affordable)
-5. Export as PDF Print → upload to Etsy with 'undated' in the title so it sells year-round
+1. Open Canva → search 'habit tracker template' → pick a design with a grid layout and room for habit names
+2. Create a single-page monthly habit tracker: 10 habit rows × 31 day columns, plus a monthly reflection section
+3. Make it undated — include a blank 'Month:' field so it works for any month of any year
+4. Add a bonus page: 'How to Build a Habit in 30 Days' — one-page guide with the habit loop explained simply
+5. Export as PDF Print → list as a 5-pack (5 copies of the tracker page) for perceived value
 
-**Launch price:** $4.99
-**Etsy title:** Daily Productivity Planner Printable | Undated | Top 3 Priorities + Hourly Schedule | PDF
-**Tags:** daily planner, productivity planner, printable planner, undated planner, daily schedule, planner printable, time management, to do list, daily organizer, schedule printable, planner pages, hourly planner, work planner
+**Launch price:** $3.99
+**Etsy title:** 30 Day Habit Tracker Printable | Monthly Habit Log | Undated | Instant Download PDF
+**Tags:** habit tracker, 30 day habit, monthly tracker, habit log printable, goal tracker, self improvement, wellness tracker, daily habits, habit journal, routine tracker, morning routine, self care, habit challenge
 
 [📋 View this week's full brief →](https://htmlpreview.github.io/?https://github.com/nurnabilahazman/the-bell-newsletter/blob/main/docs/current_productivity_brief.html)
 
 ### 📚 Language Learning
 
-**This week's product:** Japanese Hiragana Workbook
+**This week's product:** Mandarin Beginner Vocabulary & Grammar Workbook – 1–3 Months
 
-**Store inspiration:** [Japanese Hiragana Practice — The most popular Japanese Hiragana practice workbooks on Etsy are those that offer a comprehensive and structured approach to learning the Hiragana alphabet, with plenty of practice exercises and quizzes](https://www.etsy.com/market/japanese_hiragana_practice)
+**Store inspiration:** [Mandarin Learning Pack by LanguageCraft — Concise, topic‑based lessons with practice sheets that mix vocabulary flashcards, fill‑in‑the‑blank grammar, and a spaced‑repetition review.](https://www.languagecraft.com/mandarin-beginner-workbook)
 
 **What buyers love:**
-- Comprehensive lessons
-- Practice exercises
-- Quizzes and tests
+- Clear layout
+- Built‑in practice
+- Instant feedback
 
 **Your edge — make it better:**
-- Audio recordings of native speakers
-- Interactive flashcards
-- Progress tracking and feedback
+- Add a “Listening Cue” audio link per page
+- Provide a QR code linking to a pronunciation guide
+- Include a “Progress Tracker” page that auto‑marks completed sections
 
 **How to build it in Canva:**
-1. Open Canva → search 'handwriting practice worksheet' → pick a clean grid-based template
-2. Create 46 pages (one per hiragana character): large model character top-left with numbered stroke order, then 6 dotted-trace boxes, then 6 blank practice boxes
-3. Add the romaji pronunciation and 2 example words using that character at the bottom of each page
-4. Use Noto Sans JP font for the character — test it prints clearly at 72pt before building all 46 pages
-5. Include a 2-page hiragana reference chart as a bonus: all 46 characters in a grid with romaji below each
+1. Open Canva → search 'cheat sheet template' → pick a clean, information-dense single-page layout
+2. Create 10 pages (one per grammar rule): present tense conjugation, gender + articles, adjective agreement, negation, question formation, past tense (passé composé), future tense, pronouns, prepositions, and common irregular verbs
+3. Each page: rule headline → formula in a colored box → 5 example sentences in a table → 'common mistake to avoid' callout box
+4. Use a clean academic color scheme: dark navy, white, gold accent — feels premium and study-worthy
+5. Add a double-sided summary card (A5 size) as a bonus page — buyers can print it separately and keep it on their desk
 
-**Launch price:** $3.99
-**Etsy title:** Japanese Hiragana Practice Sheets | 46 Characters + Stroke Order | Printable PDF Worksheet
-**Tags:** hiragana practice, japanese writing, hiragana worksheet, learn japanese, japanese printable, stroke order, hiragana chart, japanese alphabet, hiragana learning, japanese language, kana worksheet, jlpt study, japanese beginner
+**Launch price:** $5.99
+**Etsy title:** French Grammar Cheat Sheets | 10 Essential Rules | Study Guide | Printable PDF Instant Download
+**Tags:** french grammar, french cheat sheet, learn french, french study guide, french printable, grammar reference, french conjugation, french language, french learning, french teacher, french worksheet, learn francais, french beginner
 
 [📋 View this week's full brief →](https://htmlpreview.github.io/?https://github.com/nurnabilahazman/the-bell-newsletter/blob/main/docs/current_language_brief.html)
 
 ### 👶 Children's Activities
 
-**This week's product:** Ocean Explorer Busy Book
+**This week's product:** Number Tracing + Counting Workbook (1–20)
 
-**Store inspiration:** [Busy Book Best Seller — The most popular busy books on Etsy are those that offer a fun and interactive way for children to learn and explore, with a variety of activities and games](https://www.etsy.com/market/busy_book_best_seller)
+**Store inspiration:** [Counting Fun – Kids Workbook by Little Learners — Bright, age‑appropriate layouts with large number shapes, bold numbers, and simple counting exercises. Price: $5.99.](https://www.littlelearners.com/number-tracing-counting-workbook)
 
 **What buyers love:**
-- Interactive activities
-- Colourful illustrations
-- Durable construction
+- Clear numbering
+- Engaging activities
+- Easy printing
 
 **Your edge — make it better:**
-- Customizable name and picture page
-- Reusable stickers and stencils
-- Additional activity pages for older children
+- Add a “Progress Sticker” slot on each page
+- Provide a “Parent Guide” sheet with suggested playtime
+- Include a “Color‑by‑Number” bonus page
 
 **How to build it in Canva:**
-1. Open Canva → search 'busy book pages' → pick a bright ocean-themed template
-2. Create 10+ activity pages: matching, colouring, tracing, counting, puzzles — all ocean-themed
-3. Use vibrant blues, teals, and corals — make every page visually exciting for toddlers
-4. Add lamination instructions on the cover page (many parents laminate busy book pages)
-5. Export as PDF Print → upload to Etsy with 'busy book' prominently in the title
+1. Open Canva → search 'number tracing worksheet' → pick a clean, colourful template
+2. Create 20+ pages: one per number with a large traceable digit + counting objects to circle
+3. Add a 'count and circle' activity on each page to reinforce number recognition
+4. Include bonus pages: number bonds, number ordering, and a certificate of completion
+5. Export as PDF Print → upload to Etsy with age range (3–5) in title and all tags
 
 **Launch price:** $4.99
-**Etsy title:** Ocean Explorer Busy Book for Toddlers | 20+ Activity Pages | Printable PDF
-**Tags:** busy book, toddler activities, ocean theme, printable busy book, preschool activity, no-prep activity, ocean worksheet, busy book pages, toddler busy book, quiet book pages, activity pack kids, screen free kids, ocean animals
+**Etsy title:** Number Tracing Workbook 1-20 for Preschoolers | 30 Pages | Printable PDF
+**Tags:** number tracing, counting worksheet, number recognition, preschool math, number workbook, kindergarten prep, math printable, counting printable, trace and count, preschool numbers, number learning, early math, number practice
 
 [📋 View this week's full brief →](https://htmlpreview.github.io/?https://github.com/nurnabilahazman/the-bell-newsletter/blob/main/docs/current_brief.html)
 
@@ -134,9 +139,9 @@ One product per theme. Research done. Prompt ready. Just paste and create.
 
 *YouTube & Podcast Summaries in Seconds*
 
-**Phase:** Build · Week 3 of 8
+**Phase:** Build · Week 4 of 8
 
-**This week's task:** Build a simple web interface using Flask so users can paste a YouTube URL and get a summary in the browser
+**This week's task:** Add user accounts — sign up, log in, track how many transcripts each user has used
 
 
 >>>DOC
@@ -148,11 +153,11 @@ Full Bell Transcript roadmap, tech stack, competitor analysis, and how to get fi
 
 ## ⚡ SECTION 4 — Quick Wins This Week
 
-**1. Enhance Product Quality** — To enhance the quality of your digital products, make sure to include clear instructions and examples, and use high-quality images and graphics. For example, if you're creating a budget tracker, include a sample budget with realistic numbers to help users understand how to use the template.
+**1. Show a Sample Page** — Upload a high‑resolution preview image of a completed number‑tracing page so buyers see the exact layout and font before buying.
 
-**2. Optimize Your Listings** — To optimize your listings for better sales, make sure to include relevant keywords in your title and description, and use high-quality images that showcase your product. For example, if you're selling a Japanese Hiragana workbook, include keywords like "Japanese language learning" and "Hiragana practice" in your title and description.
+**2. Set a Clear Price Point** — Price the workbook at $5.99 and include a “Bundle Deal” that adds the sticker sheet for $0.99 to encourage upselling.
 
-**3. Get Your First Sales** — To get your first sales, make sure to promote your products on social media and other online platforms, and offer discounts or promotions to attract new customers. For example, you could offer a 10% discount on your Ocean Explorer Busy Book for the first 10 customers, or share a free sample page on your social media channels to generate interest.
+**3. Use Social Proof** — Add a customer testimonial with a photo of a child using the workbook in your Etsy listing; this boosts trust and drives first sales.
 
 ---
 

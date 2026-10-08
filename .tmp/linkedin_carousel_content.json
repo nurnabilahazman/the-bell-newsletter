@@ -1,0 +1,29 @@
+{
+  "week": 1,
+  "post_type": "building_from_zero",
+  "cover_title": "401 Error → Transcript Success",
+  "cover_subtitle": "Learn the quick fix for YouTube API hiccups.",
+  "slides": [
+    {
+      "title": "Step 1 – Get the API key",
+      "body": "Sign in to Google Cloud, create a project → enable YouTube Data API → copy the key."
+    },
+    {
+      "title": "Step 2 – Call the API",
+      "body": "Use curl or Postman → send GET to https://youtube.googleapis.com/youtube/v3/captions?videoId=XYZ&key=YOURKEY."
+    },
+    {
+      "title": "Step 3 – Feed to Claude",
+      "body": "Pass the transcript text as input → ask for a 200‑word summary → get the output instantly."
+    },
+    {
+      "title": "Step 4 – Add user accounts",
+      "body": "Create a sign‑up page → store email and password securely → track transcript count per user."
+    },
+    {
+      "title": "Step 5 – Fix the newsletter",
+      "body": "Re‑build the scheduler → test with a test list → schedule Monday sends."
+    }
+  ],
+  "last_slide": "Follow for more hands‑on builds from Malaysia."
+}
