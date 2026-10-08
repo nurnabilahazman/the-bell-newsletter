@@ -5,9 +5,16 @@
 # To test without sending: bash run_newsletter.sh --dry-run
 
 set -e  # stop on first error
+# The whole run is piped into tee (below). Without pipefail the script's exit
+# code is tee's, which is always 0, so a crash still showed as a green
+# "success" on GitHub. That hid a failure at step 1 from Aug to Oct 2026.
+set -o pipefail
 
-# Ensure python3 is findable when run by cron (no normal shell PATH)
-export PATH="/usr/local/bin:/usr/bin:/bin:/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin:$PATH"
+# Ensure python3 is findable when run by cron (no normal shell PATH).
+# The existing PATH must come FIRST: on GitHub Actions it points at the Python
+# that setup-python installed the packages into. Putting /usr/bin first made
+# the runner use the system Python instead: "No module named 'dotenv'".
+export PATH="$PATH:/usr/local/bin:/usr/bin:/bin:/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin"
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$SCRIPT_DIR"
