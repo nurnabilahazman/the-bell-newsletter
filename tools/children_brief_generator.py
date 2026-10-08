@@ -28,6 +28,7 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 from groq import Groq
+from groq_client import groq_create, MODEL as GROQ_MODEL
 
 load_dotenv()
 
@@ -37,7 +38,7 @@ BRIEF_PATH       = Path(".tmp/unified_product_brief.html")
 DOCS_PATH        = Path("docs/current_brief.html")
 BASE_HTML_PATH   = Path("docs/unified_product_brief_base.html")
 DATA_PATH        = Path(".tmp/children_brief_data.json")
-MODEL      = "llama-3.3-70b-versatile"
+MODEL      = GROQ_MODEL
 # This URL always points to the latest committed brief on GitHub.
 # Every run regenerates docs/current_brief.html and commits it → the link is always current.
 BRIEF_URL  = "https://htmlpreview.github.io/?https://github.com/nurnabilahazman/the-bell-newsletter/blob/main/docs/current_brief.html"
@@ -265,7 +266,7 @@ Rules:
 - etsy_tags: exactly 7 tags, each under 20 characters, what parents actually search
 - All content specific to each individual product — no generic filler
 """
-    response = client.chat.completions.create(
+    response = groq_create(client, 
         model=MODEL,
         messages=[{"role": "user", "content": prompt}],
         max_tokens=2500,

@@ -12,6 +12,7 @@ from datetime import datetime
 from pathlib import Path
 
 from groq import Groq
+from groq_client import groq_create, MODEL as GROQ_MODEL
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -24,7 +25,7 @@ CHILDREN_DATA_PATH     = Path(".tmp/children_brief_data.json")
 PRODUCTIVITY_DATA_PATH = Path(".tmp/productivity_brief_data.json")
 LANGUAGE_DATA_PATH     = Path(".tmp/language_brief_data.json")
 
-MODEL = "llama-3.3-70b-versatile"
+MODEL = GROQ_MODEL
 
 
 # ── loaders ────────────────────────────────────────────────────────────────────
@@ -151,7 +152,7 @@ Rules:
 - Never use: "highlights the importance of", "it's essential", "navigate", "landscape".
 """
 
-    response = client.chat.completions.create(
+    response = groq_create(client, 
         model=MODEL,
         messages=[{"role": "user", "content": prompt}],
         max_tokens=4000,

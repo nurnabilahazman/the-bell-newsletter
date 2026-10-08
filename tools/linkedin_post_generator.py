@@ -13,6 +13,7 @@ from datetime import datetime
 from pathlib import Path
 
 from groq import Groq
+from groq_client import groq_create, MODEL as GROQ_MODEL
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -24,7 +25,7 @@ CONTENT_LOG_PATH  = Path("config/linkedin_content_log.json")
 POST_OUTPUT       = Path(".tmp/linkedin_post.md")
 CAROUSEL_OUTPUT   = Path(".tmp/linkedin_carousel_content.json")
 
-MODEL = "llama-3.3-70b-versatile"
+MODEL = GROQ_MODEL
 
 # Rotate through these post types every week
 POST_TYPES = [
@@ -148,7 +149,7 @@ CRITICAL RULES:
 - Do not invent subscriber counts, revenue, or metrics that don't exist yet.
 - Everything is beginner-accessible. If a technical term appears, explain it in the same sentence."""
 
-    response = client.chat.completions.create(
+    response = groq_create(client, 
         model=MODEL,
         messages=[{"role": "user", "content": prompt}],
         max_tokens=2000,

@@ -27,6 +27,7 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 from groq import Groq
+from groq_client import groq_create, MODEL as GROQ_MODEL
 
 load_dotenv()
 
@@ -36,7 +37,7 @@ BRIEF_PATH       = Path(".tmp/unified_language_brief.html")
 DOCS_PATH        = Path("docs/current_language_brief.html")
 BASE_HTML_PATH   = Path("docs/unified_product_brief_language_base.html")
 DATA_PATH        = Path(".tmp/language_brief_data.json")
-MODEL            = "llama-3.3-70b-versatile"
+MODEL            = GROQ_MODEL
 BRIEF_URL        = "https://htmlpreview.github.io/?https://github.com/nurnabilahazman/the-bell-newsletter/blob/main/docs/current_language_brief.html"
 
 # Block 1 products — pre-researched, no API call needed
@@ -263,7 +264,7 @@ Rules:
 - All content specific to each individual product — no generic filler
 - For non-Latin scripts: always recommend Noto Sans/Serif fonts and mention testing character rendering
 """
-    response = client.chat.completions.create(
+    response = groq_create(client, 
         model=MODEL,
         messages=[{"role": "user", "content": prompt}],
         max_tokens=2500,
