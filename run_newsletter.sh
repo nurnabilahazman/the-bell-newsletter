@@ -70,8 +70,13 @@ fi
   python3 tools/send_email.py $DRY_RUN
 
   echo ""
-  echo "[6/7] Logging to Google Sheets..."
-  python3 tools/log_to_sheets.py
+  if [[ -z "$DRY_RUN" ]]; then
+    echo "[6/7] Logging to Google Sheets..."
+    python3 tools/log_to_sheets.py
+  else
+    # A test run must not add rows to the real tracker.
+    echo "[6/7] Skipping Google Sheets log (dry run)"
+  fi
 
   if [[ -z "$DRY_RUN" ]]; then
     echo ""
@@ -104,7 +109,9 @@ fi
 } 2>&1 | tee "$LOG_FILE"
 
 # On dry-run, open previews directly in the browser so you can review without clicking links
-if [[ -n "$DRY_RUN" ]] && command -v open &>/dev/null; then
+# macOS only: on GitHub's Linux runner, "open" is a different command that
+# fails with no browser, which turned successful dry runs red.
+if [[ -n "$DRY_RUN" ]] && [[ "$(uname)" == "Darwin" ]]; then
   open "$SCRIPT_DIR/docs/current_brief.html"
   open "$SCRIPT_DIR/docs/current_productivity_brief.html"
   open "$SCRIPT_DIR/docs/current_language_brief.html"
