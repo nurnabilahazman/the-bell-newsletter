@@ -1,18 +1,17 @@
 # LinkedIn Post — Week 1
 # Type: building_from_zero
-# Generated: 2026-10-08 16:07
+# Generated: 2026-10-08 16:09
 
 ---
 
-You tried to pull a YouTube transcript, hit a 401 error, and cried because the API key was wrong.  
-I spent all week reading docs, then copy‑pasting the same code twice and still got “unauthorised”.  
-
-After that, I finally made it work. I connected the YouTube API to Claude, fed the transcript into a prompt, and got a 2‑page summary in 30 seconds.  
-
-Next, I added user accounts so people can sign up and see how many transcripts they’ve used. The login page works, but the database isn’t counting correctly yet.  
-
-My newsletter system was down for five weeks. I rebuilt it from scratch, fixed the crash, and it’s sending out every Monday again.  
-
-I’m still learning API calls, but I’m already seeing real progress.  
-
-Follow for weekly updates on building with Claude from zero in Malaysia.
+The YouTube API returned a 401 error the first time I tried to pull video data. I had only read the docs, no code yet.  
+I set up a simple script in Python and ran it. The error stopped at the authentication step.  
+I googled “YouTube 401 error” and found that the key was missing a scope.  
+I added the scope and re‑ran. It fetched the video title, but the transcript was still empty.  
+I discovered the transcript is a separate endpoint; I had to call it after the video ID.  
+I wrote a loop to hit the transcript URL. It returned JSON with timestamps and text.  
+I passed that JSON into Claude for summarisation. Claude produced a 200‑word summary.  
+I saved the result in a database but forgot to set up user authentication, so the app crashed when two users tried to sign up.  
+I added a simple email‑password login with Firebase Auth. Now each user can track how many transcripts they’ve used.  
+No live demo yet, but the core flow works: YouTube → API → Claude → DB.  
+Follow — I post every week on building with Claude from Malaysia.

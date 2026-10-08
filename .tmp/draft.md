@@ -48,19 +48,19 @@ One product per theme. Research done. Prompt ready. Just paste and create.
 
 ### 🗂️ Productivity & Trackers
 
-**This week's product:** Paycheck-to-Paycheck Budget Tracker
+**This week's product:** 2025 Ultimate Budget & Goal Tracker Spreadsheet
 
-**Store inspiration:** [Budget Planner Google Sheet – Monthly Budget Spreadsheet by EtsyHunt — Simple, drag‑and‑drop layout with pre‑filled categories that auto‑calculate net worth and savings goals.](https://ehunt.ai/etsy-competitor-research/best-etsy-budget-planner)
+**Store inspiration:** [Ultimate Annual Budget Spreadsheet — Offers a clean, pre‑formatted sheet with built‑in monthly, quarterly, and yearly views, making it instant‑ready for users;](https://www.etsy.com/market/best_selling_budget_template)
 
 **What buyers love:**
-- Easy monthly overview
-- Automatic savings tracker
-- Clear debt payoff timeline
+- Instant usability
+- Built‑in formulas
+- Elegant navy & gold color theme
 
 **Your edge — make it better:**
-- Add a “Year‑in‑Review” dashboard with charts
-- Include a “Flexible Paycheck Split” sheet that auto‑splits income between fixed and variable expenses
-- Offer a printable “Expense Snapshot” for quick review
+- Add a customizable “Cash Flow” dashboard
+- Include a “Savings Goal Progress” gauge
+- Embed a “Debt Snowball” calculator
 
 **How to build it in Canva:**
 1. Open Canva → search 'habit tracker template' → pick a design with a grid layout and room for habit names
@@ -77,19 +77,19 @@ One product per theme. Research done. Prompt ready. Just paste and create.
 
 ### 📚 Language Learning
 
-**This week's product:** Mandarin Beginner Vocabulary & Grammar Workbook – 1–3 Months
+**This week's product:** Japanese Hiragana & Katakana Practice Workbook – Beginner Level
 
-**Store inspiration:** [Mandarin Learning Pack by LanguageCraft — Concise, topic‑based lessons with practice sheets that mix vocabulary flashcards, fill‑in‑the‑blank grammar, and a spaced‑repetition review.](https://www.languagecraft.com/mandarin-beginner-workbook)
+**Store inspiration:** [Hiragana Katakana Practice Sheets — Provides 104 character sheets, includes stroke order guidance and trace‑able grids;](https://www.etsy.com/market/japanese_hiragana_practice_goodnotes_worksheets)
 
 **What buyers love:**
-- Clear layout
-- Built‑in practice
-- Instant feedback
+- Clear stroke order
+- Printable PDF
+- Beginner‑friendly layout
 
 **Your edge — make it better:**
-- Add a “Listening Cue” audio link per page
-- Provide a QR code linking to a pronunciation guide
-- Include a “Progress Tracker” page that auto‑marks completed sections
+- Add a “Quiz” page with multiple choice stroke order questions
+- Include a progress tracker for each character
+- Provide a “Pronunciation Guide” audio link (optional)
 
 **How to build it in Canva:**
 1. Open Canva → search 'cheat sheet template' → pick a clean, information-dense single-page layout
@@ -108,17 +108,17 @@ One product per theme. Research done. Prompt ready. Just paste and create.
 
 **This week's product:** Number Tracing + Counting Workbook (1–20)
 
-**Store inspiration:** [Counting Fun – Kids Workbook by Little Learners — Bright, age‑appropriate layouts with large number shapes, bold numbers, and simple counting exercises. Price: $5.99.](https://www.littlelearners.com/number-tracing-counting-workbook)
+**Store inspiration:** [Busy Book Best Seller – Toddler Busy Book Printable – Offers 120 pages with animal illustrations, easy tracing, and interactive cutouts;](https://www.etsy.com/market/busy_book_best_seller)
 
 **What buyers love:**
-- Clear numbering
-- Engaging activities
-- Easy printing
+- Simple numbers
+- Engaging illustrations
+- Ready‑to‑print layout
 
 **Your edge — make it better:**
-- Add a “Progress Sticker” slot on each page
-- Provide a “Parent Guide” sheet with suggested playtime
-- Include a “Color‑by‑Number” bonus page
+- Dedicated counting activity with tally marks
+- Include a “Progress Tracker” with stickers
+- Provide a “Parent Guide” PDF for usage tips
 
 **How to build it in Canva:**
 1. Open Canva → search 'number tracing worksheet' → pick a clean, colourful template
@@ -153,11 +153,11 @@ Full Bell Transcript roadmap, tech stack, competitor analysis, and how to get fi
 
 ## ⚡ SECTION 4 — Quick Wins This Week
 
-**1. Show a Sample Page** — Upload a high‑resolution preview image of a completed number‑tracing page so buyers see the exact layout and font before buying.
+**1. Show Sample Data** — Add a preview image of the workbook filled in with a sample number (e.g., number 5) to demonstrate tracing and counting layout.
 
-**2. Set a Clear Price Point** — Price the workbook at $5.99 and include a “Bundle Deal” that adds the sticker sheet for $0.99 to encourage upselling.
+**2. Highlight Price Value** — Include a sidebar in your listing that shows a 20% discount coupon code and mentions the $8 price, emphasizing “Only $8 for a complete 1–20 tracing set.”
 
-**3. Use Social Proof** — Add a customer testimonial with a photo of a child using the workbook in your Etsy listing; this boosts trust and drives first sales.
+**3. Leverage Parent Reviews** — Ask early buyers to leave a quick 5‑star review and share a photo of their child using the workbook in the description.
 
 ---
 

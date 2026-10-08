@@ -1,29 +1,29 @@
 {
   "week": 1,
   "post_type": "building_from_zero",
-  "cover_title": "401 Error → Transcript Success",
-  "cover_subtitle": "Learn the quick fix for YouTube API hiccups.",
+  "cover_title": "Auto‑Transcripts with a 401 Twist",
+  "cover_subtitle": "Build a YouTube transcript flow in 3 days, even if you’re a beginner.",
   "slides": [
     {
-      "title": "Step 1 – Get the API key",
-      "body": "Sign in to Google Cloud, create a project → enable YouTube Data API → copy the key."
+      "title": "Step 1 – Get the Key",
+      "body": "Sign in to Google Cloud → Create a project → Enable YouTube Data API v3 → Generate an API key. Copy the key."
     },
     {
-      "title": "Step 2 – Call the API",
-      "body": "Use curl or Postman → send GET to https://youtube.googleapis.com/youtube/v3/captions?videoId=XYZ&key=YOURKEY."
+      "title": "Step 2 – Pull Video Info",
+      "body": "Use requests in Python → GET https://www.googleapis.com/youtube/v3/videos?part=id,snippet&id=VIDEO_ID&key=API_KEY → Extract video ID and title."
     },
     {
-      "title": "Step 3 – Feed to Claude",
-      "body": "Pass the transcript text as input → ask for a 200‑word summary → get the output instantly."
+      "title": "Step 3 – Fetch the Transcript",
+      "body": "Call https://video.google.com/timedtext?lang=en&v=VIDEO_ID → Parse XML → Convert to JSON → Pass to Claude for summarisation."
     },
     {
-      "title": "Step 4 – Add user accounts",
-      "body": "Create a sign‑up page → store email and password securely → track transcript count per user."
+      "title": "Step 4 – Store & Auth",
+      "body": "Save transcript JSON in Firestore → Add Firebase Auth → Create sign‑up/login pages → Track transcript count per user."
     },
     {
-      "title": "Step 5 – Fix the newsletter",
-      "body": "Re‑build the scheduler → test with a test list → schedule Monday sends."
+      "title": "What’s Next",
+      "body": "Add rate‑limit handling → Improve Claude prompt → Launch a beta to early users."
     }
   ],
-  "last_slide": "Follow for more hands‑on builds from Malaysia."
+  "last_slide": "Follow for weekly posts on building with AI from scratch."
 }
