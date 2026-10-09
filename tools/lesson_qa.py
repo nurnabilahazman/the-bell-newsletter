@@ -93,6 +93,29 @@ def split_sections(md: str) -> dict[str, str]:
     return out
 
 
+def fences(text: str) -> list[tuple[str, str]]:
+    """All fenced blocks as (info string, body), read line by line so a
+    closing ``` is never mistaken for an opening one."""
+    out, info, body, inside = [], "", [], False
+    for line in text.splitlines():
+        if line.strip().startswith("```"):
+            if inside:
+                out.append((info, "\n".join(body) + "\n"))
+                inside, body = False, []
+            else:
+                inside, info = True, line.strip()[3:].strip()
+            continue
+        if inside:
+            body.append(line)
+    return out
+
+
+def python_blocks(text: str) -> list[str]:
+    """Plain runnable Python blocks (not output, not expect-error)."""
+    return [b for info, b in fences(text)
+            if (info.split() or [""])[0] in ("python", "") and "expect-error" not in info]
+
+
 def keywords(title: str) -> set[str]:
     words = re.findall(r"[a-zA-Z]+", title.lower())
     out = set()
@@ -131,6 +154,69 @@ class Report:
         return sum(1 for s, _, _ in self.rows if s == "FAIL")
 
 
+def run_python_full(code: str) -> tuple[int, str, str]:
+    """Run code, return (exit code, stdout, last line of stderr)."""
+    with tempfile.TemporaryDirectory() as tmp:
+        f = Path(tmp) / "lesson_code.py"
+        f.write_text(code)
+        try:
+            r = subprocess.run([sys.executable, "-I", str(f)], cwd=tmp, capture_output=True,
+                               text=True, timeout=10, stdin=subprocess.DEVNULL)
+        except subprocess.TimeoutExpired:
+            return 124, "", "timed out after 10s"
+    return r.returncode, r.stdout, (r.stderr.strip().splitlines() or [""])[-1]
+
+
+def check_shown_outputs(rep: Report, topic: dict, md: str):
+    """Every ```output block must be exactly what the Python block just above
+    it prints (```output-head / ```output-tail: its first / last lines).
+    A ```python expect-error=NameError block must really raise that error,
+    and its ```output must match the error message exactly. Checks the whole
+    lesson, not just Building it, so fold-outs are covered too."""
+    if topic["id"] in NOT_RUNNABLE:
+        return
+    last = None  # (description, stdout lines, error line or None)
+    pending = []  # output shown before any code (e.g. "here's what we'll build"): matched to the next code
+    for info, body in fences(md):
+        lang = (info.split() or [""])[0]
+        if lang in ("python", ""):
+            expect = re.search(r"expect-error=(\w+)", info)
+            code, out, err = run_python_full(body)
+            label = f"block starting {body.strip().splitlines()[0][:40]!r}" if body.strip() else "empty block"
+            if expect:
+                ok = code != 0 and err.startswith(expect.group(1))
+                rep.add(ok, f"code: {label} raises {expect.group(1)} as the lesson says",
+                        "" if ok else f"actually: {'no error' if code == 0 else err}")
+                last = (label, [], err)
+            else:
+                rep.add(code == 0, f"code: {label} runs", "" if code == 0 else err)
+                last = (label, out.rstrip("\n").split("\n") if out else [], None)
+                for shown in pending:
+                    ok = shown == last[1]
+                    rep.add(ok, f"output: preview shown before the code matches what {label} prints",
+                            "" if ok else f"preview {shown[:2]}..., Python prints {last[1][:2]}...")
+                pending = []
+        elif lang in ("output", "output-head", "output-tail"):
+            shown = body.rstrip("\n").split("\n")
+            if last is None:
+                pending.append(shown)
+                continue
+            label, real, err = last
+            if err is not None:
+                ok = shown == [err]
+                rep.add(ok, f"output: error shown for {label} is the real one",
+                        "" if ok else f"lesson shows {shown}, Python says {err!r}")
+                continue
+            want = {"output": real, "output-head": real[:len(shown)], "output-tail": real[-len(shown):]}[lang]
+            ok = shown == want
+            detail = ""
+            if not ok:
+                diff = next((k for k in range(max(len(shown), len(want))) if k >= len(shown) or k >= len(want) or shown[k] != want[k]), 0)
+                detail = (f"line {diff + 1}: lesson shows {shown[diff] if diff < len(shown) else '(nothing)'!r}, "
+                          f"Python prints {want[diff] if diff < len(want) else '(nothing)'!r}")
+            rep.add(ok, f"output: {lang} after {label} matches what Python really prints", detail)
+
+
 def run_python(code: str) -> tuple[bool, str]:
     with tempfile.TemporaryDirectory() as tmp:
         f = Path(tmp) / "lesson_code.py"
@@ -163,7 +249,7 @@ def check_code(rep: Report, topic: dict, sec: dict[str, str]) -> list[str]:
         rep.add(has_any, "building it: has a code block", "" if has_any else "no code block found")
         rep.add(None, "building it: code runs", "not Python, or not runnable on its own here")
         return []
-    blocks = re.findall(r"```(?:python)?\n(.*?)```", building, flags=re.DOTALL)
+    blocks = python_blocks(building)
     if not blocks:
         rep.add(False, "building it: has a Python code block", "no ```python block found")
         return []
@@ -188,7 +274,11 @@ def check_code(rep: Report, topic: dict, sec: dict[str, str]) -> list[str]:
                 unused.append(n)
     rep.add(not unused, "building it: every name the code creates gets used",
             f"created but never used: {sorted(unused)}" if unused else "")
-    unexplained = sorted(n for n in names if n not in walkthrough)
+    # A name counts as explained only when the prose mentions it as code, in
+    # backticks. Matching plain words let a variable called `total` pass just
+    # because the text said "the total printed".
+    spans = re.findall(r"`([^`]+)`", walkthrough)
+    unexplained = sorted(n for n in names if not any(re.search(rf"\b{re.escape(n)}\b", sp) for sp in spans))
     rep.add(not unexplained, "building it: walkthrough explains every name the code creates",
             f"never mentioned outside the code: {unexplained}" if unexplained else "")
     return outputs
@@ -300,8 +390,7 @@ def topic_num(topic_id: str) -> int:
 def check_untaught(rep: Report, topic: dict, sec: dict[str, str]):
     if not topic["id"].startswith("S-"):
         return
-    blocks = re.findall(r"```(?:python)?\n(.*?)```", sec.get("Building it", ""), flags=re.DOTALL)
-    code = "\n".join(blocks)
+    code = "\n".join(python_blocks(sec.get("Building it", "")))
     early = [f"{name} (taught in {tid})" for pattern, name, tid in CONCEPT_FIRST_TAUGHT
              if topic_num(tid) > topic_num(topic["id"]) and re.search(pattern, code, flags=re.MULTILINE)]
     rep.add(not early, "building it: code only uses what's been taught so far",
@@ -523,6 +612,7 @@ def check_topic(topics: list[dict], idx: int, use_judge: bool) -> Report:
     check_readability(rep, md)
     check_tool(rep, topic, outputs)
     check_untaught(rep, topic, sec)
+    check_shown_outputs(rep, topic, md)
     if use_judge:
         judge(rep, topics, idx, md)
     return rep
