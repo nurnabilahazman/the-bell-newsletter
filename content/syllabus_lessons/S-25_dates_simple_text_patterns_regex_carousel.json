@@ -1,0 +1,24 @@
+{
+  "topic_id": "S-25",
+  "topic": "Dates & simple text patterns (regex)",
+  "cover_title": "Master Dates and Text Patterns",
+  "cover_subtitle": "Get organized with valid emails",
+  "slides": [
+    {
+      "text": "You can use [[patterns]] to validate email addresses"
+    },
+    {
+      "text": "[[Dates]] can be checked to see if they are in the past"
+    },
+    {
+      "text": "[[Regular expressions]] help you describe patterns in text"
+    },
+    {
+      "text": "You can use [[modules]] like datetime to work with dates"
+    },
+    {
+      "text": "[[Validation]] helps keep your contact book organized"
+    }
+  ],
+  "last_slide": "Follow for more coding tips"
+}

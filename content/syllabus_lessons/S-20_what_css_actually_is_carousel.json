@@ -1,0 +1,24 @@
+{
+  "topic_id": "S-20",
+  "topic": "What CSS actually is",
+  "cover_title": "Learn CSS Basics",
+  "cover_subtitle": "Style Your Website",
+  "slides": [
+    {
+      "text": "You can use [[CSS]] to change colors"
+    },
+    {
+      "text": "[[CSS]] controls the layout of your website"
+    },
+    {
+      "text": "Use [[HTML]] for structure and [[CSS]] for style"
+    },
+    {
+      "text": "[[CSS]] makes your website look professional"
+    },
+    {
+      "text": "You can use [[CSS]] to change fonts easily"
+    }
+  ],
+  "last_slide": "Follow for more coding tips"
+}

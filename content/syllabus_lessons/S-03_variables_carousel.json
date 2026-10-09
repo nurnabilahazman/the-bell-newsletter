@@ -1,0 +1,24 @@
+{
+  "topic_id": "S-03",
+  "topic": "Variables",
+  "cover_title": "Master Variables",
+  "cover_subtitle": "Store and reuse values",
+  "slides": [
+    {
+      "text": "You can store a [[value]] in a variable"
+    },
+    {
+      "text": "Use a [[label]] to retrieve the value"
+    },
+    {
+      "text": "Variables help you [[reuse]] values"
+    },
+    {
+      "text": "Assign a [[value]] to a variable first"
+    },
+    {
+      "text": "Variables have [[types]] that matter"
+    }
+  ],
+  "last_slide": "Follow for more coding lessons"
+}

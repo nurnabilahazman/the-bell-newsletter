@@ -1,0 +1,24 @@
+{
+  "topic_id": "S-12",
+  "topic": "Why speed/efficiency matters (informal)",
+  "cover_title": "Speed Up Your Search",
+  "cover_subtitle": "Learn why efficiency matters",
+  "slides": [
+    {
+      "text": "A [[dictionary]] finds a name without checking every one"
+    },
+    {
+      "text": "[[Linear]] search checks every item one by one"
+    },
+    {
+      "text": "A [[dictionary]] jumps straight to the key you ask for"
+    },
+    {
+      "text": "[[Large]] datasets require efficient search methods"
+    },
+    {
+      "text": "You can [[save]] time by using the right search method"
+    }
+  ],
+  "last_slide": "Follow to learn more about building efficient searches"
+}

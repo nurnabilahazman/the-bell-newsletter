@@ -1,0 +1,24 @@
+{
+  "topic_id": "S-08",
+  "topic": "Dictionaries",
+  "cover_title": "Learn Dictionaries",
+  "cover_subtitle": "Store and retrieve data",
+  "slides": [
+    {
+      "text": "You can use [[dictionaries]] to store data"
+    },
+    {
+      "text": "[[Keys]] are unique in a dictionary"
+    },
+    {
+      "text": "You can [[add]] new records to a dictionary"
+    },
+    {
+      "text": "You can [[search]] for records by key"
+    },
+    {
+      "text": "You can [[update]] existing records"
+    }
+  ],
+  "last_slide": "Follow for more coding lessons"
+}

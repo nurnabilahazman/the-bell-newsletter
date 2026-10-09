@@ -1,0 +1,24 @@
+{
+  "topic_id": "S-24",
+  "topic": "List comprehensions & higher-order functions",
+  "cover_title": "Simplify Your Code",
+  "cover_subtitle": "Learn list comprehensions",
+  "slides": [
+    {
+      "text": "You can [[simplify]] your code with list comprehensions"
+    },
+    {
+      "text": "List comprehensions are [[shorter]] than a full loop"
+    },
+    {
+      "text": "You can [[double]] numbers in a list with one line"
+    },
+    {
+      "text": "List comprehensions create a [[new]] list"
+    },
+    {
+      "text": "You can [[reuse]] list comprehensions in your code"
+    }
+  ],
+  "last_slide": "Follow for more coding tips"
+}

@@ -1,0 +1,24 @@
+{
+  "topic_id": "S-11",
+  "topic": "Functions",
+  "cover_title": "Learn Functions Fast",
+  "cover_subtitle": "Reuse code with ease",
+  "slides": [
+    {
+      "text": "You can reuse code with [[functions]]"
+    },
+    {
+      "text": "[[Functions]] save you time and effort"
+    },
+    {
+      "text": "Use [[functions]] to calculate totals"
+    },
+    {
+      "text": "[[Functions]] help you manage code"
+    },
+    {
+      "text": "Learn to write [[functions]] today"
+    }
+  ],
+  "last_slide": "Follow for more coding tips"
+}

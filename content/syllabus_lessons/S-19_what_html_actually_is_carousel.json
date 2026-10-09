@@ -1,0 +1,24 @@
+{
+  "topic_id": "S-19",
+  "topic": "What HTML actually is",
+  "cover_title": "Learn HTML Basics",
+  "cover_subtitle": "Build your first webpage",
+  "slides": [
+    {
+      "text": "You create a webpage [[structure]] with HTML"
+    },
+    {
+      "text": "HTML is like a [[blueprint]] for your webpage"
+    },
+    {
+      "text": "You use HTML [[tags]] to define content"
+    },
+    {
+      "text": "HTML is the [[foundation]] of a webpage"
+    },
+    {
+      "text": "You can build a simple [[website]] with HTML"
+    }
+  ],
+  "last_slide": "Follow for more coding lessons"
+}

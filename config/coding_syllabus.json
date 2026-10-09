@@ -1,0 +1,1833 @@
+{
+  "syllabus_name": "The Bell — Zero to Expert",
+  "tagline": "A spine everyone walks through, then four branching tracks — sized to sustain years of content, not months.",
+  "accessibility_bar": "A reader with zero coding background must finish a lesson having genuinely understood it, not skimmed it. Benchmark: Ruben Hassid's writing and CS50's reputation for rigor without losing beginners.",
+  "structure_note": "Modeled on how real large curricula are actually shaped (CS50, The Odin Project, freeCodeCamp, roadmap.sh, teachyourselfcs.com): one linear foundational spine, then parallel branching tracks so depth can keep growing indefinitely in any direction instead of being capped by a single list.",
+  "status_legend": {
+    "built": "The project exists and works today",
+    "planned": "A full build_prompt already exists in curriculum.json but the project hasn't been built yet",
+    "needs_lesson": "The project/material already exists (built or as a real session transcript) but no lesson has been written about it yet",
+    "proposed_new": "No project exists yet — proposed to fill a real gap, sourced from established curricula/project collections",
+    "external_reference": "Not a Bell lesson — an honest pointer to an outside resource for genuine depth"
+  },
+  "spine": {
+    "name": "The Spine",
+    "who_its_for": "Everyone starts here, in order. Zero assumed knowledge.",
+    "source_inspiration": "CS50 (Scratch/C/Python weeks) + The Odin Project's Foundations path",
+    "topics": [
+      {
+        "id": "S-01",
+        "topic": "What code actually is / how a program runs",
+        "plain_english_summary": "A program is just instructions the computer follows in order, top to bottom.",
+        "status": "proposed_new",
+        "project": {
+          "title": "Email Signature Generator",
+          "description": "A 4-line script that prints a ready-to-use professional email signature. Predict each line before running it, then actually copy it into your real email client."
+        },
+        "scheduled_date": "2026-08-03",
+        "quiz": [
+          {
+            "question": "What will this print? <code>print(\"Good morning\")</code>",
+            "type": "text",
+            "answer": "Good morning",
+            "explanation": "print shows whatever is inside the quotes, exactly as written. The quotes themselves don't appear.",
+            "hint": "Look only at what's between the quotes."
+          },
+          {
+            "question": "Which one will actually work and show <code>Hello</code> on the screen?",
+            "type": "choice",
+            "options": [
+              "print(Hello)",
+              "print(\"Hello\")",
+              "show(\"Hello\")"
+            ],
+            "answer": 1,
+            "explanation": "Text needs quotes around it so Python knows it's text, and the instruction is print. Without quotes, Python looks for something named Hello and fails.",
+            "hint": "Two things matter: quotes around text, and the exact instruction name."
+          },
+          {
+            "question": "If you swapped lines 1 and 2 of the signature program, what would show first?",
+            "type": "choice",
+            "answer": 1,
+            "hint": "The computer always starts at the top line.",
+            "explanation": "Python runs lines top to bottom, so whichever line is first runs first. After the swap, the job title line is first.",
+            "options": [
+              "Nabilah Azman",
+              "Reporting Analyst, Warner Music Group",
+              "Both at the same time"
+            ]
+          }
+        ],
+        "ai_prompt": "Build me a short Python script that prints a ready-to-use email signature with my name, job title, contact details, and LinkedIn link, one print() line per piece of information. Keep it beginner friendly, with a comment explaining what print() actually does on each line."
+      },
+      {
+        "id": "S-02",
+        "topic": "The command line / terminal",
+        "plain_english_summary": "The text-only way to talk directly to your computer, no clicking — every real developer tool assumes you can use one.",
+        "status": "proposed_new",
+        "project": {
+          "title": "Navigate & Organize Your Own Project Folders",
+          "description": "Use cd, ls, mkdir and mv to tidy a messy folder, in a safe practice terminal."
+        },
+        "scheduled_date": "2026-08-10",
+        "quiz": [
+          {
+            "question": "After running <code>mv file.txt NewFolder</code>, which folder is <code>file.txt</code> inside now?",
+            "type": "text",
+            "answer": "NewFolder",
+            "explanation": "mv moves the thing you name first into the folder you name second, so file.txt now sits inside NewFolder.",
+            "hint": "mv moves the first thing you name into the second."
+          },
+          {
+            "question": "What happens if you type a command the terminal doesn't recognise, like lss instead of ls?",
+            "type": "choice",
+            "answer": 1,
+            "explanation": "The terminal only runs commands it knows. A typo gives an error such as 'command not found'; it never guesses what you meant.",
+            "options": [
+              "It guesses what you meant",
+              "It shows an error such as 'command not found'",
+              "It fixes the typo for you"
+            ],
+            "hint": "Does the terminal ever guess what you meant?"
+          },
+          {
+            "question": "You're in your home folder, and file.txt is inside Week1. Which command moves it into Week1/NewFolder without using cd first?",
+            "type": "choice",
+            "answer": 1,
+            "hint": "mv looks in your current folder unless you give it the route to the file.",
+            "explanation": "Giving the full route from where you're standing works from anywhere: Week1/file.txt is the file, Week1/NewFolder is the destination.",
+            "options": [
+              "mv file.txt Week1/NewFolder",
+              "mv Week1/file.txt Week1/NewFolder",
+              "cd mv file.txt"
+            ]
+          }
+        ],
+        "ai_prompt": "Write me the exact terminal commands (cd, ls, mkdir, mv) to go into a folder called Week1, see what's inside, create a folder called NewFolder, and move file.txt into it. Explain what each command does, and why mv fails with 'No such file or directory' if I run it from the wrong folder."
+      },
+      {
+        "id": "S-03",
+        "topic": "Variables",
+        "plain_english_summary": "A labeled box that holds a value so you can reuse it later.",
+        "status": "proposed_new",
+        "project": {
+          "title": "Digital Business Card Generator",
+          "description": "Store name, title, company in variables, print a formatted card."
+        },
+        "scheduled_date": "2026-08-17",
+        "quiz": [
+          {
+            "question": "After running <code>name = \"Nabilah Azman\"</code>, what does <code>print(name)</code> show?",
+            "type": "text",
+            "answer": "Nabilah Azman",
+            "explanation": "print(name) opens the box labelled name and shows what's inside. The quotes aren't part of the value, so they don't appear.",
+            "hint": "What did the line name = ... put in the box?"
+          },
+          {
+            "question": "What happens if you run <code>print(phone)</code> but never stored anything in <code>phone</code>?",
+            "type": "choice",
+            "answer": 1,
+            "explanation": "Python runs top to bottom, and no line ever created phone, so it stops with NameError: name 'phone' is not defined.",
+            "options": [
+              "It prints nothing",
+              "It stops with a NameError",
+              "It prints the word phone"
+            ],
+            "hint": "Python runs top to bottom. Was phone ever stored?"
+          },
+          {
+            "question": "After <code>name = \"Aisyah\"</code>, what does <code>print(\"Hi\", name)</code> show?",
+            "type": "text",
+            "answer": "Hi Aisyah",
+            "hint": "The comma puts a space between the two things print shows.",
+            "explanation": "print shows the text Hi, then whatever is in the name box, with a space between them because of the comma."
+          }
+        ],
+        "ai_prompt": "Build me a short Python script that stores my name, job title, and company in variables, then prints a simple digital business card using those variables. Add a comment explaining what error happens if you try to print a variable before it has been assigned a value."
+      },
+      {
+        "id": "S-04",
+        "topic": "Basic operators & data types",
+        "plain_english_summary": "Math and comparisons — the same symbols as a calculator, plus knowing text from numbers from true/false.",
+        "status": "proposed_new",
+        "project": {
+          "title": "Freelance Day-Rate Calculator",
+          "description": "Hours × rate, apply a simple deduction."
+        },
+        "scheduled_date": "2026-08-24",
+        "quiz": [
+          {
+            "question": "In the day-rate calculator, total_cost is 400. What is the result of <code>total_cost * 0.1</code>?",
+            "type": "text",
+            "answer": "40.0",
+            "explanation": "10% of 400 is 40. Because 0.1 is a float, the answer is a float too, so Python shows 40.0.",
+            "hint": "10% of 400. And 0.1 is a float, so the answer is a float too."
+          },
+          {
+            "question": "What happens when you run <code>50 + \"8\"</code>?",
+            "type": "choice",
+            "answer": 2,
+            "explanation": "\"8\" in quotes is text, not a number. Python won't add a number to text, so it stops with a TypeError instead of guessing.",
+            "options": [
+              "You get 58",
+              "You get \"508\"",
+              "It stops with a TypeError"
+            ],
+            "hint": "\"8\" in quotes is text. Can Python add a number and text?"
+          },
+          {
+            "question": "With <code>hourly_rate = 60</code> and <code>hours_worked = 5</code>, what is <code>final_cost</code>?",
+            "type": "text",
+            "answer": "270.0",
+            "hint": "Work it step by step: total, then 10% deduction, then subtract.",
+            "explanation": "60 * 5 = 300, the deduction is 300 * 0.1 = 30.0, and 300 - 30.0 = 270.0."
+          }
+        ],
+        "ai_prompt": "Build me a short Python script that calculates a freelance day rate: multiply hours worked by an hourly rate, then take off a 10 percent deduction, and print the final amount. Use plain variables and basic math operators. Add a comment explaining why the answer shows .0 at the end, and what error happens if a number is accidentally stored as text, like \"8\"."
+      },
+      {
+        "id": "S-05",
+        "topic": "Strings (text)",
+        "plain_english_summary": "How code stores and combines words and sentences.",
+        "status": "proposed_new",
+        "project": {
+          "title": "LinkedIn Post Character Counter",
+          "description": "Character count, word count and an over the limit check for LinkedIn's 3,000 character limit."
+        },
+        "scheduled_date": "2026-08-31",
+        "quiz": [
+          {
+            "question": "What is the result of <code>len(\"Hi there\")</code>?",
+            "type": "text",
+            "answer": "8",
+            "explanation": "len counts every character, and the space counts too: H, i, space, t, h, e, r, e makes 8.",
+            "hint": "Count every character, and the space counts too."
+          },
+          {
+            "question": "What does <code>\"Hello\" == \"hello\"</code> give?",
+            "type": "choice",
+            "answer": 1,
+            "explanation": "== checks for an exact match, character by character. A capital H and a small h are different characters, so the answer is False.",
+            "options": [
+              "True",
+              "False",
+              "An error"
+            ],
+            "hint": "== checks for an exact match, character by character."
+          },
+          {
+            "question": "How many words does <code>\"Saved 8 hours\".split()</code> give?",
+            "type": "text",
+            "answer": "3",
+            "hint": "Count the pieces between the spaces.",
+            "explanation": "split cuts the text at every space, giving Saved, 8 and hours: 3 pieces. The 8 counts as a word too."
+          }
+        ],
+        "ai_prompt": "Build me a short beginner Python script, without functions or if statements, that stores a LinkedIn post draft in a variable, then prints its character count with len(), its word count with split(), and True or False for whether it's over LinkedIn's 3,000 character limit, using f-strings. Add a comment explaining why \"Hello\" and \"hello\" count as different strings."
+      },
+      {
+        "id": "S-06",
+        "topic": "Lists",
+        "plain_english_summary": "An ordered row of items the code can loop through.",
+        "status": "proposed_new",
+        "project": {
+          "title": "Weekly Task Tracker",
+          "description": "Read, add and remove tasks stored in a list."
+        },
+        "scheduled_date": "2026-09-07",
+        "quiz": [
+          {
+            "question": "With <code>tasks = [\"Buy milk\", \"Walk the dog\", \"Do homework\"]</code>, what does <code>tasks[1]</code> give?",
+            "type": "text",
+            "answer": "Walk the dog",
+            "explanation": "Positions start at 0, so tasks[0] is Buy milk and tasks[1] is the second item, Walk the dog.",
+            "hint": "Positions start at 0, so position 1 is the second item."
+          },
+          {
+            "question": "What happens if you ask for <code>tasks[3]</code> when the list has only three items?",
+            "type": "choice",
+            "answer": 1,
+            "explanation": "Three items sit at positions 0, 1 and 2. There's no position 3, so Python stops with IndexError: list index out of range.",
+            "options": [
+              "It gives the last item",
+              "It stops with an IndexError",
+              "It gives the first item"
+            ],
+            "hint": "Three items sit at positions 0, 1 and 2."
+          },
+          {
+            "question": "A list has 3 tasks. After <code>tasks.append(\"Pay rent\")</code>, what does <code>len(tasks)</code> give?",
+            "type": "text",
+            "answer": "4",
+            "hint": "append adds exactly one item.",
+            "explanation": "append adds one item to the end, so the list goes from 3 items to 4."
+          }
+        ],
+        "ai_prompt": "Build me a short Python script for a to-do list using a Python list: read the first task by its index, add a task with append, remove the last task with pop, and print the list after each step. Add a comment explaining why positions start at 0 and what IndexError means."
+      },
+      {
+        "id": "S-07",
+        "topic": "Tuples & Sets",
+        "plain_english_summary": "A list that can't change, and a list with no duplicates allowed.",
+        "status": "proposed_new",
+        "project": {
+          "title": "Duplicate Email Remover",
+          "description": "Clean a messy newsletter recipient list using a set."
+        },
+        "scheduled_date": "2026-09-14",
+        "quiz": [
+          {
+            "question": "What type does <code>set(email_list)</code> create, the one that removes duplicates?",
+            "type": "text",
+            "answer": "set",
+            "explanation": "A set holds each item only once, so turning the list into a set removes the repeated email.",
+            "hint": "Which type holds each item only once?"
+          },
+          {
+            "question": "What happens if you try to modify a tuple after it is created?",
+            "type": "choice",
+            "options": [
+              "It can be modified",
+              "It will be converted to a list",
+              "An error will occur"
+            ],
+            "answer": 2,
+            "explanation": "Tuples can't be changed after they're made, so Python stops with TypeError: 'tuple' object does not support item assignment.",
+            "hint": "Can a tuple be changed after it's made?"
+          },
+          {
+            "question": "How many items are in <code>set([\"a\", \"b\", \"a\", \"c\", \"b\"])</code>?",
+            "type": "text",
+            "answer": "3",
+            "hint": "Cross out every repeat.",
+            "explanation": "A set keeps each item once, so the repeated a and b disappear, leaving a, b and c: 3 items."
+          }
+        ],
+        "ai_prompt": "Build me a short Python script that takes a list of email addresses with some duplicates, removes the duplicates using a set, and prints how many there were before and after. Then show a tuple and what error happens if you try to change it. Add a comment explaining why the set may print the emails in a different order."
+      },
+      {
+        "id": "S-08",
+        "topic": "Dictionaries",
+        "plain_english_summary": "A lookup table by name — the same shape as the JSON every Bell tool sends around.",
+        "status": "proposed_new",
+        "project": {
+          "title": "Client Contact Book",
+          "description": "Add, search, update, delete records. Reused repeatedly in later tracks."
+        },
+        "scheduled_date": "2026-09-21",
+        "quiz": [
+          {
+            "question": "What is printed when you run <code>print(contact_book[\"John Doe\"])</code> after adding <code>contact_book[\"John Doe\"] = \"012-345-6789\"</code>?",
+            "type": "text",
+            "answer": "012-345-6789",
+            "explanation": "contact_book[\"John Doe\"] looks up the key John Doe and gives back its value, the phone number.",
+            "hint": "The key goes in, its value comes out."
+          },
+          {
+            "question": "What happens when you try to access a key that does not exist in the dictionary like <code>contact_book[\"Jane Doe\"]</code>?",
+            "type": "choice",
+            "options": [
+              "It returns a default value",
+              "It raises a KeyError",
+              "It creates a new key"
+            ],
+            "answer": 1,
+            "explanation": "Jane Doe was never added as a key, so the lookup stops with KeyError: 'Jane Doe'. Using .get() would give a fallback instead.",
+            "hint": "Was Jane Doe ever added as a key?"
+          },
+          {
+            "question": "After <code>contact_book = {\"John Doe\": \"012\"}</code> then <code>contact_book[\"John Doe\"] = \"098\"</code>, how many pairs does the dictionary hold?",
+            "type": "text",
+            "answer": "1",
+            "hint": "Can a dictionary hold the same key twice?",
+            "explanation": "Each key appears only once. Using the same key again replaces John's number instead of adding a second John."
+          }
+        ],
+        "ai_prompt": "Build me a short Python script for a simple contact book using a dictionary, with name as the key and phone number as the value, that lets me add, search, update, and delete a contact. Add a comment explaining what error happens if I search for a name that was never added."
+      },
+      {
+        "id": "S-09",
+        "topic": "Conditionals (if / else)",
+        "plain_english_summary": "How code makes a decision.",
+        "status": "proposed_new",
+        "project": {
+          "title": "Mini Job Offer Scorer (no AI)",
+          "description": "Hand written if/else scoring, a simple version of the AI powered 'Should I Take This Job?' tool."
+        },
+        "scheduled_date": "2026-09-28",
+        "quiz": [
+          {
+            "question": "With <code>salary = 5000</code> and <code>location = \"KL\"</code>, what does the scorer print?",
+            "type": "text",
+            "answer": "7",
+            "explanation": "5000 > 5000 is False, so the else branch sets score to 5. Then KL adds 2, giving 7.",
+            "hint": "Is 5000 greater than 5000?"
+          },
+          {
+            "question": "Which line makes a salary of exactly 5000 score 10 points?",
+            "type": "choice",
+            "answer": 1,
+            "explanation": ">= means more than or equal to, so 5000 >= 5000 is True. With > alone, 5000 falls into the else.",
+            "options": [
+              "if salary > 5000:",
+              "if salary >= 5000:",
+              "if salary = 5000:"
+            ],
+            "hint": "> means strictly more than. Which sign includes equal?"
+          },
+          {
+            "question": "With <code>salary = 5001</code> and <code>location = \"Penang\"</code>, what score does the scorer print?",
+            "type": "text",
+            "answer": "10",
+            "hint": "Check each if separately: the salary first, then the location.",
+            "explanation": "5001 > 5000 is True, so score is 10. location == \"KL\" is False, so no bonus is added."
+          }
+        ],
+        "ai_prompt": "Build me a short beginner Python script, without functions, that scores a job offer using if/else: a salary over 5000 gets 10 points, otherwise 5, and a KL location adds 2 bonus points. Then print the score. Add a comment explaining what score a salary of exactly 5000 gets, and how changing > to >= changes that."
+      },
+      {
+        "id": "S-10",
+        "topic": "Loops",
+        "plain_english_summary": "Repeating an action for every item in a list.",
+        "status": "proposed_new",
+        "project": {
+          "title": "Batch Invoice Number Generator",
+          "description": "Print a run of sequential invoice numbers from a starting number and a quantity. It prints numbers only; it doesn't create invoice documents."
+        },
+        "scheduled_date": "2026-10-05",
+        "quiz": [
+          {
+            "question": "What is the first value <code>range(1001, 1006)</code> produces?",
+            "type": "text",
+            "answer": "1001",
+            "hint": "range starts at the first number you give it, not one before or after it.",
+            "explanation": "range starts at its first number, so the first value is 1001."
+          },
+          {
+            "question": "How many values does <code>range(1001, 1006)</code> produce?",
+            "type": "text",
+            "answer": "5",
+            "hint": "List them out: 1001, 1002, ... and remember the stop, 1006, is never included.",
+            "explanation": "It produces 1001, 1002, 1003, 1004 and 1005, then stops before 1006. That's 5 values."
+          },
+          {
+            "question": "With <code>start = 2001</code> and <code>count = 10</code>, what is the last invoice number <code>range(start, start + count)</code> prints?",
+            "type": "text",
+            "answer": "2010",
+            "hint": "Work out the stop first: start + count. Then the last number printed is one less than the stop.",
+            "explanation": "The stop is 2001 + 10 = 2011, which is never printed, so the last number is 2011 - 1 = 2010."
+          },
+          {
+            "question": "With <code>start = 3001</code> and <code>count = 4</code>, what is the last invoice number printed?",
+            "type": "text",
+            "answer": "3004",
+            "hint": "Use last printed = start + count - 1.",
+            "explanation": "3001 + 4 - 1 = 3004. The loop prints 3001, 3002, 3003 and 3004: four numbers."
+          }
+        ],
+        "ai_prompt": "Build me a short Python script with two variables, start and count, that uses a for loop with range(start, start + count) to print a run of invoice numbers as 'Invoice Number: X'. Add comments explaining why range stops one before start + count, why the last number printed is start + count - 1, and that this only prints numbers rather than creating invoice files."
+      },
+      {
+        "id": "S-11",
+        "topic": "Functions",
+        "plain_english_summary": "A named, reusable block of instructions.",
+        "status": "proposed_new",
+        "project": {
+          "title": "Turn the Day-Rate Calculator into a function",
+          "description": "Callback to S-04 — reusable across multiple clients."
+        },
+        "scheduled_date": "2026-10-12",
+        "quiz": [
+          {
+            "question": "What does <code>day_rate_calculator(6, 80)</code> give back?",
+            "type": "text",
+            "answer": "480",
+            "hint": "Fill the slots: hours becomes 6 and rate becomes 80. Then work out total.",
+            "explanation": "hours is 6 and rate is 80, so total = 6 * 80 = 480, and return hands back 480."
+          },
+          {
+            "question": "What happens if the line that calls a function comes above its <code>def</code>?",
+            "type": "choice",
+            "answer": 1,
+            "options": [
+              "It works as expected",
+              "It stops with a NameError",
+              "It returns 0"
+            ],
+            "hint": "Python reads top to bottom. Has it seen the def yet when it reaches the call?",
+            "explanation": "Python reads top to bottom, so at that point the function doesn't exist yet and it stops with a NameError."
+          },
+          {
+            "question": "If the function ended with <code>print(total)</code> instead of <code>return total</code>, what would <code>print(client_a)</code> show?",
+            "type": "text",
+            "answer": "None",
+            "hint": "print only shows a value on screen. What does a function hand back when it has no return?",
+            "explanation": "Without return the function hands back None, Python's word for nothing, so client_a is None. The 400 was only shown on screen, never handed back."
+          }
+        ],
+        "ai_prompt": "Build me a short Python script that turns a day rate calculation, hours times hourly rate, into a reusable function with return, then calls it for two different clients and prints both totals. Add a comment explaining what error happens if the function is called before its def line."
+      },
+      {
+        "id": "S-12",
+        "topic": "Why speed/efficiency matters (informal)",
+        "plain_english_summary": "Why searching a phone book alphabetically beats reading every name — a first taste of what Track D later formalizes as Big-O.",
+        "status": "proposed_new",
+        "project": {
+          "title": "Compare two ways of searching the Contact Book",
+          "description": "Count the steps for checking every entry one by one versus a dictionary lookup."
+        },
+        "scheduled_date": "2026-10-19",
+        "quiz": [
+          {
+            "question": "Searching one by one through 5 names, how many names are checked to find the last one?",
+            "type": "text",
+            "answer": "5",
+            "explanation": "A linear search checks every name in order until it finds the target. The last one is only reached after checking all 5.",
+            "hint": "Think about how many names each method has to look at."
+          },
+          {
+            "question": "Why does a dictionary lookup stay fast as the contact book grows?",
+            "type": "choice",
+            "answer": 2,
+            "explanation": "Python uses the key itself to work out where the value is stored, so it goes straight there instead of checking names one by one.",
+            "options": [
+              "It checks every name twice as fast",
+              "It sorts the names first",
+              "It goes straight to the entry using the key"
+            ],
+            "hint": "Think about how many names each method has to look at."
+          },
+          {
+            "question": "In a list of 1,000 names, the one you want is the 600th. How many names does a one by one search check to find it?",
+            "type": "text",
+            "answer": "600",
+            "hint": "A one by one search starts at the first name and stops when it finds the one it wants.",
+            "explanation": "It checks names 1, 2, 3 and so on, and stops at the 600th, so it checks 600 names. A dictionary lookup would go straight to it."
+          }
+        ],
+        "ai_prompt": "Write me a short beginner Python script that searches for a name in a list one by one, counting each step, and then looks the same name up in a dictionary by its key. Print how many steps the one by one search took. Add comments explaining why the dictionary lookup stays fast even when the list is much bigger."
+      },
+      {
+        "id": "S-13",
+        "topic": "Modules & imports",
+        "plain_english_summary": "Borrowing pre-written code instead of writing everything from scratch.",
+        "status": "proposed_new",
+        "project": {
+          "title": "Secure Password Generator",
+          "description": "Uses Python's built-in random and string modules."
+        },
+        "scheduled_date": "2026-10-26",
+        "quiz": [
+          {
+            "question": "If you run <code>print(generate_password(12))</code>, how many characters long is the password?",
+            "type": "text",
+            "answer": "12",
+            "explanation": "The loop runs length times, adding one random character each round, so 12 rounds make 12 characters.",
+            "hint": "The loop runs once per character. How many times does it run?"
+          },
+          {
+            "question": "Which module should you use to pick random characters for a password?",
+            "type": "choice",
+            "answer": 1,
+            "explanation": "Python's documentation says to use secrets for anything security related. The random module is designed for simulations and games, and its results can be predicted.",
+            "options": [
+              "random",
+              "secrets",
+              "string"
+            ],
+            "hint": "One of these is designed for games and simulations, the other for security."
+          },
+          {
+            "question": "How many characters can <code>secrets.choice</code> pick from in <code>string.ascii_letters + string.digits + string.punctuation</code>?",
+            "type": "text",
+            "answer": "94",
+            "hint": "Count each part: 52 letters (a to z and A to Z), 10 digits, and the punctuation symbols.",
+            "explanation": "52 letters + 10 digits + 32 punctuation symbols = 94 characters to choose from."
+          }
+        ],
+        "ai_prompt": "Build me a short Python script that generates a secure random password of a length I choose, using Python's built in secrets and string modules and a simple for loop. Add a comment explaining why secrets is used instead of random, and what error happens if you forget to import a module first."
+      },
+      {
+        "id": "S-14",
+        "topic": "Handling errors (try/except)",
+        "plain_english_summary": "Telling the program what to do instead of crashing.",
+        "status": "built",
+        "project": {
+          "title": "Safe Cost per Unit Calculator",
+          "description": "Divide total cost by units, and handle a units figure of 0 with try/except instead of crashing."
+        },
+        "scheduled_date": "2026-11-02",
+        "quiz": [
+          {
+            "question": "With <code>units = 0</code>, what does the cost per unit calculator do?",
+            "type": "choice",
+            "answer": 1,
+            "explanation": "Dividing by 0 raises a ZeroDivisionError, so Python skips to the matching except and prints its message instead of stopping.",
+            "options": [
+              "Stops with ZeroDivisionError",
+              "Prints \"Can not work out cost per unit: units is 0.\"",
+              "Prints Cost per unit: 0"
+            ],
+            "hint": "Does the division succeed when units is 0?"
+          },
+          {
+            "question": "Why is <code>except ZeroDivisionError:</code> safer than a bare <code>except:</code>?",
+            "type": "choice",
+            "answer": 1,
+            "explanation": "A bare except catches every error, so an unexpected problem gets a wrong message and goes unnoticed. Naming the error means anything else still shows up.",
+            "options": [
+              "It runs faster",
+              "It only catches the problem you planned for, so other errors still show",
+              "It stops all errors from happening"
+            ],
+            "hint": "What happens to errors you didn't plan for?"
+          },
+          {
+            "question": "With <code>units = 0</code>, which line of the program never runs?",
+            "type": "choice",
+            "answer": 0,
+            "hint": "Python skips the rest of the try block as soon as one line in it fails.",
+            "explanation": "The division on the line before it fails, so Python abandons the rest of the try block, including this print, and jumps to the except.",
+            "options": [
+              "print(f\"Cost per unit: {cost_per_unit}\")",
+              "except ZeroDivisionError:",
+              "units = 0"
+            ]
+          }
+        ],
+        "ai_prompt": "Build me a short Python script that works out cost per unit by dividing a total cost by a number of units, using try/except to catch a ZeroDivisionError when units is 0 instead of crashing. Add a comment explaining why catching only ZeroDivisionError is safer than a bare except."
+      },
+      {
+        "id": "S-15",
+        "topic": "Reading & writing files",
+        "plain_english_summary": "How code saves something to disk and reads it back.",
+        "status": "proposed_new",
+        "project": {
+          "title": "Expense Log",
+          "description": "Save entries to a file, read the running total back next run."
+        },
+        "scheduled_date": "2026-11-09",
+        "quiz": [
+          {
+            "question": "Which mode adds a new line to the end of a file and keeps what's already there?",
+            "type": "choice",
+            "answer": 0,
+            "explanation": "\"a\" means append: it adds to the end. \"w\" empties the file first, and \"r\" only reads.",
+            "options": [
+              "\"a\"",
+              "\"w\"",
+              "\"r\""
+            ],
+            "hint": "One of these adds to the end, one empties the file first."
+          },
+          {
+            "question": "If the expense log adds Rent,1000 on every run, what running total does the second run print?",
+            "type": "text",
+            "answer": "2000.0",
+            "explanation": "After two runs the file holds two lines of 1000. The loop adds them up, and float makes the total 2000.0.",
+            "hint": "Each run adds one line. How many lines after two runs?"
+          },
+          {
+            "question": "expenses.txt holds two lines: <code>Rent,1000</code> and <code>Food,50.5</code>. What running total does the program print?",
+            "type": "text",
+            "answer": "1050.5",
+            "hint": "Add the two amounts after the commas.",
+            "explanation": "The loop adds float(\"1000\") and float(\"50.5\"): 1000.0 + 50.5 = 1050.5."
+          }
+        ],
+        "ai_prompt": "Build me a short Python script that appends an expense line like Rent,1000 to a text file every time it runs, then reads every line back and prints the running total. Use with open(...) and append mode. Add a comment explaining why \"w\" mode would wipe out the previous expenses."
+      },
+      {
+        "id": "S-16",
+        "topic": "Installing packages & virtual environments",
+        "plain_english_summary": "Getting someone else's code onto your machine, and why projects keep separate toolboxes.",
+        "status": "proposed_new",
+        "project": {
+          "title": "Newsletter Signup QR Code Generator",
+          "description": "pip install qrcode — first external package, immediately usable output."
+        },
+        "scheduled_date": "2026-11-16",
+        "quiz": [
+          {
+            "question": "Which command switches on the virtual environment in the .venv folder on a Mac?",
+            "type": "choice",
+            "answer": 2,
+            "explanation": "python3 -m venv .venv only creates the toolbox. source .venv/bin/activate switches it on for this terminal window, and your prompt then starts with (.venv).",
+            "options": [
+              "python3 -m venv .venv",
+              "pip install .venv",
+              "source .venv/bin/activate"
+            ],
+            "hint": "One command creates the toolbox, another switches it on."
+          },
+          {
+            "question": "You installed qrcode, open a new terminal, run your script and get ModuleNotFoundError. What's the most likely cause?",
+            "type": "choice",
+            "answer": 1,
+            "explanation": "The package lives inside the virtual environment, which isn't switched on in the new window. Activate it again and the import works.",
+            "options": [
+              "qrcode was uninstalled",
+              "The virtual environment isn't activated in this window",
+              "Python can't make QR codes"
+            ],
+            "hint": "Is the toolbox switched on in a brand new terminal window?"
+          },
+          {
+            "question": "What does <code>(.venv)</code> at the start of your terminal line tell you?",
+            "type": "choice",
+            "answer": 1,
+            "hint": "It appears right after you run source .venv/bin/activate.",
+            "explanation": "It means the virtual environment is switched on in this window, so pip installs into it and python uses its packages.",
+            "options": [
+              "Python is out of date",
+              "The virtual environment is switched on in this window",
+              "The .venv folder was deleted"
+            ]
+          }
+        ],
+        "ai_prompt": "Give me the exact terminal commands to create and activate a Python virtual environment on a Mac and install the qrcode package with image support (qrcode[pil]), plus a short Python script that turns a link into a QR code image and saves it. Add a comment explaining why the package should be installed inside a virtual environment."
+      },
+      {
+        "id": "S-17",
+        "topic": "Version control basics (git)",
+        "plain_english_summary": "What actually protects your work from being lost — moved early because every real curriculum (CS50, Odin) teaches it right after basics, not as a late afterthought.",
+        "status": "proposed_new",
+        "project": {
+          "title": "Turn Week 1_Excel Formula Generator into a real git repo",
+          "description": "A genuinely real, unresolved gap found this session: these folders have zero backup or history."
+        },
+        "scheduled_date": "2026-11-23",
+        "quiz": [
+          {
+            "question": "Which command takes the snapshot of your staged files, with a note?",
+            "type": "choice",
+            "answer": 1,
+            "explanation": "git add only picks files for the snapshot. git commit -m takes it and attaches your note.",
+            "options": [
+              "git add .",
+              "git commit -m \"note\"",
+              "git status"
+            ],
+            "hint": "add picks files; which command takes the snapshot?"
+          },
+          {
+            "question": "You made good edits, never committed, then ran <code>git restore</code> on the file. What happens to the good edits?",
+            "type": "choice",
+            "answer": 2,
+            "explanation": "git restore puts the file back exactly as it was in the last commit, so anything you never committed is gone.",
+            "options": [
+              "They're kept",
+              "They're moved to a backup",
+              "They're lost"
+            ],
+            "hint": "git restore goes back to the last commit. Were the edits ever committed?"
+          },
+          {
+            "question": "<code>git status --short</code> shows <code>??</code> next to a file. What does that mean?",
+            "type": "choice",
+            "answer": 0,
+            "hint": "Has the file ever been added to git?",
+            "explanation": "?? means untracked: git can see the file but it isn't in any snapshot yet. git add stages it, then it shows A.",
+            "options": [
+              "Git sees the file but isn't tracking it yet",
+              "The file has an error",
+              "The file was deleted"
+            ]
+          }
+        ],
+        "ai_prompt": "Write me the exact sequence of git commands to set my name and email once, turn a project folder into a git repository, check its status, stage a file, make my first commit, and view the history. Give a one sentence explanation of each command, and a note on why committing every time something works matters."
+      },
+      {
+        "id": "S-18",
+        "topic": "GitHub & why backups matter",
+        "plain_english_summary": "Pushing your git repo somewhere safe off your laptop.",
+        "status": "proposed_new",
+        "project": {
+          "title": "Push the Week 1 repo to GitHub",
+          "description": "Newsletter, Bell_Assistant, sanyu-app are already-working real examples to reference."
+        },
+        "scheduled_date": "2026-11-30",
+        "quiz": [
+          {
+            "question": "Which command sends your commits up to GitHub for the first time?",
+            "type": "choice",
+            "answer": 0,
+            "explanation": "push sends your commits to the online copy called origin, on the main branch. The -u remembers the pairing so later you can just type git push.",
+            "options": [
+              "git push -u origin main",
+              "git commit -m \"backup\"",
+              "git remote add origin main"
+            ],
+            "hint": "push sends commits to origin, on the main branch."
+          },
+          {
+            "question": "Your laptop is lost. Which commits survive?",
+            "type": "choice",
+            "answer": 1,
+            "explanation": "Commits only reach GitHub when you push. Anything committed but never pushed was only on the laptop.",
+            "options": [
+              "All commits",
+              "Only the ones you pushed",
+              "None of them"
+            ],
+            "hint": "Commits only reach GitHub when you push."
+          },
+          {
+            "question": "<code>git push -u origin main</code> fails with <code>src refspec main does not match any</code>. Which command fixes it?",
+            "type": "choice",
+            "answer": 1,
+            "hint": "The error says there's nothing called main to push.",
+            "explanation": "Your branch is still called master, so there's no main to push. git branch -M main renames it, then the push works.",
+            "options": [
+              "git commit -m \"main\"",
+              "git branch -M main",
+              "git remote add origin main"
+            ]
+          }
+        ],
+        "ai_prompt": "Write me the exact git commands to connect a local git repository to a new, empty GitHub repository and push it for the first time, including git branch -M main. Explain what each command does, and that GitHub needs a personal access token instead of my password when I push."
+      },
+      {
+        "id": "S-19",
+        "topic": "What HTML actually is",
+        "plain_english_summary": "The structure/skeleton of every webpage you've ever visited.",
+        "status": "proposed_new",
+        "project": {
+          "title": "Build a one-page 'About Me' site",
+          "description": "Pure structure first, no styling — headings, paragraphs, a list, a link."
+        },
+        "scheduled_date": "2026-12-07",
+        "quiz": [
+          {
+            "question": "Which tag makes the main heading in <code>&lt;h1&gt;Hi, I'm Nabilah&lt;/h1&gt;</code>?",
+            "type": "text",
+            "answer": "h1",
+            "explanation": "h1 stands for heading level 1, the biggest and most important heading on the page.",
+            "hint": "h1 is short for heading level 1."
+          },
+          {
+            "question": "What happens if you forget the closing <code>&lt;/a&gt;</code> tag?",
+            "type": "choice",
+            "answer": 1,
+            "explanation": "Browsers guess where an unclosed tag ends, and often guess wrong, so the text after the link can turn into part of it.",
+            "options": [
+              "The page shows correctly anyway",
+              "Text after the link can become part of the link",
+              "The browser refuses to open the page"
+            ],
+            "hint": "Browsers try to guess where an unclosed tag ends."
+          },
+          {
+            "question": "Which tag sets the text shown on the browser tab?",
+            "type": "choice",
+            "answer": 0,
+            "hint": "It goes inside <head>, with the information about the page.",
+            "explanation": "<title> goes inside <head>, and its text appears on the browser tab, not on the page itself.",
+            "options": [
+              "<title>",
+              "<h1>",
+              "<body>"
+            ]
+          }
+        ],
+        "ai_prompt": "Build me a simple one page About Me website in plain HTML, starting with <!DOCTYPE html> and a meta charset line, with a heading, a short paragraph about me, a bullet list of my skills, and a link to my LinkedIn. Add a comment reminding me why every tag I open needs a matching closing tag."
+      },
+      {
+        "id": "S-20",
+        "topic": "What CSS actually is",
+        "plain_english_summary": "How that skeleton gets colors, spacing, and layout.",
+        "status": "proposed_new",
+        "project": {
+          "title": "Style the About Me page in Bell brand colors",
+          "description": "Apply navy/gold/cream to the S-19 project."
+        },
+        "scheduled_date": "2026-12-14",
+        "quiz": [
+          {
+            "question": "With <code>body { color: #1A1A2E; }</code>, what colour is the page text?",
+            "type": "text",
+            "answer": "navy",
+            "explanation": "color sets the text colour, and #1A1A2E is The Bell's navy.",
+            "hint": "color sets the text colour."
+          },
+          {
+            "question": "What does CSS control?",
+            "type": "choice",
+            "answer": 2,
+            "explanation": "HTML decides what each part of the page is. CSS decides how it looks, including colours, fonts, spacing and where things sit on the page.",
+            "options": [
+              "Only colours",
+              "The content and words on the page",
+              "How the page looks, including colours, fonts and layout"
+            ],
+            "hint": "HTML is what's on the page; CSS is how it looks."
+          },
+          {
+            "question": "You write <code>colour: #1A1A2E;</code> (British spelling). What happens?",
+            "type": "choice",
+            "answer": 1,
+            "hint": "CSS uses American spelling, and it never shows an error message.",
+            "explanation": "CSS doesn't show errors. The browser doesn't know a property called colour, so it quietly skips that line and the text keeps its default colour.",
+            "options": [
+              "The text turns navy",
+              "The browser ignores that line, so the text colour doesn't change",
+              "The page shows an error"
+            ]
+          }
+        ],
+        "ai_prompt": "Take a simple About Me HTML page and add a CSS style block in the head that uses a cream background (#F5F0E8), navy text (#1A1A2E), a gold accent (#C9A84C) as a line under the heading, and a centred column with max-width. Add a comment explaining why gold isn't used as the text colour on cream, and the difference between what HTML controls and what CSS controls."
+      },
+      {
+        "id": "S-21",
+        "topic": "What JavaScript actually is",
+        "plain_english_summary": "How a page responds to you clicking or typing, without reloading.",
+        "status": "proposed_new",
+        "project": {
+          "title": "Add a working copy-button to the About Me page",
+          "description": "The same copy-button pattern already used across all 10 Bell tools, taught from scratch this time."
+        },
+        "scheduled_date": "2026-12-21",
+        "quiz": [
+          {
+            "question": "After you click the button, what does its label change to?",
+            "type": "text",
+            "answer": "Copied!",
+            "explanation": "The click listener runs button.textContent = \"Copied!\", which changes the label straight away, with no page reload.",
+            "hint": "Look at the line that changes the button's label."
+          },
+          {
+            "question": "Why should the &lt;script&gt; go after the button in the HTML?",
+            "type": "choice",
+            "answer": 1,
+            "explanation": "The browser reads top to bottom. If the script runs first, the button doesn't exist yet and getElementById finds nothing.",
+            "options": [
+              "Scripts at the top run slower",
+              "So the button exists when the script looks for it",
+              "Buttons can't be above scripts"
+            ],
+            "hint": "The browser reads the page top to bottom."
+          },
+          {
+            "question": "Which line connects the button to the code that runs when it's clicked?",
+            "type": "choice",
+            "answer": 1,
+            "hint": "Look for the word click.",
+            "explanation": "addEventListener(\"click\", ...) tells the browser: when this button is clicked, run the function inside.",
+            "options": [
+              "const button = document.getElementById(\"copy-btn\");",
+              "button.addEventListener(\"click\", function () { ... });",
+              "button.textContent = \"Copied!\";"
+            ]
+          }
+        ],
+        "ai_prompt": "Add a real, working copy to clipboard button to my HTML page using plain JavaScript, with getElementById, addEventListener and navigator.clipboard.writeText, so clicking it copies my email address and changes the button label to Copied! without reloading the page. Add a comment explaining why the script tag goes after the button."
+      },
+      {
+        "id": "S-22",
+        "topic": "Secrets & environment variables (.env)",
+        "plain_english_summary": "Why API keys live in a hidden file instead of the code itself.",
+        "status": "built",
+        "project": {
+          "title": "All 10 Bell tools",
+          "description": "Every one already loads GROQ_API_KEY from .env via python-dotenv."
+        },
+        "scheduled_date": "2026-12-28",
+        "quiz": [
+          {
+            "question": "Which line in .gitignore stops git from uploading your secrets file?",
+            "type": "text",
+            "answer": ".env",
+            "explanation": "Anything listed in .gitignore is skipped by git add, so a line saying .env keeps that file off GitHub.",
+            "hint": "Anything listed in .gitignore is skipped by git add."
+          },
+          {
+            "question": "Your API key was pushed to a public GitHub repo, then you deleted it from the code. What should you do?",
+            "type": "choice",
+            "answer": 2,
+            "explanation": "git keeps the history, so the old key is still visible. Treat it as leaked: create a new key and delete the old one.",
+            "options": [
+              "Nothing, it's deleted now",
+              "Make the repo private and carry on",
+              "Create a new key and delete the old one"
+            ],
+            "hint": "git keeps the history of every commit."
+          },
+          {
+            "question": "<code>.env</code> is listed in <code>.gitignore</code>. After <code>git add .</code>, what does <code>git status --short</code> show for .env?",
+            "type": "choice",
+            "answer": 1,
+            "hint": "Ignored files don't appear in git status.",
+            "explanation": "Nothing at all: git pretends ignored files aren't there, so .env is never staged, committed or pushed.",
+            "options": [
+              "A  .env",
+              "Nothing, .env doesn't appear",
+              "?? .env"
+            ]
+          }
+        ],
+        "ai_prompt": "Show me how to keep an API key secret in a Python project: install python-dotenv, create a .env file, add .env to .gitignore, and load the key with load_dotenv and os.getenv. Print only whether the key loaded, never the key itself. Add a comment explaining why hardcoding a key in the code is a security risk."
+      },
+      {
+        "id": "S-23",
+        "topic": "Organizing code with classes (OOP)",
+        "plain_english_summary": "Bundling related data and actions together.",
+        "status": "proposed_new",
+        "project": {
+          "title": "Rebuild the Client Contact Book as a class",
+          "description": "Take S-08's dictionary version and rewrite it using a Client class with methods."
+        },
+        "scheduled_date": "2027-01-04",
+        "quiz": [
+          {
+            "question": "What does <code>client2.display_info()</code> print?",
+            "type": "choice",
+            "answer": 1,
+            "explanation": "display_info reads the attributes of the object it's called on through self, so client2 shows only Jane's details.",
+            "options": [
+              "Name: John Doe, Phone: 1234567890, Address: 123 Main St",
+              "Name: Jane Tan, Phone: 0198765432, Address: 8 Jalan Ampang",
+              "Both clients' details"
+            ],
+            "hint": "display_info reads the attributes of the object it's called on."
+          },
+          {
+            "question": "What does <code>self</code> mean inside a method?",
+            "type": "choice",
+            "answer": 1,
+            "explanation": "self is the particular object the method is working on, so client1.display_info() reads client1's data and nobody else's.",
+            "options": [
+              "The class itself",
+              "The particular object the method is working on",
+              "The first argument you typed"
+            ],
+            "hint": "self is the object the method was called on."
+          },
+          {
+            "question": "When you run <code>client2.display_info()</code>, what does <code>self</code> mean inside the method?",
+            "type": "choice",
+            "answer": 1,
+            "hint": "Look at what comes before the dot.",
+            "explanation": "self is always the object the method was called on. client2.display_info() means self is client2, so it reads Jane's details.",
+            "options": [
+              "client1",
+              "client2",
+              "The Client class"
+            ]
+          }
+        ],
+        "ai_prompt": "Build me a short Python script with a class called Client that stores a name, phone number and address in __init__, and a display_info method that prints them. Create two different client objects from that class and print each one. Add a comment explaining what self means."
+      },
+      {
+        "id": "S-24",
+        "topic": "List comprehensions & higher-order functions",
+        "plain_english_summary": "One-line shortcuts for 'do this to every item in a list.'",
+        "status": "proposed_new",
+        "project": {
+          "title": "Refactor the LinkedIn Post Character Counter",
+          "description": "Use comprehensions on the post's words: word lengths, long words, and the longest word with max(key=len)."
+        },
+        "scheduled_date": "2027-01-11",
+        "quiz": [
+          {
+            "question": "What is the result of <code>[x * 2 for x in [1, 2, 3, 4, 5]]</code>?",
+            "type": "text",
+            "answer": "[2, 4, 6, 8, 10]",
+            "explanation": "The comprehension takes each number, doubles it, and collects the results in a new list.",
+            "hint": "Double each number."
+          },
+          {
+            "question": "After running <code>doubled_numbers = [x * 2 for x in numbers]</code>, what has happened to <code>numbers</code>?",
+            "type": "choice",
+            "answer": 0,
+            "explanation": "A comprehension always builds a brand new list. The original list is never touched.",
+            "options": [
+              "Nothing, it's unchanged",
+              "Its values are doubled",
+              "It's deleted"
+            ],
+            "hint": "A comprehension always builds a new list."
+          },
+          {
+            "question": "What does <code>[x + 10 for x in [1, 2, 3]]</code> give?",
+            "type": "text",
+            "answer": "[11, 12, 13]",
+            "hint": "Do the step for each item in turn.",
+            "explanation": "The comprehension takes each x, adds 10, and collects the results: 1 + 10, 2 + 10, 3 + 10."
+          }
+        ],
+        "ai_prompt": "Take a LinkedIn post, split it into words, and use Python list comprehensions to make a list of word lengths and a list of words longer than 6 letters, then use max with key=len to find the longest word. Add a comment explaining why a comprehension creates a new list instead of changing the original one."
+      },
+      {
+        "id": "S-25",
+        "topic": "Dates & simple text patterns (regex)",
+        "plain_english_summary": "Understanding 'is this date in the past' and finding patterns inside messy text.",
+        "status": "proposed_new",
+        "project": {
+          "title": "Email Format Validator for the Contact Book",
+          "description": "Add a regex check to S-08 so it rejects malformed emails."
+        },
+        "scheduled_date": "2027-01-18",
+        "quiz": [
+          {
+            "question": "What does <code>bool(re.fullmatch(pattern, \"nabilah@example\"))</code> give with the email pattern?",
+            "type": "text",
+            "answer": "False",
+            "explanation": "The pattern needs a dot and at least 2 letters after the domain, like .com. \"nabilah@example\" has no ending, so it doesn't fit.",
+            "hint": "The pattern needs a dot and at least 2 letters after the domain."
+          },
+          {
+            "question": "An email passes the pattern check. What does that prove?",
+            "type": "choice",
+            "answer": 1,
+            "explanation": "A pattern only checks the shape of the text. Whether the mailbox exists is only proven by sending to it.",
+            "options": [
+              "The mailbox exists",
+              "It has the right shape for an email",
+              "Someone reads that inbox"
+            ],
+            "hint": "A pattern only checks the shape of text."
+          },
+          {
+            "question": "<code>datetime.strptime(\"30/09/2026\", \"%Y-%m-%d\")</code>: what happens?",
+            "type": "choice",
+            "answer": 2,
+            "hint": "Does the text match the layout %Y-%m-%d?",
+            "explanation": "The layout says year-month-day with dashes, but the text is day/month/year with slashes, so Python stops with a ValueError: does not match format.",
+            "options": [
+              "It reads it as 30 September 2026",
+              "It reads it as 9 March 2030",
+              "ValueError: the text doesn't match the format"
+            ]
+          }
+        ],
+        "ai_prompt": "Build me a short Python script that checks whether an invoice due date is in the past using datetime, and whether an email address has a valid format using re.fullmatch with a simple email pattern. Explain each piece of the pattern, and add a comment explaining that a pattern only checks the shape of an email, not whether the mailbox exists."
+      }
+    ]
+  },
+  "tracks": [
+    {
+      "id": "A",
+      "name": "Web & Product Building",
+      "who_its_for": "Turning the spine into real, deployed, usable tools — the practical builder's track.",
+      "source_inspiration": "The Odin Project's Full Stack path + practical-tutorials/project-based-learning's Web Applications category + Made-With-ML's production phase for the shipping topics",
+      "topics": [
+        {
+          "id": "A-01",
+          "topic": "Building a simple web server (Flask routes)",
+          "plain_english_summary": "How a web address reaches a specific piece of code.",
+          "status": "built",
+          "project": {
+            "title": "All 10 Bell tools (combined_app.py)"
+          },
+          "scheduled_date": "2027-01-25"
+        },
+        {
+          "id": "A-02",
+          "topic": "Connecting a button to backend code",
+          "plain_english_summary": "What happens the instant you click 'Generate.'",
+          "status": "built",
+          "project": {
+            "title": "All 10 Bell tools"
+          },
+          "scheduled_date": "2027-02-01"
+        },
+        {
+          "id": "A-03",
+          "topic": "Calling an external AI API",
+          "plain_english_summary": "Sending a question to an AI model over the internet and getting an answer back.",
+          "status": "built",
+          "project": {
+            "title": "All 10 Bell tools + YouTube Transcript, Social Media Generator, Document Q&A, Receipt→Expense, Email Auto-Responder, Meeting Notes (BSE)"
+          },
+          "scheduled_date": "2027-02-08"
+        },
+        {
+          "id": "A-04",
+          "topic": "Getting structured, predictable output from AI (JSON mode)",
+          "plain_english_summary": "Why the answer always comes back the same shape.",
+          "status": "built",
+          "project": {
+            "title": "Excel Formula Generator, Job Calculator, CV Optimizer, Meeting Notes (Bell)"
+          },
+          "scheduled_date": "2027-02-15"
+        },
+        {
+          "id": "A-05",
+          "topic": "Real CSS layout (Flexbox/Grid)",
+          "plain_english_summary": "How to actually arrange things on a page, not just copy-paste inline styles.",
+          "status": "proposed_new",
+          "project": {
+            "title": "Rebuild one Bell tool's layout from scratch",
+            "description": "Take an existing tool's HTML and re-style it without looking at the original CSS."
+          },
+          "scheduled_date": "2027-02-22"
+        },
+        {
+          "id": "A-06",
+          "topic": "DOM manipulation properly",
+          "plain_english_summary": "Making a page update itself without a full reload — the mechanism behind every Bell tool's result panel.",
+          "status": "proposed_new",
+          "project": {
+            "title": "Build a live character counter that updates as you type",
+            "description": "No submit button — updates on every keystroke."
+          },
+          "scheduled_date": "2027-03-01"
+        },
+        {
+          "id": "A-07",
+          "topic": "Storing data in a real database (SQL basics)",
+          "plain_english_summary": "Currently completely missing from everything you've built — every Bell tool forgets everything the moment you close the tab.",
+          "status": "proposed_new",
+          "project": {
+            "title": "Turn the Client Contact Book into a SQLite-backed app",
+            "description": "Same contact book from the spine, but it now survives a restart."
+          },
+          "scheduled_date": "2027-03-08"
+        },
+        {
+          "id": "A-08",
+          "topic": "Reading, updating, deleting database rows",
+          "plain_english_summary": "The four basic things every real app does to stored data (create, read, update, delete).",
+          "status": "proposed_new",
+          "project": {
+            "title": "Add edit & delete to the SQLite Contact Book",
+            "description": "Full CRUD on A-07's project."
+          },
+          "scheduled_date": "2027-03-15"
+        },
+        {
+          "id": "A-09",
+          "topic": "User accounts & basic authentication",
+          "plain_english_summary": "How a login screen actually works.",
+          "status": "proposed_new",
+          "project": {
+            "title": "Put a login gate on one Bell tool",
+            "description": "Simple username/password check before a tool is usable."
+          },
+          "scheduled_date": "2027-03-22"
+        },
+        {
+          "id": "A-10",
+          "topic": "Multi-page routing & templates",
+          "plain_english_summary": "How one app serves many different pages that still look consistent.",
+          "status": "needs_lesson",
+          "project": {
+            "title": "combined_app.py's /learn/ page system",
+            "description": "Already built and live — just needs to be written up as a lesson."
+          },
+          "scheduled_date": "2027-03-29"
+        },
+        {
+          "id": "A-11",
+          "topic": "Web scraping",
+          "plain_english_summary": "Code visits a page for you and pulls out just what you need.",
+          "status": "built",
+          "project": {
+            "title": "Newsletter's scrape_rss.py / scrape_reddit.py; Web Scraper→Sheets (BSE wk2, planned)"
+          },
+          "scheduled_date": "2027-04-05"
+        },
+        {
+          "id": "A-12",
+          "topic": "Writing to a spreadsheet from code",
+          "plain_english_summary": "A script fills in Google Sheets row by row.",
+          "status": "planned",
+          "project": {
+            "title": "Web Scraper→Sheets (BSE wk2), Price Monitor (BSE wk6), Receipt→Expense (BSE wk9)"
+          },
+          "scheduled_date": "2027-04-12"
+        },
+        {
+          "id": "A-13",
+          "topic": "Generating a PDF from data",
+          "plain_english_summary": "Turning raw numbers into a document you could send a client.",
+          "status": "planned",
+          "project": {
+            "title": "PDF Invoice Generator (BSE wk3)"
+          },
+          "scheduled_date": "2027-04-19"
+        },
+        {
+          "id": "A-14",
+          "topic": "Reading text out of an image (OCR)",
+          "plain_english_summary": "A receipt photo becomes usable, structured data.",
+          "status": "planned",
+          "project": {
+            "title": "Receipt → Expense Spreadsheet (BSE wk9)"
+          },
+          "scheduled_date": "2027-04-26"
+        },
+        {
+          "id": "A-15",
+          "topic": "Reading and answering questions about a document",
+          "plain_english_summary": "A tool 'reads' a PDF and answers questions about it.",
+          "status": "planned",
+          "project": {
+            "title": "Document Q&A Bot (BSE wk8)"
+          },
+          "scheduled_date": "2027-05-03"
+        },
+        {
+          "id": "A-16",
+          "topic": "Sending and reading email automatically",
+          "plain_english_summary": "Code checks an inbox and can reply on its own.",
+          "status": "planned",
+          "project": {
+            "title": "Email Auto-Responder (BSE wk5); Newsletter's send_email.py (built)"
+          },
+          "scheduled_date": "2027-05-10"
+        },
+        {
+          "id": "A-17",
+          "topic": "Monitoring something on a schedule",
+          "plain_english_summary": "A script checks something every few hours and only bothers you when it changes.",
+          "status": "planned",
+          "project": {
+            "title": "Price Monitor + Alert (BSE wk6)"
+          },
+          "scheduled_date": "2027-05-17"
+        },
+        {
+          "id": "A-18",
+          "topic": "Turning one input into many outputs",
+          "plain_english_summary": "Feed it one idea, get a week's worth of content back.",
+          "status": "built",
+          "project": {
+            "title": "Weekly Work Summary Generator (Bell, built); Social Media Post Generator (BSE wk7, planned)"
+          },
+          "scheduled_date": "2027-05-24"
+        },
+        {
+          "id": "A-19",
+          "topic": "Structuring messy human text into clean data",
+          "plain_english_summary": "Rambling meeting notes become 'who owes what by when.'",
+          "status": "built",
+          "project": {
+            "title": "Meeting Notes → Action Items — built twice (Bell wk5, BSE wk10 planned)"
+          },
+          "scheduled_date": "2027-05-31"
+        },
+        {
+          "id": "A-20",
+          "topic": "Building a real REST API",
+          "plain_english_summary": "An API other programs can call, not just a webpage a human clicks through.",
+          "status": "proposed_new",
+          "project": {
+            "title": "Expose the Excel Formula Generator as a public API endpoint",
+            "description": "Same logic, callable from outside a browser (e.g. via curl)."
+          },
+          "scheduled_date": "2027-06-07"
+        },
+        {
+          "id": "A-21",
+          "topic": "Frontend frameworks (intro to React)",
+          "plain_english_summary": "How professional teams build interactive pages at scale, beyond vanilla JS.",
+          "status": "proposed_new",
+          "project": {
+            "title": "Rebuild one Bell tool's frontend in React",
+            "description": "Same tool, same backend, modern frontend layer."
+          },
+          "scheduled_date": "2027-06-14"
+        },
+        {
+          "id": "A-22",
+          "topic": "Responsive design done properly",
+          "plain_english_summary": "Making a page actually work well on a phone, not just 'not broken.'",
+          "status": "needs_lesson",
+          "project": {
+            "title": "The mobile-responsive CSS already added to the brief HTML generators",
+            "description": "Already built (see repo commit history) — just needs a lesson."
+          },
+          "scheduled_date": "2027-06-21"
+        },
+        {
+          "id": "A-23",
+          "topic": "Testing your code before it breaks in production",
+          "plain_english_summary": "Writing a check that catches a bug before a real user does.",
+          "status": "proposed_new",
+          "project": {
+            "title": "Write 3 tests for the Excel Formula Generator",
+            "description": "Does it return valid JSON? Does it handle an empty input? Does the error-fix loop actually fix things?"
+          },
+          "scheduled_date": "2027-06-28"
+        },
+        {
+          "id": "A-24",
+          "topic": "Environment variables in production vs local",
+          "plain_english_summary": "Why the key on your laptop needs re-entering on the host.",
+          "status": "proposed_new",
+          "project": {
+            "title": "Set GROQ_API_KEY on a real host",
+            "description": "Paired with A-25's deploy."
+          },
+          "scheduled_date": "2027-07-05"
+        },
+        {
+          "id": "A-25",
+          "topic": "Deploying a web app to the internet",
+          "plain_english_summary": "What happens between 'works on my machine' and a real URL.",
+          "status": "proposed_new",
+          "project": {
+            "title": "Deploy the Excel Formula Generator to PythonAnywhere",
+            "description": "Confirmed free, no credit card needed — safer first deploy than Railway right now."
+          },
+          "scheduled_date": "2027-07-12"
+        },
+        {
+          "id": "A-26",
+          "topic": "What happens when hosting breaks",
+          "plain_english_summary": "A real, unscripted failure and what the error actually meant.",
+          "status": "needs_lesson",
+          "project": {
+            "title": "This session's Railway incident",
+            "description": "Trial expired, every deployment showed REMOVED, 'the train has not arrived at the station.'"
+          },
+          "scheduled_date": "2027-07-19"
+        },
+        {
+          "id": "A-27",
+          "topic": "Reading logs to diagnose a problem",
+          "plain_english_summary": "How log output told us exactly what was wrong before we touched anything.",
+          "status": "needs_lesson",
+          "project": {
+            "title": "This session's railway logs / deployment list walkthrough"
+          },
+          "scheduled_date": "2027-07-26"
+        },
+        {
+          "id": "A-28",
+          "topic": "Automating your pipeline on a schedule (CI/CD)",
+          "plain_english_summary": "How the newsletter already runs itself weekly with no one pressing a button.",
+          "status": "needs_lesson",
+          "project": {
+            "title": "Newsletter's GitHub Actions workflow (built)"
+          },
+          "scheduled_date": "2027-08-02"
+        }
+      ]
+    },
+    {
+      "id": "B",
+      "name": "Data & AI",
+      "who_its_for": "Moving from 'calling someone else's AI' to actually understanding and building the data/ML layer underneath.",
+      "source_inspiration": "practical-tutorials/project-based-learning's Data Science / Machine Learning / OpenCV categories, feeding into Awesome-Machine-Learning, Stanford CS229, and Made-With-ML for real depth",
+      "topics": [
+        {
+          "id": "B-01",
+          "topic": "Working with real datasets (pandas basics)",
+          "plain_english_summary": "Loading, filtering, and looking at real tabular data in code.",
+          "status": "proposed_new",
+          "project": {
+            "title": "Analyze a year of your own expense log (S-15) as a dataset"
+          },
+          "scheduled_date": "2027-08-09"
+        },
+        {
+          "id": "B-02",
+          "topic": "Cleaning messy data",
+          "plain_english_summary": "Real data is never clean — missing values, inconsistent formats, duplicates.",
+          "status": "proposed_new",
+          "project": {
+            "title": "Clean a messy exported CSV (dates in 3 different formats, blank rows)"
+          },
+          "scheduled_date": "2027-08-16"
+        },
+        {
+          "id": "B-03",
+          "topic": "Basic statistics for non-statisticians",
+          "plain_english_summary": "Mean, median, and why 'average' can be misleading.",
+          "status": "proposed_new",
+          "project": {
+            "title": "Find the real 'typical' expense, not just the average"
+          },
+          "scheduled_date": "2027-08-23"
+        },
+        {
+          "id": "B-04",
+          "topic": "Data visualization that communicates something",
+          "plain_english_summary": "A chart that actually makes a point, not just decoration.",
+          "status": "proposed_new",
+          "project": {
+            "title": "Chart your own LinkedIn posting cadence over time"
+          },
+          "scheduled_date": "2027-08-30"
+        },
+        {
+          "id": "B-05",
+          "topic": "What a machine learning model actually is",
+          "plain_english_summary": "Plain English: a program that learns a pattern from examples instead of being told the rules directly.",
+          "status": "proposed_new",
+          "project": {
+            "title": "Concept-only lesson — no code, just the mental model, before B-06 gets hands-on."
+          },
+          "scheduled_date": "2027-09-06"
+        },
+        {
+          "id": "B-06",
+          "topic": "Training your first model",
+          "plain_english_summary": "Actually training something yourself, not just calling an API.",
+          "status": "proposed_new",
+          "project": {
+            "title": "Write Linear Regression from scratch on a tiny dataset",
+            "description": "Sourced directly from project-based-learning's ML section."
+          },
+          "scheduled_date": "2027-09-13"
+        },
+        {
+          "id": "B-07",
+          "topic": "Classification vs regression",
+          "plain_english_summary": "Predicting a category vs. predicting a number — the two basic flavors of ML.",
+          "status": "proposed_new",
+          "project": {
+            "title": "Classify expenses into categories automatically"
+          },
+          "scheduled_date": "2027-09-20"
+        },
+        {
+          "id": "B-08",
+          "topic": "Evaluating whether a model is actually good",
+          "plain_english_summary": "Accuracy alone can lie to you.",
+          "status": "proposed_new",
+          "project": {
+            "title": "Check the expense classifier's real accuracy, including its worst mistakes"
+          },
+          "scheduled_date": "2027-09-27"
+        },
+        {
+          "id": "B-09",
+          "topic": "Overfitting — the most common beginner mistake",
+          "plain_english_summary": "A model that memorized the examples instead of learning the pattern.",
+          "status": "proposed_new",
+          "project": {
+            "title": "Deliberately overfit the expense classifier, then watch it fail on new data"
+          },
+          "scheduled_date": "2027-10-04"
+        },
+        {
+          "id": "B-10",
+          "topic": "What prompt engineering really is",
+          "plain_english_summary": "Formalizing a skill you've already been using in every Bell tool without naming it.",
+          "status": "needs_lesson",
+          "project": {
+            "title": "The prompt design already live in all 10 Bell tools"
+          },
+          "scheduled_date": "2027-10-11"
+        },
+        {
+          "id": "B-11",
+          "topic": "Fine-tuning vs. prompting",
+          "plain_english_summary": "When do you actually need to train your own model instead of just asking better?",
+          "status": "proposed_new",
+          "project": {
+            "title": "Compare a prompt-only vs. lightly fine-tuned answer on the same task"
+          },
+          "scheduled_date": "2027-10-18"
+        },
+        {
+          "id": "B-12",
+          "topic": "Vector embeddings & semantic search",
+          "plain_english_summary": "How an AI finds things that are similar in meaning, not just matching text.",
+          "status": "proposed_new",
+          "project": {
+            "title": "Build a 'find similar past LinkedIn posts' search tool"
+          },
+          "scheduled_date": "2027-10-25"
+        },
+        {
+          "id": "B-13",
+          "topic": "Building a simple recommendation system",
+          "plain_english_summary": "How 'you might also like' actually works.",
+          "status": "proposed_new",
+          "project": {
+            "title": "Music Recommender using KNN",
+            "description": "Sourced from project-based-learning's ML section."
+          },
+          "scheduled_date": "2027-11-01"
+        },
+        {
+          "id": "B-14",
+          "topic": "Computer vision basics",
+          "plain_english_summary": "How code 'sees' inside an image.",
+          "status": "proposed_new",
+          "project": {
+            "title": "Build a Document Scanner with OpenCV",
+            "description": "Sourced from project-based-learning's OpenCV section — ties directly into the Receipt→Expense idea in Track A."
+          },
+          "scheduled_date": "2027-11-08"
+        },
+        {
+          "id": "B-15",
+          "topic": "The ML tools & library landscape",
+          "status": "external_reference",
+          "external_source": "josephmisiti/awesome-machine-learning",
+          "scheduled_date": null
+        },
+        {
+          "id": "B-16",
+          "topic": "The math and theory underneath ML",
+          "status": "external_reference",
+          "external_source": "Stanford CS229 cheatsheets (afshinea/stanford-cs-229-machine-learning)",
+          "scheduled_date": null
+        },
+        {
+          "id": "B-17",
+          "topic": "How real production ML systems are engineered",
+          "status": "external_reference",
+          "external_source": "GokuMohandas/mlops-course (Made With ML)",
+          "scheduled_date": null
+        }
+      ]
+    },
+    {
+      "id": "C",
+      "name": "Systems, DevOps & Security",
+      "who_its_for": "What's actually happening underneath a deployed app — infrastructure, collaboration at scale, and protecting it.",
+      "source_inspiration": "roadmap.sh's Backend/DevOps roadmaps + CS50's cybersecurity week (currently zero security content exists anywhere in the syllabus without this track)",
+      "topics": [
+        {
+          "id": "C-01",
+          "topic": "The command line, properly",
+          "plain_english_summary": "Beyond S-02's basics — piping commands together, writing a simple script.",
+          "status": "proposed_new",
+          "project": {
+            "title": "Write a one-line script that counts files in a folder"
+          },
+          "scheduled_date": "2027-11-15"
+        },
+        {
+          "id": "C-02",
+          "topic": "What Linux is and why servers run it",
+          "plain_english_summary": "The operating system behind almost every website you've ever visited.",
+          "status": "proposed_new",
+          "project": {
+            "title": "Concept lesson, anchored to Railway/PythonAnywhere both running Linux underneath"
+          },
+          "scheduled_date": "2027-11-22"
+        },
+        {
+          "id": "C-03",
+          "topic": "How the internet actually works (HTTP)",
+          "plain_english_summary": "What actually happens between typing a URL and seeing a page.",
+          "status": "proposed_new",
+          "project": {
+            "title": "Watch a Bell tool's real request/response in the browser Network tab"
+          },
+          "scheduled_date": "2027-11-29"
+        },
+        {
+          "id": "C-04",
+          "topic": "What DNS is",
+          "plain_english_summary": "Why a domain name points to the right server.",
+          "status": "proposed_new",
+          "project": {
+            "title": "Trace bell-week1-excel-production.up.railway.app back to an actual IP address"
+          },
+          "scheduled_date": "2027-12-06"
+        },
+        {
+          "id": "C-05",
+          "topic": "Git branching & collaboration",
+          "plain_english_summary": "Beyond S-17/S-18's basics — working on a change without breaking the main version.",
+          "status": "proposed_new",
+          "project": {
+            "title": "Make a change to a Bell tool on a branch, then merge it"
+          },
+          "scheduled_date": "2027-12-13"
+        },
+        {
+          "id": "C-06",
+          "topic": "Containers (Docker), in plain English",
+          "plain_english_summary": "The problem they actually solve: 'it works on my machine' happening everywhere, guaranteed.",
+          "status": "proposed_new",
+          "project": {
+            "title": "Concept lesson with a real Procfile/Railway comparison"
+          },
+          "scheduled_date": "2027-12-20"
+        },
+        {
+          "id": "C-07",
+          "topic": "CI/CD pipelines, properly",
+          "plain_english_summary": "Going deeper than A-28 — what a full pipeline actually checks before deploying.",
+          "status": "proposed_new",
+          "project": {
+            "title": "Add a test-before-deploy step to Newsletter's GitHub Actions"
+          },
+          "scheduled_date": "2027-12-27"
+        },
+        {
+          "id": "C-08",
+          "topic": "Monitoring & alerting",
+          "plain_english_summary": "Finding out something broke before your users tell you.",
+          "status": "proposed_new",
+          "project": {
+            "title": "Set up a basic uptime check for a deployed Bell tool"
+          },
+          "scheduled_date": "2028-01-03"
+        },
+        {
+          "id": "C-09",
+          "topic": "Load & scaling",
+          "plain_english_summary": "What happens when 10,000 people use your tool instead of 10.",
+          "status": "proposed_new",
+          "project": {
+            "title": "Concept lesson — what would actually break first in combined_app.py"
+          },
+          "scheduled_date": "2028-01-10"
+        },
+        {
+          "id": "C-10",
+          "topic": "Why 'never commit your API key' actually matters",
+          "plain_english_summary": "What would really happen if one of the Bell tools' .env leaked.",
+          "status": "proposed_new",
+          "project": {
+            "title": "Real-stakes lesson anchored to the GROQ_API_KEY already in every Bell tool's .env"
+          },
+          "scheduled_date": "2028-01-17"
+        },
+        {
+          "id": "C-11",
+          "topic": "Common web vulnerabilities, in plain English",
+          "plain_english_summary": "SQL injection and XSS — explained without jargon.",
+          "status": "proposed_new",
+          "project": {
+            "title": "Try to break the SQLite Contact Book (A-07) with a malicious input, safely"
+          },
+          "scheduled_date": "2028-01-24"
+        },
+        {
+          "id": "C-12",
+          "topic": "Passwords & hashing",
+          "plain_english_summary": "Why a real login system never stores your actual password.",
+          "status": "proposed_new",
+          "project": {
+            "title": "Add real password hashing to A-09's login gate"
+          },
+          "scheduled_date": "2028-01-31"
+        },
+        {
+          "id": "C-13",
+          "topic": "Basic network security concepts",
+          "plain_english_summary": "The difference between HTTP and HTTPS, and why it matters.",
+          "status": "proposed_new",
+          "project": {
+            "title": "Concept lesson, anchored to the padlock icon in the browser bar"
+          },
+          "scheduled_date": "2028-02-07"
+        },
+        {
+          "id": "C-14",
+          "topic": "Networking & distributed systems, going deep",
+          "status": "external_reference",
+          "external_source": "teachyourselfcs.com — Computer Networking and Distributed Systems sections",
+          "scheduled_date": null
+        }
+      ]
+    },
+    {
+      "id": "D",
+      "name": "CS Theory / Going Deep",
+      "who_its_for": "The genuine expert tier — less project-driven, more about understanding why things work the way they do.",
+      "source_inspiration": "teachyourselfcs.com's core reading list (Algorithms, Computer Architecture, Databases, Compilers, Distributed Systems)",
+      "topics": [
+        {
+          "id": "D-01",
+          "topic": "What Big-O actually means",
+          "plain_english_summary": "Formalizes S-12's informal intro — why 'twice as much data' doesn't always mean 'twice as slow.'",
+          "status": "proposed_new",
+          "project": {
+            "title": "Compare searching the Contact Book 3 different ways, formally",
+            "description": "Extends S-12 with real complexity analysis."
+          },
+          "scheduled_date": "2028-02-14"
+        },
+        {
+          "id": "D-02",
+          "topic": "Common data structures beyond lists & dicts",
+          "plain_english_summary": "Stacks, queues, trees, hash tables — what they're actually for.",
+          "status": "proposed_new",
+          "project": {
+            "title": "Use a stack to check if brackets in code are balanced"
+          },
+          "scheduled_date": "2028-02-21"
+        },
+        {
+          "id": "D-03",
+          "topic": "Sorting algorithms",
+          "plain_english_summary": "Why some ways of sorting are much faster than others.",
+          "status": "proposed_new",
+          "project": {
+            "title": "Implement and race 2 sorting methods against Python's built-in sort"
+          },
+          "scheduled_date": "2028-02-28"
+        },
+        {
+          "id": "D-04",
+          "topic": "Searching algorithms",
+          "plain_english_summary": "Beyond checking one-by-one — binary search and why it's fast.",
+          "status": "proposed_new",
+          "project": {
+            "title": "Binary search the sorted invoice numbers from S-10"
+          },
+          "scheduled_date": "2028-03-06"
+        },
+        {
+          "id": "D-05",
+          "topic": "How memory actually works",
+          "plain_english_summary": "Stack vs. heap, in plain English — why some bugs happen at all.",
+          "status": "proposed_new",
+          "project": {
+            "title": "Concept lesson — no code, the mental model only"
+          },
+          "scheduled_date": "2028-03-13"
+        },
+        {
+          "id": "D-06",
+          "topic": "How a CPU actually executes instructions",
+          "plain_english_summary": "Very high level — what's really happening when code 'runs.'",
+          "status": "proposed_new",
+          "project": {
+            "title": "Concept lesson, callback to S-01's 'fake receipt' now explained properly"
+          },
+          "scheduled_date": "2028-03-20"
+        },
+        {
+          "id": "D-07",
+          "topic": "What a database index actually does",
+          "plain_english_summary": "Why SQL queries get fast once a table is indexed.",
+          "status": "proposed_new",
+          "project": {
+            "title": "Add an index to the SQLite Contact Book (A-07) and time the difference"
+          },
+          "scheduled_date": "2028-03-27"
+        },
+        {
+          "id": "D-08",
+          "topic": "What a compiler/interpreter actually does",
+          "plain_english_summary": "Bridges Python vs. C — why Python is considered 'slower.'",
+          "status": "proposed_new",
+          "project": {
+            "title": "Concept lesson using CS50's own C-vs-Python framing"
+          },
+          "scheduled_date": "2028-04-03"
+        },
+        {
+          "id": "D-09",
+          "topic": "Distributed systems basics",
+          "plain_english_summary": "Why 'the cloud' is really just many machines talking to each other.",
+          "status": "proposed_new",
+          "project": {
+            "title": "Concept lesson anchored to Railway's own infrastructure"
+          },
+          "scheduled_date": "2028-04-10"
+        },
+        {
+          "id": "D-10",
+          "topic": "The full deep-end reading path",
+          "status": "external_reference",
+          "external_source": "teachyourselfcs.com — Programming, Computer Architecture, Algorithms, Networking, Databases, Languages & Compilers, Distributed Systems",
+          "scheduled_date": null
+        }
+      ]
+    }
+  ]
+}

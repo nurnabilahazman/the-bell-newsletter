@@ -1,0 +1,24 @@
+{
+  "topic_id": "S-09",
+  "topic": "Conditionals (if / else)",
+  "cover_title": "Make Decisions With Code",
+  "cover_subtitle": "Learn Conditionals",
+  "slides": [
+    {
+      "text": "You use [[conditionals]] to make decisions in code"
+    },
+    {
+      "text": "[[If]] statements check conditions and do something"
+    },
+    {
+      "text": "Your code can make decisions based on [[multiple]] conditions"
+    },
+    {
+      "text": "[[Score]] job offers with conditionals like our example"
+    },
+    {
+      "text": "Test the [[boundary]]: 5000 > 5000 is False"
+    }
+  ],
+  "last_slide": "Follow for more coding lessons"
+}

@@ -1,0 +1,24 @@
+{
+  "topic_id": "S-13",
+  "topic": "Modules & imports",
+  "cover_title": "Code Smarter",
+  "cover_subtitle": "Use Modules and Imports",
+  "slides": [
+    {
+      "text": "You can use [[modules]] to save time and effort."
+    },
+    {
+      "text": "[[Importing]] fetches ready made code from Python's cupboard"
+    },
+    {
+      "text": "Python ships with [[modules]] like secrets and string"
+    },
+    {
+      "text": "Use [[secrets]], not random, to generate passwords"
+    },
+    {
+      "text": "Forgetting to [[import]] modules is a common mistake."
+    }
+  ],
+  "last_slide": "Follow to learn more about coding"
+}

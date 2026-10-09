@@ -1,0 +1,24 @@
+{
+  "topic_id": "S-21",
+  "topic": "What JavaScript actually is",
+  "cover_title": "JavaScript Made Simple",
+  "cover_subtitle": "Learn to interact with websites",
+  "slides": [
+    {
+      "text": "You can use [[JavaScript]] to make websites interactive"
+    },
+    {
+      "text": "[[Variables]] store information for later use"
+    },
+    {
+      "text": "[[Functions]] help repeat tasks easily"
+    },
+    {
+      "text": "[[Conditional]] statements make decisions for you"
+    },
+    {
+      "text": "[[Events]] trigger actions on your website"
+    }
+  ],
+  "last_slide": "Follow for more coding lessons"
+}

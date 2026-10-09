@@ -1,0 +1,24 @@
+{
+  "topic_id": "S-23",
+  "topic": "Organizing code with classes (OOP)",
+  "cover_title": "Simplify Your Code",
+  "cover_subtitle": "Learn to use classes",
+  "slides": [
+    {
+      "text": "You can use [[classes]] to organize code"
+    },
+    {
+      "text": "[[Objects]] are created from classes"
+    },
+    {
+      "text": "Classes have [[methods]] to perform actions"
+    },
+    {
+      "text": "You can use [[attributes]] to store data"
+    },
+    {
+      "text": "Classes help you [[reuse]] code"
+    }
+  ],
+  "last_slide": "Follow to learn more about coding"
+}

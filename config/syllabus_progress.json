@@ -1,0 +1,158 @@
+{
+  "current_group": "spine",
+  "current_index": 25,
+  "completed": [
+    "S-01",
+    "S-02",
+    "S-03",
+    "S-04",
+    "S-05",
+    "S-06",
+    "S-07",
+    "S-08",
+    "S-09",
+    "S-10",
+    "S-11",
+    "S-12",
+    "S-13",
+    "S-14",
+    "S-15",
+    "S-16",
+    "S-17",
+    "S-18",
+    "S-19",
+    "S-20",
+    "S-21",
+    "S-22",
+    "S-23",
+    "S-24",
+    "S-25"
+  ],
+  "history": [
+    {
+      "topic_id": "S-01",
+      "topic": "What code actually is / how a program runs",
+      "flagged_for_review": []
+    },
+    {
+      "topic_id": "S-02",
+      "topic": "The command line / terminal",
+      "flagged_for_review": []
+    },
+    {
+      "topic_id": "S-03",
+      "topic": "Variables",
+      "flagged_for_review": []
+    },
+    {
+      "topic_id": "S-04",
+      "topic": "Basic operators & data types",
+      "flagged_for_review": []
+    },
+    {
+      "topic_id": "S-05",
+      "topic": "Strings (text)",
+      "flagged_for_review": []
+    },
+    {
+      "topic_id": "S-06",
+      "topic": "Lists",
+      "flagged_for_review": []
+    },
+    {
+      "topic_id": "S-07",
+      "topic": "Tuples & Sets",
+      "flagged_for_review": []
+    },
+    {
+      "topic_id": "S-08",
+      "topic": "Dictionaries",
+      "flagged_for_review": []
+    },
+    {
+      "topic_id": "S-09",
+      "topic": "Conditionals (if / else)",
+      "flagged_for_review": []
+    },
+    {
+      "topic_id": "S-10",
+      "topic": "Loops",
+      "flagged_for_review": []
+    },
+    {
+      "topic_id": "S-11",
+      "topic": "Functions",
+      "flagged_for_review": []
+    },
+    {
+      "topic_id": "S-12",
+      "topic": "Why speed/efficiency matters (informal)",
+      "flagged_for_review": []
+    },
+    {
+      "topic_id": "S-13",
+      "topic": "Modules & imports",
+      "flagged_for_review": []
+    },
+    {
+      "topic_id": "S-14",
+      "topic": "Handling errors (try/except)",
+      "flagged_for_review": []
+    },
+    {
+      "topic_id": "S-15",
+      "topic": "Reading & writing files",
+      "flagged_for_review": []
+    },
+    {
+      "topic_id": "S-16",
+      "topic": "Installing packages & virtual environments",
+      "flagged_for_review": []
+    },
+    {
+      "topic_id": "S-17",
+      "topic": "Version control basics (git)",
+      "flagged_for_review": []
+    },
+    {
+      "topic_id": "S-18",
+      "topic": "GitHub & why backups matter",
+      "flagged_for_review": []
+    },
+    {
+      "topic_id": "S-19",
+      "topic": "What HTML actually is",
+      "flagged_for_review": []
+    },
+    {
+      "topic_id": "S-20",
+      "topic": "What CSS actually is",
+      "flagged_for_review": []
+    },
+    {
+      "topic_id": "S-21",
+      "topic": "What JavaScript actually is",
+      "flagged_for_review": []
+    },
+    {
+      "topic_id": "S-22",
+      "topic": "Secrets & environment variables (.env)",
+      "flagged_for_review": []
+    },
+    {
+      "topic_id": "S-23",
+      "topic": "Organizing code with classes (OOP)",
+      "flagged_for_review": []
+    },
+    {
+      "topic_id": "S-24",
+      "topic": "List comprehensions & higher-order functions",
+      "flagged_for_review": []
+    },
+    {
+      "topic_id": "S-25",
+      "topic": "Dates & simple text patterns (regex)",
+      "flagged_for_review": []
+    }
+  ]
+}

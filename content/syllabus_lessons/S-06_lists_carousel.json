@@ -1,0 +1,24 @@
+{
+  "topic_id": "S-06",
+  "topic": "Lists",
+  "cover_title": "Mastering Lists",
+  "cover_subtitle": "Learn to store and manage data",
+  "slides": [
+    {
+      "text": "You can store [[items]] in a list"
+    },
+    {
+      "text": "Lists are like [[shopping]] lists"
+    },
+    {
+      "text": "You can [[add]] items to a list"
+    },
+    {
+      "text": "You can [[remove]] items from a list"
+    },
+    {
+      "text": "Lists help you [[organize]] data"
+    }
+  ],
+  "last_slide": "Follow for more coding tips"
+}

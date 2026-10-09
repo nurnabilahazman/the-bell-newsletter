@@ -1,0 +1,24 @@
+{
+  "topic_id": "S-18",
+  "topic": "GitHub & why backups matter",
+  "cover_title": "Save Your Code",
+  "cover_subtitle": "Learn GitHub backups",
+  "slides": [
+    {
+      "text": "You need to [[backup]] your code regularly"
+    },
+    {
+      "text": "Use [[GitHub]] to store your projects safely"
+    },
+    {
+      "text": "Create a [[repository]] to organize your code"
+    },
+    {
+      "text": "[[Commit]] your changes to track progress"
+    },
+    {
+      "text": "[[Push]] your changes to GitHub for safety"
+    }
+  ],
+  "last_slide": "Follow for more coding tips"
+}

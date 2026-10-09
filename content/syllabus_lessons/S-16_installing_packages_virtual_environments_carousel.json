@@ -1,0 +1,24 @@
+{
+  "topic_id": "S-16",
+  "topic": "Installing packages & virtual environments",
+  "cover_title": "Coding Made Easy",
+  "cover_subtitle": "Install Packages Like A Pro",
+  "slides": [
+    {
+      "text": "You can use [[packages]] to build projects faster"
+    },
+    {
+      "text": "Create a [[toolbox]] for each project with virtual environments"
+    },
+    {
+      "text": "Install [[qrcode]] package to generate QR codes"
+    },
+    {
+      "text": "Use [[pip]] to install packages into your toolbox"
+    },
+    {
+      "text": "Keep your projects organized with [[separate]] toolboxes"
+    }
+  ],
+  "last_slide": "Follow for more coding tips and tricks"
+}

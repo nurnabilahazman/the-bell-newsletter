@@ -1,0 +1,24 @@
+{
+  "topic_id": "S-15",
+  "topic": "Reading & writing files",
+  "cover_title": "Save and Read Files",
+  "cover_subtitle": "Learn to store and retrieve data",
+  "slides": [
+    {
+      "text": "You can save data to a [[file]] on your computer"
+    },
+    {
+      "text": "Use [[append mode]] \"a\" to add to a file"
+    },
+    {
+      "text": "Switch to [[read mode]] to retrieve stored data"
+    },
+    {
+      "text": "Write mode [[\"w\"]] empties the file before writing"
+    },
+    {
+      "text": "Reading and writing files helps you build better [[applications]]"
+    }
+  ],
+  "last_slide": "Follow for more coding lessons"
+}

@@ -1,0 +1,24 @@
+{
+  "topic_id": "S-14",
+  "topic": "Handling errors (try/except)",
+  "cover_title": "Fix Code Errors Easily",
+  "cover_subtitle": "Learn to handle mistakes like a pro",
+  "slides": [
+    {
+      "text": "Your code can [[crash]] without proper error handling"
+    },
+    {
+      "text": "Use [[try/except]] to plan for an error you expect"
+    },
+    {
+      "text": "[[Errors]] are mistakes in code that prevent it from running"
+    },
+    {
+      "text": "[[Except]] blocks handle errors and keep your program running"
+    },
+    {
+      "text": "Handling [[errors]] makes your digital products more reliable"
+    }
+  ],
+  "last_slide": "Follow for more coding tips"
+}

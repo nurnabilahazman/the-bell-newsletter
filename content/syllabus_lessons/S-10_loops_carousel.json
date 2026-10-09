@@ -1,0 +1,24 @@
+{
+  "topic_id": "S-10",
+  "topic": "Loops",
+  "cover_title": "Master Loops in Coding",
+  "cover_subtitle": "Automate tasks with ease",
+  "slides": [
+    {
+      "text": "You can use [[loops]] to repeat actions"
+    },
+    {
+      "text": "Define a [[list]] before using a loop"
+    },
+    {
+      "text": "An [[f-string]] drops values straight into text"
+    },
+    {
+      "text": "Loops help with [[data processing]] tasks"
+    },
+    {
+      "text": "[[range]] stops one before the end number"
+    }
+  ],
+  "last_slide": "Follow for more coding tips"
+}

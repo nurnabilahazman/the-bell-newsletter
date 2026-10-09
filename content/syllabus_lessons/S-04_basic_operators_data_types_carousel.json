@@ -1,0 +1,24 @@
+{
+  "topic_id": "S-04",
+  "topic": "Basic operators & data types",
+  "cover_title": "Learn Basic Coding",
+  "cover_subtitle": "Start with operators and data types",
+  "slides": [
+    {
+      "text": "You use [[operators]] to perform actions on data"
+    },
+    {
+      "text": "A [[data type]] is what kind of value something is"
+    },
+    {
+      "text": "Whole numbers, decimals and [[text]] are different types"
+    },
+    {
+      "text": "Adding a number to [[text]] stops with a TypeError"
+    },
+    {
+      "text": "You can use [[print]] to display results in your code"
+    }
+  ],
+  "last_slide": "Follow for more coding lessons"
+}

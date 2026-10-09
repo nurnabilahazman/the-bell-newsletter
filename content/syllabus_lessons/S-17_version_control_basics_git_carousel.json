@@ -1,0 +1,24 @@
+{
+  "topic_id": "S-17",
+  "topic": "Version control basics (git)",
+  "cover_title": "Protect Your Code",
+  "cover_subtitle": "Learn Version Control",
+  "slides": [
+    {
+      "text": "You can [[track]] changes to your code"
+    },
+    {
+      "text": "Use [[git]] to manage different versions"
+    },
+    {
+      "text": "Keep a [[history]] of all changes made"
+    },
+    {
+      "text": "Easily [[revert]] to a previous version"
+    },
+    {
+      "text": "Collaborate with others using [[repositories]]"
+    }
+  ],
+  "last_slide": "Follow for more coding tips"
+}

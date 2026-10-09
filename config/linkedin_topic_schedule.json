@@ -1,0 +1,946 @@
+{
+  "carousels": [
+    {
+      "num": 1,
+      "title": "I automated 6 hours of work. Here's how.",
+      "category": "BEFORE_AFTER",
+      "subreddits": [
+        "excel",
+        "accounting",
+        "productivity",
+        "automation",
+        "financialcareers"
+      ],
+      "slides": [
+        "Finance teams spend 80% of their time collecting data. Not analyzing it.",
+        "Six hours of manual key-in every month. 15 KPIs. 17 countries.",
+        "Advanced Excel formulas now calculate everything. Copilot helped write them.",
+        "Five minutes to update the whole sheet. Colour codes itself automatically.",
+        "The formula that replaced 6 hours is two lines long."
+      ]
+    },
+    {
+      "num": 2,
+      "title": "It used to take 2 weeks. Now it takes 5 minutes.",
+      "category": "BEFORE_AFTER",
+      "subreddits": [
+        "excel",
+        "accounting",
+        "productivity",
+        "automation",
+        "financialcareers"
+      ],
+      "slides": [
+        "Most reports are outdated before they reach the person who needs them.",
+        "Manual extraction means the data is always from last Tuesday.",
+        "A live pipeline pulls directly from the source. The report stays current.",
+        "SAP to Tableau Prep to Tableau Desktop. Five minutes. Always today's data.",
+        "Static reports are a symptom. The pipeline is the fix."
+      ]
+    },
+    {
+      "num": 3,
+      "title": "I stopped doing it manually. Here's what I built instead.",
+      "category": "BEFORE_AFTER",
+      "subreddits": [
+        "excel",
+        "accounting",
+        "productivity",
+        "automation",
+        "financialcareers"
+      ],
+      "slides": [
+        "62% of work time goes to tasks that repeat. Most never get automated.",
+        "The assumption is that fixing it requires coding. It does not.",
+        "Describe the repetition. Build one solution. It replaces the task permanently.",
+        "42 hours recurring. Built one Excel VBA + OCR tool. Two minutes every time after that.",
+        "Find the repeat. That is the only thing standing between you and the fix."
+      ]
+    },
+    {
+      "num": 4,
+      "title": "The report nobody wanted to write. Now it writes itself.",
+      "category": "BEFORE_AFTER",
+      "subreddits": [
+        "excel",
+        "accounting",
+        "productivity",
+        "automation",
+        "financialcareers"
+      ],
+      "slides": [
+        "The average professional spends 2.6 hours every day on writing tasks. McKinsey.",
+        "Most of it is the same type of writing with slightly different content each time.",
+        "A template and an AI first draft handle the repetition. You handle the judgment.",
+        "Draft in under 3 minutes. Review it. Adjust it. Send it. The 2.6 hours becomes 30 minutes.",
+        "Stop writing from scratch. The blank page is the most expensive part."
+      ]
+    },
+    {
+      "num": 5,
+      "title": "One weekend of setup. Zero effort every week after.",
+      "category": "BEFORE_AFTER",
+      "subreddits": [
+        "excel",
+        "accounting",
+        "productivity",
+        "automation",
+        "financialcareers"
+      ],
+      "slides": [
+        "The average employee spends 50 days a year on recurring manual tasks.",
+        "The task is not the problem. The absence of a system around it is.",
+        "One system converts every week into never again.",
+        "One weekend to build. Every week after: nothing. The system runs.",
+        "What keeps coming back is exactly what should be automated first."
+      ]
+    },
+    {
+      "num": 6,
+      "title": "The task I hated most. I never think about it now.",
+      "category": "BEFORE_AFTER",
+      "subreddits": [
+        "excel",
+        "accounting",
+        "productivity",
+        "automation",
+        "financialcareers"
+      ],
+      "slides": [
+        "64% of employees with Microsoft Copilot access never open it.",
+        "It is already on the company laptop. Installed. Waiting. Unused.",
+        "One real use case is all it takes to change the habit completely.",
+        "Excel formulas. Email drafts. Meeting summaries. All handled inside the tools already there.",
+        "Open Copilot. Type one task done every week. See what changes."
+      ]
+    },
+    {
+      "num": 7,
+      "title": "I used to dread this. Then I built a system.",
+      "category": "BEFORE_AFTER",
+      "subreddits": [
+        "excel",
+        "accounting",
+        "productivity",
+        "automation",
+        "financialcareers"
+      ],
+      "slides": [
+        "The average worker switches between 10 apps 25 times every day.",
+        "Every context switch costs 23 minutes of focus to fully recover.",
+        "One connected system removes the switching entirely.",
+        "Data moves automatically between tools. No tab switching. No copy-pasting. No lost focus.",
+        "Count every app switch made tomorrow. That number shows exactly where the system goes."
+      ]
+    },
+    {
+      "num": 8,
+      "title": "9 months of failure. 1 week. Same result.",
+      "category": "BEFORE_AFTER",
+      "subreddits": [
+        "excel",
+        "accounting",
+        "productivity",
+        "automation",
+        "financialcareers"
+      ],
+      "slides": [
+        "Most projects fail not because of the tool chosen. Because of the starting point.",
+        "Building the dashboard before the data is clean always ends the same way.",
+        "Tableau Prep first. Clean and structure the data before building anything.",
+        "Nine months of failure. Changed the starting point. Twenty-five templates delivered in one week.",
+        "The right order matters more than the right tool."
+      ]
+    },
+    {
+      "num": 9,
+      "title": "The AI tool I use every single day.",
+      "category": "TOOL_SPOTLIGHTS",
+      "subreddits": [
+        "ClaudeAI",
+        "ChatGPT",
+        "productivity"
+      ],
+      "slides": [
+        "One tool opens first every single morning. Before email. Before anything else.",
+        "Research that used to take an hour: under five minutes.",
+        "The gap between AI-assisted work and manual work is widening every month.",
+        "Claude handles research, structure, and drafts. The judgment and final decisions stay mine.",
+        "Pick one task repeated every week. Run it through Claude today. See what changes."
+      ]
+    },
+    {
+      "num": 10,
+      "title": "Claude just replaced 3 hours of my week.",
+      "category": "TOOL_SPOTLIGHTS",
+      "subreddits": [
+        "ClaudeAI",
+        "ChatGPT",
+        "productivity"
+      ],
+      "slides": [
+        "Three hours of the week disappeared. The actual work did not.",
+        "Newsletter research and drafting used to take hours. Now it takes a 10-minute review.",
+        "Claude researches the topic, writes the structure, drafts every section.",
+        "Read it. Adjust the tone. Approve it. Done.",
+        "The human part is judgment. Everything else is handled."
+      ]
+    },
+    {
+      "num": 11,
+      "title": "Nobody tells you this about Tableau Prep.",
+      "category": "TOOL_SPOTLIGHTS",
+      "subreddits": [
+        "tableau",
+        "dataengineering",
+        "analytics"
+      ],
+      "slides": [
+        "Most people go straight to Tableau Desktop. That is the wrong starting point.",
+        "Tableau Prep is the step before the dashboard. Data cleaning, transformation, shaping.",
+        "Raw data from SAP goes in. Clean, structured data comes out. Automatically.",
+        "Change one thing in Prep and every downstream report updates. No manual retouch needed.",
+        "The dashboard takes minutes when the data pipeline is already clean."
+      ]
+    },
+    {
+      "num": 12,
+      "title": "This tool turns rough notes into a finished deck.",
+      "category": "TOOL_SPOTLIGHTS",
+      "subreddits": [
+        "ChatGPT",
+        "productivity"
+      ],
+      "slides": [
+        "Every important meeting leaves behind rough notes. Every presentation starts with a blank slide.",
+        "Paste those notes into Gamma. Describe the structure needed.",
+        "Three minutes: full slide deck. Layout, content, structure all generated.",
+        "Edit the slides that need adjustment. The first draft is already there to work from.",
+        "The two hours was always the blank page problem. This removes the blank page."
+      ]
+    },
+    {
+      "num": 13,
+      "title": "How GitHub Actions runs my work while I sleep.",
+      "category": "TOOL_SPOTLIGHTS",
+      "subreddits": [
+        "github",
+        "learnpython",
+        "devops",
+        "automation"
+      ],
+      "slides": [
+        "Every Monday at 1am a newsletter sends to the subscriber list. Asleep when it happens.",
+        "GitHub Actions checks a YAML schedule and triggers a Python script automatically.",
+        "Claude researches and drafts. The script formats and sends. Delivered before morning.",
+        "The schedule was set once. It has fired every single week since without any intervention.",
+        "Any task that repeats on a schedule can be handed to GitHub Actions the same way."
+      ]
+    },
+    {
+      "num": 14,
+      "title": "Perplexity changed how I do research. Here's why.",
+      "category": "TOOL_SPOTLIGHTS",
+      "subreddits": [
+        "ChatGPT",
+        "productivity"
+      ],
+      "slides": [
+        "Research used to mean 15 open tabs, two hours, and a messy document of copied quotes.",
+        "Perplexity reads the sources and returns a synthesized answer with citations.",
+        "Every citation links to the original source. Verifiable. Not hallucinated.",
+        "Used before every meeting that needs preparation and every report that needs external context.",
+        "One prompt. Five minutes. Research done. Check the sources and move on."
+      ]
+    },
+    {
+      "num": 15,
+      "title": "Power BI vs Tableau. Honest take after using both.",
+      "category": "TOOL_SPOTLIGHTS",
+      "subreddits": [
+        "PowerBI",
+        "tableau",
+        "analytics"
+      ],
+      "slides": [
+        "Power BI and Tableau both do dashboards. The difference is where your data lives.",
+        "Power BI integrates natively with the Microsoft stack: Excel, SharePoint, Teams, Fabric.",
+        "Tableau wins on visual flexibility, Tableau Prep pipelines, and mixed data source connections.",
+        "Microsoft-heavy company: Power BI. Mixed or SAP-heavy data: Tableau.",
+        "Pick based on the actual data stack. The tool that fits the data is the right one."
+      ]
+    },
+    {
+      "num": 16,
+      "title": "The free tool that automates my most hated task.",
+      "category": "TOOL_SPOTLIGHTS",
+      "subreddits": [
+        "Office365",
+        "automation",
+        "productivity"
+      ],
+      "slides": [
+        "Power Automate comes free with every Microsoft 365 subscription. Almost nobody uses it.",
+        "It connects apps, triggers on events, and runs flows without a single line of code.",
+        "A file lands in SharePoint: the flow runs, sends a summary, updates a sheet automatically.",
+        "Zero extra cost. Runs in the background. No developer needed.",
+        "Open Power Automate today. It is already sitting in the Microsoft account."
+      ]
+    },
+    {
+      "num": 17,
+      "title": "This is the only AI I actually trust at work.",
+      "category": "TOOL_SPOTLIGHTS",
+      "subreddits": [
+        "Office365",
+        "microsoft",
+        "productivity"
+      ],
+      "slides": [
+        "At work, data belongs inside the company network. Not every AI meets that standard.",
+        "Microsoft Copilot is built into the company laptop and meets enterprise data requirements.",
+        "It drafts emails in Outlook, writes Excel formulas, and summarizes meetings in Teams.",
+        "Tested several AI tools. One is safe to use with real company data. That is Copilot.",
+        "For work tasks with real company data: Copilot. For personal projects: Claude."
+      ]
+    },
+    {
+      "num": 18,
+      "title": "Excel still wins. But only for this.",
+      "category": "TOOL_SPOTLIGHTS",
+      "subreddits": [
+        "excel",
+        "productivity"
+      ],
+      "slides": [
+        "People keep saying Excel is dead. It is not. It is just being used wrong.",
+        "For formulas, logic, and conditional calculations across complex conditions: still unmatched.",
+        "For dashboards, automated pipelines, and live data: better tools exist now.",
+        "Know which job each tool is built for. Use the right one for each.",
+        "Use Copilot to write the formulas directly inside Excel. That part has changed completely."
+      ]
+    },
+    {
+      "num": 19,
+      "title": "The exact prompt I use to summarise any report.",
+      "category": "EXACT_PROMPTS",
+      "subreddits": [
+        "ChatGPT",
+        "ClaudeAI",
+        "PromptEngineering",
+        "productivity"
+      ],
+      "slides": [
+        "Every KPI report has ten pages. Three things actually matter to the person reading it.",
+        "Finding those three things used to take 30 minutes of reading and re-reading.",
+        "Paste the report. Add: \"Summarise this in three bullets. Each under 20 words.\"",
+        "The three most important points out in under 2 minutes. Ready to send.",
+        "The longer the report, the more this saves. Try it on the next one received."
+      ]
+    },
+    {
+      "num": 20,
+      "title": "Copy this prompt. Save 2 hours.",
+      "category": "EXACT_PROMPTS",
+      "subreddits": [
+        "ChatGPT",
+        "ClaudeAI",
+        "PromptEngineering",
+        "productivity"
+      ],
+      "slides": [
+        "Writing management summaries from raw data used to take most of a morning.",
+        "The data was right there. The writing was the entire bottleneck.",
+        "Prompt: \"Here is the data. Write a management summary. 200 words. Highlight what changed vs last month.\"",
+        "First draft in under 3 minutes. Review it. Adjust it. Send it. Morning reclaimed.",
+        "The writing part of reporting is now the fastest part."
+      ]
+    },
+    {
+      "num": 21,
+      "title": "5 prompts I use every week. Save this.",
+      "category": "EXACT_PROMPTS",
+      "subreddits": [
+        "ChatGPT",
+        "ClaudeAI",
+        "PromptEngineering",
+        "productivity"
+      ],
+      "slides": [
+        "Prompt 1: \"Summarise this in 3 bullets under 20 words each.\"",
+        "Prompt 2: \"Turn these notes into action items, decisions, and open questions.\"",
+        "Prompt 3: \"Write a first draft of this email in under 100 words. Professional tone.\"",
+        "Prompt 4: \"Build an Excel formula that [describe the logic]. Explain how it works.\"",
+        "Prompt 5: \"Check this for errors, gaps, and anything that sounds unclear.\""
+      ]
+    },
+    {
+      "num": 22,
+      "title": "The Claude prompt that replaces Google for research.",
+      "category": "EXACT_PROMPTS",
+      "subreddits": [
+        "ChatGPT",
+        "ClaudeAI",
+        "PromptEngineering",
+        "productivity"
+      ],
+      "slides": [
+        "Google returns links. Every one of them still needs to be read manually.",
+        "Claude returns a synthesized answer when given enough context to work with.",
+        "The difference is specificity. A vague question gets a vague answer every time.",
+        "Format: \"I am a [role]. I need to understand [topic]. Explain clearly in [format].\"",
+        "Add the role and what the research is for. The answer becomes immediately usable."
+      ]
+    },
+    {
+      "num": 23,
+      "title": "Ask AI to build your Excel formula. Use this prompt.",
+      "category": "EXACT_PROMPTS",
+      "subreddits": [
+        "ChatGPT",
+        "ClaudeAI",
+        "PromptEngineering",
+        "productivity"
+      ],
+      "slides": [
+        "Writing Excel formulas from memory is a skill. Asking AI to write them is faster.",
+        "Describe what the formula needs to do in plain English. Claude or Copilot writes it.",
+        "Prompt: \"Write an Excel formula that [logic]. Data is in [column range].\"",
+        "Paste the formula. Test it. If it breaks, paste the error back. It fixes itself.",
+        "Copilot in Excel does this directly inside the spreadsheet. No copy-pasting required."
+      ]
+    },
+    {
+      "num": 24,
+      "title": "My notes were a mess. This prompt fixed that.",
+      "category": "EXACT_PROMPTS",
+      "subreddits": [
+        "ChatGPT",
+        "ClaudeAI",
+        "PromptEngineering",
+        "productivity"
+      ],
+      "slides": [
+        "Meeting notes that only made sense for the two hours after the meeting.",
+        "Action items buried in paragraphs. Decisions not separated from discussions.",
+        "Paste the raw notes. Add: \"Pull out all action items, decisions, and open questions.\"",
+        "Clean structured output in under 30 seconds. Share it directly with the team.",
+        "The notes do not need to be clean for this to work. Rough input gives clean output."
+      ]
+    },
+    {
+      "num": 25,
+      "title": "Ask Claude this. Get a finished first draft.",
+      "category": "EXACT_PROMPTS",
+      "subreddits": [
+        "ChatGPT",
+        "ClaudeAI",
+        "PromptEngineering",
+        "productivity"
+      ],
+      "slides": [
+        "The blank page is the most expensive part of any writing task.",
+        "A first draft removes the blank page. Editing is always faster than starting from zero.",
+        "Never ask for the final version. Ask for a first draft with specific constraints.",
+        "Give it: who is reading this, what they need to know, how long, and what tone.",
+        "The gap between what Claude produces and what gets sent is usually 10 minutes of editing."
+      ]
+    },
+    {
+      "num": 26,
+      "title": "The prompt I run every Monday morning.",
+      "category": "EXACT_PROMPTS",
+      "subreddits": [
+        "ChatGPT",
+        "ClaudeAI",
+        "PromptEngineering",
+        "productivity"
+      ],
+      "slides": [
+        "Every Monday starts the same way. One prompt. Five minutes. The week is organized.",
+        "Prompt: \"Here are this week's tasks: [list]. Rank by urgency and impact. Suggest a day for each.\"",
+        "Output: a prioritized weekly plan built in under 5 minutes.",
+        "The week starts with clarity instead of 30 minutes of deciding what to do first.",
+        "Paste the task list into Claude every Monday. The planning handles itself."
+      ]
+    },
+    {
+      "num": 27,
+      "title": "How to get AI to check your own work.",
+      "category": "EXACT_PROMPTS",
+      "subreddits": [
+        "ChatGPT",
+        "ClaudeAI",
+        "PromptEngineering",
+        "productivity"
+      ],
+      "slides": [
+        "Checking your own work misses the errors already believed to be correct.",
+        "AI has no assumptions about what was intended. It reads exactly what is written.",
+        "Paste the work. Add: \"Find errors, unclear points, and anything that could be misread.\"",
+        "Read every flag. Fix what is genuinely wrong. Ignore what it misunderstands.",
+        "Use it before anything goes to a manager, client, or stakeholder. Not after."
+      ]
+    },
+    {
+      "num": 28,
+      "title": "One prompt. One hour saved. Every single time.",
+      "category": "EXACT_PROMPTS",
+      "subreddits": [
+        "ChatGPT",
+        "ClaudeAI",
+        "PromptEngineering",
+        "productivity"
+      ],
+      "slides": [
+        "One hour per week. Same task. Every single week.",
+        "52 hours a year. That is 6.5 full working days on one repeating task.",
+        "One well-written prompt completes it in under 10 minutes.",
+        "Writing the prompt once takes 15 minutes. The savings start immediately after.",
+        "Calculate how many times this task runs per year. That is how much is about to be reclaimed."
+      ]
+    },
+    {
+      "num": 29,
+      "title": "How I send a newsletter every week without writing it.",
+      "category": "SYSTEM_BUILDS",
+      "subreddits": [
+        "automation",
+        "learnpython",
+        "n8n",
+        "nocode",
+        "github"
+      ],
+      "slides": [
+        "Every Monday at 1am a newsletter sends to the subscriber list. Written by AI.",
+        "Claude researches the topic from RSS feeds and Reddit. Drafts the full content.",
+        "GitHub Actions runs the schedule. Triggers the Python script. Sends via Gmail API.",
+        "Built over one weekend. Has run automatically every week since without any changes.",
+        "Three parts: a research agent, a writing pipeline, and a scheduled delivery trigger."
+      ]
+    },
+    {
+      "num": 30,
+      "title": "The 3-step pipeline behind my monthly reports.",
+      "category": "SYSTEM_BUILDS",
+      "subreddits": [
+        "automation",
+        "learnpython",
+        "n8n",
+        "nocode",
+        "github"
+      ],
+      "slides": [
+        "Monthly reports used to take most of a week. The same three steps manually every time.",
+        "Step 1: Extract data from SAP Fiori. Raw, unformatted, directly from the source system.",
+        "Step 2: Tableau Prep runs the cleaning flow. Structured, consistent, ready data out.",
+        "Step 3: Tableau Desktop reads the Prep output. Live dashboard. Always current.",
+        "Three steps. One pipeline. A week of work is now five minutes."
+      ]
+    },
+    {
+      "num": 31,
+      "title": "I built an automation that works while I sleep.",
+      "category": "SYSTEM_BUILDS",
+      "subreddits": [
+        "automation",
+        "learnpython",
+        "n8n",
+        "nocode",
+        "github"
+      ],
+      "slides": [
+        "Sunday night. Nothing running manually. Monday morning: newsletter delivered.",
+        "GitHub Actions checks the YAML schedule. Fires at the time set once months ago.",
+        "Python script calls the Claude API. Formats the output. Sends via Gmail. Done.",
+        "No manual step at any point. The system decides when to run and runs it.",
+        "Any task that happens on a schedule can be handed off this exact way."
+      ]
+    },
+    {
+      "num": 32,
+      "title": "Every tool in my work stack. And exactly why.",
+      "category": "SYSTEM_BUILDS",
+      "subreddits": [
+        "automation",
+        "learnpython",
+        "n8n",
+        "nocode",
+        "github"
+      ],
+      "slides": [
+        "Seven tools. Each does exactly one thing. Nothing overlaps.",
+        "Claude for personal research and drafting. Microsoft Copilot for work tasks with company data.",
+        "Tableau Prep for data cleaning. Tableau Desktop for reporting and dashboards.",
+        "SAP Fiori for source data extraction. GitHub Actions for scheduling. Python for scripting.",
+        "Add a tool only when something genuinely cannot be done without it."
+      ]
+    },
+    {
+      "num": 33,
+      "title": "How I built a dashboard that updates itself.",
+      "category": "SYSTEM_BUILDS",
+      "subreddits": [
+        "automation",
+        "learnpython",
+        "n8n",
+        "nocode",
+        "github"
+      ],
+      "slides": [
+        "A dashboard that needs a manual refresh every Monday is not a real dashboard.",
+        "Connect Tableau Desktop directly to a Tableau Prep flow as the data source.",
+        "Tableau Prep runs on schedule. Pulls from SAP Fiori. Cleans and structures the output.",
+        "Every time Tableau Desktop opens, the latest cleaned data is already there.",
+        "The pipeline runs itself. The dashboard is always current. No Monday prep needed."
+      ]
+    },
+    {
+      "num": 34,
+      "title": "Built it once on a Saturday. Still running.",
+      "category": "SYSTEM_BUILDS",
+      "subreddits": [
+        "automation",
+        "learnpython",
+        "n8n",
+        "nocode",
+        "github"
+      ],
+      "slides": [
+        "Saturday afternoon. Four hours. One newsletter pipeline built from scratch.",
+        "Configured the GitHub Actions YAML. Wrote the Python script. Connected the Claude API.",
+        "Tested twice. Fixed one API error. Third run worked. Left it running.",
+        "Has fired automatically every Monday since. Never needed to touch it again.",
+        "The four hours paid back in the first week. Every week after is free."
+      ]
+    },
+    {
+      "num": 35,
+      "title": "How to connect live data to a Tableau report.",
+      "category": "SYSTEM_BUILDS",
+      "subreddits": [
+        "automation",
+        "learnpython",
+        "n8n",
+        "nocode",
+        "github"
+      ],
+      "slides": [
+        "Static reports go stale the moment they stop being updated. Live reports do not.",
+        "Step 1: Build a Tableau Prep flow that pulls from the source and cleans the data.",
+        "Step 2: In Tableau Desktop, set the data source to the Prep output, not the raw file.",
+        "Step 3: Schedule the Prep flow. Every refresh pulls the latest data automatically.",
+        "The only manual step is opening Tableau Desktop. Everything else is already done."
+      ]
+    },
+    {
+      "num": 36,
+      "title": "The blueprint for my most-used automation.",
+      "category": "SYSTEM_BUILDS",
+      "subreddits": [
+        "automation",
+        "learnpython",
+        "n8n",
+        "nocode",
+        "github"
+      ],
+      "slides": [
+        "Every automation built follows the same three-part structure. No exceptions.",
+        "Part 1: Trigger. Something fires it. A schedule, a file landing, a form submitted.",
+        "Part 2: Script. A Python file runs and does the actual work.",
+        "Part 3: Output. The result goes somewhere \u2014 email, file, sheet, or dashboard.",
+        "Trigger. Script. Output. Map any repeating task to those three parts and build it."
+      ]
+    },
+    {
+      "num": 37,
+      "title": "Here is the full stack. No gatekeeping.",
+      "category": "SYSTEM_BUILDS",
+      "subreddits": [
+        "automation",
+        "learnpython",
+        "n8n",
+        "nocode",
+        "github"
+      ],
+      "slides": [
+        "Full stack. Every tool used. No gatekeeping.",
+        "AI: Claude for personal work. Microsoft Copilot for anything using company data.",
+        "Data: SAP Fiori for extraction. Tableau Prep for cleaning. Tableau Desktop for reporting.",
+        "Automation: GitHub Actions for scheduling. Python for scripting. Gmail API for delivery.",
+        "Personal tools stay separate from company tools. That line matters and should not be crossed."
+      ]
+    },
+    {
+      "num": 38,
+      "title": "Start with this system. Build everything else later.",
+      "category": "SYSTEM_BUILDS",
+      "subreddits": [
+        "automation",
+        "learnpython",
+        "n8n",
+        "nocode",
+        "github"
+      ],
+      "slides": [
+        "One system before anything else. The most repeated task in the current workflow.",
+        "Write down every manual step in that task from start to finish.",
+        "Replace step one with a tool. Step two with a prompt. Step three with a trigger.",
+        "Test it. Fix what breaks. Leave everything else exactly as it is for now.",
+        "Build the second system only after the first one runs reliably on its own."
+      ]
+    },
+    {
+      "num": 39,
+      "title": "What AI still cannot do. From someone who tries daily.",
+      "category": "HONEST_TAKES",
+      "subreddits": [
+        "ChatGPT",
+        "Futurology",
+        "productivity",
+        "artificial"
+      ],
+      "slides": [
+        "Three things AI consistently gets wrong no matter how good the prompt is.",
+        "First: judgment calls that need context only someone inside the situation has.",
+        "Second: reading the room. Knowing what a stakeholder needs to hear vs what is true.",
+        "Third: catching errors in data it was never told was wrong. It trusts the input completely.",
+        "Use AI for execution. Keep the judgment. The two are not interchangeable."
+      ]
+    },
+    {
+      "num": 40,
+      "title": "I used AI for everything for 30 days. Honest results.",
+      "category": "HONEST_TAKES",
+      "subreddits": [
+        "ChatGPT",
+        "Futurology",
+        "productivity",
+        "artificial"
+      ],
+      "slides": [
+        "Thirty days. Every work task. AI first. No exceptions.",
+        "What improved: speed on first drafts, research depth, formula accuracy in Excel.",
+        "What got worse: writing from scratch without AI. The cold-start ability weakened.",
+        "What surprised me: how much time was going to tasks that could have been automated months earlier.",
+        "Use it deliberately. Not for everything. For the tasks where it is genuinely faster and better."
+      ]
+    },
+    {
+      "num": 41,
+      "title": "Stop using AI like a search engine.",
+      "category": "HONEST_TAKES",
+      "subreddits": [
+        "ChatGPT",
+        "Futurology",
+        "productivity",
+        "artificial"
+      ],
+      "slides": [
+        "Most people open Claude the same way they open Google. Short question. Vague result.",
+        "AI is not a search engine. It is a thinking partner. The interaction is different.",
+        "Give it a role first: \"You are a financial analyst preparing a monthly KPI report.\"",
+        "Give it context: what is being done, what good output looks like, what to avoid.",
+        "The quality of the output is entirely determined by the quality of the context provided."
+      ]
+    },
+    {
+      "num": 42,
+      "title": "The AI tool everyone recommends. My honest take.",
+      "category": "HONEST_TAKES",
+      "subreddits": [
+        "ChatGPT",
+        "Futurology",
+        "productivity",
+        "artificial"
+      ],
+      "slides": [
+        "ChatGPT is the one everyone mentions first. Four weeks of daily use later: honest take.",
+        "Strong on general tasks and creative writing. Consistent when prompts are familiar.",
+        "Hallucinated facts on two verifiable research questions. Both answers sounded completely confident.",
+        "For tasks where accuracy matters, always verify the output against something real.",
+        "Right tool for the right task. ChatGPT for general use. Claude for research and reasoning."
+      ]
+    },
+    {
+      "num": 43,
+      "title": "What nobody tells you about automation.",
+      "category": "HONEST_TAKES",
+      "subreddits": [
+        "ChatGPT",
+        "Futurology",
+        "productivity",
+        "artificial"
+      ],
+      "slides": [
+        "Automation breaks. Quietly. Often at the worst possible moment.",
+        "A script that worked 20 times will fail on run 21 when the data format shifts by one column.",
+        "Build a failure alert into every automation before anything else.",
+        "The newsletter pipeline ran silently broken for 5 weeks. No alert. No error. Just silence.",
+        "Build the check first. Build the automation second. That order matters."
+      ]
+    },
+    {
+      "num": 44,
+      "title": "AI made me worse at this one thing.",
+      "category": "HONEST_TAKES",
+      "subreddits": [
+        "ChatGPT",
+        "Futurology",
+        "productivity",
+        "artificial"
+      ],
+      "slides": [
+        "AI made one specific skill weaker. Worth being honest about it.",
+        "Writing from scratch. Starting without a draft is harder than it was six months ago.",
+        "When a first draft is always one prompt away, the cold-start ability slowly declines.",
+        "Noticed this after using Claude for drafting consistently for three months straight.",
+        "Keep practicing both. Do not outsource the skill entirely. The judgment layer needs it."
+      ]
+    },
+    {
+      "num": 45,
+      "title": "When AI gives the wrong answer. And you trust it.",
+      "category": "HONEST_TAKES",
+      "subreddits": [
+        "ChatGPT",
+        "Futurology",
+        "productivity",
+        "artificial"
+      ],
+      "slides": [
+        "The wrong answer delivered with confidence looks exactly like the right one.",
+        "AI does not know what it does not know. It answers with the same tone regardless.",
+        "Inside your domain, the errors are catchable. In an unfamiliar area, they are not.",
+        "The KPI formula AI wrote worked in 14 of 17 countries. Three had exceptions it missed.",
+        "Always test outputs against something real before trusting them in a work context."
+      ]
+    },
+    {
+      "num": 46,
+      "title": "The part of my job AI will never replace.",
+      "category": "HONEST_TAKES",
+      "subreddits": [
+        "ChatGPT",
+        "Futurology",
+        "productivity",
+        "artificial"
+      ],
+      "slides": [
+        "One question at the end of every Friday: what here could only a person have done?",
+        "The answer is always the same. Stakeholder judgment. Context that lives in relationships.",
+        "Knowing the CFO prefers context before numbers. AI does not know that.",
+        "Knowing when a KPI that looks bad has a valid explanation. AI reads the number, not the situation.",
+        "Automate everything around that judgment. The judgment itself stays yours."
+      ]
+    },
+    {
+      "num": 47,
+      "title": "Never used Claude? Start here.",
+      "category": "BEGINNER_GUIDES",
+      "subreddits": [
+        "ChatGPT",
+        "nocode",
+        "learnprogramming",
+        "productivity"
+      ],
+      "slides": [
+        "First time opening Claude. Exact starting point.",
+        "Go to claude.ai. Type one task from this week that took longer than it should.",
+        "Add: \"I work as a [role]. Here is what good output looks like: [describe it].\"",
+        "Read the result. Edit what is wrong. That editing is where the skill builds.",
+        "Do this once today. Once tomorrow. The habit builds faster than expected."
+      ]
+    },
+    {
+      "num": 48,
+      "title": "Your first automation. 20 minutes. No code.",
+      "category": "BEGINNER_GUIDES",
+      "subreddits": [
+        "ChatGPT",
+        "nocode",
+        "learnprogramming",
+        "productivity"
+      ],
+      "slides": [
+        "First automation. 20 minutes. No code required at all.",
+        "Pick one task that repeats every week and never changes much.",
+        "Open Make.com. Free account. Connect two tools already in use.",
+        "Set a trigger on one event. Set the output to wherever the result needs to go.",
+        "Test it twice. Leave it running. First automation done."
+      ]
+    },
+    {
+      "num": 49,
+      "title": "The 3 AI tools you actually need. Not 30.",
+      "category": "BEGINNER_GUIDES",
+      "subreddits": [
+        "ChatGPT",
+        "nocode",
+        "learnprogramming",
+        "productivity"
+      ],
+      "slides": [
+        "Three tools. Not 30. These cover almost everything.",
+        "Claude: research, drafting, thinking through problems. Start here first.",
+        "Perplexity: research with citations. Use it when accuracy and sources matter.",
+        "Make.com or GitHub Actions: connect tools, run schedules, automate triggers.",
+        "Add a fourth only when the first three genuinely cannot cover the task."
+      ]
+    },
+    {
+      "num": 50,
+      "title": "How to use AI at work without looking like you depend on it.",
+      "category": "BEGINNER_GUIDES",
+      "subreddits": [
+        "ChatGPT",
+        "nocode",
+        "learnprogramming",
+        "productivity"
+      ],
+      "slides": [
+        "The fear: using AI makes it look like the work is not really yours.",
+        "Lead with the problem and the outcome. Never lead with which tool was used.",
+        "Nobody asks a surgeon which scalpel they used. They ask about the result.",
+        "The judgment, domain knowledge, and final decision: those are still entirely yours.",
+        "AI is a professional tool. Frame it that way and every impression follows from that."
+      ]
+    },
+    {
+      "num": 51,
+      "title": "You do not need to code to automate your job.",
+      "category": "BEGINNER_GUIDES",
+      "subreddits": [
+        "ChatGPT",
+        "nocode",
+        "learnprogramming",
+        "productivity"
+      ],
+      "slides": [
+        "Most useful automations at work require no code at all.",
+        "Power Automate, Make.com, and Zapier connect tools and run triggers without writing anything.",
+        "Describe the task in plain English to Claude. Ask it to explain how to automate it step by step.",
+        "Follow the steps. Connect the tools. Claude writes any code needed if it comes to that.",
+        "The only requirement is knowing what the task is and what the output should be."
+      ]
+    },
+    {
+      "num": 52,
+      "title": "Start with this. Everything else can wait.",
+      "category": "BEGINNER_GUIDES",
+      "subreddits": [
+        "ChatGPT",
+        "nocode",
+        "learnprogramming",
+        "productivity"
+      ],
+      "slides": [
+        "One task before anything else. The one that repeats every week without fail.",
+        "Write down every step of that task from opening the file to sending the output.",
+        "Automate step one. Not all of them. Just the first one.",
+        "Let it run for two weeks. See what breaks. Fix it. Then add step two.",
+        "The full automation comes from stacking small fixes, not from building everything at once."
+      ]
+    }
+  ]
+}

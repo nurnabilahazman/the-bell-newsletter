@@ -1,0 +1,24 @@
+{
+  "topic_id": "S-05",
+  "topic": "Strings (text)",
+  "cover_title": "Code Strings Explained",
+  "cover_subtitle": "Learn to work with text in code",
+  "slides": [
+    {
+      "text": "You can store [[text]] in code like notes on paper"
+    },
+    {
+      "text": "A [[string]] is a sequence of characters in code"
+    },
+    {
+      "text": "[[Characters]] include letters, numbers, and symbols"
+    },
+    {
+      "text": "You can [[count]] characters and words in a string"
+    },
+    {
+      "text": "Understanding [[strings]] helps you build useful tools"
+    }
+  ],
+  "last_slide": "Follow for more coding lessons"
+}

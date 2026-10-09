@@ -1,0 +1,24 @@
+{
+  "topic_id": "S-02",
+  "topic": "The command line / terminal",
+  "cover_title": "Master The Command Line",
+  "cover_subtitle": "Take control of your computer",
+  "slides": [
+    {
+      "text": "You can talk to your computer using [[commands]]"
+    },
+    {
+      "text": "The [[command line]] lets you type instructions instead of clicking"
+    },
+    {
+      "text": "Use [[cd]] to move into a different folder"
+    },
+    {
+      "text": "[[ls]] lists everything in the folder you're in"
+    },
+    {
+      "text": "[[mkdir]] makes a new folder for you"
+    }
+  ],
+  "last_slide": "Follow for more coding tips"
+}

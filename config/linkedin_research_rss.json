@@ -1,0 +1,52 @@
+[
+  {
+    "name": "MIT Technology Review AI",
+    "url": "https://www.technologyreview.com/feed/",
+    "tags": ["AI", "research", "productivity"]
+  },
+  {
+    "name": "One Useful Thing (Ethan Mollick)",
+    "url": "https://www.oneusefulthing.org/feed",
+    "tags": ["AI", "work", "practical"]
+  },
+  {
+    "name": "The Verge",
+    "url": "https://www.theverge.com/rss/index.xml",
+    "tags": ["tech", "AI", "tools"]
+  },
+  {
+    "name": "VentureBeat AI",
+    "url": "https://venturebeat.com/feed/",
+    "tags": ["AI", "enterprise", "productivity"]
+  },
+  {
+    "name": "TechCrunch AI",
+    "url": "https://techcrunch.com/category/artificial-intelligence/feed/",
+    "tags": ["AI", "tools", "startups"]
+  },
+  {
+    "name": "AccountingToday",
+    "url": "https://www.accountingtoday.com/feed",
+    "tags": ["accounting", "finance", "automation"]
+  },
+  {
+    "name": "Simon Willison's Weblog",
+    "url": "https://simonwillison.net/atom/everything/",
+    "tags": ["AI", "tools", "practical"]
+  },
+  {
+    "name": "Ars Technica Technology",
+    "url": "https://feeds.arstechnica.com/arstechnica/technology-lab",
+    "tags": ["tech", "AI", "research"]
+  },
+  {
+    "name": "HBR Management",
+    "url": "https://hbr.org/topic/subject/technology/rss",
+    "tags": ["management", "productivity", "workplace"]
+  },
+  {
+    "name": "CNBC Technology",
+    "url": "https://www.cnbc.com/id/19854910/device/rss/rss.html",
+    "tags": ["tech", "enterprise", "AI"]
+  }
+]

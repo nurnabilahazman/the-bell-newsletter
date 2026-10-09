@@ -1,0 +1,24 @@
+{
+  "topic_id": "S-07",
+  "topic": "Tuples & Sets",
+  "cover_title": "Master Tuples and Sets",
+  "cover_subtitle": "Clean your data with ease",
+  "slides": [
+    {
+      "text": "Create a [[tuple]] to store unchanging data"
+    },
+    {
+      "text": "Use a [[set]] to remove duplicate items"
+    },
+    {
+      "text": "Convert a [[list]] to a set for unique items"
+    },
+    {
+      "text": "Avoid modifying a [[tuple]] after creation"
+    },
+    {
+      "text": "Apply [[sets]] to real-world data cleaning tasks"
+    }
+  ],
+  "last_slide": "Follow for more coding tips"
+}

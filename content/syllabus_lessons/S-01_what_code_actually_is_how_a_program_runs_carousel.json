@@ -1,0 +1,24 @@
+{
+  "topic_id": "S-01",
+  "topic": "What code actually is / how a program runs",
+  "cover_title": "Code Demystified",
+  "cover_subtitle": "Understand how programs work",
+  "slides": [
+    {
+      "text": "You write [[code]] for computers to understand"
+    },
+    {
+      "text": "A [[program]] is a list of instructions"
+    },
+    {
+      "text": "Computers follow [[instructions]] in order"
+    },
+    {
+      "text": "[[Code]] is executed line by line"
+    },
+    {
+      "text": "Predicting [[output]] is key to coding"
+    }
+  ],
+  "last_slide": "Follow for more coding lessons"
+}
