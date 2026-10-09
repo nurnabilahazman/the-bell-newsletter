@@ -31,7 +31,7 @@ Save this in a file called `about.html`, then double click the file to open it i
 Here is what each part does:
 1. `<!DOCTYPE html>` tells the browser "this is a modern HTML page". It always goes on the very first line.
 2. `<html lang="en">` wraps the whole page. `lang="en"` says the page is in English, which helps screen readers.
-3. `<head>` holds information *about* the page that isn't shown in the page itself. `<meta charset="UTF-8">` makes sure every character, including symbols like RM or é, displays correctly. `<title>` sets the text on the browser tab.
+3. `<head>` holds information *about* the page that isn't shown in the page itself. `<meta charset="UTF-8">` makes sure every character displays correctly, including accented letters like é and emoji like 👋. `<title>` sets the text on the browser tab.
 4. `<body>` holds everything you actually see.
 5. `<h1>` is the main heading. `<p>` is a paragraph.
 6. `<ul>` starts a bullet list, and each `<li>` is one item in it ("list item").

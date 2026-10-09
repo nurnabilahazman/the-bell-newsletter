@@ -6,7 +6,7 @@ Think of the PIN for your bank card. You'd never write it on the card itself, be
 Code has PINs too. An **API key** is a secret password that lets your code use an online service, like the AI service behind the tools on this site. If you type the key straight into your code and push the code to GitHub, anyone who sees the code sees your key. So we keep them apart: the code goes on GitHub, the key goes in a separate file that never leaves your computer. That file is called a **.env file**, and the values inside it are called **environment variables**.
 
 ## The project: All 10 Bell tools
-Every AI tool on this site needs a key called `GROQ_API_KEY`, and none of them has it written in the code. Each one reads it from a `.env` file instead. We'll set up exactly that: a `.env` file, a rule that stops git uploading it, and a few lines of Python that read the key.
+Every AI tool on this site needs a key called `GROQ_API_KEY`, and none of them has it written in the code. On a laptop, the key comes from a `.env` file. On the live site, it comes from the hosting service's private settings, which work the same way. We'll set up exactly that: a `.env` file, a rule that stops git uploading it, and a few lines of Python that read the key.
 
 ## Building it
 **Step 1: install the package that reads .env files.** In your project folder, with your virtual environment switched on (lesson 16):

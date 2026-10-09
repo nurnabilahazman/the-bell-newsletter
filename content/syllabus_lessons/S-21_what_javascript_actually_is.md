@@ -6,7 +6,7 @@ Think of a room in a house. The walls and doors are the structure, that's HTML. 
 **JavaScript** is the wiring of a web page. It's a programming language, like Python, but it runs inside your web browser. It waits for things you do, like a click or a key press, and responds straight away, without reloading the page. Something you do on the page is called an **event**.
 
 ## The project: Add a working copy-button to the About Me page
-We'll add a button to the About Me page that copies your email address with one click. It's the light switch idea exactly: the button is the switch, and JavaScript is the wiring that does the copying when it's pressed. Every tool on this site uses the same pattern for its copy buttons.
+We'll add a button to the About Me page that copies your email address with one click. It's the light switch idea exactly: the button is the switch, and JavaScript is the wiring that does the copying when it's pressed. Every tool on this site uses the same idea for its copy buttons.
 
 ## Building it
 Add these lines to `about.html`, just before the closing `</body>` tag:
@@ -31,7 +31,7 @@ Here is what each part does:
 5. `navigator.clipboard.writeText("nabilah@example.com");` puts the email onto your clipboard, ready to paste.
 6. `button.textContent = "Copied!";` changes the button's label, so you can see it worked. No page reload needed.
 
-JavaScript looks different from Python: lines end with `;`, and blocks use `{ }` instead of indentation. The ideas, variables, functions and responding to events, are the same ones you already know.
+JavaScript looks different from Python: lines usually end with `;`, and blocks use `{ }` instead of indentation. The ideas, variables, functions and responding to events, are the same ones you already know.
 
 ## Why this matters
 Every interactive thing on a website, a copy button, a form that checks your input, a menu that opens, is JavaScript. It's what turns a page you read into a page you use.

@@ -48,7 +48,7 @@ Toggle one change at a time and watch the real page. The first shows the typo fr
 Change one rule and every matching tag on the page updates. That's how the whole Bell site keeps one consistent look: shared CSS rules, not hand-coloured pages. The same idea, one rule applied everywhere, is why Excel cell styles beat formatting cells one by one.
 
 ## The mistake beginners make here
-The sneaky slip is a typo. CSS doesn't show an error. If you write `colour: #1A1A2E;` (British spelling) or forget a semicolon, the browser quietly ignores that line and moves on. Your text just stays black and you're left wondering why. When a style doesn't apply, check the spelling of the property first. CSS uses American spelling: `color`, `center`.
+The sneaky slip is a typo. CSS doesn't show an error. If you write `colour: #1A1A2E;` (British spelling), the browser quietly ignores that line and moves on. Your text just stays black and you're left wondering why. A missing semicolon is sneakier still: the line runs into the next one, and the browser ignores both. When a style doesn't apply, check the spelling of the property first. CSS uses American spelling: `color`, `center`.
 
 ## What's next
 Next, we'll learn about **JavaScript**, which makes a page respond when you click or type, like a copy button that works without reloading the page.
