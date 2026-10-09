@@ -57,13 +57,38 @@ In `Week 1_Excel Formula Generator/`:
 PORT=5077 python3 combined_app.py &
 python3 tools/audit_site.py --base-url http://localhost:5077     # every page loads, no JS errors, no broken links
 python3 tools/smoke_test.py --base-url http://localhost:5077     # AI tools answer, try-its and tools behave
+python3 tools/test_lesson_widgets.py --base-url http://localhost:5077  # every lesson's components (244 checks)
+python3 tools/test_s10_interactions.py --base-url http://localhost:5077  # S-10 acceptance suite
 ```
+Only push after these pass, in a separate command (never chained onto the tests).
 
 ### 7. Push
 Commit and push the website repo. Render deploys in about 2 minutes. Then run both tests again against `https://the-bell.onrender.com`.
 
 ### 8. LinkedIn post and carousel
 If the lesson's code or claims changed, update `content/linkedin_posts/S-XX_*.md` and `content/syllabus_lessons/S-XX_*_carousel.json`, then `python3 tools/syllabus_carousel_renderer.py` to re-render the PDFs. Posts are published by hand, so an already published post must be edited on LinkedIn by hand.
+
+## Interactive components (step-throughs, calculators, previews)
+Every lesson can teach with working interactions, not just text. The pieces:
+
+| What | Where |
+|---|---|
+| Component library: CodeTrace, Substitution, Experiment, Prediction, MistakeLab, RangeExplorer, LivePreview, FileSim, IndexExplorer | site repo `templates/partials/lesson_components.html` |
+| A lesson's own setup (which component goes where, with what values) | site repo `templates/lesson_widgets/<id>.html` |
+| Recorded real Python runs: step-throughs, comparison outputs, terminal sessions | site repo `tools/build_traces.py` → `data/lesson_traces/<id>.json` |
+
+To add one to a lesson:
+1. In the lesson markdown, put `[[widget:some-name]]` where it belongs (inside the existing headings). Use ```` ```output ```` under code to show its exact output, `:::details Title` … `:::` for fold-outs, and ```` ```python expect-error=NameError ```` for code that is meant to fail.
+2. If it shows code running or a comparison, add the code to `TRACES`, `RUNS` or `TERMINAL` in `tools/build_traces.py` and run `python3 tools/build_traces.py`. Never hand-type an output or error message: record it.
+3. Mount it in `templates/lesson_widgets/<id>.html` (copy a neighbouring lesson's file).
+4. Add behaviour checks to `tools/test_lesson_widgets.py`, comparing what the component shows with real Python.
+5. Run the pipeline from step 2 above. The checker verifies every ```` ```output ```` block against real Python, character for character.
+
+Rules learned the hard way:
+- Never uppercase labels that can contain code or file names (`total_cost`, `expenses.txt`): Python is case-sensitive.
+- Long values must wrap or scroll inside their box; the page must never scroll sideways at 390px.
+- Anything modelled in JavaScript says so on screen. Use Python's semantics exactly (`len` counts emoji as 1; floats print as `400.0`; `strptime` uses Python's own patterns).
+- Printing a set gives a different order on every run, so lesson code prints `sorted(...)` when the output is shown.
 
 ## Testing the checker itself
 `python3 tools/test_lesson_qa.py` (hard checks) or `--judge` (plus AI review)
