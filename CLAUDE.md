@@ -83,3 +83,7 @@ Key facts so you don't have to rediscover them:
 - Accuracy is the top priority: we publish lessons people learn from. Every code example must be run; every output and error must be recorded from a real run, never typed by hand.
 - Tests before every push (separately, never chained): `tools/lesson_qa.py`, `tools/test_lesson_widgets.py`, `tools/test_s10_interactions.py`, `tools/audit_site.py`, `tools/smoke_test.py`. Then re-run against the live site after Render deploys.
 - Keep the Mac display awake for the whole time you work, including background jobs (`caffeinate -dimsu`, never `-ims`, never a fixed timer that can run out mid-work).
+
+## Homepage and site design: always use the pipeline
+
+Whenever I ask to change the **homepage, site design, copy, FAQ, privacy wording, roadmap, track cards, evidence/achievements section, tools section, navigation or footer** of The Bell, you MUST first read and follow `workflows/homepage_refinement_pipeline.md` (full brief: `docs/briefs/THE_BELL_HOMEPAGE_MASTER_REFINEMENT_BRIEF.md`). Never invent or change numbers, employer details or privacy facts; ask me in one batch.
