@@ -37,33 +37,62 @@ POST_TYPES = [
 
 POST_TYPE_INSTRUCTIONS = {
     "building_from_zero": """
-POST TYPE: Weekly building-in-public update.
-The writer is documenting the real journey from zero — no technical background, just starting.
-Hook must capture the honest reality of this week: what she tried, what broke, what surprised her.
-The reader (someone who wants to start but hasn't) should feel: "this person is just like me AND they're actually doing it."
-Specific is everything — a real thing that happened this week, not a general reflection.
-Do NOT fake success metrics. If nothing launched, say so. That honesty is the value.
+POST TYPE: Building in public — but reader-first, not writer-first.
+
+The hook must address the READER's situation, not Nabilah's. Open with something the reader recognises about themselves — a fear, a behaviour, an assumption they have.
+
+Then use Nabilah's real story as PROOF that it's possible, not as the subject.
+
+Required structure:
+1. Hook: "You [specific thing most people do/feel/assume]." or "[Surprising specific fact]."
+2. The real situation from Nabilah — as evidence, not narration
+3. Exact action the reader can take today (prompt to type into Claude, step to take, etc.)
+4. CTA: "Save this." or "Follow — [specific one-liner reason]."
+
+The reader should think: "This is exactly my situation and now I know what to do."
+Do NOT make the post about Nabilah's feelings or journey. Make it about what the reader can do.
 """,
     "system_reveal": """
-POST TYPE: Reveal one specific part of the automation system.
-Explain what it does in plain English — no jargon.
-Specific numbers create credibility: RM cost, hours to build, number of steps.
-The reader should understand how one real piece of automation works and feel like they could build it.
-The carousel shows the step-by-step breakdown. The post tells the story of why it matters.
+POST TYPE: Reveal a system — but give the reader a copy.
+
+Do not narrate how Nabilah built it. Show the reader how THEY can have it.
+
+Required structure:
+1. Hook: "Nobody showed you this." / "Most people don't know you can [specific thing]." / "You don't need [assumption]."
+2. Name the system in plain English — what it does in one sentence
+3. The exact steps or the exact prompt the reader can use TODAY
+4. One specific real number (RM cost, hours saved, time taken)
+5. CTA: "Save this." — direct, no softening
+
+Format: short paragraphs. If showing steps, use → not bullet points.
 """,
     "lesson_learned": """
-POST TYPE: One specific lesson from building.
-Structure: what I assumed → what actually happened → what I now know.
-Must be specific enough that a beginner can apply it to their own project today.
-Not motivational — practical and earned from real experience.
-The "before" state should match exactly where the target reader is right now.
+POST TYPE: Lesson — but told as a warning to the reader, not a confession by the writer.
+
+The post should make the reader feel: "This is about to happen to me if I don't read this."
+
+Required structure:
+1. Hook: Name the mistake as if it's currently happening to the reader. "You're [doing the wrong thing]." or "This will [cost you something] if you ignore it."
+2. What actually happened (Nabilah's story — 2-3 lines, no dramatisation)
+3. The exact thing that would have prevented it
+4. What the reader should do RIGHT NOW to avoid the same outcome
+5. CTA: "Save this." — so they can refer back
+
+The before/after must be specific enough that a beginner can see themselves in it.
 """,
     "tool_tip": """
-POST TYPE: One specific Claude/AI technique with the exact prompt.
-The reader should be able to copy the prompt and use it today.
-Open with why most people do this wrong or don't know about it.
-End with the exact words to type — formatted clearly so it stands out.
-This is the "save this" post — make it worth saving.
+POST TYPE: Prompt/technique to copy — the "save this" post.
+
+This is pure reader value. The reader should save it immediately.
+
+Required structure:
+1. Hook: "You're using Claude wrong." / "Stop [thing everyone does]. Do this instead." / "Most people use AI like [wrong thing]. There's a better way."
+2. What the wrong approach is (1-2 lines — make them feel called out)
+3. The exact prompt to type, formatted clearly on its own lines
+4. What changes when you use this (specific — time saved, quality difference, specific result)
+5. CTA: "Save this." — nothing else needed
+
+The prompt must be in the post, formatted so it can be copied directly. This is non-negotiable.
 """,
 }
 
@@ -86,25 +115,34 @@ def get_post_type(log: dict) -> str:
     return POST_TYPES[idx]
 
 
-def build_context(curriculum: dict, saas: dict, log: dict) -> str:
-    week_num  = curriculum.get("current_week", 1)
-    projects  = curriculum.get("projects", [])
-    project   = next((p for p in projects if p["week"] == week_num), {})
-
-    saas_week      = saas.get("current_week", 1)
-    saas_miles     = saas.get("milestones", [])
-    saas_current   = next((m for m in saas_miles if m["week"] == saas_week), {})
-    linkedin_week  = log.get("current_week", 1)
+def build_context(log: dict) -> str:
+    linkedin_week = log.get("current_week", 1)
 
     return f"""LINKEDIN WEEK: {linkedin_week}
-NEWSLETTER WEEK: {week_num}
-SECTION 1 PROJECT THIS WEEK: {project.get('title', 'Building automation tools')}
-SKILL BEING LEARNED: {project.get('skill', 'Python + Claude')}
-SAAS TASK THIS WEEK: {saas_current.get('task', 'Building the core system')}
 DATE: {datetime.now().strftime('%B %d, %Y')}
-CREATOR: Nabilah — Malaysian, no technical background, building automation with Claude from scratch.
-NEWSLETTER STATUS: Automated newsletter system (currently being fixed after 5-week outage).
-HONEST SUBSCRIBER COUNT: Small — just starting. Do not invent large numbers."""
+
+WHO NABILAH IS:
+- Malaysian woman, no CS degree, no technical background
+- Building automated digital products using Claude and Python
+- Started building a fully automated newsletter (The Bell) that runs every Monday with zero manual work
+- The newsletter broke and was silently failing for 5 weeks — she found out and is fixing it in public
+- This is LinkedIn week {linkedin_week} of documenting the real journey from zero
+
+WHAT SHE HAS ACTUALLY BUILT SO FAR:
+- A Python pipeline that scrapes news, generates a newsletter using AI, formats it as HTML and emails it automatically every Monday
+- A children's activities section, productivity section, and language learning section — all auto-generated
+- The pipeline runs on GitHub Actions (free server) — her MacBook does not need to be on
+- Cost: roughly RM2.30/week in API costs
+- It broke silently — no error email, no alert — for 5 weeks before she caught it
+- She is now also adding a LinkedIn post + carousel that auto-generates alongside the newsletter
+
+HONEST FACTS:
+- She has no subscribers yet — just starting to post publicly
+- She is not an expert — she is learning while building
+- The value to the reader is watching someone with zero background actually do it
+
+DO NOT mention YouTube, invoices, web scrapers, or anything not listed above.
+DO NOT invent subscriber numbers, revenue, or achievements that are not listed above."""
 
 
 def generate_content(client: Groq, voice_spec: str, context: str, post_type: str) -> str:
@@ -120,6 +158,34 @@ CONTEXT:
 
 {instruction}
 
+APPROVED SAMPLE POST (study the rhythm, structure, and reader-pull — write like this):
+
+---
+I sleep. It works.
+
+Every Monday at 1am, a newsletter goes out to my subscribers.
+
+I don't write it. I don't format it. I don't send it.
+
+I set it up once. Now it runs by itself.
+
+This does not require a team, a technical background, or expensive software.
+
+I described what I wanted to an AI in plain sentences. It built the system. I tested it. It worked.
+
+One weekend to build. Less than a Grab order a week to run.
+
+If you want to start — type this into Claude:
+
+"I want [what you want to happen automatically]. No technical background. What is the simplest version? Ask me questions before you start."
+
+That is the entry point.
+
+Save this.
+---
+
+Notice: short punchy sentences. The writer's story creates FOMO. Removes the barrier the reader imagines. Gives an exact thing to copy. Ends "Save this." Write with this exact energy.
+
 OUTPUT — use this exact format, no deviation:
 
 POST_START
@@ -127,19 +193,34 @@ POST_START
 POST_END
 
 CAROUSEL_START
-COVER_TITLE: [Bold claim or specific thing — max 8 words. Different from the post hook.]
-COVER_SUBTITLE: [What the reader gets from this carousel — max 12 words.]
-SLIDE_1_TITLE: [Title]
-SLIDE_1_BODY: [Max 45 words. Use → for steps. Plain English. Specific.]
-SLIDE_2_TITLE: [Title]
-SLIDE_2_BODY: [Max 45 words.]
-SLIDE_3_TITLE: [Title]
-SLIDE_3_BODY: [Max 45 words.]
-SLIDE_4_TITLE: [Title]
-SLIDE_4_BODY: [Max 45 words.]
-SLIDE_5_TITLE: [Title]
-SLIDE_5_BODY: [Max 45 words.]
-LAST_SLIDE: [CTA — max 20 words. Simple. Direct. E.g. "Follow for weekly posts on building with AI from scratch."]
+COVER_TITLE: [A punchy 4-7 word statement that makes someone stop scrolling. Real and specific. Example: "My Newsletter Broke For 5 Weeks". No asterisks, no quotes.]
+COVER_SUBTITLE: [One line, max 12 words. Completes the cover story.]
+
+Each slide is ONE short statement (10-15 words). Frame slides from the READER's perspective — what THEY can do, learn, or know. Not what Nabilah did.
+
+Wrap the single most powerful 2-3 word phrase in [[double brackets]] — it gets a yellow highlight box. CRITICAL: the [[highlighted]] phrase must be 2-3 words ONLY so it fits on one line. Never highlight a long phrase that would wrap.
+
+SLIDE SENTENCE RULES — non-negotiable:
+- No dashes of any kind (no hyphen, no em dash, no double dash). They sound robotic.
+- Write like a real person talking. Simple, direct, conversational.
+- No filler words like "literally", "actually", "basically".
+- Each sentence must be complete and natural on its own.
+- Every slide MUST have exactly one [[highlight]]. No exceptions.
+- The [[highlight]] must be a real specific term: a tool name, a cost, a time, a number. Never vague phrases like "No Code", "AI Help", "my system".
+- This system uses Python and Claude AI — do not call it "No Code". It is AI-assisted automation.
+
+GOOD highlights: [[RM2.30]], [[GitHub Actions]], [[Claude AI]], [[one weekend]], [[52 times]]
+BAD highlights: [[No Code]], [[AI Help]], [[my system]], [[this tool]]
+
+BAD: "Your newsletter can run on [[GitHub Actions]] -- for free."
+GOOD: "[[GitHub Actions]] runs your newsletter every Monday at no cost."
+
+SLIDE_1_TEXT: [Reader-focused, 10-15 words, one [[specific highlight]]. Natural sentence, no dashes.]
+SLIDE_2_TEXT: [Reader-focused, 10-15 words, one [[specific highlight]]. Natural sentence, no dashes.]
+SLIDE_3_TEXT: [Reader-focused, 10-15 words, one [[specific highlight]]. Natural sentence, no dashes.]
+SLIDE_4_TEXT: [Reader-focused, 10-15 words, one [[specific highlight]]. Natural sentence, no dashes.]
+SLIDE_5_TEXT: [Reader-focused, 10-15 words, one [[specific highlight]]. Natural sentence, no dashes.]
+LAST_SLIDE: [Follow CTA — max 12 words. Direct. "Follow — [specific reason they get value from following]."]
 CAROUSEL_END
 
 CRITICAL RULES:
@@ -185,10 +266,9 @@ def parse_output(raw: str) -> tuple[str, dict]:
 
         slides = []
         for i in range(1, 9):
-            title = extract(f"SLIDE_{i}_TITLE")
-            body  = extract(f"SLIDE_{i}_BODY")
-            if title:
-                slides.append({"title": title, "body": body})
+            text = extract(f"SLIDE_{i}_TEXT")
+            if text:
+                slides.append({"text": text})
         carousel["slides"] = slides
 
     return post, carousel
@@ -209,8 +289,6 @@ def update_log(log: dict, post_type: str) -> dict:
 
 
 def main():
-    curriculum = load_json(CURRICULUM_PATH)
-    saas       = load_json(SAAS_PATH)
     voice_spec = load_text(VOICE_SPEC_PATH)
     log        = load_json(CONTENT_LOG_PATH)
 
@@ -219,7 +297,7 @@ def main():
 
     post_type     = get_post_type(log)
     linkedin_week = log.get("current_week", 1)
-    context       = build_context(curriculum, saas, log)
+    context       = build_context(log)
 
     print(f"LinkedIn Week {linkedin_week} — Post type: {post_type}")
 

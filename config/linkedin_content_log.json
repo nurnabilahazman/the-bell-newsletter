@@ -1,5 +1,11 @@
 {
-  "current_week": 1,
-  "post_type_index": 0,
-  "history": []
+  "current_week": 2,
+  "post_type_index": 1,
+  "history": [
+    {
+      "week": 1,
+      "post_type": "building_from_zero",
+      "date": "2026-06-20"
+    }
+  ]
 }

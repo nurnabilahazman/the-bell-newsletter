@@ -96,6 +96,26 @@ Corporate passive voice ("it was decided," "steps were taken").
 
 ---
 
+## THE MOST IMPORTANT RULE — Reader first, always
+
+The reader is the protagonist. Not Nabilah.
+
+Nabilah's story is evidence. It is not the subject.
+
+Every post must leave the reader with something — a specific prompt to copy, a technique to try, a fact that reframes how they think, a number that makes them stop. If they finish the post and gained nothing usable, it failed.
+
+**The test:** Read the post as a stranger. Ask: "So what? What do I do with this?" If there's no answer, the post is self-indulgent. Rewrite it.
+
+**Approved structure (from real posts that worked):**
+- Hook: reader-facing accusation, surprise, or confession ("You're using AI wrong." / "Nobody showed you this." / "I sleep. It works.")
+- Body: the insight that reframes something the reader assumed — specific, short, no padding
+- Actionable line: exact thing to type/copy/do right now — formatted so it stands out
+- CTA: "Save this." or "Follow — [specific reason]." Never vague.
+
+**Shift all "I did X" statements to "You can do X" or "Here's how X works":**
+- BAD: "I built a newsletter automation that runs every Monday."
+- GOOD: "Your newsletter can run by itself. Here's exactly how."
+
 ## What every post must pass before publishing
 
 Ask: Does this make Segment 1 (the person stuck in a 9-5 wanting to build something) feel
