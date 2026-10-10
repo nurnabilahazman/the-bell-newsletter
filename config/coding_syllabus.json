@@ -388,7 +388,7 @@
       {
         "id": "S-10",
         "topic": "Loops",
-        "plain_english_summary": "Repeating an action for every item in a list.",
+        "plain_english_summary": "Make Python repeat a task instead of doing it by hand.",
         "status": "proposed_new",
         "project": {
           "title": "Batch Invoice Number Generator",

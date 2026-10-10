@@ -56,3 +56,9 @@ Then before/after screenshots at 390px and 1440px, push, wait for Render, re-run
 ## Learned so far
 - The homepage's "this week" lesson comes only from `scheduled_date` in `data/coding_syllabus.json`; Google Sheets and the newsletter pipeline don't affect it.
 - Keep the Mac display awake for the whole time you work (`caffeinate -dimsu`).
+- The local server (`python3 combined_app.py`, debug off) caches templates and Python modules: **restart it after every edit** before testing or screenshotting, or you test the old page. Check port 5077 isn't held by an old server (`lsof -i :5077`).
+- Local Python is 3.9: no `str | None` annotations, no backslashes inside f-string expressions.
+- Founder decisions (2026-10-09): eyebrow "THE BELL · LEARN BY BUILDING"; hero copy from the brief; keep employer names (Deloitte, Warner Music, Maybank) and every figure exactly; Tableau card carries "Now evolving onto a new platform to get past Tableau's limits." `tools/test_homepage.py` fails if any of these facts change.
+- Text colours that pass AA: gold text on cream/white uses `--gold-text: #7d6219` (5.1:1 on cream; `#8a6d1f` was 4.32, a fail). Muted text `#5f5e66`. Bright gold `#C9A84C` only on navy or as a fill.
+- Roadmap tap targets: transparent `r=41` hit circles plus tighter phone padding keep every node >= 44px down to 320px wide. Don't raise r above 41 (rows are 82 apart; circles would overlap).
+- Same-colour sections next to each other double their padding; trim one side (FAQ top padding is 8px because the tools section above already gives 80px).
