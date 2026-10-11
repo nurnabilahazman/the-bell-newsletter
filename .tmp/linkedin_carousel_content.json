@@ -1,29 +1,29 @@
 {
   "week": 1,
   "post_type": "building_from_zero",
-  "cover_title": "Auto‑Transcripts with a 401 Twist",
-  "cover_subtitle": "Build a YouTube transcript flow in 3 days, even if you’re a beginner.",
+  "cover_title": "Auto‑Responder Got It Wrong",
+  "cover_subtitle": "How I fixed a broken reply in 3 hours",
   "slides": [
     {
-      "title": "Step 1 – Get the Key",
-      "body": "Sign in to Google Cloud → Create a project → Enable YouTube Data API v3 → Generate an API key. Copy the key."
+      "title": "Step 1 – Read & Tag",
+      "body": "→ Set Claude to read new emails. → Use simple regex (e.g., “Subject:”) to extract the topic. → Store the tag in a JSON file."
     },
     {
-      "title": "Step 2 – Pull Video Info",
-      "body": "Use requests in Python → GET https://www.googleapis.com/youtube/v3/videos?part=id,snippet&id=VIDEO_ID&key=API_KEY → Extract video ID and title."
+      "title": "Step 2 – Prompt for Draft",
+      "body": "→ Prompt Claude: “Write a reply for a [tag] email.” → Include placeholders for subject and sender. → Test with a sample email."
     },
     {
-      "title": "Step 3 – Fetch the Transcript",
-      "body": "Call https://video.google.com/timedtext?lang=en&v=VIDEO_ID → Parse XML → Convert to JSON → Pass to Claude for summarisation."
+      "title": "Step 3 – Debug the Prompt",
+      "body": "→ My first prompt omitted the subject placeholder. → Claude returned a generic thank‑you. → Add “subject” token, retest."
     },
     {
-      "title": "Step 4 – Store & Auth",
-      "body": "Save transcript JSON in Firestore → Add Firebase Auth → Create sign‑up/login pages → Track transcript count per user."
+      "title": "Step 4 – Stripe Test",
+      "body": "→ Insert test secret key from Stripe dashboard. → Ensure no extra spaces or line breaks. → Run a $1 test charge."
     },
     {
-      "title": "What’s Next",
-      "body": "Add rate‑limit handling → Improve Claude prompt → Launch a beta to early users."
+      "title": "Step 5 – End‑to‑End Check",
+      "body": "→ Send a real inquiry email. → Verify tag, draft, and reply are all correct. → Confirm Stripe webhook fires and records payment."
     }
   ],
-  "last_slide": "Follow for weekly posts on building with AI from scratch."
+  "last_slide": "Follow for weekly updates on building with AI from scratch in Malaysia."
 }
