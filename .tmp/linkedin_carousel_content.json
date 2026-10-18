@@ -1,29 +1,29 @@
 {
-  "week": 1,
-  "post_type": "building_from_zero",
-  "cover_title": "Auto‑Responder Got It Wrong",
-  "cover_subtitle": "How I fixed a broken reply in 3 hours",
+  "week": 2,
+  "post_type": "system_reveal",
+  "cover_title": "Build a Price‑Alert Bot",
+  "cover_subtitle": "Track any product, get email when it drops",
   "slides": [
     {
-      "title": "Step 1 – Read & Tag",
-      "body": "→ Set Claude to read new emails. → Use simple regex (e.g., “Subject:”) to extract the topic. → Store the tag in a JSON file."
+      "title": "Choose the Site",
+      "body": "→ Open the product page in a browser. → Right‑click → Inspect to find the price element’s CSS selector. Claude helps translate that into code."
     },
     {
-      "title": "Step 2 – Prompt for Draft",
-      "body": "→ Prompt Claude: “Write a reply for a [tag] email.” → Include placeholders for subject and sender. → Test with a sample email."
+      "title": "Write the Fetcher",
+      "body": "Claude generates a short Python script that requests the page and extracts the price using the selector. No libraries beyond requests and BeautifulSoup."
     },
     {
-      "title": "Step 3 – Debug the Prompt",
-      "body": "→ My first prompt omitted the subject placeholder. → Claude returned a generic thank‑you. → Add “subject” token, retest."
+      "title": "Set the Threshold",
+      "body": "Add a single line: if price < 150: trigger email. Replace 150 with your own target price in RM."
     },
     {
-      "title": "Step 4 – Stripe Test",
-      "body": "→ Insert test secret key from Stripe dashboard. → Ensure no extra spaces or line breaks. → Run a $1 test charge."
+      "title": "Schedule the Check",
+      "body": "Claude creates a cron entry (*/10 * * * *) to run the script every 10 minutes on Glitch’s free tier."
     },
     {
-      "title": "Step 5 – End‑to‑End Check",
-      "body": "→ Send a real inquiry email. → Verify tag, draft, and reply are all correct. → Confirm Stripe webhook fires and records payment."
+      "title": "Send the Email",
+      "body": "Use Python’s smtplib to send a plain‑text email to your inbox. Claude fills in the SMTP settings for a free Gmail account."
     }
   ],
-  "last_slide": "Follow for weekly updates on building with AI from scratch in Malaysia."
+  "last_slide": "Follow for weekly posts on building with AI from scratch."
 }

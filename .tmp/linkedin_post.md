@@ -1,23 +1,24 @@
-# LinkedIn Post — Week 1
-# Type: building_from_zero
-# Generated: 2026-10-11 20:44
+# LinkedIn Post — Week 2
+# Type: system_reveal
+# Generated: 2026-10-18 19:10
 
 ---
 
-My auto‑reply sent a “thanks for contacting us” to a complaint about a broken link.  
+My first price‑monitor script sent me an empty email at 3 am because the selector was wrong.  
 
-I set Claude to read incoming mail, tag it, then draft a reply. The tag worked, the draft didn’t.  
+I spent 4 hours tweaking the CSS path until Claude finally pulled the right element from the product page.  
 
-The prompt I gave Claude missed the “subject line” token, so it generated a generic reply.  
+Now the script checks a shoes store every 10 minutes, compares the price to my RM150 target, and fires an email if it drops.  
 
-I spent 3 hours fixing the prompt, then watched the system fire on a real email. It finally sent a proper “we’re on it” reply.  
+The whole thing runs on a free Glitch server – zero cost, just a tiny RM0.10 monthly for the custom domain.  
 
-The Stripe integration for the $9 / month Pro plan also broke on the test card. The error was “invalid secret key” – I’d copied the test key from the dashboard but pasted a stray space.  
+Steps:  
+→ Claude writes the Python fetcher. → I add a simple if‑statement: “if price < 150 → send email.” → I schedule it with a cron job (Claude sets the cron syntax).  
 
-After clearing the space, the payment succeeded. No users yet, but the flow works end‑to‑end.  
+The email itself is plain text: “Price alert – shoes now RM149.99”. No fancy HTML, just what I need to act fast.  
 
-Lesson: the tiniest typo can stall an entire feature.  
+It took 2 days from idea to live alert, and I’ve already saved RM20 on a pair I was eyeing.  
 
-If you’re coding from zero, expect these tiny roadblocks.  
+If you can copy‑paste a few lines and set a cron, you can stop overpaying on anything you track.  
 
-Follow — I post every week on building with Claude from Malaysia.
+♻️ Repost if this would have saved you a purchase.
