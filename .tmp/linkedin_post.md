@@ -1,24 +1,21 @@
-# LinkedIn Post — Week 2
-# Type: system_reveal
-# Generated: 2026-10-18 19:10
+# LinkedIn Post — Week 3
+# Type: lesson_learned
+# Generated: 2026-10-25 19:25
 
 ---
 
-My first price‑monitor script sent me an empty email at 3 am because the selector was wrong.  
+My first Claude prompt wrote **0** posts.
 
-I spent 4 hours tweaking the CSS path until Claude finally pulled the right element from the product page.  
+I assumed the prompt “write a LinkedIn post from this article” would spit out a ready‑to‑publish copy.  
 
-Now the script checks a shoes store every 10 minutes, compares the price to my RM150 target, and fires an email if it drops.  
+Claude returned a list of headlines, then a paragraph that was half the original article. Nothing was formatted for LinkedIn, and the tone was off.
 
-The whole thing runs on a free Glitch server – zero cost, just a tiny RM0.10 monthly for the custom domain.  
+I tweaked the prompt: added “use short paragraphs, 1‑2 sentences each, and keep the voice direct, like Nabilah’s LinkedIn style.”  
 
-Steps:  
-→ Claude writes the Python fetcher. → I add a simple if‑statement: “if price < 150 → send email.” → I schedule it with a cron job (Claude sets the cron syntax).  
+Claude now gave me a full post, ready to copy‑paste, with the right line breaks. The trick was telling the model *exactly* how the output should look, not just what content to include.
 
-The email itself is plain text: “Price alert – shoes now RM149.99”. No fancy HTML, just what I need to act fast.  
+What I now know: the AI needs the *format* instructions up front. Without specifying paragraph length, line breaks, and tone, you get generic text that still needs heavy editing.
 
-It took 2 days from idea to live alert, and I’ve already saved RM20 on a pair I was eyeing.  
+If you’re building a content generator, write the format rules into the prompt first, then add the content instructions.  
 
-If you can copy‑paste a few lines and set a cron, you can stop overpaying on anything you track.  
-
-♻️ Repost if this would have saved you a purchase.
+Follow — I post weekly on building with Claude from Malaysia.

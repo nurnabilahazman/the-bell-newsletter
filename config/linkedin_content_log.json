@@ -1,6 +1,6 @@
 {
-  "current_week": 3,
-  "post_type_index": 2,
+  "current_week": 4,
+  "post_type_index": 3,
   "history": [
     {
       "week": 1,
@@ -11,6 +11,11 @@
       "week": 2,
       "post_type": "system_reveal",
       "date": "2026-10-18"
+    },
+    {
+      "week": 3,
+      "post_type": "lesson_learned",
+      "date": "2026-10-25"
     }
   ]
 }

@@ -1,6 +1,6 @@
 {
   "used_topics": [],
-  "current_week": 4,
+  "current_week": 5,
   "history": [
     {
       "week": 1,
@@ -25,7 +25,13 @@
       "topic": "Korean Hangul Writing Practice Workbook",
       "date": "2026-10-18",
       "block": 1
+    },
+    {
+      "week": 5,
+      "topic": "Travel Phrasebook \u2014 5 Languages (Spanish, French, Italian, German, Portuguese)",
+      "date": "2026-10-25",
+      "block": 1
     }
   ],
-  "last_run": "2026-10-18T19:10:05.291731"
+  "last_run": "2026-10-25T19:24:59.313400"
 }

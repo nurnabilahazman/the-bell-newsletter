@@ -1,29 +1,29 @@
 {
-  "week": 2,
-  "post_type": "system_reveal",
-  "cover_title": "Build a Price‑Alert Bot",
-  "cover_subtitle": "Track any product, get email when it drops",
+  "week": 3,
+  "post_type": "lesson_learned",
+  "cover_title": "Turn One Idea Into Ten Posts",
+  "cover_subtitle": "Quick system to automate weekly social content",
   "slides": [
     {
-      "title": "Choose the Site",
-      "body": "→ Open the product page in a browser. → Right‑click → Inspect to find the price element’s CSS selector. Claude helps translate that into code."
+      "title": "Define the Output Shape",
+      "body": "→ State “short paragraphs, 1‑2 sentences each, mobile‑first.” → Mention bold limits and line breaks. The model follows this layout automatically."
     },
     {
-      "title": "Write the Fetcher",
-      "body": "Claude generates a short Python script that requests the page and extracts the price using the selector. No libraries beyond requests and BeautifulSoup."
+      "title": "Feed the Core Idea",
+      "body": "→ Provide the article title or key point. → Keep it under 10 words. The AI expands this into multiple posts while keeping the shape you defined."
     },
     {
-      "title": "Set the Threshold",
-      "body": "Add a single line: if price < 150: trigger email. Replace 150 with your own target price in RM."
+      "title": "Add Tone Instructions",
+      "body": "→ Write “direct, honest, no hedging.” → Include “use RM, mention KL if relevant.” The model mimics your voice."
     },
     {
-      "title": "Schedule the Check",
-      "body": "Claude creates a cron entry (*/10 * * * *) to run the script every 10 minutes on Glitch’s free tier."
+      "title": "Generate Multiple Variations",
+      "body": "→ Ask for “5 versions for LinkedIn, 3 for Twitter, 2 for Instagram.” → Each respects the same format rules."
     },
     {
-      "title": "Send the Email",
-      "body": "Use Python’s smtplib to send a plain‑text email to your inbox. Claude fills in the SMTP settings for a free Gmail account."
+      "title": "Review & Schedule",
+      "body": "→ Scan for any missed numbers or tone slips. → Load into your scheduler; you have a week’s content in minutes."
     }
   ],
-  "last_slide": "Follow for weekly posts on building with AI from scratch."
+  "last_slide": "Follow for weekly AI‑automation tips from Malaysia."
 }

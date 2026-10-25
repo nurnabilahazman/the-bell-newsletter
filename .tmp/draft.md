@@ -1,4 +1,4 @@
-# The Bell — Week 5 · October 18, 2026
+# The Bell — Week 6 · October 25, 2026
 
 >>>TAGLINE
 Build. Ship. Earn.
@@ -6,28 +6,28 @@ Build. Ship. Earn.
 
 ## 🛠️ SECTION 1 — Project of the Week
 
-**Week 5 of 12: Email Auto-Responder**
+**Week 6 of 12: Price Monitor + Alert**
 
-*Email automation*
+*Web monitoring*
 
 Paste the prompt below into Claude. Follow each step. You'll have a working tool by the end of the session.
 
 >>>PROMPT
-You are helping me build a Python email auto-responder. Here is exactly what I need:
+You are helping me build a Python price monitor that tracks product prices and sends email alerts. Here is exactly what I need:
 
-1. Connect to Gmail using IMAP to read unread emails
-2. For each unread email, use Groq AI to: classify the topic (inquiry, complaint, request, other), extract the sender's main question or request, draft a professional reply
-3. Save all emails + AI responses to a Google Sheet (columns: date, sender, subject, topic_category, their_message, ai_draft_reply)
-4. Send the AI-drafted reply automatically only if the topic is 'inquiry' — all others just save to the sheet for manual review
-5. Mark processed emails as read
-6. Use: imaplib, smtplib, groq, gspread, python-dotenv
+1. Read a list of products to track from a CSV (columns: product_name, url, target_price, css_selector_for_price)
+2. Visit each URL, extract the current price using the CSS selector
+3. Compare with target price — if current price is at or below target, send an email alert with product name, current price, target price, and the URL
+4. Save all price checks to a log CSV (product_name, url, price_found, date_checked, alert_sent)
+5. Use: requests, BeautifulSoup4, smtplib, pandas, python-dotenv
+6. Rotate between 3 different User-Agent strings to avoid getting blocked
 
 Please:
 a) Write the complete script
-b) List every pip install
-c) Explain how to enable IMAP in Gmail settings
-d) Show me how to customise the AI prompt so replies match my tone
-e) Tell me how to run this on a schedule (every 30 minutes) on my Mac
+b) Explain how to find the right CSS selector for a price on any website (with a real example from Amazon or Shopee)
+c) Show me a sample tracking CSV with 3 products
+d) Tell me how to schedule this to run every 6 hours on my Mac
+e) What should I do if a site blocks my scraper?
 >>>END
 
 >>>DOC
@@ -43,86 +43,86 @@ One product per theme. Research done. Prompt ready. Just paste and create.
 
 ### 🗂️ Productivity & Trackers
 
-**This week's product:** Paycheck‑to‑Paycheck Budget Tracker
+**This week's product:** Paycheck-to-Paycheck Budget Tracker
 
-**Store inspiration:** [Wilson’s Etsy Shop — bestseller because the spreadsheet is ultra‑simple, color‑coded, and includes a “paycheck‑date” auto‑fill feature that busy users love](https://www.etsy.com/listing/123456789/paycheck-to-paycheck-budget-tracker)
+**Store inspiration:** [Wilson’s “Budget Spreadsheet” — simple clean Google Sheet that auto‑calculates remaining cash and visualizes savings progress, driving repeat buys](https://www.businessinsider.com/how-to-make-passive-income-selling-on-etsy-creator-influencer-2022-3)
 
 **What buyers love:**
-- Instant cash‑flow snapshot
-- Auto‑populating formulas
-- Clean navy‑gold aesthetic
+- Auto‑update totals
+- Color‑coded expense categories
+- Easy copy‑paste for new months
 
 **Your edge — make it better:**
-- Add a “Debt‑Snowball” tab with progress bar graphics
-- Include a printable “Monthly Goal Card” PDF inside the sheet package
-- Offer a 30‑day email onboarding guide with budgeting tips
+- Add a built‑in debt‑snowball calculator
+- Include a printable one‑page summary in gold/navy colors
+- Provide a 12‑month “Goal Tracker” tab with conditional formatting for milestones
 
 **How to build it in Canva:**
-1. Open Canva → search 'meal planner template' → pick a design that shows all 7 days plus a grocery list column
-2. Create a landscape A4 or letter-size page: left side = 7-day meal grid (breakfast/lunch/dinner/snack), right side = grocery list by category
-3. Add a separate grocery list page organised by aisle: Produce, Dairy, Meat, Pantry, Frozen, Other
-4. Include a monthly meal planning calendar page (30-day grid, one meal per box)
-5. Export as PDF Print → sell as a 52-week set (undated, one page per week)
+1. Open Canva → search 'goal setting workbook' → pick a premium, clean design with journaling space
+2. Create a 30+ page quarterly workbook: vision statement, 3 big goals, monthly breakdown, weekly check-ins, and a quarterly review
+3. Add a 'wheel of life' assessment page, a values clarification exercise, and an affirmations page
+4. Use a premium color scheme (navy + gold or charcoal + blush) to position it as a high-value product
+5. Export as PDF Print → price at $6.99–$7.99 (workbooks command higher prices than single trackers)
 
-**Launch price:** $3.99
-**Etsy title:** Weekly Meal Planner Printable + Grocery List | Undated | 52 Week Set | Instant Download
-**Tags:** meal planner, grocery list, weekly meal plan, meal planning, food planner, family meal planner, dinner planner, meal prep planner, weekly menu, recipe organizer, healthy eating, shopping list, meal organizer
+**Launch price:** $6.99
+**Etsy title:** Goal Setting Workbook Printable | Quarterly Planner | Vision + Goals + Weekly Review | PDF
+**Tags:** goal setting, quarterly planner, goal planner, vision board, self improvement, life goals, mindset journal, goals worksheet, year planner, new year goals, goal tracker, annual planner, bucket list
 
 [📋 View this week's full brief →](https://htmlpreview.github.io/?https://github.com/nurnabilahazman/the-bell-newsletter/blob/main/docs/current_productivity_brief.html)
 
 ### 📚 Language Learning
 
-**This week's product:** Beginner Japanese Kana Workbook – Hiragana & Katakana Practice Sheets
+**This week's product:** Beginner Japanese Kana Workbook – Hiragana & Katakana (Level 1)
 
-**Store inspiration:** [“Nihongo Ninja” on Etsy — sells because each sheet uses cute pastel visuals, clear stroke order diagrams, and a built‑in QR code linking to audio pronunciation](https://www.etsy.com/listing/987654321/beginner-japanese-kana-workbook)
+**Store inspiration:** [“JapaneseStudySheets” — clean printable PDFs that combine stroke order charts with practice grids, selling because learners can print and reuse instantly](https://www.youtube.com/watch?v=jOxmBhokJ_k)
 
 **What buyers love:**
-- Printable stroke‑order guides
-- QR audio links for each character
-- Instant digital download
+- Large practice boxes
+- Stroke‑order illustrations
+- Printable on A4
 
 **Your edge — make it better:**
-- Provide both vertical and horizontal writing practice grids
-- Add a “Mini‑Quiz” page after every 10 characters with fill‑in‑the‑blank exercises
-- Include a printable “Kanji Starter” cheat sheet for the first 20 N5 kanji
+- Include audio QR codes for each character
+- Add a “Mini‑Quiz” review page after every 10 chars
+- Use gold accents for correct‑answer highlights while keeping navy for headings
 
 **How to build it in Canva:**
-1. Open Canva → search 'handwriting practice worksheet' → pick a clean grid template
-2. Create 40 pages: 24 consonant pages + 10 vowel pages + 6 combination practice pages — each with stroke order, trace lines, blank practice grid, and romanisation
-3. Use Noto Sans KR font for all Korean characters — test at 72pt that every character is distinct and clear when printed
-4. Add a 2-page 'Complete Hangul Chart' reference at the front showing all characters with their romanised sounds
-5. Include 5 bonus pages of common beginner words to practice writing (annyeong, gamsahamnida, etc.)
+1. Open Canva → search 'booklet template' → pick a compact, travel-guide-style layout (A5 or half-letter size)
+2. Create 5 sections (one per language): Greetings, Numbers, Directions, Restaurant/Food, Shopping, Emergency, Hotel — 10 phrases per topic per language
+3. Add pronunciation in brackets after each phrase (IPA not needed — use approximate English sounds, e.g. 'SAY: bon-ZHOOR')
+4. Design a 'Quick Reference Card' single page per language — top 20 most essential phrases only — that buyers can print, fold, and carry in a wallet
+5. Export as PDF Print → also offer a compact 'wallet card' export at A6 size as a second file
 
-**Launch price:** $4.99
-**Etsy title:** Korean Hangul Practice Workbook | Writing Sheets + Stroke Order | Printable PDF Instant Download
-**Tags:** hangul practice, korean writing, hangul worksheet, learn korean, korean printable, hangul workbook, korean alphabet, korean language, hangul learning, topik study, korean beginner, hangul chart, korean worksheet
+**Launch price:** $6.99
+**Etsy title:** Travel Phrasebook Printable | 5 Languages Spanish French Italian German Portuguese | Instant Download
+**Tags:** travel phrasebook, language phrases, travel printable, phrasebook printable, travel essentials, language guide, europe travel, travel guide, vacation phrases, backpacker tips, tourist phrases, multilingual, phrase guide
 
 [📋 View this week's full brief →](https://htmlpreview.github.io/?https://github.com/nurnabilahazman/the-bell-newsletter/blob/main/docs/current_language_brief.html)
 
 ### 👶 Children's Activities
 
-**This week's product:** Sight Words Flashcard Set (Dolch Pre‑K + K)
+**This week's product:** Editable Kids Reward Chart (5 Designs)
 
-**Store inspiration:** [“Little Learners Co.” on Etsy — the set sells because cards are double‑sided with bold navy text on gold background, include a playful illustration on the reverse, and are sized perfectly for tiny hands](https://www.etsy.com/listing/112233445/sight-words-flashcards-dolch-prek-k)
+**Store inspiration:** [“KiddoRewards” — offers 5 pre‑made editable Canva reward charts that parents can instantly customize, selling because they’re printable, colorful, and reusable](https://www.youtube.com/watch?v=twbqCcCWRm8)
 
 **What buyers love:**
-- Large clear font
-- Double‑sided cute illustrations
-- Ready‑to‑print 3 × 5 in cards
+- Bright color palettes
+- Editable text boxes for chores
+- Printable on 8.5×11 paper
 
 **Your edge — make it better:**
-- Add a “Mastery Tracker” printable that kids can sticker on; include a QR code linking to a 1‑minute chant audio for each word; provide a printable “Mix‑and‑Match” game sheet that uses the same cards for a matching activity
+- Add a gold “Star‑Earned” sticker layer that users can copy‑paste, provide a navy‑themed “Progress Tracker” page, include QR code linking to a free printable “Reward Coupon” template, offer 2 extra designs for weekend tasks
 
 **How to build it in Canva:**
-1. Open Canva → search 'flashcard template' → pick a clean, readable design
-2. Create one card per Dolch Pre-K word (40 words) + Dolch Kindergarten (52 words)
-3. Add a small illustration on each card to create a visual memory hook for the word
-4. Include a progress tracker sheet parents can use to check off mastered words
-5. Export as PDF Print with cutting guide → upload to Etsy
+1. Open Canva → create 5 chart designs: stars, animals, space, rainbow, superhero themes
+2. Make each chart editable — add text boxes for child's name and weekly goal
+3. Include sticker dots or checkboxes for 30 days of tracking on each design
+4. Add a matching 'Certificate of Achievement' for each of the 5 themes
+5. Export as PDF Print → mention '5 designs included' in the Etsy listing title
 
-**Launch price:** $3.99
-**Etsy title:** Sight Word Flashcards Dolch Pre-K and Kindergarten | 92 Cards | Printable PDF
-**Tags:** sight words, Dolch flashcards, kindergarten reading, sight word cards, reading practice, early literacy, phonics printable, sight word game, pre-k reading, flash cards kids, word recognition, dolch words, literacy center
+**Launch price:** $4.99
+**Etsy title:** Editable Kids Reward Chart | 5 Designs | Printable Behavior Chart | Stars Animals Space
+**Tags:** reward chart, behavior chart, kids chore chart, printable chart, star chart, potty training, editable chart, chore chart kids, good behavior, kids sticker chart, parenting tool, daily routine chart, responsibility chart
 
 [📋 View this week's full brief →](https://htmlpreview.github.io/?https://github.com/nurnabilahazman/the-bell-newsletter/blob/main/docs/current_brief.html)
 
@@ -132,9 +132,9 @@ One product per theme. Research done. Prompt ready. Just paste and create.
 
 *YouTube & Podcast Summaries in Seconds*
 
-**Phase:** Build · Week 5 of 8
+**Phase:** Launch · Week 6 of 8
 
-**This week's task:** Add Stripe payment integration for the $9/month Pro plan
+**This week's task:** Deploy to the internet using a free hosting service, get a domain name, write the landing page
 
 
 >>>DOC
@@ -146,11 +146,11 @@ Full Bell Transcript roadmap, tech stack, competitor analysis, and how to get fi
 
 ## ⚡ SECTION 4 — Quick Wins This Week
 
-**1. Perfect Print‑Ready Layout** — Add a 0.25 in bleed to every card and set the PDF to 300 dpi; this guarantees the edges stay crisp when users cut on home printers.
+**1. Polish the Visuals** — Open each Canva design, replace placeholder images with crisp icons from free libraries, and apply the Bell navy/gold palette to all headings for a cohesive look.
 
-**2. Price with Value Bundles** — List the flashcard set at $9.99 and include the Mastery Tracker and QR Audio Sheet as “Bonus PDFs” — buyers see extra value and are more likely to convert.
+**2. Price Tier Smartly** — List the 5‑design bundle at $12.99 and offer a single‑design add‑on for $3.49; include “Instant Download” and “Unlimited Edits” tags to attract buyers.
 
-**3. Get First Sales Fast** — Post a short TikTok showing the cards being printed, cut, and used in a quick game; add the product link in the video description and pin the post to your Etsy shop’s “Featured” section.
+**3. Boost First Sales** — Post a carousel on Instagram showing a filled‑in chart for a real child, add a swipe‑up link to your Etsy listing, and use the hashtag #KidsRewardChart to capture organic traffic.
 
 ---
 
