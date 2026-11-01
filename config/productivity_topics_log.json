@@ -1,6 +1,12 @@
 {
-  "used_topics": [],
-  "current_week": 5,
+  "used_topics": [
+    "Annual Budget Planner",
+    "Debt Payoff Tracker",
+    "Savings Goal Tracker",
+    "Emergency Fund Tracker",
+    "Sinking Funds Planner"
+  ],
+  "current_week": 6,
   "history": [
     {
       "week": 1,
@@ -31,7 +37,13 @@
       "topic": "Goal Setting Workbook (Quarterly Edition)",
       "date": "2026-10-25",
       "block": 1
+    },
+    {
+      "week": 6,
+      "topic": "Annual Budget Planner",
+      "date": "2026-11-01",
+      "block": 2
     }
   ],
-  "last_run": "2026-10-25T19:24:59.063364"
+  "last_run": "2026-11-01T20:55:26.625546"
 }

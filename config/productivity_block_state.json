@@ -1,0 +1,132 @@
+{
+  "block_num": 2,
+  "products": [
+    {
+      "topic": "Annual Budget Planner",
+      "format": "PDF printable",
+      "price": "$5.99",
+      "etsy_title": "Annual Budget Planner PDF Printable \u2013 Simple Yearly Finance Tracker for Home & Business",
+      "etsy_tags": [
+        "budget planner",
+        "annual budget",
+        "finance tracker",
+        "printable pdf",
+        "money management",
+        "budget template",
+        "2024 planner"
+      ],
+      "build_steps": [
+        "Open Canva \u2192 search \"minimal budget template\" and select a clean yearly layout",
+        "Add monthly overview pages with income, expenses, and balance sections",
+        "Create quarterly review spreads with goal check\u2011ins and variance charts",
+        "Insert a yearly summary page for total income, expenses, and savings rate",
+        "Export as PDF Print \u2192 upload to Etsy as a digital download"
+      ],
+      "what_to_build": "The planner includes 12 monthly budget pages, 4 quarterly review spreads, and a year\u2011end summary sheet; buyers print, fill in numbers, and track their finances all year long.",
+      "why_it_sells": "Busy women aged 20\u201145 buy it at the start of a new year to organize household and side\u2011hustle money in one easy printable.",
+      "rank": 1
+    },
+    {
+      "topic": "Debt Payoff Tracker",
+      "format": "PDF printable",
+      "price": "$4.49",
+      "etsy_title": "Debt Payoff Tracker PDF Printable \u2013 Fast\u2011Track Debt Snowball & Avalanche Planner",
+      "etsy_tags": [
+        "debt tracker",
+        "payoff planner",
+        "budget printable",
+        "debt snowball",
+        "finance tool",
+        "debt avalanche",
+        "money saver"
+      ],
+      "build_steps": [
+        "Open Canva \u2192 search \"debt tracker\" and choose a modern grid design",
+        "Add a master debt list table with columns for creditor, balance, rate, and minimum payment",
+        "Create separate snowball and avalanche schedule pages for monthly payment allocation",
+        "Include progress bar charts for each debt and an overall payoff timeline",
+        "Export as PDF Print \u2192 upload to Etsy as a digital download"
+      ],
+      "what_to_build": "The tracker features a master debt overview, two payoff method sheets, and visual progress charts; buyers print and fill in amounts to see debt shrink each month.",
+      "why_it_sells": "Young professionals facing student loans or credit card debt purchase it to visualize progress and stay motivated during repayment.",
+      "rank": 2
+    },
+    {
+      "topic": "Savings Goal Tracker",
+      "format": "PDF printable",
+      "price": "$4.99",
+      "etsy_title": "Savings Goal Tracker PDF Printable \u2013 Visual Planner for Holiday, Vacation & Emergency Savings",
+      "etsy_tags": [
+        "savings tracker",
+        "goal planner",
+        "budget printable",
+        "savings chart",
+        "money goals",
+        "financial planner",
+        "save money"
+      ],
+      "build_steps": [
+        "Open Canva \u2192 search \"savings tracker\" and pick a pastel\u2011colored template with progress bars",
+        "Add individual goal pages for up to 5 targets, each with target amount, deadline, and monthly contribution table",
+        "Insert a yearly overview sheet that aggregates all goals and total saved amount",
+        "Design a habit\u2011tracker style checklist for weekly saving actions",
+        "Export as PDF Print \u2192 upload to Etsy as a digital download"
+      ],
+      "what_to_build": "The product includes five dedicated goal pages, a yearly summary, and a weekly habit checklist; buyers print and fill in contributions to watch each goal grow.",
+      "why_it_sells": "Women planning trips, holidays, or big purchases love a visual tool to keep savings on track throughout the year.",
+      "rank": 3
+    },
+    {
+      "topic": "Emergency Fund Tracker",
+      "format": "PDF printable",
+      "price": "$3.99",
+      "etsy_title": "Emergency Fund Tracker PDF Printable \u2013 Quick\u2011Start Safety Net Planner for Home & Freelancers",
+      "etsy_tags": [
+        "emergency fund",
+        "safety net",
+        "budget printable",
+        "financial safety",
+        "money tracker",
+        "savings planner",
+        "cash reserve"
+      ],
+      "build_steps": [
+        "Open Canva \u2192 search \"emergency fund\" and select a simple table layout with bold headings",
+        "Create a starter page explaining fund purpose and recommended 3\u20116 month target",
+        "Add monthly deposit log sheets with columns for date, amount, and running total",
+        "Design a progress meter that fills as the target amount is reached",
+        "Export as PDF Print \u2192 upload to Etsy as a digital download"
+      ],
+      "what_to_build": "The tracker provides an intro guide, twelve monthly deposit logs, and a visual progress meter; buyers print and record each contribution to build a safety net.",
+      "why_it_sells": "New freelancers and young families buy it when seeking a clear, printable way to secure a financial cushion.",
+      "rank": 4
+    },
+    {
+      "topic": "Sinking Funds Planner",
+      "format": "PDF printable",
+      "price": "$5.49",
+      "etsy_title": "Sinking Funds Planner PDF Printable \u2013 Organized Savings for Bills, Gifts & Big Purchases",
+      "etsy_tags": [
+        "sinking funds",
+        "savings planner",
+        "budget printable",
+        "bill tracker",
+        "gift fund",
+        "money organizer",
+        "financial planner"
+      ],
+      "build_steps": [
+        "Open Canva \u2192 search \"sinking fund\" and choose a grid\u2011based design with pastel accents",
+        "Add a master table listing common sinking fund categories with target amounts and due dates",
+        "Create monthly contribution sheets for each category with space for amount saved and balance",
+        "Include a visual funnel chart that shows overall fund health across all categories",
+        "Export as PDF Print \u2192 upload to Etsy as a digital download"
+      ],
+      "what_to_build": "The planner contains a master category table, twelve monthly contribution pages per fund, and a funnel chart; buyers print and track money set aside for upcoming expenses.",
+      "why_it_sells": "Adult women planning for holidays, car maintenance, or home upgrades purchase it to prevent surprise costs and stay organized.",
+      "rank": 5
+    }
+  ],
+  "generated_week": 6,
+  "generated_date": "2026-11-01"
+}

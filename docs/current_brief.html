@@ -3,820 +3,213 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Unified Product Brief — Children's Activities Niche</title>
+<title>Children's Activities Brief — Block 2 (Weeks 6–10)</title>
 <style>
   :root {
-    --bg: #0B0B14;
-    --card: #12121F;
-    --card2: #191928;
-    --border: #252538;
-    --accent: #E94560;
-    --gold: #C9A84C;
-    --gold-dim: rgba(201,168,76,0.12);
-    --green: #3DD68C;
-    --green-dim: rgba(61,214,140,0.1);
-    --blue: #4EA8DE;
-    --purple: #9B72CF;
-    --text: #E2E2E2;
-    --muted: #6B7280;
-    --tag-bg: rgba(201,168,76,0.14);
+    --bg:#0B0B14; --card:#12121F; --card2:#191928; --border:#252538;
+    --gold:#C9A84C; --gold-dim:rgba(201,168,76,0.12);
+    --green:#3DD68C; --green-dim:rgba(61,214,140,0.1);
+    --accent:#E94560; --blue:#4EA8DE; --purple:#9B72CF;
+    --text:#E2E2E2; --muted:#6B7280;
+    --tag-bg:rgba(201,168,76,0.14);
   }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-    font-size: 15px;
-    line-height: 1.7;
-    padding: 32px 20px 80px;
-  }
-  .container { max-width: 1060px; margin: 0 auto; }
-
-  /* ── NAV ── */
-  .toc {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 20px 24px;
-    margin-bottom: 36px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px 24px;
-    align-items: center;
-  }
-  .toc-label { color: var(--muted); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 1px; margin-right: 8px; }
-  .toc a { color: var(--gold); text-decoration: none; font-size: 0.88rem; }
-  .toc a:hover { text-decoration: underline; }
-
-  /* ── HEADER ── */
-  .hero {
-    background: linear-gradient(135deg, #12121F 0%, #1A1230 100%);
-    border: 1px solid var(--border);
-    border-left: 5px solid var(--gold);
-    border-radius: 16px;
-    padding: 40px 36px;
-    margin-bottom: 40px;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: -60px; right: -60px;
-    width: 220px; height: 220px;
-    background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
-    border-radius: 50%;
-  }
-  .hero-badge { color: var(--gold); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
-  .hero h1 { font-size: 2.1rem; color: white; font-weight: 800; line-height: 1.25; margin-bottom: 10px; }
-  .hero .subtitle { color: var(--muted); font-size: 1rem; margin-bottom: 28px; }
-  .hero-stats {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 16px;
-    border-top: 1px solid var(--border);
-    padding-top: 24px;
-  }
-  .stat { }
-  .stat-label { color: var(--muted); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.5px; }
-  .stat-value { color: white; font-size: 1.4rem; font-weight: 700; margin-top: 2px; }
-  .stat-value.gold { color: var(--gold); }
-  .stat-value.green { color: var(--green); }
-
-  /* ── SECTIONS ── */
-  section { margin-bottom: 48px; }
-  .section-header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 20px;
-    padding-bottom: 12px;
-    border-bottom: 2px solid var(--border);
-  }
-  .section-icon { font-size: 1.5rem; }
-  .section-title { font-size: 1.35rem; font-weight: 700; color: white; }
-  .section-sub { color: var(--muted); font-size: 0.88rem; margin-left: auto; }
-
-  /* ── CARDS ── */
-  .card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 22px 24px;
-    margin-bottom: 14px;
-  }
-  .card-title { color: var(--gold); font-weight: 600; font-size: 0.9rem; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
-  .card2 {
-    background: var(--card2);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 16px 20px;
-    margin-bottom: 10px;
-  }
-
-  /* ── SHOP GRID ── */
-  .shop-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 14px;
-  }
-  .shop-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 18px 20px;
-    transition: border-color 0.2s;
-  }
-  .shop-card:hover { border-color: var(--gold); }
-  .shop-card.anchor { border-left: 3px solid var(--gold); }
-  .shop-name { font-weight: 700; color: white; font-size: 1rem; margin-bottom: 4px; }
-  .shop-name a { color: inherit; text-decoration: none; }
-  .shop-name a:hover { color: var(--gold); }
-  .shop-sales { color: var(--green); font-size: 0.85rem; font-weight: 600; margin-bottom: 8px; }
-  .shop-cats { color: var(--muted); font-size: 0.82rem; line-height: 1.5; }
-  .shop-insight { color: var(--text); font-size: 0.83rem; margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--border); }
-  .badge {
-    display: inline-block;
-    font-size: 0.7rem;
-    font-weight: 700;
-    padding: 2px 7px;
-    border-radius: 20px;
-    margin-left: 6px;
-    vertical-align: middle;
-  }
-  .badge-gold { background: var(--gold-dim); color: var(--gold); }
-  .badge-green { background: var(--green-dim); color: var(--green); }
-  .badge-red { background: rgba(233,69,96,0.12); color: var(--accent); }
-
-  /* ── PRODUCT BUILD CARDS ── */
-  .product-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 28px;
-    margin-bottom: 20px;
-    position: relative;
-    overflow: hidden;
-  }
-  .product-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 4px; height: 100%;
-  }
-  .product-card.rank-1::before { background: var(--gold); }
-  .product-card.rank-2::before { background: #A8A8A8; }
-  .product-card.rank-3::before { background: #CD7F32; }
-  .product-card.rank-4::before { background: var(--blue); }
-  .product-card.rank-5::before { background: var(--purple); }
-
-  .product-rank { font-size: 2rem; line-height: 1; margin-bottom: 8px; }
-  .product-name { font-size: 1.3rem; font-weight: 800; color: white; margin-bottom: 6px; }
-  .product-meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 20px;
-  }
-  .meta-chip {
-    background: var(--card2);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 4px 12px;
-    font-size: 0.8rem;
-    color: var(--text);
-  }
-  .meta-chip span { color: var(--gold); font-weight: 600; }
-
-  .product-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin-bottom: 20px;
-  }
-  @media (max-width: 600px) { .product-grid { grid-template-columns: 1fr; } }
-
-  .detail-block { }
-  .detail-label {
-    color: var(--muted);
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 6px;
-  }
-  .detail-body { color: var(--text); font-size: 0.9rem; }
-  .detail-body ul { list-style: none; padding: 0; }
-  .detail-body li { padding: 3px 0; }
-  .detail-body li::before { content: "• "; color: var(--gold); }
-
-  .edge-box {
-    background: var(--card2);
-    border-left: 3px solid var(--accent);
-    border-radius: 0 8px 8px 0;
-    padding: 14px 16px;
-    margin-bottom: 16px;
-  }
-  .edge-label { color: var(--accent); font-weight: 700; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
-  .edge-body { color: var(--text); font-size: 0.92rem; }
-
-  .seo-block {
-    background: var(--card2);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 16px;
-    margin-top: 14px;
-  }
-  .seo-label { color: var(--muted); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
-  .seo-value { color: white; font-weight: 600; font-size: 0.95rem; }
-  .tag-row { margin-top: 10px; }
-  .tag { display: inline-block; background: var(--tag-bg); border: 1px solid var(--gold); color: var(--gold); padding: 3px 10px; border-radius: 20px; font-size: 0.76rem; margin: 2px; }
-
-  /* ── CANVA KEYWORDS ── */
-  .canva-section {
-    background: var(--card2);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 16px;
-    margin: 16px 0;
-  }
-  .canva-label { color: var(--gold); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 700; margin-bottom: 10px; }
-  .canva-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 8px; }
-  .canva-btn { display: inline-block; background: rgba(201,168,76,0.15); border: 1px solid var(--gold); color: var(--gold); padding: 6px 12px; border-radius: 6px; font-size: 0.8rem; text-decoration: none; transition: all 0.2s; text-align: center; }
-  .canva-btn:hover { background: rgba(201,168,76,0.25); text-decoration: none; }
-
-  /* ── COMPETITOR DISCOVERY ── */
-  .competitor-section {
-    background: var(--card2);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 16px;
-    margin: 16px 0;
-  }
-  .competitor-label { color: var(--blue); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 700; margin-bottom: 10px; }
-  .competitor-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 8px; }
-  .competitor-btn { display: inline-block; background: rgba(78,168,222,0.15); border: 1px solid var(--blue); color: var(--blue); padding: 6px 12px; border-radius: 6px; font-size: 0.8rem; text-decoration: none; transition: all 0.2s; text-align: center; }
-  .competitor-btn:hover { background: rgba(78,168,222,0.25); text-decoration: none; }
-
-  /* ── PRICING TABLE ── */
-  table { width: 100%; border-collapse: collapse; }
-  th { background: var(--gold-dim); color: var(--gold); font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.5px; text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--border); }
-  td { padding: 10px 14px; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
-  tr:last-child td { border-bottom: none; }
-  tr:hover td { background: rgba(255,255,255,0.02); }
-
-  /* ── BARS ── */
-  .bar-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
-  .bar-label { width: 140px; font-size: 0.85rem; color: var(--text); flex-shrink: 0; }
-  .bar-track { flex: 1; background: var(--border); border-radius: 4px; height: 8px; }
-  .bar-fill { height: 100%; border-radius: 4px; background: var(--gold); }
-  .bar-count { font-size: 0.8rem; color: var(--muted); width: 30px; text-align: right; }
-
-  /* ── GAPS ── */
-  .gap-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; }
-  .gap-card {
-    background: var(--card2);
-    border: 1px solid var(--border);
-    border-left: 3px solid var(--green);
-    border-radius: 8px;
-    padding: 12px 14px;
-  }
-  .gap-card .gap-name { color: var(--green); font-weight: 600; font-size: 0.9rem; }
-  .gap-card .gap-desc { color: var(--muted); font-size: 0.8rem; margin-top: 4px; }
-
-  /* ── CHECKLIST ── */
-  .checklist { list-style: none; }
-  .checklist li {
-    padding: 10px 0;
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    gap: 12px;
-    align-items: flex-start;
-  }
-  .checklist li:last-child { border-bottom: none; }
-  .check-box {
-    width: 20px; height: 20px;
-    border: 2px solid var(--border);
-    border-radius: 4px;
-    flex-shrink: 0;
-    margin-top: 2px;
-  }
-  .check-day { color: var(--gold); font-weight: 700; font-size: 0.82rem; min-width: 60px; }
-  .check-text { color: var(--text); font-size: 0.9rem; }
-
-  /* ── CALLOUT ── */
-  .callout {
-    background: var(--green-dim);
-    border: 2px solid var(--green);
-    border-radius: 12px;
-    padding: 20px 24px;
-    margin: 20px 0;
-  }
-  .callout-title { color: var(--green); font-weight: 700; font-size: 1rem; margin-bottom: 8px; }
-  .callout-body { color: var(--text); font-size: 0.92rem; }
-
-  .warn {
-    background: rgba(233,69,96,0.08);
-    border: 1px solid rgba(233,69,96,0.3);
-    border-radius: 10px;
-    padding: 14px 18px;
-    font-size: 0.88rem;
-    color: var(--text);
-  }
-  .warn strong { color: var(--accent); }
-
-  .footer {
-    text-align: center;
-    color: var(--muted);
-    font-size: 0.78rem;
-    margin-top: 60px;
-    padding-top: 20px;
-    border-top: 1px solid var(--border);
+  * { box-sizing:border-box; margin:0; padding:0; }
+  html { scroll-behavior:smooth; }
+  body { background:var(--bg); color:var(--text); font-family:'Segoe UI',system-ui,-apple-system,sans-serif; font-size:15px; line-height:1.7; padding:32px 20px 80px; }
+  .container { max-width:1060px; margin:0 auto; }
+  .toc { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:20px 24px; margin-bottom:36px; display:flex; flex-wrap:wrap; gap:10px 24px; align-items:center; }
+  .toc-label { color:var(--muted); font-size:0.78rem; text-transform:uppercase; letter-spacing:1px; margin-right:8px; }
+  .toc a { color:var(--gold); text-decoration:none; font-size:0.88rem; }
+  .toc a:hover { text-decoration:underline; }
+  .hero { background:linear-gradient(135deg,#12121F 0%,#1A1230 100%); border:1px solid var(--border); border-left:5px solid var(--gold); border-radius:16px; padding:40px 36px; margin-bottom:40px; position:relative; overflow:hidden; }
+  .hero::before { content:''; position:absolute; top:-60px; right:-60px; width:220px; height:220px; background:radial-gradient(circle,rgba(201,168,76,0.08) 0%,transparent 70%); border-radius:50%; }
+  .hero-badge { color:var(--gold); font-size:0.78rem; text-transform:uppercase; letter-spacing:2px; margin-bottom:12px; }
+  .hero h1 { font-size:2.1rem; color:white; font-weight:800; line-height:1.25; margin-bottom:10px; }
+  .hero .subtitle { color:var(--muted); font-size:1rem; margin-bottom:28px; }
+  .hero-stats { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:16px; border-top:1px solid var(--border); padding-top:24px; }
+  .stat-label { color:var(--muted); font-size:0.78rem; text-transform:uppercase; letter-spacing:0.5px; }
+  .stat-value { color:white; font-size:1.4rem; font-weight:700; margin-top:2px; }
+  .stat-value.gold { color:var(--gold); }
+  .stat-value.green { color:var(--green); }
+  section { margin-bottom:48px; }
+  .section-header { display:flex; align-items:center; gap:12px; margin-bottom:20px; padding-bottom:12px; border-bottom:2px solid var(--border); }
+  .section-icon { font-size:1.5rem; }
+  .section-title { font-size:1.35rem; font-weight:700; color:white; }
+  .section-sub { color:var(--muted); font-size:0.88rem; margin-left:auto; }
+  .card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:22px 24px; margin-bottom:14px; }
+  .card-title { color:var(--gold); font-weight:600; font-size:0.9rem; margin-bottom:12px; text-transform:uppercase; letter-spacing:0.5px; }
+  .card p { color:var(--text); font-size:0.95rem; }
+  .product-card { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:28px; margin-bottom:20px; position:relative; overflow:hidden; }
+  .product-card::before { content:''; position:absolute; top:0; left:0; width:4px; height:100%; }
+  .product-card.rank-1::before { background:var(--gold); }
+  .product-card.rank-2::before { background:#A8A8A8; }
+  .product-card.rank-3::before { background:#CD7F32; }
+  .product-card.rank-4::before { background:var(--blue); }
+  .product-card.rank-5::before { background:var(--purple); }
+  .product-rank { font-size:2rem; line-height:1; margin-bottom:8px; }
+  .product-name { font-size:1.3rem; font-weight:800; color:white; margin-bottom:6px; }
+  .product-meta { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px; }
+  .meta-chip { background:var(--card2); border:1px solid var(--border); border-radius:20px; padding:4px 12px; font-size:0.8rem; color:var(--text); }
+  .meta-chip span { color:var(--gold); font-weight:600; }
+  .step-card { background:var(--card2); border:1px solid var(--border); border-radius:10px; padding:12px 16px; margin-bottom:8px; display:flex; gap:14px; align-items:flex-start; }
+  .step-num { background:var(--gold); color:#0B0B14; border-radius:50%; width:24px; height:24px; min-width:24px; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:0.8rem; margin-top:2px; }
+  .step-text { font-size:0.9rem; color:var(--text); }
+  .seo-block { background:var(--card2); border:1px solid var(--border); border-radius:10px; padding:16px; margin-top:14px; }
+  .seo-label { color:var(--muted); font-size:0.75rem; text-transform:uppercase; letter-spacing:1px; margin-bottom:6px; }
+  .seo-value { color:white; font-weight:600; font-size:0.95rem; }
+  .etsy-tag { display:inline-block; background:var(--tag-bg); border:1px solid var(--gold); color:var(--gold); padding:3px 10px; border-radius:20px; font-size:0.76rem; margin:2px; }
+  .footer { text-align:center; color:var(--muted); font-size:0.78rem; margin-top:60px; padding-top:20px; border-top:1px solid var(--border); }
+  @media (max-width:768px) {
+    body { font-size:14px; padding:16px 12px 60px; }
+    .container { max-width:100%; }
+    .hero { padding:22px 16px; margin-bottom:20px; }
+    .hero h1 { font-size:1.45rem; }
+    .hero .subtitle { font-size:0.86rem; }
+    .hero-stats { grid-template-columns:repeat(2,1fr); gap:8px; padding-top:16px; }
+    .product-card { padding:16px; }
+    .card { padding:14px; }
+    .toc { gap:6px 12px; padding:12px 14px; }
+    table { display:block; overflow-x:auto; width:100%; }
+    .step-card { flex-direction:column; gap:8px; }
   }
 </style>
 </head>
 <body>
 <div class="container">
 
-  <!-- TOC -->
   <nav class="toc">
     <span class="toc-label">Jump to</span>
-    <a href="#competitors">Competitor Map</a>
-    <a href="#categories">What Sells</a>
-    <a href="#pricing">Pricing</a>
-    <a href="#gaps">Market Gaps</a>
-    <a href="#products">Top 5 to Build</a>
+    <a href="#products">Top 5 Products</a>
     <a href="#action">Action Plan</a>
   </nav>
 
-  <!-- HERO -->
   <div class="hero">
-    <div class="hero-badge">📋 Unified Product Brief — Children's Activities Niche</div>
-    <h1>Your Complete Market Intelligence Report</h1>
-    <div class="subtitle">Based on 15 competitor shops · 100k+ combined sales analyzed · Ready-to-build product specs</div>
+    <div class="hero-badge">📋 Children's Activities Brief — Block 2</div>
+    <h1>Your Next 5 Products to Build</h1>
+    <div class="subtitle">Weeks 6–10 &nbsp;·&nbsp; 5 ready-to-build products with full specs</div>
     <div class="hero-stats">
       <div class="stat">
-        <div class="stat-label">Shops Analyzed</div>
-        <div class="stat-value gold">15</div>
+        <div class="stat-label">Products in Block</div>
+        <div class="stat-value gold">5</div>
       </div>
       <div class="stat">
-        <div class="stat-label">Top Seller (RikiTikiArt)</div>
-        <div class="stat-value gold">100k+ sales</div>
+        <div class="stat-label">Current Week</div>
+        <div class="stat-value gold">Week 6</div>
       </div>
       <div class="stat">
         <div class="stat-label">Sweet Spot Price</div>
-        <div class="stat-value green">$4 – $7</div>
-      </div>
-      <div class="stat">
-        <div class="stat-label">Market Gaps Found</div>
-        <div class="stat-value">7 niches</div>
+        <div class="stat-value green">$3.99 – $5.99</div>
       </div>
       <div class="stat">
         <div class="stat-label">Generated</div>
-        <div class="stat-value" style="font-size:0.95rem;color:var(--muted)">May 2, 2026</div>
+        <div class="stat-value" style="font-size:0.95rem;color:var(--muted)">November 01, 2026</div>
       </div>
     </div>
   </div>
 
+  
   <div style="background:#12121F;border:1px solid #252538;border-radius:14px;padding:22px 26px;margin-bottom:36px;">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;flex-wrap:wrap;gap:8px;">
       <div>
         <div style="color:#C9A84C;font-size:0.75rem;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:4px;">5-Week Block Progress</div>
-        <div style="color:#E2E2E2;font-size:1.05rem;font-weight:700;">Week 5 of 5 &nbsp;·&nbsp; This Week: Editable Kids Reward Chart (5 Designs)</div>
+        <div style="color:#E2E2E2;font-size:1.05rem;font-weight:700;">Week 1 of 5 &nbsp;·&nbsp; This Week: Preschool Activity Binder</div>
       </div>
-      <div style="color:#6B7280;font-size:0.82rem;">0 weeks left in this block</div>
+      <div style="color:#6B7280;font-size:0.82rem;">4 weeks left in this block</div>
     </div>
     <div style="background:#1e1e30;border-radius:8px;height:7px;overflow:hidden;margin-bottom:18px;">
-      <div style="background:linear-gradient(90deg,#C9A84C,#e8c56a);height:100%;border-radius:8px;width:100%;"></div>
+      <div style="background:linear-gradient(90deg,#C9A84C,#e8c56a);height:100%;border-radius:8px;width:20%;"></div>
     </div>
     <div style="display:flex;gap:6px;justify-content:space-around;flex-wrap:wrap;">
       
           <div style="display:flex;flex-direction:column;align-items:center;gap:5px;flex:1;min-width:58px;max-width:112px;">
-            <div style="width:22px;height:22px;border-radius:50%;border:2px solid;background:#3DD68C;border-color:#3DD68C;"></div>
-            <div style="font-size:0.72rem;text-align:center;color:#3DD68C;">✓ Wk 1</div>
-            <div style="font-size:0.67rem;color:#6B7280;text-align:center;line-height:1.3;">Alphabet Tracing Workbook</div>
-          </div>
-          <div style="display:flex;flex-direction:column;align-items:center;gap:5px;flex:1;min-width:58px;max-width:112px;">
-            <div style="width:22px;height:22px;border-radius:50%;border:2px solid;background:#3DD68C;border-color:#3DD68C;"></div>
-            <div style="font-size:0.72rem;text-align:center;color:#3DD68C;">✓ Wk 2</div>
-            <div style="font-size:0.67rem;color:#6B7280;text-align:center;line-height:1.3;">Ocean Explorer Busy Book</div>
-          </div>
-          <div style="display:flex;flex-direction:column;align-items:center;gap:5px;flex:1;min-width:58px;max-width:112px;">
-            <div style="width:22px;height:22px;border-radius:50%;border:2px solid;background:#3DD68C;border-color:#3DD68C;"></div>
-            <div style="font-size:0.72rem;text-align:center;color:#3DD68C;">✓ Wk 3</div>
-            <div style="font-size:0.67rem;color:#6B7280;text-align:center;line-height:1.3;">Number Tracing + Counting Workbook</div>
-          </div>
-          <div style="display:flex;flex-direction:column;align-items:center;gap:5px;flex:1;min-width:58px;max-width:112px;">
-            <div style="width:22px;height:22px;border-radius:50%;border:2px solid;background:#3DD68C;border-color:#3DD68C;"></div>
-            <div style="font-size:0.72rem;text-align:center;color:#3DD68C;">✓ Wk 4</div>
-            <div style="font-size:0.67rem;color:#6B7280;text-align:center;line-height:1.3;">Sight Words Flashcard Set</div>
-          </div>
-          <div style="display:flex;flex-direction:column;align-items:center;gap:5px;flex:1;min-width:58px;max-width:112px;">
             <div style="width:22px;height:22px;border-radius:50%;border:2px solid;background:#C9A84C;border-color:#C9A84C;box-shadow:0 0 8px rgba(201,168,76,0.6);"></div>
-            <div style="font-size:0.72rem;text-align:center;color:#C9A84C;font-weight:700;">▶ Wk 5</div>
-            <div style="font-size:0.67rem;color:#6B7280;text-align:center;line-height:1.3;">Editable Kids Reward Chart</div>
+            <div style="font-size:0.72rem;text-align:center;color:#C9A84C;font-weight:700;">▶ Wk 6</div>
+            <div style="font-size:0.67rem;color:#6B7280;text-align:center;line-height:1.3;">Preschool Activity Binder</div>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:5px;flex:1;min-width:58px;max-width:112px;">
+            <div style="width:22px;height:22px;border-radius:50%;border:2px solid;background:transparent;border-color:#252538;"></div>
+            <div style="font-size:0.72rem;text-align:center;color:#6B7280;">Wk 7</div>
+            <div style="font-size:0.67rem;color:#6B7280;text-align:center;line-height:1.3;">Color and Shape Flashcards</div>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:5px;flex:1;min-width:58px;max-width:112px;">
+            <div style="width:22px;height:22px;border-radius:50%;border:2px solid;background:transparent;border-color:#252538;"></div>
+            <div style="font-size:0.72rem;text-align:center;color:#6B7280;">Wk 8</div>
+            <div style="font-size:0.67rem;color:#6B7280;text-align:center;line-height:1.3;">Scissor Skills Practice Sheets</div>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:5px;flex:1;min-width:58px;max-width:112px;">
+            <div style="width:22px;height:22px;border-radius:50%;border:2px solid;background:transparent;border-color:#252538;"></div>
+            <div style="font-size:0.72rem;text-align:center;color:#6B7280;">Wk 9</div>
+            <div style="font-size:0.67rem;color:#6B7280;text-align:center;line-height:1.3;">Farm Animals Coloring Pages</div>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:5px;flex:1;min-width:58px;max-width:112px;">
+            <div style="width:22px;height:22px;border-radius:50%;border:2px solid;background:transparent;border-color:#252538;"></div>
+            <div style="font-size:0.72rem;text-align:center;color:#6B7280;">Wk 10</div>
+            <div style="font-size:0.67rem;color:#6B7280;text-align:center;line-height:1.3;">Safari Animals Coloring Pages</div>
           </div>
     </div>
   </div>
-  <!-- ── SECTION 1: COMPETITOR MAP ── -->
-  <section id="competitors">
-    <div class="section-header">
-      <span class="section-icon">🗺️</span>
-      <span class="section-title">Competitor Map</span>
-      <span class="section-sub">Your starting list + researched additions</span>
-    </div>
 
-    <div class="card" style="margin-bottom:20px;">
-      <div class="card-title">Your Original List</div>
-      <div class="shop-grid">
 
-        <div class="shop-card anchor">
-          <div class="shop-name"><a href="https://www.etsy.com/shop/RikiTikiArt" target="_blank">RikiTikiArt</a> <span class="badge badge-gold">⭐ ANCHOR</span></div>
-          <div class="shop-sales">100,000+ sales</div>
-          <div class="shop-cats">Busy books · Alphabet tracing · Activity packs · Seasonal bundles</div>
-          <div class="shop-insight">The benchmark. Study every listing — especially their thumbnails, titles, and bundle structure. They dominate because of consistent volume + design quality.</div>
-        </div>
-
-        <div class="shop-card">
-          <div class="shop-name"><a href="https://www.etsy.com/shop/CleverBusyKids" target="_blank">CleverBusyKids</a></div>
-          <div class="shop-sales">Strong seller</div>
-          <div class="shop-cats">Busy books · Toddler activity packs · Learning binders</div>
-          <div class="shop-insight">Specializes in structured busy books — clear niche focus. Good example of owning one category deeply rather than spreading thin.</div>
-        </div>
-
-        <div class="shop-card">
-          <div class="shop-name"><a href="https://www.etsy.com/shop/AppleAndPelican" target="_blank">AppleAndPelican</a></div>
-          <div class="shop-sales">Growing seller</div>
-          <div class="shop-cats">Educational printables · Worksheets · Seasonal activities</div>
-          <div class="shop-insight">Clean design aesthetic — their mockup photos are notably good. Worth reverse-engineering their listing layout.</div>
-        </div>
-
-        <div class="shop-card">
-          <div class="shop-name"><a href="https://www.etsy.com/shop/AthenaEducationWorld" target="_blank">AthenaEducationWorld</a></div>
-          <div class="shop-sales">Growing seller</div>
-          <div class="shop-cats">Educational worksheets · Homeschool curriculum · Reading materials</div>
-          <div class="shop-insight">Leans into homeschool parents specifically — a loyal, high-spending audience. Curriculum bundles priced higher ($12–$25).</div>
-        </div>
-
-        <div class="shop-card">
-          <div class="shop-name"><a href="https://www.etsy.com/shop/FriendlyLittleFaces" target="_blank">FriendlyLittleFaces</a></div>
-          <div class="shop-sales">Growing seller</div>
-          <div class="shop-cats">Character-themed activities · Social-emotional learning · Printable games</div>
-          <div class="shop-insight">Focuses on character-driven content with social-emotional angles — underexplored niche with loyal parents.</div>
-        </div>
-
-        <div class="shop-card">
-          <div class="shop-name"><a href="https://www.etsy.com/shop/Chanafavors" target="_blank">Chanafavors</a></div>
-          <div class="shop-sales">Active seller</div>
-          <div class="shop-cats">Printable activities · Party-to-learn crossover · Holiday packs</div>
-          <div class="shop-insight">Bridges party supplies and educational activities — interesting product positioning that broadens the buyer pool.</div>
-        </div>
-
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-title">Additional High-Performing Shops (Research)</div>
-      <div class="shop-grid">
-
-        <div class="shop-card anchor">
-          <div class="shop-name"><a href="https://www.etsy.com/shop/MyLamaMoon" target="_blank">MyLamaMoon</a> <span class="badge badge-green">23k+ sales</span></div>
-          <div class="shop-sales">23,000+ sales</div>
-          <div class="shop-cats">Bilingual flashcards (Spanish-English) · Educational posters · Montessori materials</div>
-          <div class="shop-insight"><strong>Key angle:</strong> Bilingual content. Spanish-English sells to an enormous underserved audience. Price: $4.90–$15. Copy this angle.</div>
-        </div>
-
-        <div class="shop-card anchor">
-          <div class="shop-name"><a href="https://www.etsy.com/shop/PrintableDandelion" target="_blank">PrintableDandelion</a> <span class="badge badge-green">15k+ sales</span></div>
-          <div class="shop-sales">15,808+ sales</div>
-          <div class="shop-cats">Teacher-created worksheets · Life cycle diagrams · Reading comprehension · Math</div>
-          <div class="shop-insight"><strong>Key angle:</strong> "Made by certified teachers" in every listing. This credibility signal converts — mention if applicable, or use "educator-designed."</div>
-        </div>
-
-        <div class="shop-card">
-          <div class="shop-name"><a href="https://www.etsy.com/shop/PaperMinxPrintables" target="_blank">PaperMinxPrintables</a> <span class="badge badge-gold">Star Seller</span></div>
-          <div class="shop-sales">13,079+ reviews</div>
-          <div class="shop-cats">Editable templates · Birthday printables · Kids party activities</div>
-          <div class="shop-insight">Editable PDFs (via Templett or Canva) command a premium — parents pay more for personalization. Consider editable reward charts.</div>
-        </div>
-
-        <div class="shop-card">
-          <div class="shop-name"><a href="https://www.etsy.com/shop/makeroomforkids" target="_blank">makeroomforkids</a></div>
-          <div class="shop-sales">Bundle specialist</div>
-          <div class="shop-cats">Mega print bundles (900+ items) · Nursery wall art · Classroom posters</div>
-          <div class="shop-insight"><strong>Key angle:</strong> Giant value bundles at $40–$97. Once you have 50+ products, bundle them — one SKU that generates outsized revenue.</div>
-        </div>
-
-        <div class="shop-card">
-          <div class="shop-name"><a href="https://www.etsy.com/shop/LarkPrintables" target="_blank">LarkPrintables</a> <span class="badge badge-gold">Star Seller</span></div>
-          <div class="shop-sales">Star Seller</div>
-          <div class="shop-cats">Alphabet/number posters · Emotional regulation · Mental health for kids</div>
-          <div class="shop-insight">Sells to BOTH classrooms and homeschools. Emotional intelligence angle (feelings charts, calm-down kits) is trending and low competition.</div>
-        </div>
-
-        <div class="shop-card">
-          <div class="shop-name"><a href="https://www.etsy.com/shop/CozyCafePaperie" target="_blank">CozyCafePaperie</a> <span class="badge badge-gold">Star Seller</span></div>
-          <div class="shop-sales">522+ products</div>
-          <div class="shop-cats">Kawaii coloring · Party games · Kids activity bundles</div>
-          <div class="shop-insight">Aesthetic-first design (kawaii, cozy) speaks to millennial parents. Proof that style differentiation alone can build a loyal audience.</div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ── SECTION 2: WHAT SELLS ── -->
-  <section id="categories">
-    <div class="section-header">
-      <span class="section-icon">📊</span>
-      <span class="section-title">What's Selling (Category Breakdown)</span>
-      <span class="section-sub">Ranked by market saturation + demand signal</span>
-    </div>
-
-    <div class="card">
-      <table>
-        <thead>
-          <tr>
-            <th>Category</th>
-            <th>Demand</th>
-            <th>Competition</th>
-            <th>Opportunity</th>
-            <th>Best Example</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Alphabet Tracing Workbooks</strong></td>
-            <td><span style="color:var(--green)">🔥 Very High</span></td>
-            <td><span style="color:var(--accent)">High</span></td>
-            <td><span style="color:var(--gold)">Good — differentiate</span></td>
-            <td>RikiTikiArt</td>
-          </tr>
-          <tr>
-            <td><strong>Busy Books / Activity Binders</strong></td>
-            <td><span style="color:var(--green)">🔥 Very High</span></td>
-            <td><span style="color:var(--accent)">High</span></td>
-            <td><span style="color:var(--gold)">Good — theme it</span></td>
-            <td>CleverBusyKids</td>
-          </tr>
-          <tr>
-            <td><strong>Sight Words / Flashcards</strong></td>
-            <td><span style="color:var(--green)">High</span></td>
-            <td>Medium</td>
-            <td><span style="color:var(--green)">✅ Strong</span></td>
-            <td>MyLamaMoon</td>
-          </tr>
-          <tr>
-            <td><strong>Number Tracing / Math</strong></td>
-            <td><span style="color:var(--green)">High</span></td>
-            <td>Medium</td>
-            <td><span style="color:var(--green)">✅ Strong</span></td>
-            <td>PrintableDandelion</td>
-          </tr>
-          <tr>
-            <td><strong>Reward / Chore Charts</strong></td>
-            <td>Medium-High</td>
-            <td>Medium</td>
-            <td><span style="color:var(--green)">✅ Good — editable version wins</span></td>
-            <td>PaperMinxPrintables</td>
-          </tr>
-          <tr>
-            <td><strong>Coloring Pages</strong></td>
-            <td>Medium-High</td>
-            <td><span style="color:var(--accent)">Very High</span></td>
-            <td>Only with strong niche angle</td>
-            <td>CozyCafePaperie</td>
-          </tr>
-          <tr>
-            <td><strong>Cutting Practice</strong></td>
-            <td>Medium</td>
-            <td><span style="color:var(--green)">Low</span></td>
-            <td><span style="color:var(--green)">✅ Underserved</span></td>
-            <td>—</td>
-          </tr>
-          <tr>
-            <td><strong>Emotional Regulation / SEL</strong></td>
-            <td>Medium + Rising</td>
-            <td><span style="color:var(--green)">Low</span></td>
-            <td><span style="color:var(--green)">✅ Emerging — get in early</span></td>
-            <td>LarkPrintables</td>
-          </tr>
-          <tr>
-            <td><strong>Bilingual (Spanish-English)</strong></td>
-            <td>Medium + Rising</td>
-            <td><span style="color:var(--green)">Very Low</span></td>
-            <td><span style="color:var(--green)">🌟 Best gap right now</span></td>
-            <td>MyLamaMoon</td>
-          </tr>
-          <tr>
-            <td><strong>Science / Life Cycles</strong></td>
-            <td>Medium</td>
-            <td><span style="color:var(--green)">Low</span></td>
-            <td><span style="color:var(--green)">✅ Underserved</span></td>
-            <td>PrintableDandelion</td>
-          </tr>
-          <tr>
-            <td><strong>Mazes & Puzzles</strong></td>
-            <td>Medium</td>
-            <td>Low-Medium</td>
-            <td>Good secondary product</td>
-            <td>—</td>
-          </tr>
-          <tr>
-            <td><strong>Mega Bundles (50+ items)</strong></td>
-            <td>High</td>
-            <td>Low</td>
-            <td><span style="color:var(--green)">✅ Long-term strategy</span></td>
-            <td>makeroomforkids</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <!-- ── SECTION 3: PRICING ── -->
-  <section id="pricing">
-    <div class="section-header">
-      <span class="section-icon">💰</span>
-      <span class="section-title">Pricing Intelligence</span>
-      <span class="section-sub">What competitors charge and where you should land</span>
-    </div>
-
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
-      <div class="card">
-        <div class="card-title">Price Distribution Across Market</div>
-        <div class="bar-row"><span class="bar-label">Under $3</span><div class="bar-track"><div class="bar-fill" style="width:8%"></div></div><span class="bar-count">8%</span></div>
-        <div class="bar-row"><span class="bar-label">$3 – $5</span><div class="bar-track"><div class="bar-fill" style="width:38%"></div></div><span class="bar-count">38%</span></div>
-        <div class="bar-row"><span class="bar-label">$5 – $8</span><div class="bar-track"><div class="bar-fill" style="width:32%"></div></div><span class="bar-count">32%</span></div>
-        <div class="bar-row"><span class="bar-label">$8 – $12</span><div class="bar-track"><div class="bar-fill" style="width:14%"></div></div><span class="bar-count">14%</span></div>
-        <div class="bar-row"><span class="bar-label">Over $12</span><div class="bar-track"><div class="bar-fill" style="width:8%"></div></div><span class="bar-count">8%</span></div>
-      </div>
-      <div class="card">
-        <div class="card-title">Your Pricing Strategy</div>
-        <table>
-          <tr><td><strong>Launch price</strong></td><td style="color:var(--green);font-weight:700;">$3.99 – $4.99</td></tr>
-          <tr><td>After 10 reviews</td><td>Raise to $5.49 – $5.99</td></tr>
-          <tr><td>After 25 reviews</td><td>Raise to $6.49 – $6.99</td></tr>
-          <tr><td>Bundles (2–3 products)</td><td>$9.99 – $14.99</td></tr>
-          <tr><td>Mega bundles (10+)</td><td>$24.99 – $49.99</td></tr>
-          <tr><td>Editable versions</td><td>+$1.50 premium</td></tr>
-        </table>
-      </div>
-    </div>
-
-    <div class="callout">
-      <div class="callout-title">💡 The Pricing Ladder Strategy</div>
-      <div class="callout-body">Start at $3.99 to get your first 10 reviews fast. Each review is social proof worth $0.50 in price elasticity. Once you hit 25 reviews, you have enough credibility to charge what the product is actually worth. Shops like RikiTikiArt didn't start at top prices — they earned them.</div>
-    </div>
-  </section>
-
-  <!-- ── SECTION 4: MARKET GAPS ── -->
-  <section id="gaps">
-    <div class="section-header">
-      <span class="section-icon">🎯</span>
-      <span class="section-title">Market Gaps — Build These First</span>
-      <span class="section-sub">Low competition, proven demand, no clear winner yet</span>
-    </div>
-
-    <div class="gap-grid">
-      <div class="gap-card">
-        <div class="gap-name">🌍 Bilingual Flashcards</div>
-        <div class="gap-desc">Spanish-English. MyLamaMoon proves this works — almost no direct competitors doing it well.</div>
-      </div>
-      <div class="gap-card">
-        <div class="gap-name">✂️ Cutting Practice</div>
-        <div class="gap-desc">Fine motor skills. Low supply, consistent demand from preschool parents and OTs.</div>
-      </div>
-      <div class="gap-card">
-        <div class="gap-name">🧠 Emotional Regulation</div>
-        <div class="gap-desc">Feelings charts, calm-down kits, SEL activities. Rising demand, very few sellers.</div>
-      </div>
-      <div class="gap-card">
-        <div class="gap-name">🔬 Science / Life Cycles</div>
-        <div class="gap-desc">Plants, butterflies, frogs. Teachers buy these every year. Low competition.</div>
-      </div>
-      <div class="gap-card">
-        <div class="gap-name">🎨 Themed Busy Books</div>
-        <div class="gap-desc">Safari, ocean, space themes. Generic busy books are saturated — themed ones are not.</div>
-      </div>
-      <div class="gap-card">
-        <div class="gap-name">📚 Montessori-Style</div>
-        <div class="gap-desc">Premium audience, willing to pay more. Label your products "Montessori-inspired" and reach this niche.</div>
-      </div>
-      <div class="gap-card">
-        <div class="gap-name">🏆 Editable Reward Charts</div>
-        <div class="gap-desc">Parents want to add their child's name. Editable PDFs command $1.50 more and get more favorites.</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── SECTION 5: TOP 5 PRODUCTS TO BUILD ── -->
   <section id="products">
     <div class="section-header">
       <span class="section-icon">🏗️</span>
-      <span class="section-title">Top 5 Products to Build (Ranked)</span>
-      <span class="section-sub">Complete specs — ready to open Canva</span>
+      <span class="section-title">5 Products — One Per Week</span>
+      <span class="section-sub">Complete specs · ready to open Canva</span>
     </div>
 
+    
     <!-- PRODUCT 1 -->
-    <div class="product-card rank-1">
+    <div class="product-card rank-1" style="box-shadow:0 0 0 2px #C9A84C,0 0 28px rgba(201,168,76,0.18);border-color:#C9A84C;">
       <div class="product-rank">🥇</div>
-      <div class="product-name">Alphabet Tracing Workbook — Themed Edition</div>
+      <div class="product-name">Preschool Activity Binder<span style="display:inline-block;background:rgba(201,168,76,0.15);color:#C9A84C;border:1px solid #C9A84C;border-radius:20px;padding:2px 10px;font-size:0.72rem;font-weight:700;margin-left:10px;vertical-align:middle;">▶ THIS WEEK</span></div>
       <div class="product-meta">
-        <span class="meta-chip">Price: <span>$3.99 launch → $5.99</span></span>
-        <span class="meta-chip">Build time: <span>2–3 hrs Canva</span></span>
-        <span class="meta-chip">Pages: <span>52</span></span>
-        <span class="meta-chip">Format: <span>PDF 8.5×11"</span></span>
-        <span class="meta-chip">Demand: <span>🔥 Very High</span></span>
+        <span class="meta-chip">Price: <span>$5.99</span></span>
+        <span class="meta-chip">Ages: <span>3–5</span></span>
+        <span class="meta-chip">Format: <span>PDF binder set</span></span>
+        <span class="meta-chip" style="border-color:var(--gold);color:var(--gold);">Week 6</span>
       </div>
-
-      <div class="edge-box">
-        <div class="edge-label">Your Differentiation</div>
-        <div class="edge-body">Pick ONE theme: 🦁 Safari, 🚀 Space, or 🌊 Ocean. Every letter features themed illustrations (A = Astronaut, B = Bear…). Competitors are generic — a themed version stands out in thumbnails and gets more saves. Add a "My First Words" bonus section (5 vocab words per letter) — no one else does this.</div>
+      <div class="card" style="margin-bottom:14px;">
+        <div class="card-title">What To Build</div>
+        <p>The binder includes 30 printable pages of alphabet tracing, number games, shape sorting, and simple puzzles, plus a cover and tab sheets. Children flip through the pages, complete each activity, and track progress on the checklist.</p>
       </div>
-
-      <div class="product-grid">
-        <div class="detail-block">
-          <div class="detail-label">What to include</div>
-          <div class="detail-body"><ul>
-            <li>26 letter tracing pages (upper + lower)</li>
-            <li>Dotted lines + arrows for stroke direction</li>
-            <li>3 themed illustrations per letter</li>
-            <li>Coloring section on each page</li>
-            <li>"My First Words" vocab bonus (5 words/letter)</li>
-            <li>Reward sticker page + certificate</li>
-            <li>Cover page (make it Pinterest-worthy)</li>
-          </ul></div>
-        </div>
-        <div class="detail-block">
-          <div class="detail-label">Design specs</div>
-          <div class="detail-body"><ul>
-            <li>Canvas: 816 × 1056 px (8.5×11")</li>
-            <li>Font: Rounded sans-serif (kid-friendly)</li>
-            <li>Colors: Bright + white — works B&W printed</li>
-            <li>Stroke guide lines: 60% opacity gray</li>
-            <li>Leave 1" margins (printer-safe)</li>
-            <li>Export: PDF Print quality from Canva</li>
-          </ul></div>
-        </div>
+      <div class="card" style="margin-bottom:14px;">
+        <div class="card-title">Why It Sells</div>
+        <p>Parents of toddlers buy it for at‑home preschool prep because it bundles varied learning tasks in one printable package.</p>
       </div>
-
+      <div style="margin-bottom:14px;">
+        <div class="card-title" style="color:#C9A84C;font-size:0.85rem;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px;">How To Build in Canva</div>
+        <div class="step-card"><div class="step-num">1</div><div class="step-text">Open Canva → search "preschool binder template" → choose a bright, 8.5×11 layout</div></div><div class="step-card"><div class="step-num">2</div><div class="step-text">Add sections: alphabet tracing, counting worksheets, shape matching, simple puzzles, and a progress checklist</div></div><div class="step-card"><div class="step-num">3</div><div class="step-text">Insert playful icons and color‑coded headers for each activity type</div></div><div class="step-card"><div class="step-num">4</div><div class="step-text">Create printable tabs on the side and a printable cover page with space for the child's name</div></div><div class="step-card"><div class="step-num">5</div><div class="step-text">Export as PDF Print → upload to Etsy as a digital download</div></div>
+      </div>
       <div class="seo-block">
-        <div class="seo-label">Etsy Title (copy this)</div>
-        <div class="seo-value">Alphabet Tracing Workbook for Preschoolers | Safari ABC Printable | Letter Practice Worksheets | Instant Download</div>
-        <div class="tag-row">
-          <div class="seo-label" style="margin-top:12px;">All 13 Tags</div>
-          <span class="tag">alphabet tracing</span><span class="tag">letter tracing worksheets</span><span class="tag">preschool printable</span><span class="tag">abc workbook</span><span class="tag">handwriting practice</span><span class="tag">kindergarten worksheets</span><span class="tag">homeschool printable</span><span class="tag">toddler activities</span><span class="tag">safari printable</span><span class="tag">instant download</span><span class="tag">educational printable</span><span class="tag">tracing worksheets</span><span class="tag">kids activity</span>
-        </div>
+        <div class="seo-label">Etsy Title</div>
+        <div class="seo-value">Preschool Activity Binder PDF for Ages 3-5 – Printable Learning Pack</div>
+        <div class="tag-row" style="margin-top:10px;"><span class="etsy-tag">preschool</span><span class="etsy-tag">activitybinder</span><span class="etsy-tag">printable</span><span class="etsy-tag">kidslearning</span><span class="etsy-tag">earlymath</span><span class="etsy-tag">alphabet</span><span class="etsy-tag">homework</span></div>
       </div>
-
-      <div class="canva-section">
-        <div class="canva-label">🔍 Canva Search Keywords (Click to Find Templates)</div>
-        <div class="canva-grid">
-          <a href="https://www.canva.com/search?q=playful+alphabet" target="_blank" class="canva-btn">playful alphabet</a>
-          <a href="https://www.canva.com/search?q=kids+letter+tracing" target="_blank" class="canva-btn">kids letter tracing</a>
-          <a href="https://www.canva.com/search?q=educational+illustrations+children" target="_blank" class="canva-btn">edu illustrations</a>
-          <a href="https://www.canva.com/search?q=preschool+activities" target="_blank" class="canva-btn">preschool activities</a>
-          <a href="https://www.canva.com/search?q=safari+animal+alphabet" target="_blank" class="canva-btn">safari alphabet</a>
-          <a href="https://www.canva.com/search?q=alphabet+worksheet" target="_blank" class="canva-btn">alphabet worksheet</a>
-        </div>
-      </div>
-
-      <div class="competitor-section">
-        <div class="competitor-label">🎨 Competitor Design Inspiration</div>
-        <div class="competitor-grid">
-          <a href="https://www.etsy.com/search?q=alphabet+tracing+workbook&sort_on=score" target="_blank" class="competitor-btn">Etsy Top Designs</a>
-          <a href="https://www.etsy.com/search?q=alphabet+tracing+workbook&sort_on=num_favorers_desc" target="_blank" class="competitor-btn">Most Favorited</a>
-          <a href="https://trends.pinterest.com/?country=US&term=alphabet+tracing+workbook" target="_blank" class="competitor-btn">Pinterest Trends</a>
-          <a href="https://www.etsy.com/shop/RikiTikiArt?search_query=alphabet" target="_blank" class="competitor-btn">RikiTikiArt</a>
-          <a href="https://www.etsy.com/shop/PrintableDandelion" target="_blank" class="competitor-btn">PrintableDandelion</a>
-        </div>
-      </div>
-      <div style="border-left:3px solid #3DD68C;background:#0f1f18;border-radius:0 8px 8px 0;padding:12px 16px;margin-top:14px;"><div style="color:#3DD68C;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">SEO Quick-Tips</div><div style="display:grid;gap:5px;font-size:0.82rem;"><div><span style="color:#6B7280;">Primary keyword:</span> <span style="color:#E2E2E2;font-weight:600;">alphabet tracing</span></div><div><span style="color:#6B7280;">Title first 30 chars</span> <span style="color:#6B7280;font-size:0.74rem;">(shows on mobile)</span><span style="color:#6B7280;">:</span> <span style="color:#E2E2E2;font-weight:600;">Alphabet Tracing Workbook for </span></div><div><span style="color:#6B7280;">Etsy category:</span> <span style="color:#E2E2E2;">Paper &amp; Party Supplies &rarr; Stationery &rarr; Printables</span></div><div style="color:#6B7280;font-size:0.78rem;margin-top:4px;border-top:1px solid #252538;padding-top:6px;">Put primary keyword in first 30 title chars. Tags &ne; title words &mdash; use synonyms.</div></div></div>
+      <div style="border-left:3px solid #3DD68C;background:#0f1f18;border-radius:0 8px 8px 0;padding:12px 16px;margin-top:14px;"><div style="color:#3DD68C;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">SEO Quick-Tips</div><div style="display:grid;gap:5px;font-size:0.82rem;"><div><span style="color:#6B7280;">Primary keyword:</span> <span style="color:#E2E2E2;font-weight:600;">preschool</span></div><div><span style="color:#6B7280;">Title first 30 chars</span> <span style="color:#6B7280;font-size:0.74rem;">(shows on mobile)</span><span style="color:#6B7280;">:</span> <span style="color:#E2E2E2;font-weight:600;">Preschool Activity Binder PDF </span></div><div><span style="color:#6B7280;">Etsy category:</span> <span style="color:#E2E2E2;">Paper &amp; Party Supplies &rarr; Stationery &rarr; Printables</span></div><div style="color:#6B7280;font-size:0.78rem;margin-top:4px;border-top:1px solid #252538;padding-top:6px;">Put primary keyword in first 30 title chars. Tags &ne; title words &mdash; use synonyms.</div></div></div>
       <div style="margin-top:14px;">
-        <button onclick="toggleExtra('ex_r1_w5')" style="background:#C9A84C;color:#0B0B14;border:none;border-radius:8px;padding:8px 16px;font-size:0.82rem;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px;">&#128203; Listing Description &amp; Modification Tools<span id="ex_r1_w5_arrow" style="transition:transform .25s;">&#9660;</span></button>
-        <div id="ex_r1_w5" style="display:none;margin-top:10px;">
+        <button onclick="toggleExtra('ex_r1_w6')" style="background:#C9A84C;color:#0B0B14;border:none;border-radius:8px;padding:8px 16px;font-size:0.82rem;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px;">&#128203; Listing Description &amp; Modification Tools<span id="ex_r1_w6_arrow" style="transition:transform .25s;">&#9660;</span></button>
+        <div id="ex_r1_w6" style="display:none;margin-top:10px;">
           <div style="margin-bottom:14px;">
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
-              <div style="color:#3DD68C;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Etsy Tags (13)</div>
-              <button onclick="copyTA('ex_r1_w5_tags', this)" style="background:#1e1e30;color:#3DD68C;border:1px solid #3DD68C;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy All</button>
+              <div style="color:#3DD68C;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Etsy Tags (7)</div>
+              <button onclick="copyTA('ex_r1_w6_tags', this)" style="background:#1e1e30;color:#3DD68C;border:1px solid #3DD68C;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy All</button>
             </div>
-            <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px;"><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">alphabet tracing</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">tracing workbook</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">preschool ABC</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">letter practice</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">kids printable</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">pre-k worksheet</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">homeschool</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">ABC printable</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">tracing sheets</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">kindergarten prep</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">toddler learning</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">letter tracing</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">pre-k activity</span></div>
-            <textarea id="ex_r1_w5_tags" readonly style="display:none;">alphabet tracing, tracing workbook, preschool ABC, letter practice, kids printable, pre-k worksheet, homeschool, ABC printable, tracing sheets, kindergarten prep, toddler learning, letter tracing, pre-k activity</textarea>
+            <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px;"><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">preschool</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">activitybinder</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">printable</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">kidslearning</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">earlymath</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">alphabet</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">homework</span></div>
+            <textarea id="ex_r1_w6_tags" readonly style="display:none;">preschool, activitybinder, printable, kidslearning, earlymath, alphabet, homework</textarea>
           </div>
           <div style="margin-bottom:14px;">
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
               <div style="color:#4EA8DE;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Full Etsy Description</div>
-              <button onclick="copyTA('ex_r1_w5_desc', this)" style="background:#1e1e30;color:#4EA8DE;border:1px solid #4EA8DE;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy</button>
+              <button onclick="copyTA('ex_r1_w6_desc', this)" style="background:#1e1e30;color:#4EA8DE;border:1px solid #4EA8DE;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy</button>
             </div>
-            <textarea id="ex_r1_w5_desc" readonly style="width:100%;min-height:260px;background:#1e1e30;color:#E2E2E2;border:1px solid #252538;border-radius:8px;padding:12px;font-family:monospace;font-size:0.8rem;line-height:1.5;resize:vertical;">Alphabet Tracing Workbook — Themed Edition for ages 3–5 | Printable PDF | Instant Download
+            <textarea id="ex_r1_w6_desc" readonly style="width:100%;min-height:260px;background:#1e1e30;color:#E2E2E2;border:1px solid #252538;border-radius:8px;padding:12px;font-family:monospace;font-size:0.8rem;line-height:1.5;resize:vertical;">Preschool Activity Binder for ages 3–5 | Printable PDF | Instant Download
 
-A 52-page themed workbook covering all 26 letters (upper + lower case) with dotted trace lines, themed illustrations, and a 'My First Words' bonus section.
+The binder includes 30 printable pages of alphabet tracing, number games, shape sorting, and simple puzzles, plus a cover and tab sheets. Children flip through the pages, complete each activity, and track progress on the checklist.
 
 ────────────────────────────────────────
 WHAT'S INCLUDED
 ────────────────────────────────────────
-• Format: PDF printable
+• Format: PDF binder set
 • High resolution: 300 dpi — prints sharp at home
 • Size: US Letter (8.5 x 11 in) — easy to resize to A4
 • Instant digital download — no physical item is shipped
@@ -860,16 +253,16 @@ Questions? I respond within 24 hours.</textarea>
           <div>
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
               <div style="color:#9B72CF;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Modification Prompt</div>
-              <button onclick="copyTA('ex_r1_w5_prompt', this)" style="background:#1e1e30;color:#9B72CF;border:1px solid #9B72CF;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy</button>
+              <button onclick="copyTA('ex_r1_w6_prompt', this)" style="background:#1e1e30;color:#9B72CF;border:1px solid #9B72CF;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy</button>
             </div>
-            <textarea id="ex_r1_w5_prompt" readonly style="width:100%;min-height:280px;background:#1e1e30;color:#E2E2E2;border:1px solid #252538;border-radius:8px;padding:12px;font-family:monospace;font-size:0.8rem;line-height:1.5;resize:vertical;">I have an Etsy digital printable product with the following details:
+            <textarea id="ex_r1_w6_prompt" readonly style="width:100%;min-height:280px;background:#1e1e30;color:#E2E2E2;border:1px solid #252538;border-radius:8px;padding:12px;font-family:monospace;font-size:0.8rem;line-height:1.5;resize:vertical;">I have an Etsy digital printable product with the following details:
 
-Product name: Alphabet Tracing Workbook — Themed Edition
+Product name: Preschool Activity Binder
 Age range: 3–5
-Format: PDF printable
-Current price: $3.99
-Current Etsy title: Alphabet Tracing Workbook for Preschool — Themed Edition | 52 Pages | Printable PDF
-Current tags: alphabet tracing, tracing workbook, preschool ABC, letter practice, kids printable, pre-k worksheet, homeschool, ABC printable, tracing sheets, kindergarten prep, toddler learning, letter tracing, pre-k activity
+Format: PDF binder set
+Current price: $5.99
+Current Etsy title: Preschool Activity Binder PDF for Ages 3-5 – Printable Learning Pack
+Current tags: preschool, activitybinder, printable, kidslearning, earlymath, alphabet, homework
 
 I want to modify this product as follows:
 [DESCRIBE YOUR CHANGES HERE]
@@ -887,398 +280,50 @@ Please return:
     <!-- PRODUCT 2 -->
     <div class="product-card rank-2">
       <div class="product-rank">🥈</div>
-      <div class="product-name">Ocean Explorer Busy Book</div>
+      <div class="product-name">Color and Shape Flashcards</div>
       <div class="product-meta">
-        <span class="meta-chip">Price: <span>$4.99 launch → $6.99</span></span>
-        <span class="meta-chip">Build time: <span>3–4 hrs Canva</span></span>
-        <span class="meta-chip">Pages: <span>40+</span></span>
-        <span class="meta-chip">Format: <span>PDF 8.5×11"</span></span>
-        <span class="meta-chip">Demand: <span>🔥 Very High</span></span>
+        <span class="meta-chip">Price: <span>$4.49</span></span>
+        <span class="meta-chip">Ages: <span>2–4</span></span>
+        <span class="meta-chip">Format: <span>PDF flashcards</span></span>
+        <span class="meta-chip" style="border-color:#A8A8A8;color:#A8A8A8;">Week 7</span>
       </div>
-
-      <div class="edge-box">
-        <div class="edge-label">Your Differentiation</div>
-        <div class="edge-body">Theme = Ocean Explorer. Generic busy books are everywhere — "Ocean Explorer Busy Book" is searchable AND distinctive. Pair every activity with an ocean creature (matching = match the fish, counting = count the dolphins). This makes thumbnails cohesive and Pinterest-shareable.</div>
+      <div class="card" style="margin-bottom:14px;">
+        <div class="card-title">What To Build</div>
+        <p>The set contains 24 double‑sided flashcards—each card shows a vivid color or a basic shape with a name label. Kids flip cards, name the color or shape, and match them to real objects.</p>
       </div>
-
-      <div class="product-grid">
-        <div class="detail-block">
-          <div class="detail-label">Activities to include (mix these)</div>
-          <div class="detail-body"><ul>
-            <li>Shape matching (ocean shapes)</li>
-            <li>Count & color (1–10 with sea creatures)</li>
-            <li>Dot-to-dot ocean scenes</li>
-            <li>Maze: help the turtle find the ocean</li>
-            <li>Color by number (fish, starfish)</li>
-            <li>I Spy (ocean scene)</li>
-            <li>Cutting practice (wave patterns)</li>
-            <li>Ocean alphabet page</li>
-            <li>Draw & color: design your own fish</li>
-            <li>Certificate: "Ocean Explorer" award</li>
-          </ul></div>
-        </div>
-        <div class="detail-block">
-          <div class="detail-label">Canva design tips</div>
-          <div class="detail-body"><ul>
-            <li>Blue/teal/coral palette throughout</li>
-            <li>Use Canva's free ocean illustrations</li>
-            <li>Keep activity instructions 1–2 lines max</li>
-            <li>Bold page numbers (parents flip fast)</li>
-            <li>Make cover photo-worthy: add child's name line</li>
-            <li>Test B&W print before finalizing</li>
-          </ul></div>
-        </div>
+      <div class="card" style="margin-bottom:14px;">
+        <div class="card-title">Why It Sells</div>
+        <p>Parents purchase it to teach color and shape concepts at home or in preschool because it’s instantly printable and reusable.</p>
       </div>
-
+      <div style="margin-bottom:14px;">
+        <div class="card-title" style="color:#C9A84C;font-size:0.85rem;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px;">How To Build in Canva</div>
+        <div class="step-card"><div class="step-num">1</div><div class="step-text">Open Canva → search "flashcard template" → select a 3×5 inch vertical design</div></div><div class="step-card"><div class="step-num">2</div><div class="step-text">Create 24 cards: 12 solid color cards and 12 basic shape cards with bold labels</div></div><div class="step-card"><div class="step-num">3</div><div class="step-text">Add a simple border and a cute animal illustration on each card for visual interest</div></div><div class="step-card"><div class="step-num">4</div><div class="step-text">Duplicate the layout, replace colors and shapes, then arrange two‑sided pages for easy printing</div></div><div class="step-card"><div class="step-num">5</div><div class="step-text">Export as PDF Print → upload to Etsy as a digital download</div></div>
+      </div>
       <div class="seo-block">
         <div class="seo-label">Etsy Title</div>
-        <div class="seo-value">Ocean Busy Book for Toddlers | Printable Activity Book | Preschool Learning | Under the Sea Theme | Instant Download PDF</div>
-        <div class="tag-row">
-          <div class="seo-label" style="margin-top:12px;">All 13 Tags</div>
-          <span class="tag">busy book printable</span><span class="tag">toddler activity book</span><span class="tag">ocean theme</span><span class="tag">preschool activities</span><span class="tag">kids activity printable</span><span class="tag">under the sea</span><span class="tag">learning binder</span><span class="tag">homeschool kindergarten</span><span class="tag">quiet book pages</span><span class="tag">instant download</span><span class="tag">printable games</span><span class="tag">fine motor activities</span><span class="tag">educational kids</span>
-        </div>
+        <div class="seo-value">Color & Shape Flashcards PDF for Ages 2-4 – Printable Early Learning Cards</div>
+        <div class="tag-row" style="margin-top:10px;"><span class="etsy-tag">flashcards</span><span class="etsy-tag">colorlearning</span><span class="etsy-tag">shapecards</span><span class="etsy-tag">toddler</span><span class="etsy-tag">preschool</span><span class="etsy-tag">printable</span><span class="etsy-tag">earlylearning</span></div>
       </div>
-
-      <div class="canva-section">
-        <div class="canva-label">🔍 Canva Search Keywords (Click to Find Templates)</div>
-        <div class="canva-grid">
-          <a href="https://www.canva.com/search?q=ocean+theme+kids" target="_blank" class="canva-btn">ocean theme kids</a>
-          <a href="https://www.canva.com/search?q=busy+book+activities" target="_blank" class="canva-btn">busy book activities</a>
-          <a href="https://www.canva.com/search?q=toddler+activity+worksheets" target="_blank" class="canva-btn">toddler activities</a>
-          <a href="https://www.canva.com/search?q=under+the+sea+printable" target="_blank" class="canva-btn">under the sea</a>
-          <a href="https://www.canva.com/search?q=kids+activity+pages" target="_blank" class="canva-btn">activity pages</a>
-          <a href="https://www.canva.com/search?q=preschool+worksheet+bright" target="_blank" class="canva-btn">preschool worksheet</a>
-        </div>
-      </div>
-
-      <div class="competitor-section">
-        <div class="competitor-label">🎨 Competitor Design Inspiration</div>
-        <div class="competitor-grid">
-          <a href="https://www.etsy.com/search?q=busy+book+toddler&sort_on=score" target="_blank" class="competitor-btn">Etsy Top Designs</a>
-          <a href="https://www.etsy.com/search?q=ocean+busy+book&sort_on=num_favorers_desc" target="_blank" class="competitor-btn">Most Favorited</a>
-          <a href="https://www.etsy.com/shop/CleverBusyKids" target="_blank" class="competitor-btn">CleverBusyKids</a>
-          <a href="https://www.etsy.com/shop/makeroomforkids" target="_blank" class="competitor-btn">makeroomforkids</a>
-          <a href="https://trends.pinterest.com/?country=US&term=kids+busy+book" target="_blank" class="competitor-btn">Pinterest Trends</a>
-        </div>
-      </div>
-      <div style="border-left:3px solid #3DD68C;background:#0f1f18;border-radius:0 8px 8px 0;padding:12px 16px;margin-top:14px;"><div style="color:#3DD68C;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">SEO Quick-Tips</div><div style="display:grid;gap:5px;font-size:0.82rem;"><div><span style="color:#6B7280;">Primary keyword:</span> <span style="color:#E2E2E2;font-weight:600;">busy book</span></div><div><span style="color:#6B7280;">Title first 30 chars</span> <span style="color:#6B7280;font-size:0.74rem;">(shows on mobile)</span><span style="color:#6B7280;">:</span> <span style="color:#E2E2E2;font-weight:600;">Ocean Explorer Busy Book for T</span></div><div><span style="color:#6B7280;">Etsy category:</span> <span style="color:#E2E2E2;">Paper &amp; Party Supplies &rarr; Stationery &rarr; Printables</span></div><div style="color:#6B7280;font-size:0.78rem;margin-top:4px;border-top:1px solid #252538;padding-top:6px;">Put primary keyword in first 30 title chars. Tags &ne; title words &mdash; use synonyms.</div></div></div>
+      <div style="border-left:3px solid #3DD68C;background:#0f1f18;border-radius:0 8px 8px 0;padding:12px 16px;margin-top:14px;"><div style="color:#3DD68C;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">SEO Quick-Tips</div><div style="display:grid;gap:5px;font-size:0.82rem;"><div><span style="color:#6B7280;">Primary keyword:</span> <span style="color:#E2E2E2;font-weight:600;">flashcards</span></div><div><span style="color:#6B7280;">Title first 30 chars</span> <span style="color:#6B7280;font-size:0.74rem;">(shows on mobile)</span><span style="color:#6B7280;">:</span> <span style="color:#E2E2E2;font-weight:600;">Color &amp; Shape Flashcards PDF f</span></div><div><span style="color:#6B7280;">Etsy category:</span> <span style="color:#E2E2E2;">Paper &amp; Party Supplies &rarr; Stationery &rarr; Flashcards</span></div><div style="color:#6B7280;font-size:0.78rem;margin-top:4px;border-top:1px solid #252538;padding-top:6px;">Put primary keyword in first 30 title chars. Tags &ne; title words &mdash; use synonyms.</div></div></div>
       <div style="margin-top:14px;">
-        <button onclick="toggleExtra('ex_r2_w5')" style="background:#C9A84C;color:#0B0B14;border:none;border-radius:8px;padding:8px 16px;font-size:0.82rem;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px;">&#128203; Listing Description &amp; Modification Tools<span id="ex_r2_w5_arrow" style="transition:transform .25s;">&#9660;</span></button>
-        <div id="ex_r2_w5" style="display:none;margin-top:10px;">
+        <button onclick="toggleExtra('ex_r2_w6')" style="background:#C9A84C;color:#0B0B14;border:none;border-radius:8px;padding:8px 16px;font-size:0.82rem;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px;">&#128203; Listing Description &amp; Modification Tools<span id="ex_r2_w6_arrow" style="transition:transform .25s;">&#9660;</span></button>
+        <div id="ex_r2_w6" style="display:none;margin-top:10px;">
           <div style="margin-bottom:14px;">
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
-              <div style="color:#3DD68C;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Etsy Tags (13)</div>
-              <button onclick="copyTA('ex_r2_w5_tags', this)" style="background:#1e1e30;color:#3DD68C;border:1px solid #3DD68C;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy All</button>
+              <div style="color:#3DD68C;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Etsy Tags (7)</div>
+              <button onclick="copyTA('ex_r2_w6_tags', this)" style="background:#1e1e30;color:#3DD68C;border:1px solid #3DD68C;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy All</button>
             </div>
-            <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px;"><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">busy book</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">toddler activities</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">ocean theme</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">printable busy book</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">preschool activity</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">no-prep activity</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">ocean worksheet</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">busy book pages</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">toddler busy book</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">quiet book pages</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">activity pack kids</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">screen free kids</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">ocean animals</span></div>
-            <textarea id="ex_r2_w5_tags" readonly style="display:none;">busy book, toddler activities, ocean theme, printable busy book, preschool activity, no-prep activity, ocean worksheet, busy book pages, toddler busy book, quiet book pages, activity pack kids, screen free kids, ocean animals</textarea>
+            <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px;"><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">flashcards</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">colorlearning</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">shapecards</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">toddler</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">preschool</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">printable</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">earlylearning</span></div>
+            <textarea id="ex_r2_w6_tags" readonly style="display:none;">flashcards, colorlearning, shapecards, toddler, preschool, printable, earlylearning</textarea>
           </div>
           <div style="margin-bottom:14px;">
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
               <div style="color:#4EA8DE;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Full Etsy Description</div>
-              <button onclick="copyTA('ex_r2_w5_desc', this)" style="background:#1e1e30;color:#4EA8DE;border:1px solid #4EA8DE;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy</button>
+              <button onclick="copyTA('ex_r2_w6_desc', this)" style="background:#1e1e30;color:#4EA8DE;border:1px solid #4EA8DE;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy</button>
             </div>
-            <textarea id="ex_r2_w5_desc" readonly style="width:100%;min-height:260px;background:#1e1e30;color:#E2E2E2;border:1px solid #252538;border-radius:8px;padding:12px;font-family:monospace;font-size:0.8rem;line-height:1.5;resize:vertical;">Ocean Explorer Busy Book for ages 2–4 | Printable PDF | Instant Download
+            <textarea id="ex_r2_w6_desc" readonly style="width:100%;min-height:260px;background:#1e1e30;color:#E2E2E2;border:1px solid #252538;border-radius:8px;padding:12px;font-family:monospace;font-size:0.8rem;line-height:1.5;resize:vertical;">Color and Shape Flashcards for ages 2–4 | Printable PDF | Instant Download
 
-A 20+ page ocean-themed activity pack with matching, colouring, tracing, counting, and puzzle pages — each built around vibrant sea creatures.
-
-────────────────────────────────────────
-WHAT'S INCLUDED
-────────────────────────────────────────
-• Format: PDF activity pack
-• High resolution: 300 dpi — prints sharp at home
-• Size: US Letter (8.5 x 11 in) — easy to resize to A4
-• Instant digital download — no physical item is shipped
-
-────────────────────────────────────────
-HOW TO DOWNLOAD &amp; PRINT
-────────────────────────────────────────
-1. Complete your purchase on Etsy
-2. Click the download link in your confirmation email (or go to Etsy &gt; Purchases &amp; Reviews)
-3. Open the PDF on your computer or tablet
-4. Print at home or at a local print shop — standard paper works great
-Laminate pages for repeated use, or print fresh sets as needed
-
-────────────────────────────────────────
-FILE DETAILS
-────────────────────────────────────────
-• File type: PDF
-• Resolution: 300 dpi
-• Compatible with Adobe Reader (free) and most PDF viewers
-• Digital product only — no physical item will be mailed
-
-────────────────────────────────────────
-FAQ
-────────────────────────────────────────
-Q: Can I print multiple copies?
-A: Yes! Your purchase covers unlimited personal-use prints for your household or classroom.
-
-Q: Can I print on A4 paper?
-A: Yes — in your print settings, select 'Fit to Page' or 'Scale to A4' and it will resize automatically.
-
-Q: I can't find my download. Help?
-A: Check your Etsy account under Purchases &amp; Reviews, or look for the Etsy confirmation email. Still stuck? Message me and I'll help within 24 hours.
-
-Q: Can I share this file with others?
-A: This file is licensed for personal and single-classroom use only. Please do not redistribute or resell.
-
-────────────────────────────────────────
-Loved it? A quick review means the world to a small shop and helps other parents find this resource. Thank you so much!
-Questions? I respond within 24 hours.</textarea>
-          </div>
-          <div>
-            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
-              <div style="color:#9B72CF;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Modification Prompt</div>
-              <button onclick="copyTA('ex_r2_w5_prompt', this)" style="background:#1e1e30;color:#9B72CF;border:1px solid #9B72CF;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy</button>
-            </div>
-            <textarea id="ex_r2_w5_prompt" readonly style="width:100%;min-height:280px;background:#1e1e30;color:#E2E2E2;border:1px solid #252538;border-radius:8px;padding:12px;font-family:monospace;font-size:0.8rem;line-height:1.5;resize:vertical;">I have an Etsy digital printable product with the following details:
-
-Product name: Ocean Explorer Busy Book
-Age range: 2–4
-Format: PDF activity pack
-Current price: $4.99
-Current Etsy title: Ocean Explorer Busy Book for Toddlers | 20+ Activity Pages | Printable PDF
-Current tags: busy book, toddler activities, ocean theme, printable busy book, preschool activity, no-prep activity, ocean worksheet, busy book pages, toddler busy book, quiet book pages, activity pack kids, screen free kids, ocean animals
-
-I want to modify this product as follows:
-[DESCRIBE YOUR CHANGES HERE]
-
-Please return:
-1. Updated Etsy title (max 140 chars; put the primary keyword in the first 30 characters)
-2. All 13 Etsy tags (use synonyms — do NOT repeat words already in the title)
-3. Full Etsy description with: hook sentence, what's included, who it's for, how to download &amp; print, file details, FAQ (4 Q&amp;As), review request
-4. Suggested price (with brief reasoning)</textarea>
-          </div>
-        </div>
-      </div>
-    <div class="product-card rank-3">
-      <div class="product-rank">🥉</div>
-      <div class="product-name">Number Tracing + Counting Workbook (1–20)</div>
-      <div class="product-meta">
-        <span class="meta-chip">Price: <span>$3.49 launch → $4.99</span></span>
-        <span class="meta-chip">Build time: <span>1.5–2 hrs Canva</span></span>
-        <span class="meta-chip">Pages: <span>35</span></span>
-        <span class="meta-chip">Format: <span>PDF 8.5×11"</span></span>
-        <span class="meta-chip">Demand: <span>High</span></span>
-      </div>
-
-      <div class="edge-box">
-        <div class="edge-label">Your Differentiation</div>
-        <div class="edge-body">Go beyond basic tracing. Include ten-frames, tally marks, and "draw the objects" sections. Competitors only do dotted number tracing — this gives parents a more complete math readiness tool and justifies a price point $0.50–$1 higher. Also bundle with Alphabet Workbook at checkout for an upsell.</div>
-      </div>
-
-      <div class="product-grid">
-        <div class="detail-block">
-          <div class="detail-label">What to include</div>
-          <div class="detail-body"><ul>
-            <li>Numbers 1–20, one page per number</li>
-            <li>Tracing: large dotted number × 3 rows</li>
-            <li>Ten-frame representation</li>
-            <li>Tally mark section</li>
-            <li>"Draw [N] objects" activity</li>
-            <li>Counting objects to circle</li>
-            <li>Number word (one, two…)</li>
-            <li>Bonus: Number ordering activity page</li>
-          </ul></div>
-        </div>
-        <div class="detail-block">
-          <div class="detail-label">Upsell strategy</div>
-          <div class="detail-body"><ul>
-            <li>List at $3.49 — fast first sale</li>
-            <li>In listing: "Bundle with Alphabet Workbook → save 20%"</li>
-            <li>Create Etsy bundle listing: $6.99 for both</li>
-            <li>Bundle = higher order value, same effort</li>
-            <li>After 10 reviews on each: combine into homeschool starter pack</li>
-          </ul></div>
-        </div>
-      </div>
-
-      <div class="seo-block">
-        <div class="seo-label">Etsy Title</div>
-        <div class="seo-value">Number Tracing Workbook 1-20 | Preschool Math Printable | Counting Practice Worksheets | Kindergarten | Instant Download</div>
-        <div class="tag-row">
-          <div class="seo-label" style="margin-top:12px;">All 13 Tags</div>
-          <span class="tag">number tracing</span><span class="tag">preschool math</span><span class="tag">counting worksheets</span><span class="tag">kindergarten math</span><span class="tag">number practice</span><span class="tag">math printable kids</span><span class="tag">homeschool math</span><span class="tag">ten frame worksheet</span><span class="tag">toddler learning</span><span class="tag">instant download</span><span class="tag">educational printable</span><span class="tag">number workbook</span><span class="tag">early childhood</span>
-        </div>
-      </div>
-
-      <div class="canva-section">
-        <div class="canva-label">🔍 Canva Search Keywords (Click to Find Templates)</div>
-        <div class="canva-grid">
-          <a href="https://www.canva.com/search?q=number+tracing+practice" target="_blank" class="canva-btn">number tracing</a>
-          <a href="https://www.canva.com/search?q=preschool+math+worksheet" target="_blank" class="canva-btn">preschool math</a>
-          <a href="https://www.canva.com/search?q=counting+activities+kids" target="_blank" class="canva-btn">counting activities</a>
-          <a href="https://www.canva.com/search?q=math+worksheet+template" target="_blank" class="canva-btn">math worksheet</a>
-          <a href="https://www.canva.com/search?q=kindergarten+number+page" target="_blank" class="canva-btn">kindergarten numbers</a>
-          <a href="https://www.canva.com/search?q=ten+frame+worksheet" target="_blank" class="canva-btn">ten frame</a>
-        </div>
-      </div>
-
-      <div class="competitor-section">
-        <div class="competitor-label">🎨 Competitor Design Inspiration</div>
-        <div class="competitor-grid">
-          <a href="https://www.etsy.com/search?q=number+tracing&sort_on=score" target="_blank" class="competitor-btn">Etsy Top Designs</a>
-          <a href="https://www.etsy.com/search?q=counting+worksheet&sort_on=num_favorers_desc" target="_blank" class="competitor-btn">Most Favorited</a>
-          <a href="https://www.etsy.com/shop/PrintableDandelion" target="_blank" class="competitor-btn">PrintableDandelion</a>
-          <a href="https://trends.pinterest.com/?country=US&term=number+tracing" target="_blank" class="competitor-btn">Pinterest Trends</a>
-        </div>
-      </div>
-      <div style="border-left:3px solid #3DD68C;background:#0f1f18;border-radius:0 8px 8px 0;padding:12px 16px;margin-top:14px;"><div style="color:#3DD68C;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">SEO Quick-Tips</div><div style="display:grid;gap:5px;font-size:0.82rem;"><div><span style="color:#6B7280;">Primary keyword:</span> <span style="color:#E2E2E2;font-weight:600;">number tracing</span></div><div><span style="color:#6B7280;">Title first 30 chars</span> <span style="color:#6B7280;font-size:0.74rem;">(shows on mobile)</span><span style="color:#6B7280;">:</span> <span style="color:#E2E2E2;font-weight:600;">Number Tracing Workbook 1-20 f</span></div><div><span style="color:#6B7280;">Etsy category:</span> <span style="color:#E2E2E2;">Paper &amp; Party Supplies &rarr; Stationery &rarr; Printables</span></div><div style="color:#6B7280;font-size:0.78rem;margin-top:4px;border-top:1px solid #252538;padding-top:6px;">Put primary keyword in first 30 title chars. Tags &ne; title words &mdash; use synonyms.</div></div></div>
-      <div style="margin-top:14px;">
-        <button onclick="toggleExtra('ex_r3_w5')" style="background:#C9A84C;color:#0B0B14;border:none;border-radius:8px;padding:8px 16px;font-size:0.82rem;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px;">&#128203; Listing Description &amp; Modification Tools<span id="ex_r3_w5_arrow" style="transition:transform .25s;">&#9660;</span></button>
-        <div id="ex_r3_w5" style="display:none;margin-top:10px;">
-          <div style="margin-bottom:14px;">
-            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
-              <div style="color:#3DD68C;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Etsy Tags (13)</div>
-              <button onclick="copyTA('ex_r3_w5_tags', this)" style="background:#1e1e30;color:#3DD68C;border:1px solid #3DD68C;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy All</button>
-            </div>
-            <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px;"><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">number tracing</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">counting worksheet</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">number recognition</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">preschool math</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">number workbook</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">kindergarten prep</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">math printable</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">counting printable</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">trace and count</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">preschool numbers</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">number learning</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">early math</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">number practice</span></div>
-            <textarea id="ex_r3_w5_tags" readonly style="display:none;">number tracing, counting worksheet, number recognition, preschool math, number workbook, kindergarten prep, math printable, counting printable, trace and count, preschool numbers, number learning, early math, number practice</textarea>
-          </div>
-          <div style="margin-bottom:14px;">
-            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
-              <div style="color:#4EA8DE;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Full Etsy Description</div>
-              <button onclick="copyTA('ex_r3_w5_desc', this)" style="background:#1e1e30;color:#4EA8DE;border:1px solid #4EA8DE;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy</button>
-            </div>
-            <textarea id="ex_r3_w5_desc" readonly style="width:100%;min-height:260px;background:#1e1e30;color:#E2E2E2;border:1px solid #252538;border-radius:8px;padding:12px;font-family:monospace;font-size:0.8rem;line-height:1.5;resize:vertical;">Number Tracing + Counting Workbook (1–20) for ages 3–5 | Printable PDF | Instant Download
-
-A 30+ page workbook covering numbers 1–20 — each page has a traceable digit, counting objects to circle, and bonus number-bond and ordering exercises.
-
-────────────────────────────────────────
-WHAT'S INCLUDED
-────────────────────────────────────────
-• Format: PDF workbook
-• High resolution: 300 dpi — prints sharp at home
-• Size: US Letter (8.5 x 11 in) — easy to resize to A4
-• Instant digital download — no physical item is shipped
-
-────────────────────────────────────────
-HOW TO DOWNLOAD &amp; PRINT
-────────────────────────────────────────
-1. Complete your purchase on Etsy
-2. Click the download link in your confirmation email (or go to Etsy &gt; Purchases &amp; Reviews)
-3. Open the PDF on your computer or tablet
-4. Print at home or at a local print shop — standard paper works great
-Laminate pages for repeated use, or print fresh sets as needed
-
-────────────────────────────────────────
-FILE DETAILS
-────────────────────────────────────────
-• File type: PDF
-• Resolution: 300 dpi
-• Compatible with Adobe Reader (free) and most PDF viewers
-• Digital product only — no physical item will be mailed
-
-────────────────────────────────────────
-FAQ
-────────────────────────────────────────
-Q: Can I print multiple copies?
-A: Yes! Your purchase covers unlimited personal-use prints for your household or classroom.
-
-Q: Can I print on A4 paper?
-A: Yes — in your print settings, select 'Fit to Page' or 'Scale to A4' and it will resize automatically.
-
-Q: I can't find my download. Help?
-A: Check your Etsy account under Purchases &amp; Reviews, or look for the Etsy confirmation email. Still stuck? Message me and I'll help within 24 hours.
-
-Q: Can I share this file with others?
-A: This file is licensed for personal and single-classroom use only. Please do not redistribute or resell.
-
-────────────────────────────────────────
-Loved it? A quick review means the world to a small shop and helps other parents find this resource. Thank you so much!
-Questions? I respond within 24 hours.</textarea>
-          </div>
-          <div>
-            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
-              <div style="color:#9B72CF;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Modification Prompt</div>
-              <button onclick="copyTA('ex_r3_w5_prompt', this)" style="background:#1e1e30;color:#9B72CF;border:1px solid #9B72CF;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy</button>
-            </div>
-            <textarea id="ex_r3_w5_prompt" readonly style="width:100%;min-height:280px;background:#1e1e30;color:#E2E2E2;border:1px solid #252538;border-radius:8px;padding:12px;font-family:monospace;font-size:0.8rem;line-height:1.5;resize:vertical;">I have an Etsy digital printable product with the following details:
-
-Product name: Number Tracing + Counting Workbook (1–20)
-Age range: 3–5
-Format: PDF workbook
-Current price: $4.99
-Current Etsy title: Number Tracing Workbook 1-20 for Preschoolers | 30 Pages | Printable PDF
-Current tags: number tracing, counting worksheet, number recognition, preschool math, number workbook, kindergarten prep, math printable, counting printable, trace and count, preschool numbers, number learning, early math, number practice
-
-I want to modify this product as follows:
-[DESCRIBE YOUR CHANGES HERE]
-
-Please return:
-1. Updated Etsy title (max 140 chars; put the primary keyword in the first 30 characters)
-2. All 13 Etsy tags (use synonyms — do NOT repeat words already in the title)
-3. Full Etsy description with: hook sentence, what's included, who it's for, how to download &amp; print, file details, FAQ (4 Q&amp;As), review request
-4. Suggested price (with brief reasoning)</textarea>
-          </div>
-        </div>
-      </div>
-    <div class="product-card rank-4">
-      <div class="product-rank" style="font-size:1.6rem">4️⃣</div>
-      <div class="product-name">Sight Words Flashcard Set (Dolch Pre-K + K)</div>
-      <div class="product-meta">
-        <span class="meta-chip">Price: <span>$3.99 launch → $5.49</span></span>
-        <span class="meta-chip">Build time: <span>2–3 hrs Canva</span></span>
-        <span class="meta-chip">Cards: <span>110 cards</span></span>
-        <span class="meta-chip">Format: <span>PDF 3×5" cards</span></span>
-        <span class="meta-chip">Demand: <span>High</span></span>
-      </div>
-
-      <div class="edge-box">
-        <div class="edge-label">Your Differentiation</div>
-        <div class="edge-body">Add a sentence strip under each word — "The cat sat on the mat" for "the." MyLamaMoon does bilingual flashcards; yours adds sentence context. This makes it 10× more useful than competitors who just print the word. Target keyword angle: "flashcards with sentences" — almost no one owns this yet.</div>
-      </div>
-
-      <div class="seo-block">
-        <div class="seo-label">Etsy Title</div>
-        <div class="seo-value">Sight Word Flashcards with Sentences | Dolch Pre-K Kindergarten | Printable Reading Cards | 110 Words | Instant Download</div>
-        <div class="tag-row">
-          <div class="seo-label" style="margin-top:12px;">All 13 Tags</div>
-          <span class="tag">sight words</span><span class="tag">dolch words</span><span class="tag">reading flashcards</span><span class="tag">kindergarten reading</span><span class="tag">sight word games</span><span class="tag">printable flashcards</span><span class="tag">early reading</span><span class="tag">homeschool reading</span><span class="tag">word cards kids</span><span class="tag">instant download</span><span class="tag">phonics printable</span><span class="tag">pre-k reading</span><span class="tag">reading practice</span>
-        </div>
-      </div>
-
-      <div class="canva-section">
-        <div class="canva-label">🔍 Canva Search Keywords (Click to Find Templates)</div>
-        <div class="canva-grid">
-          <a href="https://www.canva.com/search?q=sight+word+flashcard" target="_blank" class="canva-btn">sight word flashcard</a>
-          <a href="https://www.canva.com/search?q=reading+flashcard+template" target="_blank" class="canva-btn">reading flashcard</a>
-          <a href="https://www.canva.com/search?q=early+reading+practice" target="_blank" class="canva-btn">early reading practice</a>
-          <a href="https://www.canva.com/search?q=word+card+design" target="_blank" class="canva-btn">word card design</a>
-          <a href="https://www.canva.com/search?q=kindergarten+reading" target="_blank" class="canva-btn">kindergarten reading</a>
-          <a href="https://www.canva.com/search?q=learning+flashcard" target="_blank" class="canva-btn">learning flashcard</a>
-        </div>
-      </div>
-
-      <div class="competitor-section">
-        <div class="competitor-label">🎨 Competitor Design Inspiration</div>
-        <div class="competitor-grid">
-          <a href="https://www.etsy.com/search?q=sight+word+flashcards&sort_on=score" target="_blank" class="competitor-btn">Etsy Top Designs</a>
-          <a href="https://www.etsy.com/search?q=dolch+words&sort_on=num_favorers_desc" target="_blank" class="competitor-btn">Most Favorited</a>
-          <a href="https://www.etsy.com/shop/MyLamaMoon" target="_blank" class="competitor-btn">MyLamaMoon</a>
-          <a href="https://trends.pinterest.com/?country=US&term=sight+words" target="_blank" class="competitor-btn">Pinterest Trends</a>
-        </div>
-      </div>
-      <div style="border-left:3px solid #3DD68C;background:#0f1f18;border-radius:0 8px 8px 0;padding:12px 16px;margin-top:14px;"><div style="color:#3DD68C;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">SEO Quick-Tips</div><div style="display:grid;gap:5px;font-size:0.82rem;"><div><span style="color:#6B7280;">Primary keyword:</span> <span style="color:#E2E2E2;font-weight:600;">sight words</span></div><div><span style="color:#6B7280;">Title first 30 chars</span> <span style="color:#6B7280;font-size:0.74rem;">(shows on mobile)</span><span style="color:#6B7280;">:</span> <span style="color:#E2E2E2;font-weight:600;">Sight Word Flashcards Dolch Pr</span></div><div><span style="color:#6B7280;">Etsy category:</span> <span style="color:#E2E2E2;">Paper &amp; Party Supplies &rarr; Stationery &rarr; Flashcards</span></div><div style="color:#6B7280;font-size:0.78rem;margin-top:4px;border-top:1px solid #252538;padding-top:6px;">Put primary keyword in first 30 title chars. Tags &ne; title words &mdash; use synonyms.</div></div></div>
-      <div style="margin-top:14px;">
-        <button onclick="toggleExtra('ex_r4_w5')" style="background:#C9A84C;color:#0B0B14;border:none;border-radius:8px;padding:8px 16px;font-size:0.82rem;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px;">&#128203; Listing Description &amp; Modification Tools<span id="ex_r4_w5_arrow" style="transition:transform .25s;">&#9660;</span></button>
-        <div id="ex_r4_w5" style="display:none;margin-top:10px;">
-          <div style="margin-bottom:14px;">
-            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
-              <div style="color:#3DD68C;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Etsy Tags (13)</div>
-              <button onclick="copyTA('ex_r4_w5_tags', this)" style="background:#1e1e30;color:#3DD68C;border:1px solid #3DD68C;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy All</button>
-            </div>
-            <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px;"><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">sight words</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">Dolch flashcards</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">kindergarten reading</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">sight word cards</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">reading practice</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">early literacy</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">phonics printable</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">sight word game</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">pre-k reading</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">flash cards kids</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">word recognition</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">dolch words</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">literacy center</span></div>
-            <textarea id="ex_r4_w5_tags" readonly style="display:none;">sight words, Dolch flashcards, kindergarten reading, sight word cards, reading practice, early literacy, phonics printable, sight word game, pre-k reading, flash cards kids, word recognition, dolch words, literacy center</textarea>
-          </div>
-          <div style="margin-bottom:14px;">
-            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
-              <div style="color:#4EA8DE;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Full Etsy Description</div>
-              <button onclick="copyTA('ex_r4_w5_desc', this)" style="background:#1e1e30;color:#4EA8DE;border:1px solid #4EA8DE;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy</button>
-            </div>
-            <textarea id="ex_r4_w5_desc" readonly style="width:100%;min-height:260px;background:#1e1e30;color:#E2E2E2;border:1px solid #252538;border-radius:8px;padding:12px;font-family:monospace;font-size:0.8rem;line-height:1.5;resize:vertical;">Sight Words Flashcard Set (Dolch Pre-K + K) for ages 4–6 | Printable PDF | Instant Download
-
-92 double-sided flashcards covering all 40 Dolch Pre-K words and 52 Dolch Kindergarten words, each with the word + a small illustration on the front and a sample sentence on the back.
+The set contains 24 double‑sided flashcards—each card shows a vivid color or a basic shape with a name label. Kids flip cards, name the color or shape, and match them to real objects.
 
 ────────────────────────────────────────
 WHAT'S INCLUDED
@@ -1327,16 +372,16 @@ Questions? I respond within 24 hours.</textarea>
           <div>
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
               <div style="color:#9B72CF;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Modification Prompt</div>
-              <button onclick="copyTA('ex_r4_w5_prompt', this)" style="background:#1e1e30;color:#9B72CF;border:1px solid #9B72CF;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy</button>
+              <button onclick="copyTA('ex_r2_w6_prompt', this)" style="background:#1e1e30;color:#9B72CF;border:1px solid #9B72CF;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy</button>
             </div>
-            <textarea id="ex_r4_w5_prompt" readonly style="width:100%;min-height:280px;background:#1e1e30;color:#E2E2E2;border:1px solid #252538;border-radius:8px;padding:12px;font-family:monospace;font-size:0.8rem;line-height:1.5;resize:vertical;">I have an Etsy digital printable product with the following details:
+            <textarea id="ex_r2_w6_prompt" readonly style="width:100%;min-height:280px;background:#1e1e30;color:#E2E2E2;border:1px solid #252538;border-radius:8px;padding:12px;font-family:monospace;font-size:0.8rem;line-height:1.5;resize:vertical;">I have an Etsy digital printable product with the following details:
 
-Product name: Sight Words Flashcard Set (Dolch Pre-K + K)
-Age range: 4–6
+Product name: Color and Shape Flashcards
+Age range: 2–4
 Format: PDF flashcards
-Current price: $3.99
-Current Etsy title: Sight Word Flashcards Dolch Pre-K and Kindergarten | 92 Cards | Printable PDF
-Current tags: sight words, Dolch flashcards, kindergarten reading, sight word cards, reading practice, early literacy, phonics printable, sight word game, pre-k reading, flash cards kids, word recognition, dolch words, literacy center
+Current price: $4.49
+Current Etsy title: Color &amp; Shape Flashcards PDF for Ages 2-4 – Printable Early Learning Cards
+Current tags: flashcards, colorlearning, shapecards, toddler, preschool, printable, earlylearning
 
 I want to modify this product as follows:
 [DESCRIBE YOUR CHANGES HERE]
@@ -1349,77 +394,60 @@ Please return:
           </div>
         </div>
       </div>
-    <div class="product-card rank-5" style="box-shadow:0 0 0 2px #C9A84C,0 0 28px rgba(201,168,76,0.18);border-color:#C9A84C;">
-      <div class="product-rank" style="font-size:1.6rem">5️⃣</div>
-      <div class="product-name">Editable Kids Reward Chart (5 Designs)</div>
+    </div>
+
+    <!-- PRODUCT 3 -->
+    <div class="product-card rank-3">
+      <div class="product-rank">🥉</div>
+      <div class="product-name">Scissor Skills Practice Sheets</div>
       <div class="product-meta">
-        <span class="meta-chip">Price: <span>$4.49 launch → $5.99</span></span>
-        <span class="meta-chip">Build time: <span>1.5 hrs Canva</span></span>
-        <span class="meta-chip">Pages: <span>5 chart variants</span></span>
-        <span class="meta-chip">Format: <span>PDF + Canva link</span></span>
-        <span class="meta-chip">Demand: <span>Medium-High</span></span>
+        <span class="meta-chip">Price: <span>$4.99</span></span>
+        <span class="meta-chip">Ages: <span>3–5</span></span>
+        <span class="meta-chip">Format: <span>PDF printable</span></span>
+        <span class="meta-chip" style="border-color:#CD7F32;color:#CD7F32;">Week 8</span>
       </div>
-
-      <div class="edge-box">
-        <div class="edge-label">Your Differentiation</div>
-        <div class="edge-body">5 chart styles in one purchase (weekly/monthly, stars/checkboxes/emojis, morning routine/chore chart/behavior). Editable via Canva link — parents add the child's name. PaperMinxPrintables built a 13k-review business on editable templates. This is your fastest-to-build, impulse-buy product.</div>
+      <div class="card" style="margin-bottom:14px;">
+        <div class="card-title">What To Build</div>
+        <p>The product offers 10 printable pages with progressively harder cut‑out lines and themed pictures for kids to practice scissor control. Children trace, cut along the lines, and develop fine‑motor coordination.</p>
       </div>
-
+      <div class="card" style="margin-bottom:14px;">
+        <div class="card-title">Why It Sells</div>
+        <p>Parents buy it when they need affordable, age‑appropriate cutting practice for preschoolers at home or in classroom settings.</p>
+      </div>
+      <div style="margin-bottom:14px;">
+        <div class="card-title" style="color:#C9A84C;font-size:0.85rem;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px;">How To Build in Canva</div>
+        <div class="step-card"><div class="step-num">1</div><div class="step-text">Open Canva → search "cutting worksheet template" → choose a landscape 8.5×11 layout</div></div><div class="step-card"><div class="step-num">2</div><div class="step-text">Design 10 progressive sheets: straight lines, curves, zig‑zags, simple shapes, and themed pictures (e.g., boats, stars)</div></div><div class="step-card"><div class="step-num">3</div><div class="step-text">Add bold, dotted cut lines and a small illustration showing the direction of the cut</div></div><div class="step-card"><div class="step-num">4</div><div class="step-text">Place a header with age suggestion and a space for the child's name on each sheet</div></div><div class="step-card"><div class="step-num">5</div><div class="step-text">Export as PDF Print → upload to Etsy as a digital download</div></div>
+      </div>
       <div class="seo-block">
         <div class="seo-label">Etsy Title</div>
-        <div class="seo-value">Editable Kids Reward Chart | Printable Chore Chart | 5 Designs | Personalized Behavior Chart | Instant Download Canva</div>
-        <div class="tag-row">
-          <div class="seo-label" style="margin-top:12px;">All 13 Tags</div>
-          <span class="tag">reward chart kids</span><span class="tag">chore chart printable</span><span class="tag">behavior chart</span><span class="tag">editable reward chart</span><span class="tag">kids routine chart</span><span class="tag">morning routine</span><span class="tag">printable parenting</span><span class="tag">sticker chart</span><span class="tag">potty training chart</span><span class="tag">personalized kids</span><span class="tag">instant download</span><span class="tag">parenting printable</span><span class="tag">toddler chart</span>
-        </div>
+        <div class="seo-value">Scissor Skills Practice Sheets PDF for Ages 3-5 – Printable Cutting Worksheets</div>
+        <div class="tag-row" style="margin-top:10px;"><span class="etsy-tag">scissors</span><span class="etsy-tag">cuttingsheets</span><span class="etsy-tag">preschool</span><span class="etsy-tag">fine motor</span><span class="etsy-tag">printable</span><span class="etsy-tag">kidsactivity</span><span class="etsy-tag">handwriting</span></div>
       </div>
-
-      <div class="canva-section">
-        <div class="canva-label">🔍 Canva Search Keywords (Click to Find Templates)</div>
-        <div class="canva-grid">
-          <a href="https://www.canva.com/search?q=reward+chart+template" target="_blank" class="canva-btn">reward chart template</a>
-          <a href="https://www.canva.com/search?q=chore+chart+kids+editable" target="_blank" class="canva-btn">chore chart kids</a>
-          <a href="https://www.canva.com/search?q=behavior+chart+printable" target="_blank" class="canva-btn">behavior chart</a>
-          <a href="https://www.canva.com/search?q=sticker+chart+design" target="_blank" class="canva-btn">sticker chart</a>
-          <a href="https://www.canva.com/search?q=progress+tracker+kids" target="_blank" class="canva-btn">progress tracker</a>
-          <a href="https://www.canva.com/search?q=weekly+checklist+printable" target="_blank" class="canva-btn">weekly checklist</a>
-        </div>
-      </div>
-
-      <div class="competitor-section">
-        <div class="competitor-label">🎨 Competitor Design Inspiration</div>
-        <div class="competitor-grid">
-          <a href="https://www.etsy.com/search?q=reward+chart+kids&sort_on=score" target="_blank" class="competitor-btn">Etsy Top Designs</a>
-          <a href="https://www.etsy.com/search?q=chore+chart&sort_on=num_favorers_desc" target="_blank" class="competitor-btn">Most Favorited</a>
-          <a href="https://www.etsy.com/shop/PaperMinxPrintables" target="_blank" class="competitor-btn">PaperMinxPrintables</a>
-          <a href="https://trends.pinterest.com/?country=US&term=reward+chart+kids" target="_blank" class="competitor-btn">Pinterest Trends</a>
-        </div>
-      </div>
-      <div style="border-left:3px solid #3DD68C;background:#0f1f18;border-radius:0 8px 8px 0;padding:12px 16px;margin-top:14px;"><div style="color:#3DD68C;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">SEO Quick-Tips</div><div style="display:grid;gap:5px;font-size:0.82rem;"><div><span style="color:#6B7280;">Primary keyword:</span> <span style="color:#E2E2E2;font-weight:600;">reward chart</span></div><div><span style="color:#6B7280;">Title first 30 chars</span> <span style="color:#6B7280;font-size:0.74rem;">(shows on mobile)</span><span style="color:#6B7280;">:</span> <span style="color:#E2E2E2;font-weight:600;">Editable Kids Reward Chart | 5</span></div><div><span style="color:#6B7280;">Etsy category:</span> <span style="color:#E2E2E2;">Paper &amp; Party Supplies &rarr; Stationery &rarr; Printables</span></div><div style="color:#6B7280;font-size:0.78rem;margin-top:4px;border-top:1px solid #252538;padding-top:6px;">Put primary keyword in first 30 title chars. Tags &ne; title words &mdash; use synonyms.</div></div></div>
+      <div style="border-left:3px solid #3DD68C;background:#0f1f18;border-radius:0 8px 8px 0;padding:12px 16px;margin-top:14px;"><div style="color:#3DD68C;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">SEO Quick-Tips</div><div style="display:grid;gap:5px;font-size:0.82rem;"><div><span style="color:#6B7280;">Primary keyword:</span> <span style="color:#E2E2E2;font-weight:600;">scissors</span></div><div><span style="color:#6B7280;">Title first 30 chars</span> <span style="color:#6B7280;font-size:0.74rem;">(shows on mobile)</span><span style="color:#6B7280;">:</span> <span style="color:#E2E2E2;font-weight:600;">Scissor Skills Practice Sheets</span></div><div><span style="color:#6B7280;">Etsy category:</span> <span style="color:#E2E2E2;">Paper &amp; Party Supplies &rarr; Stationery &rarr; Printables</span></div><div style="color:#6B7280;font-size:0.78rem;margin-top:4px;border-top:1px solid #252538;padding-top:6px;">Put primary keyword in first 30 title chars. Tags &ne; title words &mdash; use synonyms.</div></div></div>
       <div style="margin-top:14px;">
-        <button onclick="toggleExtra('ex_r5_w5')" style="background:#C9A84C;color:#0B0B14;border:none;border-radius:8px;padding:8px 16px;font-size:0.82rem;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px;">&#128203; Listing Description &amp; Modification Tools<span id="ex_r5_w5_arrow" style="transition:transform .25s;">&#9660;</span></button>
-        <div id="ex_r5_w5" style="display:none;margin-top:10px;">
+        <button onclick="toggleExtra('ex_r3_w6')" style="background:#C9A84C;color:#0B0B14;border:none;border-radius:8px;padding:8px 16px;font-size:0.82rem;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px;">&#128203; Listing Description &amp; Modification Tools<span id="ex_r3_w6_arrow" style="transition:transform .25s;">&#9660;</span></button>
+        <div id="ex_r3_w6" style="display:none;margin-top:10px;">
           <div style="margin-bottom:14px;">
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
-              <div style="color:#3DD68C;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Etsy Tags (13)</div>
-              <button onclick="copyTA('ex_r5_w5_tags', this)" style="background:#1e1e30;color:#3DD68C;border:1px solid #3DD68C;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy All</button>
+              <div style="color:#3DD68C;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Etsy Tags (7)</div>
+              <button onclick="copyTA('ex_r3_w6_tags', this)" style="background:#1e1e30;color:#3DD68C;border:1px solid #3DD68C;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy All</button>
             </div>
-            <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px;"><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">reward chart</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">behavior chart</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">kids chore chart</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">printable chart</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">star chart</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">potty training</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">editable chart</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">chore chart kids</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">good behavior</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">kids sticker chart</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">parenting tool</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">daily routine chart</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">responsibility chart</span></div>
-            <textarea id="ex_r5_w5_tags" readonly style="display:none;">reward chart, behavior chart, kids chore chart, printable chart, star chart, potty training, editable chart, chore chart kids, good behavior, kids sticker chart, parenting tool, daily routine chart, responsibility chart</textarea>
+            <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px;"><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">scissors</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">cuttingsheets</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">preschool</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">fine motor</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">printable</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">kidsactivity</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">handwriting</span></div>
+            <textarea id="ex_r3_w6_tags" readonly style="display:none;">scissors, cuttingsheets, preschool, fine motor, printable, kidsactivity, handwriting</textarea>
           </div>
           <div style="margin-bottom:14px;">
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
               <div style="color:#4EA8DE;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Full Etsy Description</div>
-              <button onclick="copyTA('ex_r5_w5_desc', this)" style="background:#1e1e30;color:#4EA8DE;border:1px solid #4EA8DE;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy</button>
+              <button onclick="copyTA('ex_r3_w6_desc', this)" style="background:#1e1e30;color:#4EA8DE;border:1px solid #4EA8DE;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy</button>
             </div>
-            <textarea id="ex_r5_w5_desc" readonly style="width:100%;min-height:260px;background:#1e1e30;color:#E2E2E2;border:1px solid #252538;border-radius:8px;padding:12px;font-family:monospace;font-size:0.8rem;line-height:1.5;resize:vertical;">Editable Kids Reward Chart (5 Designs) for ages 3–8 | Printable PDF | Instant Download
+            <textarea id="ex_r3_w6_desc" readonly style="width:100%;min-height:260px;background:#1e1e30;color:#E2E2E2;border:1px solid #252538;border-radius:8px;padding:12px;font-family:monospace;font-size:0.8rem;line-height:1.5;resize:vertical;">Scissor Skills Practice Sheets for ages 3–5 | Printable PDF | Instant Download
 
-Five editable chart designs (stars, animals, space, rainbow, superhero) — each with space for a child's name, 30 days of tracking, and a matching Certificate of Achievement.
+The product offers 10 printable pages with progressively harder cut‑out lines and themed pictures for kids to practice scissor control. Children trace, cut along the lines, and develop fine‑motor coordination.
 
 ────────────────────────────────────────
 WHAT'S INCLUDED
 ────────────────────────────────────────
-• Format: PDF + editable
+• Format: PDF printable
 • High resolution: 300 dpi — prints sharp at home
 • Size: US Letter (8.5 x 11 in) — easy to resize to A4
 • Instant digital download — no physical item is shipped
@@ -1463,16 +491,16 @@ Questions? I respond within 24 hours.</textarea>
           <div>
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
               <div style="color:#9B72CF;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Modification Prompt</div>
-              <button onclick="copyTA('ex_r5_w5_prompt', this)" style="background:#1e1e30;color:#9B72CF;border:1px solid #9B72CF;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy</button>
+              <button onclick="copyTA('ex_r3_w6_prompt', this)" style="background:#1e1e30;color:#9B72CF;border:1px solid #9B72CF;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy</button>
             </div>
-            <textarea id="ex_r5_w5_prompt" readonly style="width:100%;min-height:280px;background:#1e1e30;color:#E2E2E2;border:1px solid #252538;border-radius:8px;padding:12px;font-family:monospace;font-size:0.8rem;line-height:1.5;resize:vertical;">I have an Etsy digital printable product with the following details:
+            <textarea id="ex_r3_w6_prompt" readonly style="width:100%;min-height:280px;background:#1e1e30;color:#E2E2E2;border:1px solid #252538;border-radius:8px;padding:12px;font-family:monospace;font-size:0.8rem;line-height:1.5;resize:vertical;">I have an Etsy digital printable product with the following details:
 
-Product name: Editable Kids Reward Chart (5 Designs)
-Age range: 3–8
-Format: PDF + editable
+Product name: Scissor Skills Practice Sheets
+Age range: 3–5
+Format: PDF printable
 Current price: $4.99
-Current Etsy title: Editable Kids Reward Chart | 5 Designs | Printable Behavior Chart | Stars Animals Space
-Current tags: reward chart, behavior chart, kids chore chart, printable chart, star chart, potty training, editable chart, chore chart kids, good behavior, kids sticker chart, parenting tool, daily routine chart, responsibility chart
+Current Etsy title: Scissor Skills Practice Sheets PDF for Ages 3-5 – Printable Cutting Worksheets
+Current tags: scissors, cuttingsheets, preschool, fine motor, printable, kidsactivity, handwriting
 
 I want to modify this product as follows:
 [DESCRIBE YOUR CHANGES HERE]
@@ -1485,7 +513,249 @@ Please return:
           </div>
         </div>
       </div>
+    </div>
 
+    <!-- PRODUCT 4 -->
+    <div class="product-card rank-4">
+      <div class="product-rank">4️⃣</div>
+      <div class="product-name">Farm Animals Coloring Pages</div>
+      <div class="product-meta">
+        <span class="meta-chip">Price: <span>$3.99</span></span>
+        <span class="meta-chip">Ages: <span>2–5</span></span>
+        <span class="meta-chip">Format: <span>PDF coloring</span></span>
+        <span class="meta-chip" style="border-color:var(--blue);color:var(--blue);">Week 9</span>
+      </div>
+      <div class="card" style="margin-bottom:14px;">
+        <div class="card-title">What To Build</div>
+        <p>The bundle includes 12 farm‑themed coloring sheets plus a customizable cover. Children color each animal, learn its name, and practice hand‑eye coordination.</p>
+      </div>
+      <div class="card" style="margin-bottom:14px;">
+        <div class="card-title">Why It Sells</div>
+        <p>Parents choose it for rainy‑day activities or homeschooling because the farm theme is engaging and the files print easily at home.</p>
+      </div>
+      <div style="margin-bottom:14px;">
+        <div class="card-title" style="color:#C9A84C;font-size:0.85rem;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px;">How To Build in Canva</div>
+        <div class="step-card"><div class="step-num">1</div><div class="step-text">Open Canva → search "coloring page template" → select a portrait 8.5×11 layout</div></div><div class="step-card"><div class="step-num">2</div><div class="step-text">Draw or import 12 simple farm animal outlines (cow, pig, chicken, etc.) with thick, clear borders</div></div><div class="step-card"><div class="step-num">3</div><div class="step-text">Add a small label with the animal name underneath each illustration</div></div><div class="step-card"><div class="step-num">4</div><div class="step-text">Create a front cover with a title banner and a space for the child's name</div></div><div class="step-card"><div class="step-num">5</div><div class="step-text">Export as PDF Print → upload to Etsy as a digital download</div></div>
+      </div>
+      <div class="seo-block">
+        <div class="seo-label">Etsy Title</div>
+        <div class="seo-value">Farm Animals Coloring Pages PDF for Ages 2-5 – Printable Kids Color Book</div>
+        <div class="tag-row" style="margin-top:10px;"><span class="etsy-tag">farmanimals</span><span class="etsy-tag">coloringpages</span><span class="etsy-tag">preschool</span><span class="etsy-tag">printable</span><span class="etsy-tag">toddler</span><span class="etsy-tag">kidsart</span><span class="etsy-tag">homeschool</span></div>
+      </div>
+      <div style="border-left:3px solid #3DD68C;background:#0f1f18;border-radius:0 8px 8px 0;padding:12px 16px;margin-top:14px;"><div style="color:#3DD68C;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">SEO Quick-Tips</div><div style="display:grid;gap:5px;font-size:0.82rem;"><div><span style="color:#6B7280;">Primary keyword:</span> <span style="color:#E2E2E2;font-weight:600;">farmanimals</span></div><div><span style="color:#6B7280;">Title first 30 chars</span> <span style="color:#6B7280;font-size:0.74rem;">(shows on mobile)</span><span style="color:#6B7280;">:</span> <span style="color:#E2E2E2;font-weight:600;">Farm Animals Coloring Pages PD</span></div><div><span style="color:#6B7280;">Etsy category:</span> <span style="color:#E2E2E2;">Paper &amp; Party Supplies &rarr; Stationery &rarr; Printables</span></div><div style="color:#6B7280;font-size:0.78rem;margin-top:4px;border-top:1px solid #252538;padding-top:6px;">Put primary keyword in first 30 title chars. Tags &ne; title words &mdash; use synonyms.</div></div></div>
+      <div style="margin-top:14px;">
+        <button onclick="toggleExtra('ex_r4_w6')" style="background:#C9A84C;color:#0B0B14;border:none;border-radius:8px;padding:8px 16px;font-size:0.82rem;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px;">&#128203; Listing Description &amp; Modification Tools<span id="ex_r4_w6_arrow" style="transition:transform .25s;">&#9660;</span></button>
+        <div id="ex_r4_w6" style="display:none;margin-top:10px;">
+          <div style="margin-bottom:14px;">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+              <div style="color:#3DD68C;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Etsy Tags (7)</div>
+              <button onclick="copyTA('ex_r4_w6_tags', this)" style="background:#1e1e30;color:#3DD68C;border:1px solid #3DD68C;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy All</button>
+            </div>
+            <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px;"><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">farmanimals</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">coloringpages</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">preschool</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">printable</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">toddler</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">kidsart</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">homeschool</span></div>
+            <textarea id="ex_r4_w6_tags" readonly style="display:none;">farmanimals, coloringpages, preschool, printable, toddler, kidsart, homeschool</textarea>
+          </div>
+          <div style="margin-bottom:14px;">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
+              <div style="color:#4EA8DE;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Full Etsy Description</div>
+              <button onclick="copyTA('ex_r4_w6_desc', this)" style="background:#1e1e30;color:#4EA8DE;border:1px solid #4EA8DE;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy</button>
+            </div>
+            <textarea id="ex_r4_w6_desc" readonly style="width:100%;min-height:260px;background:#1e1e30;color:#E2E2E2;border:1px solid #252538;border-radius:8px;padding:12px;font-family:monospace;font-size:0.8rem;line-height:1.5;resize:vertical;">Farm Animals Coloring Pages for ages 2–5 | Printable PDF | Instant Download
+
+The bundle includes 12 farm‑themed coloring sheets plus a customizable cover. Children color each animal, learn its name, and practice hand‑eye coordination.
+
+────────────────────────────────────────
+WHAT'S INCLUDED
+────────────────────────────────────────
+• Format: PDF coloring
+• High resolution: 300 dpi — prints sharp at home
+• Size: US Letter (8.5 x 11 in) — easy to resize to A4
+• Instant digital download — no physical item is shipped
+
+────────────────────────────────────────
+HOW TO DOWNLOAD &amp; PRINT
+────────────────────────────────────────
+1. Complete your purchase on Etsy
+2. Click the download link in your confirmation email (or go to Etsy &gt; Purchases &amp; Reviews)
+3. Open the PDF on your computer or tablet
+4. Print at home or at a local print shop — standard paper works great
+Laminate pages for repeated use, or print fresh sets as needed
+
+────────────────────────────────────────
+FILE DETAILS
+────────────────────────────────────────
+• File type: PDF
+• Resolution: 300 dpi
+• Compatible with Adobe Reader (free) and most PDF viewers
+• Digital product only — no physical item will be mailed
+
+────────────────────────────────────────
+FAQ
+────────────────────────────────────────
+Q: Can I print multiple copies?
+A: Yes! Your purchase covers unlimited personal-use prints for your household or classroom.
+
+Q: Can I print on A4 paper?
+A: Yes — in your print settings, select 'Fit to Page' or 'Scale to A4' and it will resize automatically.
+
+Q: I can't find my download. Help?
+A: Check your Etsy account under Purchases &amp; Reviews, or look for the Etsy confirmation email. Still stuck? Message me and I'll help within 24 hours.
+
+Q: Can I share this file with others?
+A: This file is licensed for personal and single-classroom use only. Please do not redistribute or resell.
+
+────────────────────────────────────────
+Loved it? A quick review means the world to a small shop and helps other parents find this resource. Thank you so much!
+Questions? I respond within 24 hours.</textarea>
+          </div>
+          <div>
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
+              <div style="color:#9B72CF;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Modification Prompt</div>
+              <button onclick="copyTA('ex_r4_w6_prompt', this)" style="background:#1e1e30;color:#9B72CF;border:1px solid #9B72CF;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy</button>
+            </div>
+            <textarea id="ex_r4_w6_prompt" readonly style="width:100%;min-height:280px;background:#1e1e30;color:#E2E2E2;border:1px solid #252538;border-radius:8px;padding:12px;font-family:monospace;font-size:0.8rem;line-height:1.5;resize:vertical;">I have an Etsy digital printable product with the following details:
+
+Product name: Farm Animals Coloring Pages
+Age range: 2–5
+Format: PDF coloring
+Current price: $3.99
+Current Etsy title: Farm Animals Coloring Pages PDF for Ages 2-5 – Printable Kids Color Book
+Current tags: farmanimals, coloringpages, preschool, printable, toddler, kidsart, homeschool
+
+I want to modify this product as follows:
+[DESCRIBE YOUR CHANGES HERE]
+
+Please return:
+1. Updated Etsy title (max 140 chars; put the primary keyword in the first 30 characters)
+2. All 13 Etsy tags (use synonyms — do NOT repeat words already in the title)
+3. Full Etsy description with: hook sentence, what's included, who it's for, how to download &amp; print, file details, FAQ (4 Q&amp;As), review request
+4. Suggested price (with brief reasoning)</textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PRODUCT 5 -->
+    <div class="product-card rank-5">
+      <div class="product-rank">5️⃣</div>
+      <div class="product-name">Safari Animals Coloring Pages</div>
+      <div class="product-meta">
+        <span class="meta-chip">Price: <span>$4.29</span></span>
+        <span class="meta-chip">Ages: <span>2–5</span></span>
+        <span class="meta-chip">Format: <span>PDF coloring</span></span>
+        <span class="meta-chip" style="border-color:var(--purple);color:var(--purple);">Week 10</span>
+      </div>
+      <div class="card" style="margin-bottom:14px;">
+        <div class="card-title">What To Build</div>
+        <p>The set provides 10 safari animal coloring sheets plus a cover page, each with large outlines and a name label. Kids color the animals while becoming familiar with jungle wildlife.</p>
+      </div>
+      <div class="card" style="margin-bottom:14px;">
+        <div class="card-title">Why It Sells</div>
+        <p>Parents buy it to add variety to at‑home art time, because the exotic theme excites young children and the PDFs are ready for instant printing.</p>
+      </div>
+      <div style="margin-bottom:14px;">
+        <div class="card-title" style="color:#C9A84C;font-size:0.85rem;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px;">How To Build in Canva</div>
+        <div class="step-card"><div class="step-num">1</div><div class="step-text">Open Canva → search "coloring page template" → pick a portrait 8.5×11 canvas</div></div><div class="step-card"><div class="step-num">2</div><div class="step-text">Create 10 bold line‑art drawings of safari creatures (lion, giraffe, elephant, zebra, etc.)</div></div><div class="step-card"><div class="step-num">3</div><div class="step-text">Include a simple fact bubble or name label under each animal for a learning touch</div></div><div class="step-card"><div class="step-num">4</div><div class="step-text">Add a decorative front cover with a jungle border and a blank line for the child's name</div></div><div class="step-card"><div class="step-num">5</div><div class="step-text">Export as PDF Print → upload to Etsy as a digital download</div></div>
+      </div>
+      <div class="seo-block">
+        <div class="seo-label">Etsy Title</div>
+        <div class="seo-value">Safari Animals Coloring Pages PDF for Ages 2-5 – Printable Jungle Coloring Book</div>
+        <div class="tag-row" style="margin-top:10px;"><span class="etsy-tag">safari</span><span class="etsy-tag">coloringpages</span><span class="etsy-tag">kidsart</span><span class="etsy-tag">preschool</span><span class="etsy-tag">printable</span><span class="etsy-tag">jungle</span><span class="etsy-tag">homeschool</span></div>
+      </div>
+      <div style="border-left:3px solid #3DD68C;background:#0f1f18;border-radius:0 8px 8px 0;padding:12px 16px;margin-top:14px;"><div style="color:#3DD68C;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">SEO Quick-Tips</div><div style="display:grid;gap:5px;font-size:0.82rem;"><div><span style="color:#6B7280;">Primary keyword:</span> <span style="color:#E2E2E2;font-weight:600;">safari</span></div><div><span style="color:#6B7280;">Title first 30 chars</span> <span style="color:#6B7280;font-size:0.74rem;">(shows on mobile)</span><span style="color:#6B7280;">:</span> <span style="color:#E2E2E2;font-weight:600;">Safari Animals Coloring Pages </span></div><div><span style="color:#6B7280;">Etsy category:</span> <span style="color:#E2E2E2;">Paper &amp; Party Supplies &rarr; Stationery &rarr; Printables</span></div><div style="color:#6B7280;font-size:0.78rem;margin-top:4px;border-top:1px solid #252538;padding-top:6px;">Put primary keyword in first 30 title chars. Tags &ne; title words &mdash; use synonyms.</div></div></div>
+      <div style="margin-top:14px;">
+        <button onclick="toggleExtra('ex_r5_w6')" style="background:#C9A84C;color:#0B0B14;border:none;border-radius:8px;padding:8px 16px;font-size:0.82rem;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px;">&#128203; Listing Description &amp; Modification Tools<span id="ex_r5_w6_arrow" style="transition:transform .25s;">&#9660;</span></button>
+        <div id="ex_r5_w6" style="display:none;margin-top:10px;">
+          <div style="margin-bottom:14px;">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+              <div style="color:#3DD68C;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Etsy Tags (7)</div>
+              <button onclick="copyTA('ex_r5_w6_tags', this)" style="background:#1e1e30;color:#3DD68C;border:1px solid #3DD68C;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy All</button>
+            </div>
+            <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px;"><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">safari</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">coloringpages</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">kidsart</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">preschool</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">printable</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">jungle</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">homeschool</span></div>
+            <textarea id="ex_r5_w6_tags" readonly style="display:none;">safari, coloringpages, kidsart, preschool, printable, jungle, homeschool</textarea>
+          </div>
+          <div style="margin-bottom:14px;">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
+              <div style="color:#4EA8DE;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Full Etsy Description</div>
+              <button onclick="copyTA('ex_r5_w6_desc', this)" style="background:#1e1e30;color:#4EA8DE;border:1px solid #4EA8DE;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy</button>
+            </div>
+            <textarea id="ex_r5_w6_desc" readonly style="width:100%;min-height:260px;background:#1e1e30;color:#E2E2E2;border:1px solid #252538;border-radius:8px;padding:12px;font-family:monospace;font-size:0.8rem;line-height:1.5;resize:vertical;">Safari Animals Coloring Pages for ages 2–5 | Printable PDF | Instant Download
+
+The set provides 10 safari animal coloring sheets plus a cover page, each with large outlines and a name label. Kids color the animals while becoming familiar with jungle wildlife.
+
+────────────────────────────────────────
+WHAT'S INCLUDED
+────────────────────────────────────────
+• Format: PDF coloring
+• High resolution: 300 dpi — prints sharp at home
+• Size: US Letter (8.5 x 11 in) — easy to resize to A4
+• Instant digital download — no physical item is shipped
+
+────────────────────────────────────────
+HOW TO DOWNLOAD &amp; PRINT
+────────────────────────────────────────
+1. Complete your purchase on Etsy
+2. Click the download link in your confirmation email (or go to Etsy &gt; Purchases &amp; Reviews)
+3. Open the PDF on your computer or tablet
+4. Print at home or at a local print shop — standard paper works great
+Laminate pages for repeated use, or print fresh sets as needed
+
+────────────────────────────────────────
+FILE DETAILS
+────────────────────────────────────────
+• File type: PDF
+• Resolution: 300 dpi
+• Compatible with Adobe Reader (free) and most PDF viewers
+• Digital product only — no physical item will be mailed
+
+────────────────────────────────────────
+FAQ
+────────────────────────────────────────
+Q: Can I print multiple copies?
+A: Yes! Your purchase covers unlimited personal-use prints for your household or classroom.
+
+Q: Can I print on A4 paper?
+A: Yes — in your print settings, select 'Fit to Page' or 'Scale to A4' and it will resize automatically.
+
+Q: I can't find my download. Help?
+A: Check your Etsy account under Purchases &amp; Reviews, or look for the Etsy confirmation email. Still stuck? Message me and I'll help within 24 hours.
+
+Q: Can I share this file with others?
+A: This file is licensed for personal and single-classroom use only. Please do not redistribute or resell.
+
+────────────────────────────────────────
+Loved it? A quick review means the world to a small shop and helps other parents find this resource. Thank you so much!
+Questions? I respond within 24 hours.</textarea>
+          </div>
+          <div>
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
+              <div style="color:#9B72CF;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Modification Prompt</div>
+              <button onclick="copyTA('ex_r5_w6_prompt', this)" style="background:#1e1e30;color:#9B72CF;border:1px solid #9B72CF;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy</button>
+            </div>
+            <textarea id="ex_r5_w6_prompt" readonly style="width:100%;min-height:280px;background:#1e1e30;color:#E2E2E2;border:1px solid #252538;border-radius:8px;padding:12px;font-family:monospace;font-size:0.8rem;line-height:1.5;resize:vertical;">I have an Etsy digital printable product with the following details:
+
+Product name: Safari Animals Coloring Pages
+Age range: 2–5
+Format: PDF coloring
+Current price: $4.29
+Current Etsy title: Safari Animals Coloring Pages PDF for Ages 2-5 – Printable Jungle Coloring Book
+Current tags: safari, coloringpages, kidsart, preschool, printable, jungle, homeschool
+
+I want to modify this product as follows:
+[DESCRIBE YOUR CHANGES HERE]
+
+Please return:
+1. Updated Etsy title (max 140 chars; put the primary keyword in the first 30 characters)
+2. All 13 Etsy tags (use synonyms — do NOT repeat words already in the title)
+3. Full Etsy description with: hook sentence, what's included, who it's for, how to download &amp; print, file details, FAQ (4 Q&amp;As), review request
+4. Suggested price (with brief reasoning)</textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  
   <!-- DYNAMIC ACTION PLAN — injected by children_brief_generator.py -->
   <style>
     .ap-item { cursor:pointer; display:flex; gap:14px; align-items:flex-start;
@@ -1512,7 +782,7 @@ Please return:
     <div class="section-header">
       <span class="section-icon">✅</span>
       <span class="section-title">This Week&#39;s Action Plan</span>
-      <span class="section-sub">Week 5 &nbsp;·&nbsp; Editable Kids Reward Chart (5 Designs)</span>
+      <span class="section-sub">Week 6 &nbsp;·&nbsp; Preschool Activity Binder</span>
     </div>
 
     <!-- Launch progress tracker -->
@@ -1543,21 +813,21 @@ Please return:
             <span style="color:#6B7280;font-size:0.75rem;margin-left:auto;">3 steps</span>
           </div>
           <div style="padding:2px 18px 10px;">
-          <div class="ap-item" data-id="ap_w5_s1" onclick="toggleAP('ap_w5_s1')">
+          <div class="ap-item" data-id="ap_w6_s1" onclick="toggleAP('ap_w6_s1')">
             <div class="ap-check"></div>
             <div style="flex:1;">
-              <div class="ap-text">Search Etsy for <strong>"editable kids reward chart 5 designs"</strong> — screenshot the first 8 listings. Note each one's price, page count, review count, and what their thumbnail shows. This is your competitive landscape before you build anything.</div>
+              <div class="ap-text">Search Etsy for <strong>"preschool activity binder"</strong> — screenshot the first 8 listings. Note each one's price, page count, review count, and what their thumbnail shows. This is your competitive landscape before you build anything.</div>
               <div class="ap-time">~30 min</div>
             </div>
           </div>
-          <div class="ap-item" data-id="ap_w5_s2" onclick="toggleAP('ap_w5_s2')">
+          <div class="ap-item" data-id="ap_w6_s2" onclick="toggleAP('ap_w6_s2')">
             <div class="ap-check"></div>
             <div style="flex:1;">
               <div class="ap-text">Click the top 2–3 bestsellers and read ALL their 1–3 star reviews. Write down every complaint — those gaps are exactly where your product can win.</div>
               <div class="ap-time">~15 min</div>
             </div>
           </div>
-          <div class="ap-item" data-id="ap_w5_s3" onclick="toggleAP('ap_w5_s3')">
+          <div class="ap-item" data-id="ap_w6_s3" onclick="toggleAP('ap_w6_s3')">
             <div class="ap-check"></div>
             <div style="flex:1;">
               <div class="ap-text">Open Pinterest, search the same keyword, save 10–15 images to a mood-board folder in Canva: colors, layouts, fonts, and styles you want to reference while building.</div>
@@ -1573,14 +843,14 @@ Please return:
             <span style="color:#6B7280;font-size:0.75rem;margin-left:auto;">2 steps</span>
           </div>
           <div style="padding:2px 18px 10px;">
-          <div class="ap-item" data-id="ap_w5_s4" onclick="toggleAP('ap_w5_s4')">
+          <div class="ap-item" data-id="ap_w6_s4" onclick="toggleAP('ap_w6_s4')">
             <div class="ap-check"></div>
             <div style="flex:1;">
               <div class="ap-text">Write your complete page list before touching Canva — e.g. <em>Cover · Pages 2–27: A–Z tracing (upper + lower) · Pages 28–30: bonus section · Page 31: certificate</em>. Target <strong>30+ pages minimum</strong> — buyers compare page count and often mention it in reviews.</div>
               <div class="ap-time">~15 min</div>
             </div>
           </div>
-          <div class="ap-item" data-id="ap_w5_s5" onclick="toggleAP('ap_w5_s5')">
+          <div class="ap-item" data-id="ap_w6_s5" onclick="toggleAP('ap_w6_s5')">
             <div class="ap-check"></div>
             <div style="flex:1;">
               <div class="ap-text">Commit to your one unique angle from the brief above (a specific theme, a bonus section, a differentiator competitors don't have). Write it on a sticky note where you can see it while building — it keeps every design decision consistent.</div>
@@ -1596,21 +866,21 @@ Please return:
             <span style="color:#6B7280;font-size:0.75rem;margin-left:auto;">3 steps</span>
           </div>
           <div style="padding:2px 18px 10px;">
-          <div class="ap-item" data-id="ap_w5_s6" onclick="toggleAP('ap_w5_s6')">
+          <div class="ap-item" data-id="ap_w6_s6" onclick="toggleAP('ap_w6_s6')">
             <div class="ap-check"></div>
             <div style="flex:1;">
               <div class="ap-text">Open Canva → follow the 5 build steps shown in the brief above → work through every page on your content list in order. Don't rush — a polished 35-page product will outsell a hurried 20-page one for months.</div>
               <div class="ap-time">2–4 hrs</div>
             </div>
           </div>
-          <div class="ap-item" data-id="ap_w5_s7" onclick="toggleAP('ap_w5_s7')">
+          <div class="ap-item" data-id="ap_w6_s7" onclick="toggleAP('ap_w6_s7')">
             <div class="ap-check"></div>
             <div style="flex:1;">
               <div class="ap-text">Proof every page before exporting: check spelling, consistent fonts and colors, and minimum 18pt font for any text a child will read. Fix everything now — it's much harder to update files after your first sale.</div>
               <div class="ap-time">~20 min</div>
             </div>
           </div>
-          <div class="ap-item" data-id="ap_w5_s8" onclick="toggleAP('ap_w5_s8')">
+          <div class="ap-item" data-id="ap_w6_s8" onclick="toggleAP('ap_w6_s8')">
             <div class="ap-check"></div>
             <div style="flex:1;">
               <div class="ap-text"><strong>Export as "PDF Print"</strong> (not "Standard PDF"). PDF Print preserves 300 dpi resolution for home printing. Blurry pages get 1-star reviews; sharp pages get 5-star ones.</div>
@@ -1626,14 +896,14 @@ Please return:
             <span style="color:#6B7280;font-size:0.75rem;margin-left:auto;">2 steps</span>
           </div>
           <div style="padding:2px 18px 10px;">
-          <div class="ap-item" data-id="ap_w5_s9" onclick="toggleAP('ap_w5_s9')">
+          <div class="ap-item" data-id="ap_w6_s9" onclick="toggleAP('ap_w6_s9')">
             <div class="ap-check"></div>
             <div style="flex:1;">
               <div class="ap-text"><strong>Thumbnail first — it drives more Etsy clicks than any other factor.</strong> Show the product clearly on a bright background. Add text callouts: page count, age range, "Instant Download." Test it: open Etsy and compare your thumbnail side-by-side with competitors. Does yours stop the scroll?</div>
               <div class="ap-time">~30 min</div>
             </div>
           </div>
-          <div class="ap-item" data-id="ap_w5_s10" onclick="toggleAP('ap_w5_s10')">
+          <div class="ap-item" data-id="ap_w6_s10" onclick="toggleAP('ap_w6_s10')">
             <div class="ap-check"></div>
             <div style="flex:1;">
               <div class="ap-text">Create 4–6 supporting images: 2 inside-page samples (your best, most polished pages), 1 lifestyle mockup showing it printed on a desk — use Canva's mockup feature (search 'worksheet mockup') or <strong>Placeit.net</strong> (free tier). Add one 'What's Inside' summary image that lists every section.</div>
@@ -1649,14 +919,14 @@ Please return:
             <span style="color:#6B7280;font-size:0.75rem;margin-left:auto;">2 steps</span>
           </div>
           <div style="padding:2px 18px 10px;">
-          <div class="ap-item" data-id="ap_w5_s11" onclick="toggleAP('ap_w5_s11')">
+          <div class="ap-item" data-id="ap_w6_s11" onclick="toggleAP('ap_w6_s11')">
             <div class="ap-check"></div>
             <div style="flex:1;">
               <div class="ap-text">Create your Etsy listing. <strong>Paste the Etsy title exactly as shown</strong> in the brief. Description: lead with what's included and page count, then how to download and print, then FAQs. Use all 7 tags from the brief plus 6 more variations you can think of (aim for all 13 tags).</div>
               <div class="ap-time">~25 min</div>
             </div>
           </div>
-          <div class="ap-item" data-id="ap_w5_s12" onclick="toggleAP('ap_w5_s12')">
+          <div class="ap-item" data-id="ap_w6_s12" onclick="toggleAP('ap_w6_s12')">
             <div class="ap-check"></div>
             <div style="flex:1;">
               <div class="ap-text">Set your launch price, upload all images (thumbnail goes first) and your PDF. Hit Publish. Then: test-download your own listing using a second browser or ask a friend — open the PDF and confirm the quality looks right before you promote it anywhere.</div>
@@ -1672,21 +942,21 @@ Please return:
             <span style="color:#6B7280;font-size:0.75rem;margin-left:auto;">3 steps</span>
           </div>
           <div style="padding:2px 18px 10px;">
-          <div class="ap-item" data-id="ap_w5_s13" onclick="toggleAP('ap_w5_s13')">
+          <div class="ap-item" data-id="ap_w6_s13" onclick="toggleAP('ap_w6_s13')">
             <div class="ap-check"></div>
             <div style="flex:1;">
               <div class="ap-text">Post 2–3 Pinterest pins linking to your Etsy listing — Pinterest is the #1 external traffic source for Etsy printables. Use Canva's Pinterest template. Pin to boards like 'Preschool Activities,' 'Homeschool Printables,' 'Kids Worksheets.'</div>
               <div class="ap-time">~20 min</div>
             </div>
           </div>
-          <div class="ap-item" data-id="ap_w5_s14" onclick="toggleAP('ap_w5_s14')">
+          <div class="ap-item" data-id="ap_w6_s14" onclick="toggleAP('ap_w6_s14')">
             <div class="ap-check"></div>
             <div style="flex:1;">
               <div class="ap-text">After your first sale, message the buyer within 24 hours: <em>"Thanks so much! Hope your little one enjoys it. If you have a moment, a review means the world to a small shop 🙏"</em> — warm, brief, never pushy. Reviews are Etsy's #1 ranking signal.</div>
               <div class="ap-time">~2 min</div>
             </div>
           </div>
-          <div class="ap-item" data-id="ap_w5_s15" onclick="toggleAP('ap_w5_s15')">
+          <div class="ap-item" data-id="ap_w6_s15" onclick="toggleAP('ap_w6_s15')">
             <div class="ap-check"></div>
             <div style="flex:1;">
               <div class="ap-text">At the 2-week mark: Etsy Stats → Shop Manager → Stats → Search Terms. Terms with views but no sales = thumbnail or price issue. Terms that convert to sales = feature them prominently in your title and tags. After 3 reviews, raise your price by $1 as suggested in the brief.</div>
@@ -1699,7 +969,7 @@ Please return:
 
   <script>
     (function() {
-      var KEY = 'bell_ap_w5';
+      var KEY = 'bell_ap_w6';
       function save(id, val) {
         var d = JSON.parse(localStorage.getItem(KEY) || '{}');
         d[id] = val; localStorage.setItem(KEY, JSON.stringify(d));
@@ -1728,9 +998,8 @@ Please return:
 
 
   <div class="footer">
-    Unified Product Brief · Children's Activities Niche · Generated May 2, 2026<br>
-    Based on analysis of 15 competitor shops including RikiTikiArt (100k+ sales), MyLamaMoon (23k+ sales), PrintableDandelion (15k+ sales)<br>
-    <strong style="color:var(--gold)">You have all the data. Open Canva and start building.</strong>
+    The Bell Newsletter &nbsp;·&nbsp; Children's Activities Brief &nbsp;·&nbsp; Block 2 &nbsp;·&nbsp; November 01, 2026<br>
+    New brief generated every 5 weeks · New topic every Monday
   </div>
 
 </div>

@@ -3,798 +3,206 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Unified Product Brief — Productivity &amp; Trackers Niche</title>
+<title>Productivity & Trackers Brief — Block 2 (Weeks 6–10)</title>
 <style>
   :root {
-    --bg: #0B0B14;
-    --card: #12121F;
-    --card2: #191928;
-    --border: #252538;
-    --accent: #E94560;
-    --gold: #C9A84C;
-    --gold-dim: rgba(201,168,76,0.12);
-    --green: #3DD68C;
-    --green-dim: rgba(61,214,140,0.1);
-    --blue: #4EA8DE;
-    --purple: #9B72CF;
-    --text: #E2E2E2;
-    --muted: #6B7280;
-    --tag-bg: rgba(201,168,76,0.14);
+    --bg:#0B0B14; --card:#12121F; --card2:#191928; --border:#252538;
+    --gold:#C9A84C; --gold-dim:rgba(201,168,76,0.12);
+    --green:#3DD68C; --green-dim:rgba(61,214,140,0.1);
+    --accent:#E94560; --blue:#4EA8DE; --purple:#9B72CF;
+    --text:#E2E2E2; --muted:#6B7280;
+    --tag-bg:rgba(201,168,76,0.14);
   }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-    font-size: 15px;
-    line-height: 1.7;
-    padding: 32px 20px 80px;
-  }
-  .container { max-width: 1060px; margin: 0 auto; }
-
-  /* ── NAV ── */
-  .toc {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 20px 24px;
-    margin-bottom: 36px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px 24px;
-    align-items: center;
-  }
-  .toc-label { color: var(--muted); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 1px; margin-right: 8px; }
-  .toc a { color: var(--gold); text-decoration: none; font-size: 0.88rem; }
-  .toc a:hover { text-decoration: underline; }
-
-  /* ── HEADER ── */
-  .hero {
-    background: linear-gradient(135deg, #12121F 0%, #0D1A14 100%);
-    border: 1px solid var(--border);
-    border-left: 5px solid var(--gold);
-    border-radius: 16px;
-    padding: 40px 36px;
-    margin-bottom: 40px;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: -60px; right: -60px;
-    width: 220px; height: 220px;
-    background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
-    border-radius: 50%;
-  }
-  .hero-badge { color: var(--green); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
-  .hero h1 { font-size: 2.1rem; color: white; font-weight: 800; line-height: 1.25; margin-bottom: 10px; }
-  .hero .subtitle { color: var(--muted); font-size: 1rem; margin-bottom: 28px; }
-  .hero-stats {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 16px;
-    border-top: 1px solid var(--border);
-    padding-top: 24px;
-  }
-  .stat { }
-  .stat-label { color: var(--muted); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.5px; }
-  .stat-value { color: white; font-size: 1.4rem; font-weight: 700; margin-top: 2px; }
-  .stat-value.gold { color: var(--gold); }
-  .stat-value.green { color: var(--green); }
-
-  /* ── SECTIONS ── */
-  section { margin-bottom: 48px; }
-  .section-header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 20px;
-    padding-bottom: 12px;
-    border-bottom: 2px solid var(--border);
-  }
-  .section-icon { font-size: 1.5rem; }
-  .section-title { font-size: 1.35rem; font-weight: 700; color: white; }
-  .section-sub { color: var(--muted); font-size: 0.88rem; margin-left: auto; }
-
-  /* ── CARDS ── */
-  .card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 22px 24px;
-    margin-bottom: 14px;
-  }
-  .card-title { color: var(--gold); font-weight: 600; font-size: 0.9rem; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
-  .card2 {
-    background: var(--card2);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 16px 20px;
-    margin-bottom: 10px;
-  }
-
-  /* ── SHOP GRID ── */
-  .shop-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 14px;
-  }
-  .shop-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 18px 20px;
-    transition: border-color 0.2s;
-  }
-  .shop-card:hover { border-color: var(--gold); }
-  .shop-card.anchor { border-left: 3px solid var(--gold); }
-  .shop-name { font-weight: 700; color: white; font-size: 1rem; margin-bottom: 4px; }
-  .shop-name a { color: inherit; text-decoration: none; }
-  .shop-name a:hover { color: var(--gold); }
-  .shop-sales { color: var(--green); font-size: 0.85rem; font-weight: 600; margin-bottom: 8px; }
-  .shop-cats { color: var(--muted); font-size: 0.82rem; line-height: 1.5; }
-  .shop-insight { color: var(--text); font-size: 0.83rem; margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--border); }
-  .badge {
-    display: inline-block;
-    font-size: 0.7rem;
-    font-weight: 700;
-    padding: 2px 7px;
-    border-radius: 20px;
-    margin-left: 6px;
-    vertical-align: middle;
-  }
-  .badge-gold { background: var(--gold-dim); color: var(--gold); }
-  .badge-green { background: var(--green-dim); color: var(--green); }
-  .badge-red { background: rgba(233,69,96,0.12); color: var(--accent); }
-
-  /* ── PRODUCT BUILD CARDS ── */
-  .product-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 28px;
-    margin-bottom: 20px;
-    position: relative;
-    overflow: hidden;
-  }
-  .product-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 4px; height: 100%;
-  }
-  .product-card.rank-1::before { background: var(--gold); }
-  .product-card.rank-2::before { background: #A8A8A8; }
-  .product-card.rank-3::before { background: #CD7F32; }
-  .product-card.rank-4::before { background: var(--blue); }
-  .product-card.rank-5::before { background: var(--purple); }
-
-  .product-rank { font-size: 2rem; line-height: 1; margin-bottom: 8px; }
-  .product-name { font-size: 1.3rem; font-weight: 800; color: white; margin-bottom: 6px; }
-  .product-meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 20px;
-  }
-  .meta-chip {
-    background: var(--card2);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 4px 12px;
-    font-size: 0.8rem;
-    color: var(--text);
-  }
-  .meta-chip span { color: var(--gold); font-weight: 600; }
-
-  .product-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin-bottom: 20px;
-  }
-  @media (max-width: 600px) { .product-grid { grid-template-columns: 1fr; } }
-
-  .detail-block { }
-  .detail-label {
-    color: var(--muted);
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 6px;
-  }
-  .detail-body { color: var(--text); font-size: 0.9rem; }
-  .detail-body ul { list-style: none; padding: 0; }
-  .detail-body li { padding: 3px 0; }
-  .detail-body li::before { content: "• "; color: var(--gold); }
-
-  .edge-box {
-    background: var(--card2);
-    border-left: 3px solid var(--accent);
-    border-radius: 0 8px 8px 0;
-    padding: 14px 16px;
-    margin-bottom: 16px;
-  }
-  .edge-label { color: var(--accent); font-weight: 700; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
-  .edge-body { color: var(--text); font-size: 0.92rem; }
-
-  .seo-block {
-    background: var(--card2);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 16px;
-    margin-top: 14px;
-  }
-  .seo-label { color: var(--muted); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
-  .seo-value { color: white; font-weight: 600; font-size: 0.95rem; }
-  .tag-row { margin-top: 10px; }
-  .tag { display: inline-block; background: var(--tag-bg); border: 1px solid var(--gold); color: var(--gold); padding: 3px 10px; border-radius: 20px; font-size: 0.76rem; margin: 2px; }
-
-  /* ── CANVA KEYWORDS ── */
-  .canva-section {
-    background: var(--card2);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 16px;
-    margin: 16px 0;
-  }
-  .canva-label { color: var(--gold); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 700; margin-bottom: 10px; }
-  .canva-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 8px; }
-  .canva-btn { display: inline-block; background: rgba(201,168,76,0.15); border: 1px solid var(--gold); color: var(--gold); padding: 6px 12px; border-radius: 6px; font-size: 0.8rem; text-decoration: none; transition: all 0.2s; text-align: center; }
-  .canva-btn:hover { background: rgba(201,168,76,0.25); text-decoration: none; }
-
-  /* ── COMPETITOR DISCOVERY ── */
-  .competitor-section {
-    background: var(--card2);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 16px;
-    margin: 16px 0;
-  }
-  .competitor-label { color: var(--blue); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 700; margin-bottom: 10px; }
-  .competitor-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 8px; }
-  .competitor-btn { display: inline-block; background: rgba(78,168,222,0.15); border: 1px solid var(--blue); color: var(--blue); padding: 6px 12px; border-radius: 6px; font-size: 0.8rem; text-decoration: none; transition: all 0.2s; text-align: center; }
-  .competitor-btn:hover { background: rgba(78,168,222,0.25); text-decoration: none; }
-
-  /* ── PRICING TABLE ── */
-  table { width: 100%; border-collapse: collapse; }
-  th { background: var(--gold-dim); color: var(--gold); font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.5px; text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--border); }
-  td { padding: 10px 14px; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
-  tr:last-child td { border-bottom: none; }
-  tr:hover td { background: rgba(255,255,255,0.02); }
-
-  /* ── BARS ── */
-  .bar-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
-  .bar-label { width: 140px; font-size: 0.85rem; color: var(--text); flex-shrink: 0; }
-  .bar-track { flex: 1; background: var(--border); border-radius: 4px; height: 8px; }
-  .bar-fill { height: 100%; border-radius: 4px; background: var(--gold); }
-  .bar-count { font-size: 0.8rem; color: var(--muted); width: 30px; text-align: right; }
-
-  /* ── GAPS ── */
-  .gap-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; }
-  .gap-card {
-    background: var(--card2);
-    border: 1px solid var(--border);
-    border-left: 3px solid var(--green);
-    border-radius: 8px;
-    padding: 12px 14px;
-  }
-  .gap-card .gap-name { color: var(--green); font-weight: 600; font-size: 0.9rem; }
-  .gap-card .gap-desc { color: var(--muted); font-size: 0.8rem; margin-top: 4px; }
-
-  /* ── CHECKLIST ── */
-  .checklist { list-style: none; }
-  .checklist li {
-    padding: 10px 0;
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    gap: 12px;
-    align-items: flex-start;
-  }
-  .checklist li:last-child { border-bottom: none; }
-  .check-box {
-    width: 20px; height: 20px;
-    border: 2px solid var(--border);
-    border-radius: 4px;
-    flex-shrink: 0;
-    margin-top: 2px;
-  }
-  .check-day { color: var(--gold); font-weight: 700; font-size: 0.82rem; min-width: 60px; }
-  .check-text { color: var(--text); font-size: 0.9rem; }
-
-  /* ── CALLOUT ── */
-  .callout {
-    background: var(--green-dim);
-    border: 2px solid var(--green);
-    border-radius: 12px;
-    padding: 20px 24px;
-    margin: 20px 0;
-  }
-  .callout-title { color: var(--green); font-weight: 700; font-size: 1rem; margin-bottom: 8px; }
-  .callout-body { color: var(--text); font-size: 0.92rem; }
-
-  .warn {
-    background: rgba(233,69,96,0.08);
-    border: 1px solid rgba(233,69,96,0.3);
-    border-radius: 10px;
-    padding: 14px 18px;
-    font-size: 0.88rem;
-    color: var(--text);
-  }
-  .warn strong { color: var(--accent); }
-
-  .footer {
-    text-align: center;
-    color: var(--muted);
-    font-size: 0.78rem;
-    margin-top: 60px;
-    padding-top: 20px;
-    border-top: 1px solid var(--border);
+  * { box-sizing:border-box; margin:0; padding:0; }
+  html { scroll-behavior:smooth; }
+  body { background:var(--bg); color:var(--text); font-family:'Segoe UI',system-ui,-apple-system,sans-serif; font-size:15px; line-height:1.7; padding:32px 20px 80px; }
+  .container { max-width:1060px; margin:0 auto; }
+  .toc { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:20px 24px; margin-bottom:36px; display:flex; flex-wrap:wrap; gap:10px 24px; align-items:center; }
+  .toc-label { color:var(--muted); font-size:0.78rem; text-transform:uppercase; letter-spacing:1px; margin-right:8px; }
+  .toc a { color:var(--gold); text-decoration:none; font-size:0.88rem; }
+  .toc a:hover { text-decoration:underline; }
+  .hero { background:linear-gradient(135deg,#12121F 0%,#0D1A14 100%); border:1px solid var(--border); border-left:5px solid var(--gold); border-radius:16px; padding:40px 36px; margin-bottom:40px; position:relative; overflow:hidden; }
+  .hero::before { content:''; position:absolute; top:-60px; right:-60px; width:220px; height:220px; background:radial-gradient(circle,rgba(61,214,140,0.06) 0%,transparent 70%); border-radius:50%; }
+  .hero-badge { color:var(--green); font-size:0.78rem; text-transform:uppercase; letter-spacing:2px; margin-bottom:12px; }
+  .hero h1 { font-size:2.1rem; color:white; font-weight:800; line-height:1.25; margin-bottom:10px; }
+  .hero .subtitle { color:var(--muted); font-size:1rem; margin-bottom:28px; }
+  .hero-stats { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:16px; border-top:1px solid var(--border); padding-top:24px; }
+  .stat-label { color:var(--muted); font-size:0.78rem; text-transform:uppercase; letter-spacing:0.5px; }
+  .stat-value { color:white; font-size:1.4rem; font-weight:700; margin-top:2px; }
+  .stat-value.gold { color:var(--gold); }
+  .stat-value.green { color:var(--green); }
+  section { margin-bottom:48px; }
+  .section-header { display:flex; align-items:center; gap:12px; margin-bottom:20px; padding-bottom:12px; border-bottom:2px solid var(--border); }
+  .section-icon { font-size:1.5rem; }
+  .section-title { font-size:1.35rem; font-weight:700; color:white; }
+  .section-sub { color:var(--muted); font-size:0.88rem; margin-left:auto; }
+  .card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:22px 24px; margin-bottom:14px; }
+  .card-title { color:var(--gold); font-weight:600; font-size:0.9rem; margin-bottom:12px; text-transform:uppercase; letter-spacing:0.5px; }
+  .card p { color:var(--text); font-size:0.95rem; }
+  .product-card { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:28px; margin-bottom:20px; position:relative; overflow:hidden; }
+  .product-card::before { content:''; position:absolute; top:0; left:0; width:4px; height:100%; }
+  .product-card.rank-1::before { background:var(--gold); }
+  .product-card.rank-2::before { background:#A8A8A8; }
+  .product-card.rank-3::before { background:#CD7F32; }
+  .product-card.rank-4::before { background:var(--blue); }
+  .product-card.rank-5::before { background:var(--purple); }
+  .product-rank { font-size:2rem; line-height:1; margin-bottom:8px; }
+  .product-name { font-size:1.3rem; font-weight:800; color:white; margin-bottom:6px; }
+  .product-meta { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px; }
+  .meta-chip { background:var(--card2); border:1px solid var(--border); border-radius:20px; padding:4px 12px; font-size:0.8rem; color:var(--text); }
+  .meta-chip span { color:var(--gold); font-weight:600; }
+  .step-card { background:var(--card2); border:1px solid var(--border); border-radius:10px; padding:12px 16px; margin-bottom:8px; display:flex; gap:14px; align-items:flex-start; }
+  .step-num { background:var(--gold); color:#0B0B14; border-radius:50%; width:24px; height:24px; min-width:24px; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:0.8rem; margin-top:2px; }
+  .step-text { font-size:0.9rem; color:var(--text); }
+  .seo-block { background:var(--card2); border:1px solid var(--border); border-radius:10px; padding:16px; margin-top:14px; }
+  .seo-label { color:var(--muted); font-size:0.75rem; text-transform:uppercase; letter-spacing:1px; margin-bottom:6px; }
+  .seo-value { color:white; font-weight:600; font-size:0.95rem; }
+  .etsy-tag { display:inline-block; background:var(--tag-bg); border:1px solid var(--gold); color:var(--gold); padding:3px 10px; border-radius:20px; font-size:0.76rem; margin:2px; }
+  .footer { text-align:center; color:var(--muted); font-size:0.78rem; margin-top:60px; padding-top:20px; border-top:1px solid var(--border); }
+  @media (max-width:768px) {
+    body { font-size:14px; padding:16px 12px 60px; }
+    .container { max-width:100%; }
+    .hero { padding:22px 16px; margin-bottom:20px; }
+    .hero h1 { font-size:1.45rem; }
+    .hero .subtitle { font-size:0.86rem; }
+    .hero-stats { grid-template-columns:repeat(2,1fr); gap:8px; padding-top:16px; }
+    .product-card { padding:16px; }
+    .card { padding:14px; }
+    .toc { gap:6px 12px; padding:12px 14px; }
+    table { display:block; overflow-x:auto; width:100%; }
+    .step-card { flex-direction:column; gap:8px; }
   }
 </style>
 </head>
 <body>
 <div class="container">
 
-  <!-- TOC -->
   <nav class="toc">
     <span class="toc-label">Jump to</span>
-    <a href="#competitors">Competitor Map</a>
-    <a href="#categories">What Sells</a>
-    <a href="#pricing">Pricing</a>
-    <a href="#gaps">Market Gaps</a>
-    <a href="#products">Top 5 to Build</a>
+    <a href="#products">Top 5 Products</a>
     <a href="#action">Action Plan</a>
   </nav>
 
-  <!-- HERO -->
   <div class="hero">
-    <div class="hero-badge">📊 Unified Product Brief — Productivity &amp; Trackers Niche</div>
-    <h1>Your Complete Market Intelligence Report</h1>
-    <div class="subtitle">Based on 13 competitor shops · 50k+ combined sales analyzed · Ready-to-build product specs</div>
+    <div class="hero-badge">📊 Productivity & Trackers Brief — Block 2</div>
+    <h1>Your Next 5 Products to Build</h1>
+    <div class="subtitle">Weeks 6–10 &nbsp;·&nbsp; 5 ready-to-build products with full specs</div>
     <div class="hero-stats">
       <div class="stat">
-        <div class="stat-label">Shops Analyzed</div>
-        <div class="stat-value gold">13</div>
+        <div class="stat-label">Products in Block</div>
+        <div class="stat-value gold">5</div>
       </div>
       <div class="stat">
-        <div class="stat-label">Top Seller (OpulentPlanners)</div>
-        <div class="stat-value gold">8k+ sales</div>
+        <div class="stat-label">Current Week</div>
+        <div class="stat-value gold">Week 6</div>
       </div>
       <div class="stat">
         <div class="stat-label">Sweet Spot Price</div>
-        <div class="stat-value green">$4 – $8</div>
-      </div>
-      <div class="stat">
-        <div class="stat-label">Market Gaps Found</div>
-        <div class="stat-value">6 niches</div>
+        <div class="stat-value green">$3.99 – $7.99</div>
       </div>
       <div class="stat">
         <div class="stat-label">Generated</div>
-        <div class="stat-value" style="font-size:0.95rem;color:var(--muted)">May 2, 2026</div>
+        <div class="stat-value" style="font-size:0.95rem;color:var(--muted)">November 01, 2026</div>
       </div>
     </div>
   </div>
 
+  
   <div style="background:#12121F;border:1px solid #252538;border-radius:14px;padding:22px 26px;margin-bottom:36px;">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;flex-wrap:wrap;gap:8px;">
       <div>
         <div style="color:#C9A84C;font-size:0.75rem;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:4px;">5-Week Block Progress</div>
-        <div style="color:#E2E2E2;font-size:1.05rem;font-weight:700;">Week 5 of 5 &nbsp;·&nbsp; This Week: Goal Setting Workbook (Quarterly Edition)</div>
+        <div style="color:#E2E2E2;font-size:1.05rem;font-weight:700;">Week 1 of 5 &nbsp;·&nbsp; This Week: Annual Budget Planner</div>
       </div>
-      <div style="color:#6B7280;font-size:0.82rem;">0 weeks left in this block</div>
+      <div style="color:#6B7280;font-size:0.82rem;">4 weeks left in this block</div>
     </div>
     <div style="background:#1e1e30;border-radius:8px;height:7px;overflow:hidden;margin-bottom:18px;">
-      <div style="background:linear-gradient(90deg,#C9A84C,#e8c56a);height:100%;border-radius:8px;width:100%;"></div>
+      <div style="background:linear-gradient(90deg,#C9A84C,#e8c56a);height:100%;border-radius:8px;width:20%;"></div>
     </div>
     <div style="display:flex;gap:6px;justify-content:space-around;flex-wrap:wrap;">
       
           <div style="display:flex;flex-direction:column;align-items:center;gap:5px;flex:1;min-width:58px;max-width:112px;">
-            <div style="width:22px;height:22px;border-radius:50%;border:2px solid;background:#3DD68C;border-color:#3DD68C;"></div>
-            <div style="font-size:0.72rem;text-align:center;color:#3DD68C;">✓ Wk 1</div>
-            <div style="font-size:0.67rem;color:#6B7280;text-align:center;line-height:1.3;">Monthly Budget Tracker</div>
-          </div>
-          <div style="display:flex;flex-direction:column;align-items:center;gap:5px;flex:1;min-width:58px;max-width:112px;">
-            <div style="width:22px;height:22px;border-radius:50%;border:2px solid;background:#3DD68C;border-color:#3DD68C;"></div>
-            <div style="font-size:0.72rem;text-align:center;color:#3DD68C;">✓ Wk 2</div>
-            <div style="font-size:0.67rem;color:#6B7280;text-align:center;line-height:1.3;">Daily Productivity Planner</div>
-          </div>
-          <div style="display:flex;flex-direction:column;align-items:center;gap:5px;flex:1;min-width:58px;max-width:112px;">
-            <div style="width:22px;height:22px;border-radius:50%;border:2px solid;background:#3DD68C;border-color:#3DD68C;"></div>
-            <div style="font-size:0.72rem;text-align:center;color:#3DD68C;">✓ Wk 3</div>
-            <div style="font-size:0.67rem;color:#6B7280;text-align:center;line-height:1.3;">30-Day Habit Tracker</div>
-          </div>
-          <div style="display:flex;flex-direction:column;align-items:center;gap:5px;flex:1;min-width:58px;max-width:112px;">
-            <div style="width:22px;height:22px;border-radius:50%;border:2px solid;background:#3DD68C;border-color:#3DD68C;"></div>
-            <div style="font-size:0.72rem;text-align:center;color:#3DD68C;">✓ Wk 4</div>
-            <div style="font-size:0.67rem;color:#6B7280;text-align:center;line-height:1.3;">Weekly Meal Planner + Grocery List</div>
-          </div>
-          <div style="display:flex;flex-direction:column;align-items:center;gap:5px;flex:1;min-width:58px;max-width:112px;">
             <div style="width:22px;height:22px;border-radius:50%;border:2px solid;background:#C9A84C;border-color:#C9A84C;box-shadow:0 0 8px rgba(201,168,76,0.6);"></div>
-            <div style="font-size:0.72rem;text-align:center;color:#C9A84C;font-weight:700;">▶ Wk 5</div>
-            <div style="font-size:0.67rem;color:#6B7280;text-align:center;line-height:1.3;">Goal Setting Workbook</div>
+            <div style="font-size:0.72rem;text-align:center;color:#C9A84C;font-weight:700;">▶ Wk 6</div>
+            <div style="font-size:0.67rem;color:#6B7280;text-align:center;line-height:1.3;">Annual Budget Planner</div>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:5px;flex:1;min-width:58px;max-width:112px;">
+            <div style="width:22px;height:22px;border-radius:50%;border:2px solid;background:transparent;border-color:#252538;"></div>
+            <div style="font-size:0.72rem;text-align:center;color:#6B7280;">Wk 7</div>
+            <div style="font-size:0.67rem;color:#6B7280;text-align:center;line-height:1.3;">Debt Payoff Tracker</div>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:5px;flex:1;min-width:58px;max-width:112px;">
+            <div style="width:22px;height:22px;border-radius:50%;border:2px solid;background:transparent;border-color:#252538;"></div>
+            <div style="font-size:0.72rem;text-align:center;color:#6B7280;">Wk 8</div>
+            <div style="font-size:0.67rem;color:#6B7280;text-align:center;line-height:1.3;">Savings Goal Tracker</div>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:5px;flex:1;min-width:58px;max-width:112px;">
+            <div style="width:22px;height:22px;border-radius:50%;border:2px solid;background:transparent;border-color:#252538;"></div>
+            <div style="font-size:0.72rem;text-align:center;color:#6B7280;">Wk 9</div>
+            <div style="font-size:0.67rem;color:#6B7280;text-align:center;line-height:1.3;">Emergency Fund Tracker</div>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:5px;flex:1;min-width:58px;max-width:112px;">
+            <div style="width:22px;height:22px;border-radius:50%;border:2px solid;background:transparent;border-color:#252538;"></div>
+            <div style="font-size:0.72rem;text-align:center;color:#6B7280;">Wk 10</div>
+            <div style="font-size:0.67rem;color:#6B7280;text-align:center;line-height:1.3;">Sinking Funds Planner</div>
           </div>
     </div>
   </div>
-  <!-- ── SECTION 1: COMPETITOR MAP ── -->
-  <section id="competitors">
-    <div class="section-header">
-      <span class="section-icon">🗺️</span>
-      <span class="section-title">Competitor Map</span>
-      <span class="section-sub">Your starting list + researched additions</span>
-    </div>
 
-    <div class="card" style="margin-bottom:20px;">
-      <div class="card-title">Your Research List</div>
-      <div class="shop-grid">
 
-        <div class="shop-card anchor">
-          <div class="shop-name"><a href="https://www.etsy.com/shop/TrackerPro" target="_blank">TrackerPro</a> <span class="badge badge-gold">⭐ ANCHOR</span></div>
-          <div class="shop-sales">5,000+ sales</div>
-          <div class="shop-cats">PDF habit trackers · Goal trackers · Fitness logs</div>
-          <div class="shop-insight">Dominant in the habit tracker niche. Pure volume strategy — 200+ tracker SKUs. Their thumbnails use a consistent minimal cream-and-forest-green palette that feels premium without being loud.</div>
-        </div>
-
-        <div class="shop-card">
-          <div class="shop-name"><a href="https://www.etsy.com/shop/AmmaRoseDesigns" target="_blank">AmmaRoseDesigns</a></div>
-          <div class="shop-sales">Strong seller</div>
-          <div class="shop-cats">Budget planners · Expense trackers · Financial kits</div>
-          <div class="shop-insight">Leads with the transformation ("pay off debt", "build your emergency fund") in every title. Buyers don't buy trackers — they buy outcomes. Copy this framing.</div>
-        </div>
-
-        <div class="shop-card">
-          <div class="shop-name"><a href="https://www.etsy.com/shop/MyProductiveLifeCo" target="_blank">MyProductiveLifeCo</a></div>
-          <div class="shop-sales">Active seller</div>
-          <div class="shop-cats">Daily planners · Weekly planners · Morning routine kits</div>
-          <div class="shop-insight">Bundles are their highest revenue SKUs. "Ultimate Productivity Bundle" at $14.99 consistently outperforms individual listings. Study their bundle structure.</div>
-        </div>
-
-        <div class="shop-card anchor">
-          <div class="shop-name"><a href="https://www.etsy.com/shop/AerisMY" target="_blank">AerisMY</a> <span class="badge badge-green">RISING</span></div>
-          <div class="shop-sales">Growing</div>
-          <div class="shop-cats">Minimal digital planners · Self-care trackers · Monthly kits</div>
-          <div class="shop-insight">Malaysian shop proving the global market for English-language printables. Clean minimal aesthetic, strong Pinterest presence. Good proof that niche + design quality wins.</div>
-        </div>
-
-        <div class="shop-card">
-          <div class="shop-name"><a href="https://www.etsy.com/shop/DidaDigitalDesign" target="_blank">DidaDigitalDesign</a></div>
-          <div class="shop-sales">Active seller</div>
-          <div class="shop-cats">Daily task planners · Goal-setting sheets · Student planners</div>
-          <div class="shop-insight">Heavy use of "undated" in all titles — a critical keyword that makes products evergreen. Never tie a planner to a specific year.</div>
-        </div>
-
-        <div class="shop-card anchor">
-          <div class="shop-name"><a href="https://www.etsy.com/shop/OpulentPlanners" target="_blank">OpulentPlanners</a> <span class="badge badge-gold">⭐ ANCHOR</span> <span class="badge badge-green">8k+ sales</span></div>
-          <div class="shop-sales">8,000+ sales</div>
-          <div class="shop-cats">Premium daily planners · Luxury annual planners · Vision board kits</div>
-          <div class="shop-insight">Commands $7.99–$12.99 by using a dark navy + gold premium aesthetic. Proof that design positioning alone can justify 2× the market price.</div>
-        </div>
-
-        <div class="shop-card">
-          <div class="shop-name"><a href="https://www.etsy.com/shop/HeyMorning" target="_blank">HeyMorning</a> <span class="badge badge-gold">Star Seller</span></div>
-          <div class="shop-sales">Star Seller</div>
-          <div class="shop-cats">Morning routine planners · Daily schedule templates · Affirmation trackers</div>
-          <div class="shop-insight">Owns the "morning routine" keyword vertical. Buyers searching this term are highly motivated and convert well. One well-targeted keyword can build a whole shop.</div>
-        </div>
-
-        <div class="shop-card">
-          <div class="shop-name"><a href="https://www.etsy.com/shop/GridEx" target="_blank">GridEx</a></div>
-          <div class="shop-sales">Active seller</div>
-          <div class="shop-cats">Grid-based trackers · Productivity dashboards · Habit grids</div>
-          <div class="shop-insight">Data-forward aesthetic — looks more like a dashboard than a planner. Appeals to productivity nerds and data-tracker types. A distinct visual lane with low competition.</div>
-        </div>
-
-        <div class="shop-card">
-          <div class="shop-name"><a href="https://www.etsy.com/shop/SerenatasJourney" target="_blank">SerenatasJourney</a></div>
-          <div class="shop-sales">Growing seller</div>
-          <div class="shop-cats">Wellness journals · Gratitude planners · Self-reflection guides</div>
-          <div class="shop-insight">Bridges productivity and wellness — "plan your life AND feel good" positioning. Wellness angle differentiates from pure productivity and opens a wider buyer pool.</div>
-        </div>
-
-        <div class="shop-card">
-          <div class="shop-name"><a href="https://www.etsy.com/shop/PalmAndGraceDesigns" target="_blank">PalmAndGraceDesigns</a></div>
-          <div class="shop-sales">Active seller</div>
-          <div class="shop-cats">Feminine planners · Goal journals · Habit trackers</div>
-          <div class="shop-insight">Explicitly feminine aesthetic (blush, sage, script fonts). Etsy's primary planner buyer is women 25–40. Leaning into femininity is a proven conversion signal, not a niche — it's the default audience.</div>
-        </div>
-
-        <div class="shop-card">
-          <div class="shop-name"><a href="https://www.etsy.com/shop/PrioriDigitalStudio" target="_blank">PrioriDigitalStudio</a></div>
-          <div class="shop-sales">Active seller</div>
-          <div class="shop-cats">Priority-based planners · Weekly review templates · Deep work sheets</div>
-          <div class="shop-insight">"Deep work" and "priority matrix" keywords tap into the knowledge-worker buyer (remote workers, entrepreneurs). Higher price tolerance than general planner buyers.</div>
-        </div>
-
-        <div class="shop-card">
-          <div class="shop-name"><a href="https://www.etsy.com/shop/VisuelPlanners" target="_blank">VisuelPlanners</a></div>
-          <div class="shop-sales">Growing</div>
-          <div class="shop-cats">Visual weekly planners · Color-coded schedules · Time-block templates</div>
-          <div class="shop-insight">Visual and colour-coded appeal. Time-blocking is a hot productivity method — own this keyword before it gets competitive.</div>
-        </div>
-
-        <div class="shop-card">
-          <div class="shop-name"><a href="https://www.etsy.com/shop/RealEstateDesignCo" target="_blank">RealEstateDesignCo</a></div>
-          <div class="shop-sales">Active</div>
-          <div class="shop-cats">Real estate trackers · Business income/expense logs · Commission trackers</div>
-          <div class="shop-insight">Niche planner for a specific profession. Commission trackers and lead trackers sell at premium ($6.99–$9.99) to buyers who see them as a business tool, not just a printable. The profession-specific angle is underexplored.</div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ── SECTION 2: WHAT SELLS ── -->
-  <section id="categories">
-    <div class="section-header">
-      <span class="section-icon">📊</span>
-      <span class="section-title">What's Selling (Category Breakdown)</span>
-      <span class="section-sub">Ranked by market saturation + demand signal</span>
-    </div>
-
-    <div class="card">
-      <table>
-        <thead>
-          <tr>
-            <th>Category</th>
-            <th>Demand</th>
-            <th>Competition</th>
-            <th>Opportunity</th>
-            <th>Best Example</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Budget / Expense Trackers</strong></td>
-            <td><span style="color:var(--green)">🔥 Very High</span></td>
-            <td><span style="color:var(--accent)">High</span></td>
-            <td><span style="color:var(--gold)">Good — differentiate with niche (debt payoff, sinking funds)</span></td>
-            <td>AmmaRoseDesigns</td>
-          </tr>
-          <tr>
-            <td><strong>Daily / Weekly Planners</strong></td>
-            <td><span style="color:var(--green)">🔥 Very High</span></td>
-            <td><span style="color:var(--accent)">Very High</span></td>
-            <td>Only with strong aesthetic or niche</td>
-            <td>OpulentPlanners</td>
-          </tr>
-          <tr>
-            <td><strong>Habit Trackers</strong></td>
-            <td><span style="color:var(--green)">🔥 High</span></td>
-            <td>Medium</td>
-            <td><span style="color:var(--green)">✅ Strong — undated version wins</span></td>
-            <td>TrackerPro</td>
-          </tr>
-          <tr>
-            <td><strong>Meal Planners + Grocery Lists</strong></td>
-            <td><span style="color:var(--green)">High</span></td>
-            <td>Medium</td>
-            <td><span style="color:var(--green)">✅ Strong</span></td>
-            <td>(general)</td>
-          </tr>
-          <tr>
-            <td><strong>Goal Setting Workbooks</strong></td>
-            <td><span style="color:var(--green)">High</span></td>
-            <td>Low-Medium</td>
-            <td><span style="color:var(--green)">✅ Strong — quarterly edition stands out</span></td>
-            <td>(general)</td>
-          </tr>
-          <tr>
-            <td><strong>Morning / Evening Routines</strong></td>
-            <td>Medium-High</td>
-            <td><span style="color:var(--green)">Low</span></td>
-            <td><span style="color:var(--green)">✅ Good niche</span></td>
-            <td>HeyMorning</td>
-          </tr>
-          <tr>
-            <td><strong>Business Income Trackers</strong></td>
-            <td>Medium</td>
-            <td><span style="color:var(--green)">Low</span></td>
-            <td><span style="color:var(--green)">✅ Underserved — profession-specific</span></td>
-            <td>RealEstateDesignCo</td>
-          </tr>
-          <tr>
-            <td><strong>Deep Work / Time Block Sheets</strong></td>
-            <td>Medium + Rising</td>
-            <td><span style="color:var(--green)">Very Low</span></td>
-            <td><span style="color:var(--green)">🌟 Best gap right now</span></td>
-            <td>PrioriDigitalStudio</td>
-          </tr>
-          <tr>
-            <td><strong>Wellness + Self-Care Planners</strong></td>
-            <td>Medium + Rising</td>
-            <td><span style="color:var(--green)">Low</span></td>
-            <td><span style="color:var(--green)">✅ Emerging</span></td>
-            <td>SerenatasJourney</td>
-          </tr>
-          <tr>
-            <td><strong>Mega Bundles (10+ products)</strong></td>
-            <td><span style="color:var(--green)">High</span></td>
-            <td><span style="color:var(--green)">Low</span></td>
-            <td><span style="color:var(--green)">✅ Long-term strategy</span></td>
-            <td>MyProductiveLifeCo</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <!-- ── SECTION 3: PRICING ── -->
-  <section id="pricing">
-    <div class="section-header">
-      <span class="section-icon">💰</span>
-      <span class="section-title">Pricing Intelligence</span>
-      <span class="section-sub">What competitors charge and where you should land</span>
-    </div>
-
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
-      <div class="card">
-        <div class="card-title">Price Distribution Across Market</div>
-        <div class="bar-row"><span class="bar-label">Under $3</span><div class="bar-track"><div class="bar-fill" style="width:5%"></div></div><span class="bar-count">5%</span></div>
-        <div class="bar-row"><span class="bar-label">$3 – $5</span><div class="bar-track"><div class="bar-fill" style="width:32%"></div></div><span class="bar-count">32%</span></div>
-        <div class="bar-row"><span class="bar-label">$5 – $8</span><div class="bar-track"><div class="bar-fill" style="width:40%"></div></div><span class="bar-count">40%</span></div>
-        <div class="bar-row"><span class="bar-label">$8 – $12</span><div class="bar-track"><div class="bar-fill" style="width:16%"></div></div><span class="bar-count">16%</span></div>
-        <div class="bar-row"><span class="bar-label">Over $12</span><div class="bar-track"><div class="bar-fill" style="width:7%"></div></div><span class="bar-count">7%</span></div>
-      </div>
-      <div class="card">
-        <div class="card-title">Your Pricing Strategy</div>
-        <table>
-          <tr><td><strong>Launch price</strong></td><td style="color:var(--green);font-weight:700;">$3.99 – $5.99</td></tr>
-          <tr><td>After 10 reviews</td><td>Raise to $5.99 – $6.99</td></tr>
-          <tr><td>After 25 reviews</td><td>Raise to $6.99 – $7.99</td></tr>
-          <tr><td>Bundles (2–3 products)</td><td>$9.99 – $14.99</td></tr>
-          <tr><td>Mega bundles (10+)</td><td>$24.99 – $49.99</td></tr>
-          <tr><td>"Undated" label</td><td>+$0.50 price elasticity</td></tr>
-        </table>
-      </div>
-    </div>
-
-    <div class="callout">
-      <div class="callout-title">💡 The Pricing Ladder Strategy</div>
-      <div class="callout-body">Start at $3.99–$4.99 to earn your first 10 reviews fast. Productivity buyers have higher price tolerance than children's printable buyers — once you have 25 reviews and a polished thumbnail, $6.99–$7.99 is fully justified. OpulentPlanners charges $9.99+ simply because of design quality. Your design is just as good.</div>
-    </div>
-  </section>
-
-  <!-- ── SECTION 4: MARKET GAPS ── -->
-  <section id="gaps">
-    <div class="section-header">
-      <span class="section-icon">🎯</span>
-      <span class="section-title">Market Gaps — Build These First</span>
-      <span class="section-sub">Low competition, proven demand, no clear winner yet</span>
-    </div>
-
-    <div class="gap-grid">
-      <div class="gap-card">
-        <div class="gap-name">🎯 Undated Planners</div>
-        <div class="gap-desc">Dated planners die every December. Undated ones sell year-round forever. Every planner you make should be undated.</div>
-      </div>
-      <div class="gap-card">
-        <div class="gap-name">💼 Profession-Specific Trackers</div>
-        <div class="gap-desc">Teacher income trackers, freelancer expense logs, Etsy seller planners. Low competition, premium price tolerance.</div>
-      </div>
-      <div class="gap-card">
-        <div class="gap-name">🌙 Evening Routine + Wind-Down Kits</div>
-        <div class="gap-desc">Morning routines are saturated. Evening routines are not. HeyMorning owns mornings — evenings are wide open.</div>
-      </div>
-      <div class="gap-card">
-        <div class="gap-name">📊 Data Dashboard Aesthetic</div>
-        <div class="gap-desc">GridEx proves there's a buyer for dashboard-style trackers. Minimal, grid-heavy, data-forward design. Almost no direct competitors.</div>
-      </div>
-      <div class="gap-card">
-        <div class="gap-name">🧠 Deep Work + Focus Sheets</div>
-        <div class="gap-desc">Time-blocking, deep work sessions, Pomodoro logs. PrioriDigitalStudio is the only clear player. Knowledge workers pay more.</div>
-      </div>
-      <div class="gap-card">
-        <div class="gap-name">🌿 Wellness × Productivity Hybrid</div>
-        <div class="gap-desc">Gratitude + goals + self-care in one planner. SerenatasJourney proves this crossover sells. Much less saturated than pure productivity.</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── SECTION 5: TOP 5 PRODUCTS TO BUILD ── -->
   <section id="products">
     <div class="section-header">
-      <span class="section-icon">🏗️</span>
-      <span class="section-title">Top 5 Products to Build (Ranked)</span>
-      <span class="section-sub">Complete specs — ready to open Canva</span>
+      <span class="section-icon">🗂️</span>
+      <span class="section-title">5 Products — One Per Week</span>
+      <span class="section-sub">Complete specs · ready to open Canva</span>
     </div>
 
-    <!-- PRODUCT 1 -->
-    <div class="product-card rank-1">
+    
+    <div class="product-card rank-1" style="box-shadow:0 0 0 2px #C9A84C,0 0 28px rgba(201,168,76,0.18);border-color:#C9A84C;">
       <div class="product-rank">🥇</div>
-      <div class="product-name">Monthly Budget Tracker</div>
+      <div class="product-name">Annual Budget Planner<span style="display:inline-block;background:rgba(201,168,76,0.15);color:#C9A84C;border:1px solid #C9A84C;border-radius:20px;padding:2px 10px;font-size:0.72rem;font-weight:700;margin-left:10px;vertical-align:middle;">▶ THIS WEEK</span></div>
       <div class="product-meta">
-        <span class="meta-chip">Price: <span>$3.99 launch → $5.99</span></span>
-        <span class="meta-chip">Build time: <span>2–3 hrs Canva</span></span>
-        <span class="meta-chip">Pages: <span>60+</span></span>
-        <span class="meta-chip">Format: <span>PDF A4 or Letter</span></span>
-        <span class="meta-chip">Demand: <span>🔥 Very High</span></span>
+        <span class="meta-chip">Price: <span>$5.99</span></span>
+        <span class="meta-chip">Format: <span>PDF printable</span></span>
+        <span class="meta-chip" style="border-color:var(--gold);color:var(--gold);">Week 6</span>
       </div>
-
-      <div class="edge-box">
-        <div class="edge-label">Your Differentiation</div>
-        <div class="edge-body">Lead with transformation, not features. Don't call it 'Monthly Budget Tracker' — call it 'Pay Off Debt Faster Budget Planner'. AmmaRoseDesigns built their brand on outcome-first titles. Add a 'Sinking Funds' tracker tab and a 'Subscription Audit' page — competitors don't include these and buyers mention them in reviews as things they wish existed.</div>
+      <div class="card" style="margin-bottom:14px;">
+        <div class="card-title">What To Build</div>
+        <p>The planner includes 12 monthly budget pages, 4 quarterly review spreads, and a year‑end summary sheet; buyers print, fill in numbers, and track their finances all year long.</p>
       </div>
-
-      <div class="product-grid">
-        <div class="detail-block">
-          <div class="detail-label">What to include</div>
-          <div class="detail-body"><ul>
-            <li>12 monthly overview pages (income vs expenses)</li>
-            <li>Weekly expense log (48 pages)</li>
-            <li>Annual savings summary</li>
-            <li>Sinking funds tracker</li>
-            <li>Subscription tracker</li>
-            <li>Bill payment log</li>
-            <li>Net worth snapshot page</li>
-            <li>Certificate/cover</li>
-          </ul></div>
-        </div>
-        <div class="detail-block">
-          <div class="detail-label">Design specs</div>
-          <div class="detail-body"><ul>
-            <li>Canvas: A4 or 8.5×11"</li>
-            <li>Font: Clean sans-serif (Lato/Inter)</li>
-            <li>Colors: Neutral — cream, warm grey, one accent</li>
-            <li>Leave 1" margins</li>
-            <li>Tables not lines for row structure</li>
-            <li>Export: PDF Print quality</li>
-          </ul></div>
-        </div>
+      <div class="card" style="margin-bottom:14px;">
+        <div class="card-title">Why It Sells</div>
+        <p>Busy women aged 20‑45 buy it at the start of a new year to organize household and side‑hustle money in one easy printable.</p>
       </div>
-
+      <div style="margin-bottom:14px;">
+        <div class="card-title" style="color:#C9A84C;font-size:0.85rem;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px;">How To Build in Canva</div>
+        <div class="step-card"><div class="step-num">1</div><div class="step-text">Open Canva → search "minimal budget template" and select a clean yearly layout</div></div><div class="step-card"><div class="step-num">2</div><div class="step-text">Add monthly overview pages with income, expenses, and balance sections</div></div><div class="step-card"><div class="step-num">3</div><div class="step-text">Create quarterly review spreads with goal check‑ins and variance charts</div></div><div class="step-card"><div class="step-num">4</div><div class="step-text">Insert a yearly summary page for total income, expenses, and savings rate</div></div><div class="step-card"><div class="step-num">5</div><div class="step-text">Export as PDF Print → upload to Etsy as a digital download</div></div>
+      </div>
       <div class="seo-block">
-        <div class="seo-label">Etsy Title (copy this)</div>
-        <div class="seo-value">Monthly Budget Tracker Printable | Pay Off Debt Planner | 2025–2026 | Expense Log | Instant Download PDF</div>
-        <div class="tag-row">
-          <div class="seo-label" style="margin-top:12px;">All 13 Tags</div>
-          <span class="tag">budget tracker</span><span class="tag">expense tracker</span><span class="tag">monthly planner</span><span class="tag">finance printable</span><span class="tag">budget printable</span><span class="tag">savings tracker</span><span class="tag">debt payoff</span><span class="tag">bill tracker</span><span class="tag">money planner</span><span class="tag">sinking funds</span><span class="tag">printable planner</span><span class="tag">budget worksheet</span><span class="tag">finance organizer</span>
-        </div>
+        <div class="seo-label">Etsy Title</div>
+        <div class="seo-value">Annual Budget Planner PDF Printable – Simple Yearly Finance Tracker for Home & Business</div>
+        <div class="tag-row" style="margin-top:10px;"><span class="etsy-tag">budget planner</span><span class="etsy-tag">annual budget</span><span class="etsy-tag">finance tracker</span><span class="etsy-tag">printable pdf</span><span class="etsy-tag">money management</span><span class="etsy-tag">budget template</span><span class="etsy-tag">2024 planner</span></div>
       </div>
-
-      <div class="canva-section">
-        <div class="canva-label">🔍 Canva Search Keywords (Click to Find Templates)</div>
-        <div class="canva-grid">
-          <a href="https://www.canva.com/search?q=budget+tracker+template" target="_blank" class="canva-btn">budget tracker template</a>
-          <a href="https://www.canva.com/search?q=expense+planner" target="_blank" class="canva-btn">expense planner</a>
-          <a href="https://www.canva.com/search?q=monthly+finance" target="_blank" class="canva-btn">monthly finance</a>
-          <a href="https://www.canva.com/search?q=debt+payoff+planner" target="_blank" class="canva-btn">debt payoff planner</a>
-          <a href="https://www.canva.com/search?q=savings+tracker+design" target="_blank" class="canva-btn">savings tracker design</a>
-          <a href="https://www.canva.com/search?q=bill+payment+log" target="_blank" class="canva-btn">bill payment log</a>
-        </div>
-      </div>
-
-      <div class="competitor-section">
-        <div class="competitor-label">🎨 Competitor Design Inspiration</div>
-        <div class="competitor-grid">
-          <a href="https://www.etsy.com/search?q=budget+tracker+printable&sort_on=score" target="_blank" class="competitor-btn">Etsy Top Designs</a>
-          <a href="https://www.etsy.com/search?q=expense+tracker&sort_on=num_favorers_desc" target="_blank" class="competitor-btn">Most Favorited</a>
-          <a href="https://www.etsy.com/shop/AmmaRoseDesigns" target="_blank" class="competitor-btn">AmmaRoseDesigns</a>
-          <a href="https://www.etsy.com/shop/TrackerPro" target="_blank" class="competitor-btn">TrackerPro</a>
-          <a href="https://trends.pinterest.com/?country=US&term=budget+tracker+printable" target="_blank" class="competitor-btn">Pinterest Trends</a>
-        </div>
-      </div>
-      <div style="border-left:3px solid #3DD68C;background:#0f1f18;border-radius:0 8px 8px 0;padding:12px 16px;margin-top:14px;"><div style="color:#3DD68C;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">SEO Quick-Tips</div><div style="display:grid;gap:5px;font-size:0.82rem;"><div><span style="color:#6B7280;">Primary keyword:</span> <span style="color:#E2E2E2;font-weight:600;">budget tracker</span></div><div><span style="color:#6B7280;">Title first 30 chars</span> <span style="color:#6B7280;font-size:0.74rem;">(shows on mobile)</span><span style="color:#6B7280;">:</span> <span style="color:#E2E2E2;font-weight:600;">Monthly Budget Tracker Printab</span></div><div><span style="color:#6B7280;">Etsy category:</span> <span style="color:#E2E2E2;">Paper &amp; Party Supplies &rarr; Stationery &rarr; Printables</span></div><div style="color:#6B7280;font-size:0.78rem;margin-top:4px;border-top:1px solid #252538;padding-top:6px;">Put primary keyword in first 30 title chars. Tags &ne; title words &mdash; use synonyms.</div></div></div>
+      <div style="border-left:3px solid #3DD68C;background:#0f1f18;border-radius:0 8px 8px 0;padding:12px 16px;margin-top:14px;"><div style="color:#3DD68C;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">SEO Quick-Tips</div><div style="display:grid;gap:5px;font-size:0.82rem;"><div><span style="color:#6B7280;">Primary keyword:</span> <span style="color:#E2E2E2;font-weight:600;">budget planner</span></div><div><span style="color:#6B7280;">Title first 30 chars</span> <span style="color:#6B7280;font-size:0.74rem;">(shows on mobile)</span><span style="color:#6B7280;">:</span> <span style="color:#E2E2E2;font-weight:600;">Annual Budget Planner PDF Prin</span></div><div><span style="color:#6B7280;">Etsy category:</span> <span style="color:#E2E2E2;">Paper &amp; Party Supplies &rarr; Stationery &rarr; Printables</span></div><div style="color:#6B7280;font-size:0.78rem;margin-top:4px;border-top:1px solid #252538;padding-top:6px;">Put primary keyword in first 30 title chars. Tags &ne; title words &mdash; use synonyms.</div></div></div>
       <div style="margin-top:14px;">
-        <button onclick="toggleExtra('ex_r1_w5')" style="background:#C9A84C;color:#0B0B14;border:none;border-radius:8px;padding:8px 16px;font-size:0.82rem;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px;">&#128203; Listing Description &amp; Modification Tools<span id="ex_r1_w5_arrow" style="transition:transform .25s;">&#9660;</span></button>
-        <div id="ex_r1_w5" style="display:none;margin-top:10px;">
+        <button onclick="toggleExtra('ex_r1_w6')" style="background:#C9A84C;color:#0B0B14;border:none;border-radius:8px;padding:8px 16px;font-size:0.82rem;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px;">&#128203; Listing Description &amp; Modification Tools<span id="ex_r1_w6_arrow" style="transition:transform .25s;">&#9660;</span></button>
+        <div id="ex_r1_w6" style="display:none;margin-top:10px;">
           <div style="margin-bottom:14px;">
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
-              <div style="color:#3DD68C;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Etsy Tags (13)</div>
-              <button onclick="copyTA('ex_r1_w5_tags', this)" style="background:#1e1e30;color:#3DD68C;border:1px solid #3DD68C;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy All</button>
+              <div style="color:#3DD68C;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Etsy Tags (7)</div>
+              <button onclick="copyTA('ex_r1_w6_tags', this)" style="background:#1e1e30;color:#3DD68C;border:1px solid #3DD68C;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy All</button>
             </div>
-            <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px;"><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">budget tracker</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">expense tracker</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">monthly planner</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">finance printable</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">budget printable</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">savings tracker</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">money tracker</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">monthly budget</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">household budget</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">spending tracker</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">bills tracker</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">budget template</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">personal finance</span></div>
-            <textarea id="ex_r1_w5_tags" readonly style="display:none;">budget tracker, expense tracker, monthly planner, finance printable, budget printable, savings tracker, money tracker, monthly budget, household budget, spending tracker, bills tracker, budget template, personal finance</textarea>
+            <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px;"><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">budget planner</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">annual budget</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">finance tracker</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">printable pdf</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">money management</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">budget template</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">2024 planner</span></div>
+            <textarea id="ex_r1_w6_tags" readonly style="display:none;">budget planner, annual budget, finance tracker, printable pdf, money management, budget template, 2024 planner</textarea>
           </div>
           <div style="margin-bottom:14px;">
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
               <div style="color:#4EA8DE;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Full Etsy Description</div>
-              <button onclick="copyTA('ex_r1_w5_desc', this)" style="background:#1e1e30;color:#4EA8DE;border:1px solid #4EA8DE;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy</button>
+              <button onclick="copyTA('ex_r1_w6_desc', this)" style="background:#1e1e30;color:#4EA8DE;border:1px solid #4EA8DE;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy</button>
             </div>
-            <textarea id="ex_r1_w5_desc" readonly style="width:100%;min-height:260px;background:#1e1e30;color:#E2E2E2;border:1px solid #252538;border-radius:8px;padding:12px;font-family:monospace;font-size:0.8rem;line-height:1.5;resize:vertical;">Monthly Budget Tracker | Printable PDF | Instant Download
+            <textarea id="ex_r1_w6_desc" readonly style="width:100%;min-height:260px;background:#1e1e30;color:#E2E2E2;border:1px solid #252538;border-radius:8px;padding:12px;font-family:monospace;font-size:0.8rem;line-height:1.5;resize:vertical;">Annual Budget Planner | Printable PDF | Instant Download
 
-A 60+ page annual budget tracker with monthly overviews, weekly expense logs, and bonus finance pages. Buyers use it to track every dollar in and out for the full year.
+The planner includes 12 monthly budget pages, 4 quarterly review spreads, and a year‑end summary sheet; buyers print, fill in numbers, and track their finances all year long.
 
 ────────────────────────────────────────
 WHAT'S INCLUDED
@@ -843,15 +251,15 @@ Questions? I respond within 24 hours.</textarea>
           <div>
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
               <div style="color:#9B72CF;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Modification Prompt</div>
-              <button onclick="copyTA('ex_r1_w5_prompt', this)" style="background:#1e1e30;color:#9B72CF;border:1px solid #9B72CF;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy</button>
+              <button onclick="copyTA('ex_r1_w6_prompt', this)" style="background:#1e1e30;color:#9B72CF;border:1px solid #9B72CF;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy</button>
             </div>
-            <textarea id="ex_r1_w5_prompt" readonly style="width:100%;min-height:280px;background:#1e1e30;color:#E2E2E2;border:1px solid #252538;border-radius:8px;padding:12px;font-family:monospace;font-size:0.8rem;line-height:1.5;resize:vertical;">I have an Etsy digital printable product with the following details:
+            <textarea id="ex_r1_w6_prompt" readonly style="width:100%;min-height:280px;background:#1e1e30;color:#E2E2E2;border:1px solid #252538;border-radius:8px;padding:12px;font-family:monospace;font-size:0.8rem;line-height:1.5;resize:vertical;">I have an Etsy digital printable product with the following details:
 
-Product name: Monthly Budget Tracker
+Product name: Annual Budget Planner
 Format: PDF printable
 Current price: $5.99
-Current Etsy title: Monthly Budget Tracker Printable | 2025–2026 | Income Expense Log | Instant Download PDF
-Current tags: budget tracker, expense tracker, monthly planner, finance printable, budget printable, savings tracker, money tracker, monthly budget, household budget, spending tracker, bills tracker, budget template, personal finance
+Current Etsy title: Annual Budget Planner PDF Printable – Simple Yearly Finance Tracker for Home &amp; Business
+Current tags: budget planner, annual budget, finance tracker, printable pdf, money management, budget template, 2024 planner
 
 I want to modify this product as follows:
 [DESCRIBE YOUR CHANGES HERE]
@@ -866,99 +274,51 @@ Please return:
       </div>
     </div>
 
-    <!-- PRODUCT 2 -->
     <div class="product-card rank-2">
       <div class="product-rank">🥈</div>
-      <div class="product-name">Daily Productivity Planner (Undated)</div>
+      <div class="product-name">Debt Payoff Tracker</div>
       <div class="product-meta">
-        <span class="meta-chip">Price: <span>$3.99 launch → $5.49</span></span>
-        <span class="meta-chip">Build time: <span>1.5–2 hrs Canva</span></span>
-        <span class="meta-chip">Pages: <span>90-day set</span></span>
-        <span class="meta-chip">Format: <span>PDF Undated</span></span>
-        <span class="meta-chip">Demand: <span>🔥 Very High</span></span>
+        <span class="meta-chip">Price: <span>$4.49</span></span>
+        <span class="meta-chip">Format: <span>PDF printable</span></span>
+        <span class="meta-chip" style="border-color:#A8A8A8;color:#A8A8A8;">Week 7</span>
       </div>
-
-      <div class="edge-box">
-        <div class="edge-label">Your Differentiation</div>
-        <div class="edge-body">Undated is non-negotiable. Dated planners lose relevance January 1st. Add 'Top 3 Priorities' as the most prominent section — not a to-do list, not 12 hourly slots. OpulentPlanners and DidaDigitalDesign both lead with Top 3. Also include a 'Not Today' box — a place to park tasks consciously rather than failing to cross them off. No competitor does this.</div>
+      <div class="card" style="margin-bottom:14px;">
+        <div class="card-title">What To Build</div>
+        <p>The tracker features a master debt overview, two payoff method sheets, and visual progress charts; buyers print and fill in amounts to see debt shrink each month.</p>
       </div>
-
-      <div class="product-grid">
-        <div class="detail-block">
-          <div class="detail-label">What to include</div>
-          <div class="detail-body"><ul>
-            <li>Daily page: Top 3 Priorities</li>
-            <li>Hourly blocks 6am–10pm</li>
-            <li>Notes / brain dump</li>
-            <li>Water + habit trackers</li>
-            <li>Gratitude line</li>
-            <li>'Not Today' parking box</li>
-            <li>Weekly overview page (Mon–Sun + weekly goal)</li>
-          </ul></div>
-        </div>
-        <div class="detail-block">
-          <div class="detail-label">Design specs</div>
-          <div class="detail-body"><ul>
-            <li>Undated — blank Month/Date field</li>
-            <li>Font: Montserrat headings + Lato body</li>
-            <li>Colors: Cream background, charcoal text, gold or teal accent</li>
-            <li>Sell as 90-day (lower price) AND 365-day (higher price) versions</li>
-            <li>Export: PDF Print</li>
-          </ul></div>
-        </div>
+      <div class="card" style="margin-bottom:14px;">
+        <div class="card-title">Why It Sells</div>
+        <p>Young professionals facing student loans or credit card debt purchase it to visualize progress and stay motivated during repayment.</p>
       </div>
-
+      <div style="margin-bottom:14px;">
+        <div class="card-title" style="color:#C9A84C;font-size:0.85rem;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px;">How To Build in Canva</div>
+        <div class="step-card"><div class="step-num">1</div><div class="step-text">Open Canva → search "debt tracker" and choose a modern grid design</div></div><div class="step-card"><div class="step-num">2</div><div class="step-text">Add a master debt list table with columns for creditor, balance, rate, and minimum payment</div></div><div class="step-card"><div class="step-num">3</div><div class="step-text">Create separate snowball and avalanche schedule pages for monthly payment allocation</div></div><div class="step-card"><div class="step-num">4</div><div class="step-text">Include progress bar charts for each debt and an overall payoff timeline</div></div><div class="step-card"><div class="step-num">5</div><div class="step-text">Export as PDF Print → upload to Etsy as a digital download</div></div>
+      </div>
       <div class="seo-block">
-        <div class="seo-label">Etsy Title (copy this)</div>
-        <div class="seo-value">Daily Productivity Planner Printable Undated | Top 3 Priorities + Hourly Schedule | 90 Day Planner | Instant Download</div>
-        <div class="tag-row">
-          <div class="seo-label" style="margin-top:12px;">All 13 Tags</div>
-          <span class="tag">daily planner</span><span class="tag">productivity planner</span><span class="tag">undated planner</span><span class="tag">printable planner</span><span class="tag">daily schedule</span><span class="tag">time management</span><span class="tag">planner printable</span><span class="tag">hourly planner</span><span class="tag">daily organizer</span><span class="tag">morning planner</span><span class="tag">work planner</span><span class="tag">focus planner</span><span class="tag">90 day planner</span>
-        </div>
+        <div class="seo-label">Etsy Title</div>
+        <div class="seo-value">Debt Payoff Tracker PDF Printable – Fast‑Track Debt Snowball & Avalanche Planner</div>
+        <div class="tag-row" style="margin-top:10px;"><span class="etsy-tag">debt tracker</span><span class="etsy-tag">payoff planner</span><span class="etsy-tag">budget printable</span><span class="etsy-tag">debt snowball</span><span class="etsy-tag">finance tool</span><span class="etsy-tag">debt avalanche</span><span class="etsy-tag">money saver</span></div>
       </div>
-
-      <div class="canva-section">
-        <div class="canva-label">🔍 Canva Search Keywords (Click to Find Templates)</div>
-        <div class="canva-grid">
-          <a href="https://www.canva.com/search?q=daily+planner+template" target="_blank" class="canva-btn">daily planner template</a>
-          <a href="https://www.canva.com/search?q=undated+planner" target="_blank" class="canva-btn">undated planner</a>
-          <a href="https://www.canva.com/search?q=hourly+schedule" target="_blank" class="canva-btn">hourly schedule</a>
-          <a href="https://www.canva.com/search?q=productivity+layout" target="_blank" class="canva-btn">productivity layout</a>
-          <a href="https://www.canva.com/search?q=morning+planner" target="_blank" class="canva-btn">morning planner</a>
-          <a href="https://www.canva.com/search?q=time+block+template" target="_blank" class="canva-btn">time block template</a>
-        </div>
-      </div>
-
-      <div class="competitor-section">
-        <div class="competitor-label">🎨 Competitor Design Inspiration</div>
-        <div class="competitor-grid">
-          <a href="https://www.etsy.com/search?q=daily+productivity+planner+printable&sort_on=score" target="_blank" class="competitor-btn">Etsy Top Designs</a>
-          <a href="https://www.etsy.com/search?q=undated+planner+printable&sort_on=num_favorers_desc" target="_blank" class="competitor-btn">Most Favorited</a>
-          <a href="https://www.etsy.com/shop/OpulentPlanners" target="_blank" class="competitor-btn">OpulentPlanners</a>
-          <a href="https://www.etsy.com/shop/DidaDigitalDesign" target="_blank" class="competitor-btn">DidaDigitalDesign</a>
-          <a href="https://trends.pinterest.com/?country=US&term=daily+planner+printable" target="_blank" class="competitor-btn">Pinterest</a>
-        </div>
-      </div>
-      <div style="border-left:3px solid #3DD68C;background:#0f1f18;border-radius:0 8px 8px 0;padding:12px 16px;margin-top:14px;"><div style="color:#3DD68C;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">SEO Quick-Tips</div><div style="display:grid;gap:5px;font-size:0.82rem;"><div><span style="color:#6B7280;">Primary keyword:</span> <span style="color:#E2E2E2;font-weight:600;">daily planner</span></div><div><span style="color:#6B7280;">Title first 30 chars</span> <span style="color:#6B7280;font-size:0.74rem;">(shows on mobile)</span><span style="color:#6B7280;">:</span> <span style="color:#E2E2E2;font-weight:600;">Daily Productivity Planner Pri</span></div><div><span style="color:#6B7280;">Etsy category:</span> <span style="color:#E2E2E2;">Paper &amp; Party Supplies &rarr; Stationery &rarr; Printables</span></div><div style="color:#6B7280;font-size:0.78rem;margin-top:4px;border-top:1px solid #252538;padding-top:6px;">Put primary keyword in first 30 title chars. Tags &ne; title words &mdash; use synonyms.</div></div></div>
+      <div style="border-left:3px solid #3DD68C;background:#0f1f18;border-radius:0 8px 8px 0;padding:12px 16px;margin-top:14px;"><div style="color:#3DD68C;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">SEO Quick-Tips</div><div style="display:grid;gap:5px;font-size:0.82rem;"><div><span style="color:#6B7280;">Primary keyword:</span> <span style="color:#E2E2E2;font-weight:600;">debt tracker</span></div><div><span style="color:#6B7280;">Title first 30 chars</span> <span style="color:#6B7280;font-size:0.74rem;">(shows on mobile)</span><span style="color:#6B7280;">:</span> <span style="color:#E2E2E2;font-weight:600;">Debt Payoff Tracker PDF Printa</span></div><div><span style="color:#6B7280;">Etsy category:</span> <span style="color:#E2E2E2;">Paper &amp; Party Supplies &rarr; Stationery &rarr; Printables</span></div><div style="color:#6B7280;font-size:0.78rem;margin-top:4px;border-top:1px solid #252538;padding-top:6px;">Put primary keyword in first 30 title chars. Tags &ne; title words &mdash; use synonyms.</div></div></div>
       <div style="margin-top:14px;">
-        <button onclick="toggleExtra('ex_r2_w5')" style="background:#C9A84C;color:#0B0B14;border:none;border-radius:8px;padding:8px 16px;font-size:0.82rem;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px;">&#128203; Listing Description &amp; Modification Tools<span id="ex_r2_w5_arrow" style="transition:transform .25s;">&#9660;</span></button>
-        <div id="ex_r2_w5" style="display:none;margin-top:10px;">
+        <button onclick="toggleExtra('ex_r2_w6')" style="background:#C9A84C;color:#0B0B14;border:none;border-radius:8px;padding:8px 16px;font-size:0.82rem;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px;">&#128203; Listing Description &amp; Modification Tools<span id="ex_r2_w6_arrow" style="transition:transform .25s;">&#9660;</span></button>
+        <div id="ex_r2_w6" style="display:none;margin-top:10px;">
           <div style="margin-bottom:14px;">
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
-              <div style="color:#3DD68C;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Etsy Tags (13)</div>
-              <button onclick="copyTA('ex_r2_w5_tags', this)" style="background:#1e1e30;color:#3DD68C;border:1px solid #3DD68C;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy All</button>
+              <div style="color:#3DD68C;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Etsy Tags (7)</div>
+              <button onclick="copyTA('ex_r2_w6_tags', this)" style="background:#1e1e30;color:#3DD68C;border:1px solid #3DD68C;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy All</button>
             </div>
-            <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px;"><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">daily planner</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">productivity planner</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">printable planner</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">undated planner</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">daily schedule</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">planner printable</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">time management</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">to do list</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">daily organizer</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">schedule printable</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">planner pages</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">hourly planner</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">work planner</span></div>
-            <textarea id="ex_r2_w5_tags" readonly style="display:none;">daily planner, productivity planner, printable planner, undated planner, daily schedule, planner printable, time management, to do list, daily organizer, schedule printable, planner pages, hourly planner, work planner</textarea>
+            <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px;"><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">debt tracker</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">payoff planner</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">budget printable</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">debt snowball</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">finance tool</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">debt avalanche</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">money saver</span></div>
+            <textarea id="ex_r2_w6_tags" readonly style="display:none;">debt tracker, payoff planner, budget printable, debt snowball, finance tool, debt avalanche, money saver</textarea>
           </div>
           <div style="margin-bottom:14px;">
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
               <div style="color:#4EA8DE;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Full Etsy Description</div>
-              <button onclick="copyTA('ex_r2_w5_desc', this)" style="background:#1e1e30;color:#4EA8DE;border:1px solid #4EA8DE;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy</button>
+              <button onclick="copyTA('ex_r2_w6_desc', this)" style="background:#1e1e30;color:#4EA8DE;border:1px solid #4EA8DE;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy</button>
             </div>
-            <textarea id="ex_r2_w5_desc" readonly style="width:100%;min-height:260px;background:#1e1e30;color:#E2E2E2;border:1px solid #252538;border-radius:8px;padding:12px;font-family:monospace;font-size:0.8rem;line-height:1.5;resize:vertical;">Daily Productivity Planner | Printable PDF | Instant Download
+            <textarea id="ex_r2_w6_desc" readonly style="width:100%;min-height:260px;background:#1e1e30;color:#E2E2E2;border:1px solid #252538;border-radius:8px;padding:12px;font-family:monospace;font-size:0.8rem;line-height:1.5;resize:vertical;">Debt Payoff Tracker | Printable PDF | Instant Download
 
-An undated daily planner with hourly time blocks, top priorities, water tracker, and gratitude section. Available as a 90-day or 365-day set.
+The tracker features a master debt overview, two payoff method sheets, and visual progress charts; buyers print and fill in amounts to see debt shrink each month.
 
 ────────────────────────────────────────
 WHAT'S INCLUDED
@@ -1007,15 +367,15 @@ Questions? I respond within 24 hours.</textarea>
           <div>
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
               <div style="color:#9B72CF;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Modification Prompt</div>
-              <button onclick="copyTA('ex_r2_w5_prompt', this)" style="background:#1e1e30;color:#9B72CF;border:1px solid #9B72CF;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy</button>
+              <button onclick="copyTA('ex_r2_w6_prompt', this)" style="background:#1e1e30;color:#9B72CF;border:1px solid #9B72CF;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy</button>
             </div>
-            <textarea id="ex_r2_w5_prompt" readonly style="width:100%;min-height:280px;background:#1e1e30;color:#E2E2E2;border:1px solid #252538;border-radius:8px;padding:12px;font-family:monospace;font-size:0.8rem;line-height:1.5;resize:vertical;">I have an Etsy digital printable product with the following details:
+            <textarea id="ex_r2_w6_prompt" readonly style="width:100%;min-height:280px;background:#1e1e30;color:#E2E2E2;border:1px solid #252538;border-radius:8px;padding:12px;font-family:monospace;font-size:0.8rem;line-height:1.5;resize:vertical;">I have an Etsy digital printable product with the following details:
 
-Product name: Daily Productivity Planner
+Product name: Debt Payoff Tracker
 Format: PDF printable
-Current price: $4.99
-Current Etsy title: Daily Productivity Planner Printable | Undated | Top 3 Priorities + Hourly Schedule | PDF
-Current tags: daily planner, productivity planner, printable planner, undated planner, daily schedule, planner printable, time management, to do list, daily organizer, schedule printable, planner pages, hourly planner, work planner
+Current price: $4.49
+Current Etsy title: Debt Payoff Tracker PDF Printable – Fast‑Track Debt Snowball &amp; Avalanche Planner
+Current tags: debt tracker, payoff planner, budget printable, debt snowball, finance tool, debt avalanche, money saver
 
 I want to modify this product as follows:
 [DESCRIBE YOUR CHANGES HERE]
@@ -1030,99 +390,51 @@ Please return:
       </div>
     </div>
 
-    <!-- PRODUCT 3 -->
     <div class="product-card rank-3">
       <div class="product-rank">🥉</div>
-      <div class="product-name">30-Day Habit Tracker</div>
+      <div class="product-name">Savings Goal Tracker</div>
       <div class="product-meta">
-        <span class="meta-chip">Price: <span>$2.99 launch → $3.99</span></span>
-        <span class="meta-chip">Build time: <span>45 min Canva</span></span>
-        <span class="meta-chip">Pages: <span>5-pack</span></span>
-        <span class="meta-chip">Format: <span>PDF Undated</span></span>
-        <span class="meta-chip">Demand: <span>High</span></span>
+        <span class="meta-chip">Price: <span>$4.99</span></span>
+        <span class="meta-chip">Format: <span>PDF printable</span></span>
+        <span class="meta-chip" style="border-color:#CD7F32;color:#CD7F32;">Week 8</span>
       </div>
-
-      <div class="edge-box">
-        <div class="edge-label">Your Differentiation</div>
-        <div class="edge-body">TrackerPro has 200+ habit tracker SKUs because the market is consistent. Your edge: sell a 5-pack (5 identical undated pages) so buyers can use it for multiple months without re-purchasing. Also add a 'Habit Streak' visual — a simple fire emoji counter for consecutive days. No competitor does this and buyers love gamification.</div>
+      <div class="card" style="margin-bottom:14px;">
+        <div class="card-title">What To Build</div>
+        <p>The product includes five dedicated goal pages, a yearly summary, and a weekly habit checklist; buyers print and fill in contributions to watch each goal grow.</p>
       </div>
-
-      <div class="product-grid">
-        <div class="detail-block">
-          <div class="detail-label">What to include</div>
-          <div class="detail-body"><ul>
-            <li>10 habit rows × 31 day columns</li>
-            <li>Blank 'Month:' date header (undated)</li>
-            <li>Habit streak counter per row</li>
-            <li>Monthly reflection box</li>
-            <li>'How to build a habit' bonus page</li>
-            <li>Sell as 5-pack for perceived value</li>
-          </ul></div>
-        </div>
-        <div class="detail-block">
-          <div class="detail-label">Design specs</div>
-          <div class="detail-body"><ul>
-            <li>Single-page per tracker</li>
-            <li>Font: Any clean sans-serif</li>
-            <li>Colors: White/cream background — works in B&W</li>
-            <li>Grid lines: light grey</li>
-            <li>Habit row text area left: 120px min</li>
-            <li>Export 5 copies as multi-page PDF</li>
-          </ul></div>
-        </div>
+      <div class="card" style="margin-bottom:14px;">
+        <div class="card-title">Why It Sells</div>
+        <p>Women planning trips, holidays, or big purchases love a visual tool to keep savings on track throughout the year.</p>
       </div>
-
+      <div style="margin-bottom:14px;">
+        <div class="card-title" style="color:#C9A84C;font-size:0.85rem;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px;">How To Build in Canva</div>
+        <div class="step-card"><div class="step-num">1</div><div class="step-text">Open Canva → search "savings tracker" and pick a pastel‑colored template with progress bars</div></div><div class="step-card"><div class="step-num">2</div><div class="step-text">Add individual goal pages for up to 5 targets, each with target amount, deadline, and monthly contribution table</div></div><div class="step-card"><div class="step-num">3</div><div class="step-text">Insert a yearly overview sheet that aggregates all goals and total saved amount</div></div><div class="step-card"><div class="step-num">4</div><div class="step-text">Design a habit‑tracker style checklist for weekly saving actions</div></div><div class="step-card"><div class="step-num">5</div><div class="step-text">Export as PDF Print → upload to Etsy as a digital download</div></div>
+      </div>
       <div class="seo-block">
-        <div class="seo-label">Etsy Title (copy this)</div>
-        <div class="seo-value">30 Day Habit Tracker Printable | Monthly Habit Log Undated | 5 Pack | Streak Counter | Instant Download</div>
-        <div class="tag-row">
-          <div class="seo-label" style="margin-top:12px;">All 13 Tags</div>
-          <span class="tag">habit tracker</span><span class="tag">30 day habit</span><span class="tag">monthly tracker</span><span class="tag">habit log</span><span class="tag">habit printable</span><span class="tag">goal tracker</span><span class="tag">self improvement</span><span class="tag">wellness tracker</span><span class="tag">streak tracker</span><span class="tag">undated tracker</span><span class="tag">daily habits</span><span class="tag">behavior tracker</span><span class="tag">routine tracker</span>
-        </div>
+        <div class="seo-label">Etsy Title</div>
+        <div class="seo-value">Savings Goal Tracker PDF Printable – Visual Planner for Holiday, Vacation & Emergency Savings</div>
+        <div class="tag-row" style="margin-top:10px;"><span class="etsy-tag">savings tracker</span><span class="etsy-tag">goal planner</span><span class="etsy-tag">budget printable</span><span class="etsy-tag">savings chart</span><span class="etsy-tag">money goals</span><span class="etsy-tag">financial planner</span><span class="etsy-tag">save money</span></div>
       </div>
-
-      <div class="canva-section">
-        <div class="canva-label">🔍 Canva Search Keywords (Click to Find Templates)</div>
-        <div class="canva-grid">
-          <a href="https://www.canva.com/search?q=habit+tracker+template" target="_blank" class="canva-btn">habit tracker template</a>
-          <a href="https://www.canva.com/search?q=30+day+challenge" target="_blank" class="canva-btn">30 day challenge</a>
-          <a href="https://www.canva.com/search?q=monthly+grid+tracker" target="_blank" class="canva-btn">monthly grid tracker</a>
-          <a href="https://www.canva.com/search?q=daily+habits+log" target="_blank" class="canva-btn">daily habits log</a>
-          <a href="https://www.canva.com/search?q=streak+counter" target="_blank" class="canva-btn">streak counter</a>
-          <a href="https://www.canva.com/search?q=routine+tracker" target="_blank" class="canva-btn">routine tracker</a>
-        </div>
-      </div>
-
-      <div class="competitor-section">
-        <div class="competitor-label">🎨 Competitor Design Inspiration</div>
-        <div class="competitor-grid">
-          <a href="https://www.etsy.com/search?q=habit+tracker+printable&sort_on=score" target="_blank" class="competitor-btn">Etsy Top</a>
-          <a href="https://www.etsy.com/search?q=30+day+habit+tracker&sort_on=num_favorers_desc" target="_blank" class="competitor-btn">Most Favorited</a>
-          <a href="https://www.etsy.com/shop/TrackerPro" target="_blank" class="competitor-btn">TrackerPro</a>
-          <a href="https://www.etsy.com/shop/HeyMorning" target="_blank" class="competitor-btn">HeyMorning</a>
-          <a href="https://trends.pinterest.com/?country=US&term=habit+tracker+printable" target="_blank" class="competitor-btn">Pinterest</a>
-        </div>
-      </div>
-      <div style="border-left:3px solid #3DD68C;background:#0f1f18;border-radius:0 8px 8px 0;padding:12px 16px;margin-top:14px;"><div style="color:#3DD68C;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">SEO Quick-Tips</div><div style="display:grid;gap:5px;font-size:0.82rem;"><div><span style="color:#6B7280;">Primary keyword:</span> <span style="color:#E2E2E2;font-weight:600;">habit tracker</span></div><div><span style="color:#6B7280;">Title first 30 chars</span> <span style="color:#6B7280;font-size:0.74rem;">(shows on mobile)</span><span style="color:#6B7280;">:</span> <span style="color:#E2E2E2;font-weight:600;">30 Day Habit Tracker Printable</span></div><div><span style="color:#6B7280;">Etsy category:</span> <span style="color:#E2E2E2;">Paper &amp; Party Supplies &rarr; Stationery &rarr; Printables</span></div><div style="color:#6B7280;font-size:0.78rem;margin-top:4px;border-top:1px solid #252538;padding-top:6px;">Put primary keyword in first 30 title chars. Tags &ne; title words &mdash; use synonyms.</div></div></div>
+      <div style="border-left:3px solid #3DD68C;background:#0f1f18;border-radius:0 8px 8px 0;padding:12px 16px;margin-top:14px;"><div style="color:#3DD68C;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">SEO Quick-Tips</div><div style="display:grid;gap:5px;font-size:0.82rem;"><div><span style="color:#6B7280;">Primary keyword:</span> <span style="color:#E2E2E2;font-weight:600;">savings tracker</span></div><div><span style="color:#6B7280;">Title first 30 chars</span> <span style="color:#6B7280;font-size:0.74rem;">(shows on mobile)</span><span style="color:#6B7280;">:</span> <span style="color:#E2E2E2;font-weight:600;">Savings Goal Tracker PDF Print</span></div><div><span style="color:#6B7280;">Etsy category:</span> <span style="color:#E2E2E2;">Paper &amp; Party Supplies &rarr; Stationery &rarr; Printables</span></div><div style="color:#6B7280;font-size:0.78rem;margin-top:4px;border-top:1px solid #252538;padding-top:6px;">Put primary keyword in first 30 title chars. Tags &ne; title words &mdash; use synonyms.</div></div></div>
       <div style="margin-top:14px;">
-        <button onclick="toggleExtra('ex_r3_w5')" style="background:#C9A84C;color:#0B0B14;border:none;border-radius:8px;padding:8px 16px;font-size:0.82rem;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px;">&#128203; Listing Description &amp; Modification Tools<span id="ex_r3_w5_arrow" style="transition:transform .25s;">&#9660;</span></button>
-        <div id="ex_r3_w5" style="display:none;margin-top:10px;">
+        <button onclick="toggleExtra('ex_r3_w6')" style="background:#C9A84C;color:#0B0B14;border:none;border-radius:8px;padding:8px 16px;font-size:0.82rem;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px;">&#128203; Listing Description &amp; Modification Tools<span id="ex_r3_w6_arrow" style="transition:transform .25s;">&#9660;</span></button>
+        <div id="ex_r3_w6" style="display:none;margin-top:10px;">
           <div style="margin-bottom:14px;">
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
-              <div style="color:#3DD68C;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Etsy Tags (13)</div>
-              <button onclick="copyTA('ex_r3_w5_tags', this)" style="background:#1e1e30;color:#3DD68C;border:1px solid #3DD68C;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy All</button>
+              <div style="color:#3DD68C;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Etsy Tags (7)</div>
+              <button onclick="copyTA('ex_r3_w6_tags', this)" style="background:#1e1e30;color:#3DD68C;border:1px solid #3DD68C;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy All</button>
             </div>
-            <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px;"><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">habit tracker</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">30 day habit</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">monthly tracker</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">habit log printable</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">goal tracker</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">self improvement</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">wellness tracker</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">daily habits</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">habit journal</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">routine tracker</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">morning routine</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">self care</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">habit challenge</span></div>
-            <textarea id="ex_r3_w5_tags" readonly style="display:none;">habit tracker, 30 day habit, monthly tracker, habit log printable, goal tracker, self improvement, wellness tracker, daily habits, habit journal, routine tracker, morning routine, self care, habit challenge</textarea>
+            <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px;"><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">savings tracker</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">goal planner</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">budget printable</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">savings chart</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">money goals</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">financial planner</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">save money</span></div>
+            <textarea id="ex_r3_w6_tags" readonly style="display:none;">savings tracker, goal planner, budget printable, savings chart, money goals, financial planner, save money</textarea>
           </div>
           <div style="margin-bottom:14px;">
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
               <div style="color:#4EA8DE;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Full Etsy Description</div>
-              <button onclick="copyTA('ex_r3_w5_desc', this)" style="background:#1e1e30;color:#4EA8DE;border:1px solid #4EA8DE;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy</button>
+              <button onclick="copyTA('ex_r3_w6_desc', this)" style="background:#1e1e30;color:#4EA8DE;border:1px solid #4EA8DE;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy</button>
             </div>
-            <textarea id="ex_r3_w5_desc" readonly style="width:100%;min-height:260px;background:#1e1e30;color:#E2E2E2;border:1px solid #252538;border-radius:8px;padding:12px;font-family:monospace;font-size:0.8rem;line-height:1.5;resize:vertical;">30-Day Habit Tracker | Printable PDF | Instant Download
+            <textarea id="ex_r3_w6_desc" readonly style="width:100%;min-height:260px;background:#1e1e30;color:#E2E2E2;border:1px solid #252538;border-radius:8px;padding:12px;font-family:monospace;font-size:0.8rem;line-height:1.5;resize:vertical;">Savings Goal Tracker | Printable PDF | Instant Download
 
-An undated 30-day habit tracker with 10 habit slots, daily checkboxes, and a monthly reflection section. Sold as a 5-pack so buyers can track multiple months.
+The product includes five dedicated goal pages, a yearly summary, and a weekly habit checklist; buyers print and fill in contributions to watch each goal grow.
 
 ────────────────────────────────────────
 WHAT'S INCLUDED
@@ -1171,15 +483,15 @@ Questions? I respond within 24 hours.</textarea>
           <div>
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
               <div style="color:#9B72CF;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Modification Prompt</div>
-              <button onclick="copyTA('ex_r3_w5_prompt', this)" style="background:#1e1e30;color:#9B72CF;border:1px solid #9B72CF;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy</button>
+              <button onclick="copyTA('ex_r3_w6_prompt', this)" style="background:#1e1e30;color:#9B72CF;border:1px solid #9B72CF;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy</button>
             </div>
-            <textarea id="ex_r3_w5_prompt" readonly style="width:100%;min-height:280px;background:#1e1e30;color:#E2E2E2;border:1px solid #252538;border-radius:8px;padding:12px;font-family:monospace;font-size:0.8rem;line-height:1.5;resize:vertical;">I have an Etsy digital printable product with the following details:
+            <textarea id="ex_r3_w6_prompt" readonly style="width:100%;min-height:280px;background:#1e1e30;color:#E2E2E2;border:1px solid #252538;border-radius:8px;padding:12px;font-family:monospace;font-size:0.8rem;line-height:1.5;resize:vertical;">I have an Etsy digital printable product with the following details:
 
-Product name: 30-Day Habit Tracker
+Product name: Savings Goal Tracker
 Format: PDF printable
-Current price: $3.99
-Current Etsy title: 30 Day Habit Tracker Printable | Monthly Habit Log | Undated | Instant Download PDF
-Current tags: habit tracker, 30 day habit, monthly tracker, habit log printable, goal tracker, self improvement, wellness tracker, daily habits, habit journal, routine tracker, morning routine, self care, habit challenge
+Current price: $4.99
+Current Etsy title: Savings Goal Tracker PDF Printable – Visual Planner for Holiday, Vacation &amp; Emergency Savings
+Current tags: savings tracker, goal planner, budget printable, savings chart, money goals, financial planner, save money
 
 I want to modify this product as follows:
 [DESCRIBE YOUR CHANGES HERE]
@@ -1194,97 +506,51 @@ Please return:
       </div>
     </div>
 
-    <!-- PRODUCT 4 -->
     <div class="product-card rank-4">
-      <div class="product-rank" style="font-size:1.6rem">4️⃣</div>
-      <div class="product-name">Weekly Meal Planner + Grocery List</div>
+      <div class="product-rank">4️⃣</div>
+      <div class="product-name">Emergency Fund Tracker</div>
       <div class="product-meta">
-        <span class="meta-chip">Price: <span>$2.99 launch → $3.99</span></span>
-        <span class="meta-chip">Build time: <span>1 hr Canva</span></span>
-        <span class="meta-chip">Pages: <span>52-week set</span></span>
-        <span class="meta-chip">Format: <span>PDF Undated</span></span>
-        <span class="meta-chip">Demand: <span>High</span></span>
+        <span class="meta-chip">Price: <span>$3.99</span></span>
+        <span class="meta-chip">Format: <span>PDF printable</span></span>
+        <span class="meta-chip" style="border-color:var(--blue);color:var(--blue);">Week 9</span>
       </div>
-
-      <div class="edge-box">
-        <div class="edge-label">Your Differentiation</div>
-        <div class="edge-body">Meal planners are a repeat-purchase product — buyers come back every few months. Sell a 52-week undated set so they get a year's worth. Landscape layout (A4 horizontal) fits a 7-day grid + shopping list on one page — much better than portrait. Nobody does landscape meal planners well. That's your visual differentiation.</div>
+      <div class="card" style="margin-bottom:14px;">
+        <div class="card-title">What To Build</div>
+        <p>The tracker provides an intro guide, twelve monthly deposit logs, and a visual progress meter; buyers print and record each contribution to build a safety net.</p>
       </div>
-
-      <div class="product-grid">
-        <div class="detail-block">
-          <div class="detail-label">What to include</div>
-          <div class="detail-body"><ul>
-            <li>7-day meal grid (breakfast/lunch/dinner/snack)</li>
-            <li>Right column: grocery list by category (Produce/Dairy/Meat/Pantry/Frozen)</li>
-            <li>Monthly planning calendar page</li>
-            <li>Separate full-page grocery list</li>
-            <li>52 undated weekly sheets</li>
-          </ul></div>
-        </div>
-        <div class="detail-block">
-          <div class="detail-label">Design specs</div>
-          <div class="detail-body"><ul>
-            <li>Landscape A4 / Letter format</li>
-            <li>Font: Clean readable sans-serif</li>
-            <li>Colors: Fresh green or teal palette — signals 'healthy'</li>
-            <li>Single-page per week — print one sheet, use it all week</li>
-            <li>Export as multi-page PDF</li>
-          </ul></div>
-        </div>
+      <div class="card" style="margin-bottom:14px;">
+        <div class="card-title">Why It Sells</div>
+        <p>New freelancers and young families buy it when seeking a clear, printable way to secure a financial cushion.</p>
       </div>
-
+      <div style="margin-bottom:14px;">
+        <div class="card-title" style="color:#C9A84C;font-size:0.85rem;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px;">How To Build in Canva</div>
+        <div class="step-card"><div class="step-num">1</div><div class="step-text">Open Canva → search "emergency fund" and select a simple table layout with bold headings</div></div><div class="step-card"><div class="step-num">2</div><div class="step-text">Create a starter page explaining fund purpose and recommended 3‑6 month target</div></div><div class="step-card"><div class="step-num">3</div><div class="step-text">Add monthly deposit log sheets with columns for date, amount, and running total</div></div><div class="step-card"><div class="step-num">4</div><div class="step-text">Design a progress meter that fills as the target amount is reached</div></div><div class="step-card"><div class="step-num">5</div><div class="step-text">Export as PDF Print → upload to Etsy as a digital download</div></div>
+      </div>
       <div class="seo-block">
-        <div class="seo-label">Etsy Title (copy this)</div>
-        <div class="seo-value">Weekly Meal Planner Printable + Grocery List | Landscape | Undated 52 Week Set | Instant Download PDF</div>
-        <div class="tag-row">
-          <div class="seo-label" style="margin-top:12px;">All 13 Tags</div>
-          <span class="tag">meal planner</span><span class="tag">grocery list</span><span class="tag">weekly meal plan</span><span class="tag">meal planning</span><span class="tag">food planner</span><span class="tag">family meal planner</span><span class="tag">dinner planner</span><span class="tag">meal prep</span><span class="tag">grocery printable</span><span class="tag">weekly planner</span><span class="tag">meal tracker</span><span class="tag">food journal</span><span class="tag">kitchen planner</span>
-        </div>
+        <div class="seo-label">Etsy Title</div>
+        <div class="seo-value">Emergency Fund Tracker PDF Printable – Quick‑Start Safety Net Planner for Home & Freelancers</div>
+        <div class="tag-row" style="margin-top:10px;"><span class="etsy-tag">emergency fund</span><span class="etsy-tag">safety net</span><span class="etsy-tag">budget printable</span><span class="etsy-tag">financial safety</span><span class="etsy-tag">money tracker</span><span class="etsy-tag">savings planner</span><span class="etsy-tag">cash reserve</span></div>
       </div>
-
-      <div class="canva-section">
-        <div class="canva-label">🔍 Canva Search Keywords (Click to Find Templates)</div>
-        <div class="canva-grid">
-          <a href="https://www.canva.com/search?q=meal+planner+template" target="_blank" class="canva-btn">meal planner template</a>
-          <a href="https://www.canva.com/search?q=grocery+list+printable" target="_blank" class="canva-btn">grocery list printable</a>
-          <a href="https://www.canva.com/search?q=weekly+food+plan" target="_blank" class="canva-btn">weekly food plan</a>
-          <a href="https://www.canva.com/search?q=landscape+planner" target="_blank" class="canva-btn">landscape planner</a>
-          <a href="https://www.canva.com/search?q=dinner+planner" target="_blank" class="canva-btn">dinner planner</a>
-          <a href="https://www.canva.com/search?q=meal+prep+schedule" target="_blank" class="canva-btn">meal prep schedule</a>
-        </div>
-      </div>
-
-      <div class="competitor-section">
-        <div class="competitor-label">🎨 Competitor Design Inspiration</div>
-        <div class="competitor-grid">
-          <a href="https://www.etsy.com/search?q=meal+planner+printable&sort_on=score" target="_blank" class="competitor-btn">Etsy Top</a>
-          <a href="https://www.etsy.com/search?q=grocery+list+printable&sort_on=num_favorers_desc" target="_blank" class="competitor-btn">Most Favorited</a>
-          <a href="https://www.etsy.com/shop/SerenatasJourney" target="_blank" class="competitor-btn">SerenatasJourney</a>
-          <a href="https://www.etsy.com/shop/GridEx" target="_blank" class="competitor-btn">GridEx</a>
-          <a href="https://trends.pinterest.com/?country=US&term=meal+planner+printable" target="_blank" class="competitor-btn">Pinterest</a>
-        </div>
-      </div>
-      <div style="border-left:3px solid #3DD68C;background:#0f1f18;border-radius:0 8px 8px 0;padding:12px 16px;margin-top:14px;"><div style="color:#3DD68C;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">SEO Quick-Tips</div><div style="display:grid;gap:5px;font-size:0.82rem;"><div><span style="color:#6B7280;">Primary keyword:</span> <span style="color:#E2E2E2;font-weight:600;">meal planner</span></div><div><span style="color:#6B7280;">Title first 30 chars</span> <span style="color:#6B7280;font-size:0.74rem;">(shows on mobile)</span><span style="color:#6B7280;">:</span> <span style="color:#E2E2E2;font-weight:600;">Weekly Meal Planner Printable </span></div><div><span style="color:#6B7280;">Etsy category:</span> <span style="color:#E2E2E2;">Paper &amp; Party Supplies &rarr; Stationery &rarr; Printables</span></div><div style="color:#6B7280;font-size:0.78rem;margin-top:4px;border-top:1px solid #252538;padding-top:6px;">Put primary keyword in first 30 title chars. Tags &ne; title words &mdash; use synonyms.</div></div></div>
+      <div style="border-left:3px solid #3DD68C;background:#0f1f18;border-radius:0 8px 8px 0;padding:12px 16px;margin-top:14px;"><div style="color:#3DD68C;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">SEO Quick-Tips</div><div style="display:grid;gap:5px;font-size:0.82rem;"><div><span style="color:#6B7280;">Primary keyword:</span> <span style="color:#E2E2E2;font-weight:600;">emergency fund</span></div><div><span style="color:#6B7280;">Title first 30 chars</span> <span style="color:#6B7280;font-size:0.74rem;">(shows on mobile)</span><span style="color:#6B7280;">:</span> <span style="color:#E2E2E2;font-weight:600;">Emergency Fund Tracker PDF Pri</span></div><div><span style="color:#6B7280;">Etsy category:</span> <span style="color:#E2E2E2;">Paper &amp; Party Supplies &rarr; Stationery &rarr; Printables</span></div><div style="color:#6B7280;font-size:0.78rem;margin-top:4px;border-top:1px solid #252538;padding-top:6px;">Put primary keyword in first 30 title chars. Tags &ne; title words &mdash; use synonyms.</div></div></div>
       <div style="margin-top:14px;">
-        <button onclick="toggleExtra('ex_r4_w5')" style="background:#C9A84C;color:#0B0B14;border:none;border-radius:8px;padding:8px 16px;font-size:0.82rem;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px;">&#128203; Listing Description &amp; Modification Tools<span id="ex_r4_w5_arrow" style="transition:transform .25s;">&#9660;</span></button>
-        <div id="ex_r4_w5" style="display:none;margin-top:10px;">
+        <button onclick="toggleExtra('ex_r4_w6')" style="background:#C9A84C;color:#0B0B14;border:none;border-radius:8px;padding:8px 16px;font-size:0.82rem;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px;">&#128203; Listing Description &amp; Modification Tools<span id="ex_r4_w6_arrow" style="transition:transform .25s;">&#9660;</span></button>
+        <div id="ex_r4_w6" style="display:none;margin-top:10px;">
           <div style="margin-bottom:14px;">
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
-              <div style="color:#3DD68C;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Etsy Tags (13)</div>
-              <button onclick="copyTA('ex_r4_w5_tags', this)" style="background:#1e1e30;color:#3DD68C;border:1px solid #3DD68C;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy All</button>
+              <div style="color:#3DD68C;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Etsy Tags (7)</div>
+              <button onclick="copyTA('ex_r4_w6_tags', this)" style="background:#1e1e30;color:#3DD68C;border:1px solid #3DD68C;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy All</button>
             </div>
-            <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px;"><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">meal planner</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">grocery list</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">weekly meal plan</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">meal planning</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">food planner</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">family meal planner</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">dinner planner</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">meal prep planner</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">weekly menu</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">recipe organizer</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">healthy eating</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">shopping list</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">meal organizer</span></div>
-            <textarea id="ex_r4_w5_tags" readonly style="display:none;">meal planner, grocery list, weekly meal plan, meal planning, food planner, family meal planner, dinner planner, meal prep planner, weekly menu, recipe organizer, healthy eating, shopping list, meal organizer</textarea>
+            <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px;"><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">emergency fund</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">safety net</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">budget printable</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">financial safety</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">money tracker</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">savings planner</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">cash reserve</span></div>
+            <textarea id="ex_r4_w6_tags" readonly style="display:none;">emergency fund, safety net, budget printable, financial safety, money tracker, savings planner, cash reserve</textarea>
           </div>
           <div style="margin-bottom:14px;">
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
               <div style="color:#4EA8DE;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Full Etsy Description</div>
-              <button onclick="copyTA('ex_r4_w5_desc', this)" style="background:#1e1e30;color:#4EA8DE;border:1px solid #4EA8DE;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy</button>
+              <button onclick="copyTA('ex_r4_w6_desc', this)" style="background:#1e1e30;color:#4EA8DE;border:1px solid #4EA8DE;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy</button>
             </div>
-            <textarea id="ex_r4_w5_desc" readonly style="width:100%;min-height:260px;background:#1e1e30;color:#E2E2E2;border:1px solid #252538;border-radius:8px;padding:12px;font-family:monospace;font-size:0.8rem;line-height:1.5;resize:vertical;">Weekly Meal Planner + Grocery List | Printable PDF | Instant Download
+            <textarea id="ex_r4_w6_desc" readonly style="width:100%;min-height:260px;background:#1e1e30;color:#E2E2E2;border:1px solid #252538;border-radius:8px;padding:12px;font-family:monospace;font-size:0.8rem;line-height:1.5;resize:vertical;">Emergency Fund Tracker | Printable PDF | Instant Download
 
-A 52-week undated meal planner with a 7-day grid for all meals, a categorised grocery list, and a monthly planning overview. Buyers print weekly.
+The tracker provides an intro guide, twelve monthly deposit logs, and a visual progress meter; buyers print and record each contribution to build a safety net.
 
 ────────────────────────────────────────
 WHAT'S INCLUDED
@@ -1333,15 +599,15 @@ Questions? I respond within 24 hours.</textarea>
           <div>
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
               <div style="color:#9B72CF;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Modification Prompt</div>
-              <button onclick="copyTA('ex_r4_w5_prompt', this)" style="background:#1e1e30;color:#9B72CF;border:1px solid #9B72CF;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy</button>
+              <button onclick="copyTA('ex_r4_w6_prompt', this)" style="background:#1e1e30;color:#9B72CF;border:1px solid #9B72CF;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy</button>
             </div>
-            <textarea id="ex_r4_w5_prompt" readonly style="width:100%;min-height:280px;background:#1e1e30;color:#E2E2E2;border:1px solid #252538;border-radius:8px;padding:12px;font-family:monospace;font-size:0.8rem;line-height:1.5;resize:vertical;">I have an Etsy digital printable product with the following details:
+            <textarea id="ex_r4_w6_prompt" readonly style="width:100%;min-height:280px;background:#1e1e30;color:#E2E2E2;border:1px solid #252538;border-radius:8px;padding:12px;font-family:monospace;font-size:0.8rem;line-height:1.5;resize:vertical;">I have an Etsy digital printable product with the following details:
 
-Product name: Weekly Meal Planner + Grocery List
+Product name: Emergency Fund Tracker
 Format: PDF printable
 Current price: $3.99
-Current Etsy title: Weekly Meal Planner Printable + Grocery List | Undated | 52 Week Set | Instant Download
-Current tags: meal planner, grocery list, weekly meal plan, meal planning, food planner, family meal planner, dinner planner, meal prep planner, weekly menu, recipe organizer, healthy eating, shopping list, meal organizer
+Current Etsy title: Emergency Fund Tracker PDF Printable – Quick‑Start Safety Net Planner for Home &amp; Freelancers
+Current tags: emergency fund, safety net, budget printable, financial safety, money tracker, savings planner, cash reserve
 
 I want to modify this product as follows:
 [DESCRIBE YOUR CHANGES HERE]
@@ -1356,106 +622,56 @@ Please return:
       </div>
     </div>
 
-    <!-- PRODUCT 5 -->
-    <div class="product-card rank-5" style="box-shadow:0 0 0 2px #C9A84C,0 0 28px rgba(201,168,76,0.18);border-color:#C9A84C;">
-      <div class="product-rank" style="font-size:1.6rem">5️⃣</div>
-      <div class="product-name">Goal Setting Workbook (Quarterly Edition)</div>
+    <div class="product-card rank-5">
+      <div class="product-rank">5️⃣</div>
+      <div class="product-name">Sinking Funds Planner</div>
       <div class="product-meta">
-        <span class="meta-chip">Price: <span>$5.99 launch → $7.99</span></span>
-        <span class="meta-chip">Build time: <span>3–4 hrs Canva</span></span>
-        <span class="meta-chip">Pages: <span>35+</span></span>
-        <span class="meta-chip">Format: <span>PDF Workbook</span></span>
-        <span class="meta-chip">Demand: <span>High</span></span>
+        <span class="meta-chip">Price: <span>$5.49</span></span>
+        <span class="meta-chip">Format: <span>PDF printable</span></span>
+        <span class="meta-chip" style="border-color:var(--purple);color:var(--purple);">Week 10</span>
       </div>
-
-      <div class="edge-box">
-        <div class="edge-label">Your Differentiation</div>
-        <div class="edge-body">Workbooks command 2× the price of single trackers because they feel complete and intentional. Quarterly (90-day) beats annual — it's a lower commitment ask and buyers return every quarter. PrioriDigitalStudio and OpulentPlanners own this space at the premium end. Your edge: include a 'Wheel of Life' assessment + weekly check-in pages — most workbooks skip these, but they're what buyers mention wanting in reviews.</div>
+      <div class="card" style="margin-bottom:14px;">
+        <div class="card-title">What To Build</div>
+        <p>The planner contains a master category table, twelve monthly contribution pages per fund, and a funnel chart; buyers print and track money set aside for upcoming expenses.</p>
       </div>
-
-      <div class="product-grid">
-        <div class="detail-block">
-          <div class="detail-label">What to include</div>
-          <div class="detail-body"><ul>
-            <li>Wheel of Life assessment (8 life areas scored 1-10)</li>
-            <li>Values clarification exercise</li>
-            <li>3 big goals for the quarter</li>
-            <li>Monthly milestones for each goal</li>
-            <li>Weekly check-in pages (12 weeks)</li>
-            <li>Quarterly review + reflection</li>
-            <li>Affirmations page</li>
-            <li>Certificate/closing</li>
-          </ul></div>
-        </div>
-        <div class="detail-block">
-          <div class="detail-label">Design specs</div>
-          <div class="detail-body"><ul>
-            <li>Premium design — dark navy or deep charcoal + gold accent</li>
-            <li>Font: Playfair Display headings + Lato body</li>
-            <li>A4 or Letter portrait</li>
-            <li>35+ pages minimum</li>
-            <li>Export: PDF Print</li>
-            <li>Price at $5.99 launch — this earns reviews faster than starting too high</li>
-          </ul></div>
-        </div>
+      <div class="card" style="margin-bottom:14px;">
+        <div class="card-title">Why It Sells</div>
+        <p>Adult women planning for holidays, car maintenance, or home upgrades purchase it to prevent surprise costs and stay organized.</p>
       </div>
-
+      <div style="margin-bottom:14px;">
+        <div class="card-title" style="color:#C9A84C;font-size:0.85rem;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px;">How To Build in Canva</div>
+        <div class="step-card"><div class="step-num">1</div><div class="step-text">Open Canva → search "sinking fund" and choose a grid‑based design with pastel accents</div></div><div class="step-card"><div class="step-num">2</div><div class="step-text">Add a master table listing common sinking fund categories with target amounts and due dates</div></div><div class="step-card"><div class="step-num">3</div><div class="step-text">Create monthly contribution sheets for each category with space for amount saved and balance</div></div><div class="step-card"><div class="step-num">4</div><div class="step-text">Include a visual funnel chart that shows overall fund health across all categories</div></div><div class="step-card"><div class="step-num">5</div><div class="step-text">Export as PDF Print → upload to Etsy as a digital download</div></div>
+      </div>
       <div class="seo-block">
-        <div class="seo-label">Etsy Title (copy this)</div>
-        <div class="seo-value">Goal Setting Workbook Printable | 90 Day Quarterly Planner | Vision + Goals + Weekly Review | Instant Download PDF</div>
-        <div class="tag-row">
-          <div class="seo-label" style="margin-top:12px;">All 13 Tags</div>
-          <span class="tag">goal setting workbook</span><span class="tag">quarterly planner</span><span class="tag">goal planner</span><span class="tag">vision board workbook</span><span class="tag">90 day planner</span><span class="tag">self improvement</span><span class="tag">life goals planner</span><span class="tag">mindset journal</span><span class="tag">quarterly goals</span><span class="tag">goal tracker printable</span><span class="tag">productivity workbook</span><span class="tag">personal development</span><span class="tag">goal journal</span>
-        </div>
+        <div class="seo-label">Etsy Title</div>
+        <div class="seo-value">Sinking Funds Planner PDF Printable – Organized Savings for Bills, Gifts & Big Purchases</div>
+        <div class="tag-row" style="margin-top:10px;"><span class="etsy-tag">sinking funds</span><span class="etsy-tag">savings planner</span><span class="etsy-tag">budget printable</span><span class="etsy-tag">bill tracker</span><span class="etsy-tag">gift fund</span><span class="etsy-tag">money organizer</span><span class="etsy-tag">financial planner</span></div>
       </div>
-
-      <div class="canva-section">
-        <div class="canva-label">🔍 Canva Search Keywords (Click to Find Templates)</div>
-        <div class="canva-grid">
-          <a href="https://www.canva.com/search?q=goal+setting+workbook" target="_blank" class="canva-btn">goal setting workbook</a>
-          <a href="https://www.canva.com/search?q=quarterly+planner+template" target="_blank" class="canva-btn">quarterly planner template</a>
-          <a href="https://www.canva.com/search?q=vision+board+planner" target="_blank" class="canva-btn">vision board planner</a>
-          <a href="https://www.canva.com/search?q=life+goals+journal" target="_blank" class="canva-btn">life goals journal</a>
-          <a href="https://www.canva.com/search?q=wheel+of+life" target="_blank" class="canva-btn">wheel of life</a>
-          <a href="https://www.canva.com/search?q=personal+development" target="_blank" class="canva-btn">personal development</a>
-        </div>
-      </div>
-
-      <div class="competitor-section">
-        <div class="competitor-label">🎨 Competitor Design Inspiration</div>
-        <div class="competitor-grid">
-          <a href="https://www.etsy.com/search?q=goal+setting+workbook+printable&sort_on=score" target="_blank" class="competitor-btn">Etsy Top</a>
-          <a href="https://www.etsy.com/search?q=quarterly+planner&sort_on=num_favorers_desc" target="_blank" class="competitor-btn">Most Favorited</a>
-          <a href="https://www.etsy.com/shop/OpulentPlanners" target="_blank" class="competitor-btn">OpulentPlanners</a>
-          <a href="https://www.etsy.com/shop/PrioriDigitalStudio" target="_blank" class="competitor-btn">PrioriDigitalStudio</a>
-          <a href="https://trends.pinterest.com/?country=US&term=goal+setting+workbook" target="_blank" class="competitor-btn">Pinterest</a>
-        </div>
-      </div>
-      <div style="border-left:3px solid #3DD68C;background:#0f1f18;border-radius:0 8px 8px 0;padding:12px 16px;margin-top:14px;"><div style="color:#3DD68C;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">SEO Quick-Tips</div><div style="display:grid;gap:5px;font-size:0.82rem;"><div><span style="color:#6B7280;">Primary keyword:</span> <span style="color:#E2E2E2;font-weight:600;">goal setting</span></div><div><span style="color:#6B7280;">Title first 30 chars</span> <span style="color:#6B7280;font-size:0.74rem;">(shows on mobile)</span><span style="color:#6B7280;">:</span> <span style="color:#E2E2E2;font-weight:600;">Goal Setting Workbook Printabl</span></div><div><span style="color:#6B7280;">Etsy category:</span> <span style="color:#E2E2E2;">Paper &amp; Party Supplies &rarr; Stationery &rarr; Printables</span></div><div style="color:#6B7280;font-size:0.78rem;margin-top:4px;border-top:1px solid #252538;padding-top:6px;">Put primary keyword in first 30 title chars. Tags &ne; title words &mdash; use synonyms.</div></div></div>
+      <div style="border-left:3px solid #3DD68C;background:#0f1f18;border-radius:0 8px 8px 0;padding:12px 16px;margin-top:14px;"><div style="color:#3DD68C;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">SEO Quick-Tips</div><div style="display:grid;gap:5px;font-size:0.82rem;"><div><span style="color:#6B7280;">Primary keyword:</span> <span style="color:#E2E2E2;font-weight:600;">sinking funds</span></div><div><span style="color:#6B7280;">Title first 30 chars</span> <span style="color:#6B7280;font-size:0.74rem;">(shows on mobile)</span><span style="color:#6B7280;">:</span> <span style="color:#E2E2E2;font-weight:600;">Sinking Funds Planner PDF Prin</span></div><div><span style="color:#6B7280;">Etsy category:</span> <span style="color:#E2E2E2;">Paper &amp; Party Supplies &rarr; Stationery &rarr; Printables</span></div><div style="color:#6B7280;font-size:0.78rem;margin-top:4px;border-top:1px solid #252538;padding-top:6px;">Put primary keyword in first 30 title chars. Tags &ne; title words &mdash; use synonyms.</div></div></div>
       <div style="margin-top:14px;">
-        <button onclick="toggleExtra('ex_r5_w5')" style="background:#C9A84C;color:#0B0B14;border:none;border-radius:8px;padding:8px 16px;font-size:0.82rem;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px;">&#128203; Listing Description &amp; Modification Tools<span id="ex_r5_w5_arrow" style="transition:transform .25s;">&#9660;</span></button>
-        <div id="ex_r5_w5" style="display:none;margin-top:10px;">
+        <button onclick="toggleExtra('ex_r5_w6')" style="background:#C9A84C;color:#0B0B14;border:none;border-radius:8px;padding:8px 16px;font-size:0.82rem;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px;">&#128203; Listing Description &amp; Modification Tools<span id="ex_r5_w6_arrow" style="transition:transform .25s;">&#9660;</span></button>
+        <div id="ex_r5_w6" style="display:none;margin-top:10px;">
           <div style="margin-bottom:14px;">
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
-              <div style="color:#3DD68C;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Etsy Tags (13)</div>
-              <button onclick="copyTA('ex_r5_w5_tags', this)" style="background:#1e1e30;color:#3DD68C;border:1px solid #3DD68C;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy All</button>
+              <div style="color:#3DD68C;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Etsy Tags (7)</div>
+              <button onclick="copyTA('ex_r5_w6_tags', this)" style="background:#1e1e30;color:#3DD68C;border:1px solid #3DD68C;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy All</button>
             </div>
-            <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px;"><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">goal setting</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">quarterly planner</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">goal planner</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">vision board</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">self improvement</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">life goals</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">mindset journal</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">goals worksheet</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">year planner</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">new year goals</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">goal tracker</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">annual planner</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">bucket list</span></div>
-            <textarea id="ex_r5_w5_tags" readonly style="display:none;">goal setting, quarterly planner, goal planner, vision board, self improvement, life goals, mindset journal, goals worksheet, year planner, new year goals, goal tracker, annual planner, bucket list</textarea>
+            <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px;"><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">sinking funds</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">savings planner</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">budget printable</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">bill tracker</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">gift fund</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">money organizer</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">financial planner</span></div>
+            <textarea id="ex_r5_w6_tags" readonly style="display:none;">sinking funds, savings planner, budget printable, bill tracker, gift fund, money organizer, financial planner</textarea>
           </div>
           <div style="margin-bottom:14px;">
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
               <div style="color:#4EA8DE;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Full Etsy Description</div>
-              <button onclick="copyTA('ex_r5_w5_desc', this)" style="background:#1e1e30;color:#4EA8DE;border:1px solid #4EA8DE;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy</button>
+              <button onclick="copyTA('ex_r5_w6_desc', this)" style="background:#1e1e30;color:#4EA8DE;border:1px solid #4EA8DE;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy</button>
             </div>
-            <textarea id="ex_r5_w5_desc" readonly style="width:100%;min-height:260px;background:#1e1e30;color:#E2E2E2;border:1px solid #252538;border-radius:8px;padding:12px;font-family:monospace;font-size:0.8rem;line-height:1.5;resize:vertical;">Goal Setting Workbook (Quarterly Edition) | Printable PDF | Instant Download
+            <textarea id="ex_r5_w6_desc" readonly style="width:100%;min-height:260px;background:#1e1e30;color:#E2E2E2;border:1px solid #252538;border-radius:8px;padding:12px;font-family:monospace;font-size:0.8rem;line-height:1.5;resize:vertical;">Sinking Funds Planner | Printable PDF | Instant Download
 
-A 30+ page quarterly goal-setting workbook with vision statement, goal breakdowns, monthly milestones, and weekly check-ins. Buyers use it every 3 months.
+The planner contains a master category table, twelve monthly contribution pages per fund, and a funnel chart; buyers print and track money set aside for upcoming expenses.
 
 ────────────────────────────────────────
 WHAT'S INCLUDED
 ────────────────────────────────────────
-• Format: PDF workbook
+• Format: PDF printable
 • High resolution: 300 dpi — prints sharp at home
 • Size: US Letter (8.5 x 11 in) — easy to resize to A4
 • Instant digital download — no physical item is shipped
@@ -1499,15 +715,15 @@ Questions? I respond within 24 hours.</textarea>
           <div>
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
               <div style="color:#9B72CF;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Modification Prompt</div>
-              <button onclick="copyTA('ex_r5_w5_prompt', this)" style="background:#1e1e30;color:#9B72CF;border:1px solid #9B72CF;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy</button>
+              <button onclick="copyTA('ex_r5_w6_prompt', this)" style="background:#1e1e30;color:#9B72CF;border:1px solid #9B72CF;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy</button>
             </div>
-            <textarea id="ex_r5_w5_prompt" readonly style="width:100%;min-height:280px;background:#1e1e30;color:#E2E2E2;border:1px solid #252538;border-radius:8px;padding:12px;font-family:monospace;font-size:0.8rem;line-height:1.5;resize:vertical;">I have an Etsy digital printable product with the following details:
+            <textarea id="ex_r5_w6_prompt" readonly style="width:100%;min-height:280px;background:#1e1e30;color:#E2E2E2;border:1px solid #252538;border-radius:8px;padding:12px;font-family:monospace;font-size:0.8rem;line-height:1.5;resize:vertical;">I have an Etsy digital printable product with the following details:
 
-Product name: Goal Setting Workbook (Quarterly Edition)
-Format: PDF workbook
-Current price: $6.99
-Current Etsy title: Goal Setting Workbook Printable | Quarterly Planner | Vision + Goals + Weekly Review | PDF
-Current tags: goal setting, quarterly planner, goal planner, vision board, self improvement, life goals, mindset journal, goals worksheet, year planner, new year goals, goal tracker, annual planner, bucket list
+Product name: Sinking Funds Planner
+Format: PDF printable
+Current price: $5.49
+Current Etsy title: Sinking Funds Planner PDF Printable – Organized Savings for Bills, Gifts &amp; Big Purchases
+Current tags: sinking funds, savings planner, budget printable, bill tracker, gift fund, money organizer, financial planner
 
 I want to modify this product as follows:
 [DESCRIBE YOUR CHANGES HERE]
@@ -1521,9 +737,10 @@ Please return:
         </div>
       </div>
     </div>
+
   </section>
 
-
+  
   <!-- DYNAMIC ACTION PLAN — injected by productivity_brief_generator.py -->
   <style>
     .ap-item { cursor:pointer; display:flex; gap:14px; align-items:flex-start;
@@ -1550,7 +767,7 @@ Please return:
     <div class="section-header">
       <span class="section-icon">✅</span>
       <span class="section-title">This Week&#39;s Action Plan</span>
-      <span class="section-sub">Week 5 &nbsp;·&nbsp; Goal Setting Workbook (Quarterly Edition)</span>
+      <span class="section-sub">Week 6 &nbsp;·&nbsp; Annual Budget Planner</span>
     </div>
 
     <div style="background:#12121F;border:1px solid #252538;border-radius:12px;
@@ -1580,21 +797,21 @@ Please return:
             <span style="color:#6B7280;font-size:0.75rem;margin-left:auto;">3 steps</span>
           </div>
           <div style="padding:2px 18px 10px;">
-          <div class="ap-item" data-id="pt_ap_w5_s1" onclick="toggleAP('pt_ap_w5_s1')">
+          <div class="ap-item" data-id="pt_ap_w6_s1" onclick="toggleAP('pt_ap_w6_s1')">
             <div class="ap-check"></div>
             <div style="flex:1;">
-              <div class="ap-text">Search Etsy for <strong>"goal setting workbook quarterly edition"</strong> — screenshot the first 8 listings. Note each one's price, page count, review count, and what their thumbnail shows. This is your competitive landscape before you build anything.</div>
+              <div class="ap-text">Search Etsy for <strong>"annual budget planner"</strong> — screenshot the first 8 listings. Note each one's price, page count, review count, and what their thumbnail shows. This is your competitive landscape before you build anything.</div>
               <div class="ap-time">~30 min</div>
             </div>
           </div>
-          <div class="ap-item" data-id="pt_ap_w5_s2" onclick="toggleAP('pt_ap_w5_s2')">
+          <div class="ap-item" data-id="pt_ap_w6_s2" onclick="toggleAP('pt_ap_w6_s2')">
             <div class="ap-check"></div>
             <div style="flex:1;">
               <div class="ap-text">Click the top 2–3 bestsellers and read ALL their 1–3 star reviews. Write down every complaint — those gaps are exactly where your product wins (e.g. 'wish there was more space to write', 'too generic', 'colours were different from preview').</div>
               <div class="ap-time">~15 min</div>
             </div>
           </div>
-          <div class="ap-item" data-id="pt_ap_w5_s3" onclick="toggleAP('pt_ap_w5_s3')">
+          <div class="ap-item" data-id="pt_ap_w6_s3" onclick="toggleAP('pt_ap_w6_s3')">
             <div class="ap-check"></div>
             <div style="flex:1;">
               <div class="ap-text">Open Pinterest, search the same keyword, save 10–15 images to a mood-board folder in Canva: colors, layouts, fonts, and styles buyers are already engaging with.</div>
@@ -1610,14 +827,14 @@ Please return:
             <span style="color:#6B7280;font-size:0.75rem;margin-left:auto;">2 steps</span>
           </div>
           <div style="padding:2px 18px 10px;">
-          <div class="ap-item" data-id="pt_ap_w5_s4" onclick="toggleAP('pt_ap_w5_s4')">
+          <div class="ap-item" data-id="pt_ap_w6_s4" onclick="toggleAP('pt_ap_w6_s4')">
             <div class="ap-check"></div>
             <div style="flex:1;">
               <div class="ap-text">Write your complete page list before touching Canva — e.g. <em>Cover · Page 2: How to use · Pages 3–14: Monthly overviews · Pages 15–26: Weekly logs · Page 27: Annual summary</em>. Target <strong>25+ pages minimum</strong> — buyers compare page count and mention it in reviews.</div>
               <div class="ap-time">~15 min</div>
             </div>
           </div>
-          <div class="ap-item" data-id="pt_ap_w5_s5" onclick="toggleAP('pt_ap_w5_s5')">
+          <div class="ap-item" data-id="pt_ap_w6_s5" onclick="toggleAP('pt_ap_w6_s5')">
             <div class="ap-check"></div>
             <div style="flex:1;">
               <div class="ap-text">Commit to your one unique angle (from the brief above) — a bonus section, a design style, or a niche focus that competitors don't have. Write it on a sticky note where you can see it while building — it keeps every page decision consistent.</div>
@@ -1633,21 +850,21 @@ Please return:
             <span style="color:#6B7280;font-size:0.75rem;margin-left:auto;">3 steps</span>
           </div>
           <div style="padding:2px 18px 10px;">
-          <div class="ap-item" data-id="pt_ap_w5_s6" onclick="toggleAP('pt_ap_w5_s6')">
+          <div class="ap-item" data-id="pt_ap_w6_s6" onclick="toggleAP('pt_ap_w6_s6')">
             <div class="ap-check"></div>
             <div style="flex:1;">
               <div class="ap-text">Open Canva → follow the 5 build steps in the brief above → work through every page on your content list in order. Use a clean neutral palette (cream, warm grey, one accent) — minimalist designs outsell busy ones for productivity products.</div>
               <div class="ap-time">2–4 hrs</div>
             </div>
           </div>
-          <div class="ap-item" data-id="pt_ap_w5_s7" onclick="toggleAP('pt_ap_w5_s7')">
+          <div class="ap-item" data-id="pt_ap_w6_s7" onclick="toggleAP('pt_ap_w6_s7')">
             <div class="ap-check"></div>
             <div style="flex:1;">
               <div class="ap-text">Proof every page before exporting: consistent fonts, consistent colours, enough white space in every fill-in area (test-fill one page yourself first). Fix everything now — updating files after your first sale is much harder.</div>
               <div class="ap-time">~20 min</div>
             </div>
           </div>
-          <div class="ap-item" data-id="pt_ap_w5_s8" onclick="toggleAP('pt_ap_w5_s8')">
+          <div class="ap-item" data-id="pt_ap_w6_s8" onclick="toggleAP('pt_ap_w6_s8')">
             <div class="ap-check"></div>
             <div style="flex:1;">
               <div class="ap-text"><strong>Export as "PDF Print"</strong> (not "Standard PDF"). PDF Print preserves 300 dpi resolution. Blurry or pixelated printables get 1-star reviews — sharp ones get 5-star ones.</div>
@@ -1663,14 +880,14 @@ Please return:
             <span style="color:#6B7280;font-size:0.75rem;margin-left:auto;">2 steps</span>
           </div>
           <div style="padding:2px 18px 10px;">
-          <div class="ap-item" data-id="pt_ap_w5_s9" onclick="toggleAP('pt_ap_w5_s9')">
+          <div class="ap-item" data-id="pt_ap_w6_s9" onclick="toggleAP('pt_ap_w6_s9')">
             <div class="ap-check"></div>
             <div style="flex:1;">
               <div class="ap-text"><strong>Thumbnail first — it drives more Etsy clicks than any other factor.</strong> Show the product flat on a clean background with text callouts: page count, 'Instant Download', key benefit. Test it: open Etsy and compare your thumbnail side-by-side with competitors. Does yours stop the scroll?</div>
               <div class="ap-time">~30 min</div>
             </div>
           </div>
-          <div class="ap-item" data-id="pt_ap_w5_s10" onclick="toggleAP('pt_ap_w5_s10')">
+          <div class="ap-item" data-id="pt_ap_w6_s10" onclick="toggleAP('pt_ap_w6_s10')">
             <div class="ap-check"></div>
             <div style="flex:1;">
               <div class="ap-text">Create 4–6 supporting images: 2 inside-page samples (your best pages), 1 lifestyle mockup on a desk with coffee/pen — use Canva's mockup feature (search 'planner mockup') or <strong>Placeit.net</strong> (free tier). Add one 'What's Inside' summary listing every section.</div>
@@ -1686,14 +903,14 @@ Please return:
             <span style="color:#6B7280;font-size:0.75rem;margin-left:auto;">2 steps</span>
           </div>
           <div style="padding:2px 18px 10px;">
-          <div class="ap-item" data-id="pt_ap_w5_s11" onclick="toggleAP('pt_ap_w5_s11')">
+          <div class="ap-item" data-id="pt_ap_w6_s11" onclick="toggleAP('pt_ap_w6_s11')">
             <div class="ap-check"></div>
             <div style="flex:1;">
               <div class="ap-text">Create your Etsy listing. <strong>Paste the Etsy title exactly as shown</strong> in the brief. Description: lead with what's included and page count, then how to download and print, then FAQs. Use all 7 tags from the brief plus 6 more variations you can think of (aim for all 13 tags).</div>
               <div class="ap-time">~25 min</div>
             </div>
           </div>
-          <div class="ap-item" data-id="pt_ap_w5_s12" onclick="toggleAP('pt_ap_w5_s12')">
+          <div class="ap-item" data-id="pt_ap_w6_s12" onclick="toggleAP('pt_ap_w6_s12')">
             <div class="ap-check"></div>
             <div style="flex:1;">
               <div class="ap-text">Set your launch price, upload all images (thumbnail goes first) and your PDF. Hit Publish. Then: test-download your own listing using a second browser — open the PDF and confirm every page looks correct before you promote it anywhere.</div>
@@ -1709,21 +926,21 @@ Please return:
             <span style="color:#6B7280;font-size:0.75rem;margin-left:auto;">3 steps</span>
           </div>
           <div style="padding:2px 18px 10px;">
-          <div class="ap-item" data-id="pt_ap_w5_s13" onclick="toggleAP('pt_ap_w5_s13')">
+          <div class="ap-item" data-id="pt_ap_w6_s13" onclick="toggleAP('pt_ap_w6_s13')">
             <div class="ap-check"></div>
             <div style="flex:1;">
               <div class="ap-text">Post 2–3 Pinterest pins linking to your Etsy listing — Pinterest is the #1 external traffic source for Etsy printables. Pin to boards like 'Printable Planners', 'Budget Tracker', 'Productivity Tools', 'Etsy Digital Downloads'.</div>
               <div class="ap-time">~20 min</div>
             </div>
           </div>
-          <div class="ap-item" data-id="pt_ap_w5_s14" onclick="toggleAP('pt_ap_w5_s14')">
+          <div class="ap-item" data-id="pt_ap_w6_s14" onclick="toggleAP('pt_ap_w6_s14')">
             <div class="ap-check"></div>
             <div style="flex:1;">
               <div class="ap-text">After your first sale, message the buyer within 24 hours: <em>"Thanks so much! Hope the planner is useful. If you have a moment, a review means the world to a small shop 🙏"</em> — warm, brief, never pushy. Reviews are Etsy's #1 ranking signal.</div>
               <div class="ap-time">~2 min</div>
             </div>
           </div>
-          <div class="ap-item" data-id="pt_ap_w5_s15" onclick="toggleAP('pt_ap_w5_s15')">
+          <div class="ap-item" data-id="pt_ap_w6_s15" onclick="toggleAP('pt_ap_w6_s15')">
             <div class="ap-check"></div>
             <div style="flex:1;">
               <div class="ap-text">At the 2-week mark: Etsy Stats → Search Terms. Terms with views but no sales = thumbnail or price issue. Terms that convert to sales = add them to your title and tags. After 3 reviews, raise your price by $1 as suggested in the brief.</div>
@@ -1736,7 +953,7 @@ Please return:
 
   <script>
     (function() {
-      var KEY = 'bell_pt_ap_w5';
+      var KEY = 'bell_pt_ap_w6';
       function save(id, val) {
         var d = JSON.parse(localStorage.getItem(KEY) || '{}');
         d[id] = val; localStorage.setItem(KEY, JSON.stringify(d));
@@ -1765,9 +982,8 @@ Please return:
 
 
   <div class="footer">
-    Unified Product Brief · Productivity &amp; Trackers Niche · Generated May 2, 2026<br>
-    Based on analysis of 13 competitor shops including OpulentPlanners (8k+ sales), TrackerPro (5k+ sales), AmmaRoseDesigns<br>
-    <strong style="color:var(--gold)">You have all the data. Open Canva and start building.</strong>
+    The Bell Newsletter &nbsp;·&nbsp; Productivity & Trackers Brief &nbsp;·&nbsp; Block 2 &nbsp;·&nbsp; November 01, 2026<br>
+    New brief generated every 5 weeks · New topic every Monday
   </div>
 
 </div>

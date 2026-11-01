@@ -1,29 +1,29 @@
 {
-  "week": 3,
-  "post_type": "lesson_learned",
-  "cover_title": "Turn One Idea Into Ten Posts",
-  "cover_subtitle": "Quick system to automate weekly social content",
+  "week": 4,
+  "post_type": "tool_tip",
+  "cover_title": "Get Page Numbers from Claude",
+  "cover_subtitle": "Turn any PDF into a searchable Q&A bot in seconds",
   "slides": [
     {
-      "title": "Define the Output Shape",
-      "body": "→ State “short paragraphs, 1‑2 sentences each, mobile‑first.” → Mention bold limits and line breaks. The model follows this layout automatically."
+      "title": "Why the default fails",
+      "body": "→ Claude returns text only. → No reference to where the info lives. → You can’t verify or cite it."
     },
     {
-      "title": "Feed the Core Idea",
-      "body": "→ Provide the article title or key point. → Keep it under 10 words. The AI expands this into multiple posts while keeping the shape you defined."
+      "title": "The prompt that fixes it",
+      "body": "→ Tell Claude you’re uploading a PDF. → Ask for concise answers. → Require “Source: page X” at the end of every reply."
     },
     {
-      "title": "Add Tone Instructions",
-      "body": "→ Write “direct, honest, no hedging.” → Include “use RM, mention KL if relevant.” The model mimics your voice."
+      "title": "How to use it",
+      "body": "1️⃣ Upload your PDF in Claude’s UI. 2️⃣ Paste the prompt above. 3️⃣ Ask any question about the document."
     },
     {
-      "title": "Generate Multiple Variations",
-      "body": "→ Ask for “5 versions for LinkedIn, 3 for Twitter, 2 for Instagram.” → Each respects the same format rules."
+      "title": "Example query",
+      "body": "“What are the late‑payment fees?” → Claude replies: “Late‑payment fees are 2% per month. Source: page 12.”"
     },
     {
-      "title": "Review & Schedule",
-      "body": "→ Scan for any missed numbers or tone slips. → Load into your scheduler; you have a week’s content in minutes."
+      "title": "Tips for best results",
+      "body": "• Use clear, short questions. • Keep PDFs under 10 MB for faster responses. • Verify the page numbers if the doc has complex layouts."
     }
   ],
-  "last_slide": "Follow for weekly AI‑automation tips from Malaysia."
+  "last_slide": "Follow for weekly posts on building with AI from scratch."
 }

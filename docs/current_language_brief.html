@@ -3,1109 +3,207 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Unified Product Brief — Language Learning Niche</title>
+<title>Language Learning Brief — Block 2 (Weeks 6–10)</title>
 <style>
   :root {
-    --bg: #0B0B14;
-    --card: #12121F;
-    --card2: #191928;
-    --border: #252538;
-    --accent: #E94560;
-    --gold: #C9A84C;
-    --gold-dim: rgba(201,168,76,0.12);
-    --green: #3DD68C;
-    --green-dim: rgba(61,214,140,0.1);
-    --blue: #4EA8DE;
-    --purple: #9B72CF;
-    --text: #E2E2E2;
-    --muted: #6B7280;
-    --tag-bg: rgba(201,168,76,0.14);
+    --bg:#0B0B14; --card:#12121F; --card2:#191928; --border:#252538;
+    --gold:#C9A84C; --gold-dim:rgba(201,168,76,0.12);
+    --green:#3DD68C; --green-dim:rgba(61,214,140,0.1);
+    --accent:#E94560; --blue:#4EA8DE; --purple:#9B72CF;
+    --text:#E2E2E2; --muted:#6B7280;
+    --tag-bg:rgba(201,168,76,0.14);
   }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-    font-size: 15px;
-    line-height: 1.7;
-    padding: 32px 20px 80px;
-  }
-  .container { max-width: 1060px; margin: 0 auto; }
-
-  /* ── NAV ── */
-  .toc {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 20px 24px;
-    margin-bottom: 36px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px 24px;
-    align-items: center;
-  }
-  .toc-label { color: var(--muted); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 1px; margin-right: 8px; }
-  .toc a { color: var(--gold); text-decoration: none; font-size: 0.88rem; }
-  .toc a:hover { text-decoration: underline; }
-
-  /* ── HEADER ── */
-  .hero {
-    background: linear-gradient(135deg, #12121F 0%, #0D1220 100%);
-    border: 1px solid var(--border);
-    border-left: 5px solid var(--gold);
-    border-radius: 16px;
-    padding: 40px 36px;
-    margin-bottom: 40px;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: -60px; right: -60px;
-    width: 220px; height: 220px;
-    background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
-    border-radius: 50%;
-  }
-  .hero-badge { color: var(--blue); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
-  .hero h1 { font-size: 2.1rem; color: white; font-weight: 800; line-height: 1.25; margin-bottom: 10px; }
-  .hero .subtitle { color: var(--muted); font-size: 1rem; margin-bottom: 28px; }
-  .hero-stats {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 16px;
-    border-top: 1px solid var(--border);
-    padding-top: 24px;
-  }
-  .stat { }
-  .stat-label { color: var(--muted); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.5px; }
-  .stat-value { color: white; font-size: 1.4rem; font-weight: 700; margin-top: 2px; }
-  .stat-value.gold { color: var(--gold); }
-  .stat-value.green { color: var(--green); }
-
-  /* ── SECTIONS ── */
-  section { margin-bottom: 48px; }
-  .section-header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 20px;
-    padding-bottom: 12px;
-    border-bottom: 2px solid var(--border);
-  }
-  .section-icon { font-size: 1.5rem; }
-  .section-title { font-size: 1.35rem; font-weight: 700; color: white; }
-  .section-sub { color: var(--muted); font-size: 0.88rem; margin-left: auto; }
-
-  /* ── CARDS ── */
-  .card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 22px 24px;
-    margin-bottom: 14px;
-  }
-  .card-title { color: var(--gold); font-weight: 600; font-size: 0.9rem; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
-  .card2 {
-    background: var(--card2);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 16px 20px;
-    margin-bottom: 10px;
-  }
-
-  /* ── SHOP GRID ── */
-  .shop-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 14px;
-  }
-  .shop-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 18px 20px;
-    transition: border-color 0.2s;
-  }
-  .shop-card:hover { border-color: var(--gold); }
-  .shop-card.anchor { border-left: 3px solid var(--gold); }
-  .shop-name { font-weight: 700; color: white; font-size: 1rem; margin-bottom: 4px; }
-  .shop-name a { color: inherit; text-decoration: none; }
-  .shop-name a:hover { color: var(--gold); }
-  .shop-sales { color: var(--green); font-size: 0.85rem; font-weight: 600; margin-bottom: 8px; }
-  .shop-cats { color: var(--muted); font-size: 0.82rem; line-height: 1.5; }
-  .shop-insight { color: var(--text); font-size: 0.83rem; margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--border); }
-  .badge {
-    display: inline-block;
-    font-size: 0.7rem;
-    font-weight: 700;
-    padding: 2px 7px;
-    border-radius: 20px;
-    margin-left: 6px;
-    vertical-align: middle;
-  }
-  .badge-gold { background: var(--gold-dim); color: var(--gold); }
-  .badge-green { background: var(--green-dim); color: var(--green); }
-  .badge-red { background: rgba(233,69,96,0.12); color: var(--accent); }
-
-  /* ── PRODUCT BUILD CARDS ── */
-  .product-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 28px;
-    margin-bottom: 20px;
-    position: relative;
-    overflow: hidden;
-  }
-  .product-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 4px; height: 100%;
-  }
-  .product-card.rank-1::before { background: var(--gold); }
-  .product-card.rank-2::before { background: #A8A8A8; }
-  .product-card.rank-3::before { background: #CD7F32; }
-  .product-card.rank-4::before { background: var(--blue); }
-  .product-card.rank-5::before { background: var(--purple); }
-
-  .product-rank { font-size: 2rem; line-height: 1; margin-bottom: 8px; }
-  .product-name { font-size: 1.3rem; font-weight: 800; color: white; margin-bottom: 6px; }
-  .product-meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 20px;
-  }
-  .meta-chip {
-    background: var(--card2);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 4px 12px;
-    font-size: 0.8rem;
-    color: var(--text);
-  }
-  .meta-chip span { color: var(--gold); font-weight: 600; }
-
-  .product-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin-bottom: 20px;
-  }
-  @media (max-width: 600px) { .product-grid { grid-template-columns: 1fr; } }
-
-  .detail-block { }
-  .detail-label {
-    color: var(--muted);
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 6px;
-  }
-  .detail-body { color: var(--text); font-size: 0.9rem; }
-  .detail-body ul { list-style: none; padding: 0; }
-  .detail-body li { padding: 3px 0; }
-  .detail-body li::before { content: "• "; color: var(--gold); }
-
-  .edge-box {
-    background: var(--card2);
-    border-left: 3px solid var(--accent);
-    border-radius: 0 8px 8px 0;
-    padding: 14px 16px;
-    margin-bottom: 16px;
-  }
-  .edge-label { color: var(--accent); font-weight: 700; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
-  .edge-body { color: var(--text); font-size: 0.92rem; }
-
-  .seo-block {
-    background: var(--card2);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 16px;
-    margin-top: 14px;
-  }
-  .seo-label { color: var(--muted); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
-  .seo-value { color: white; font-weight: 600; font-size: 0.95rem; }
-  .tag-row { margin-top: 10px; }
-  .tag { display: inline-block; background: var(--tag-bg); border: 1px solid var(--gold); color: var(--gold); padding: 3px 10px; border-radius: 20px; font-size: 0.76rem; margin: 2px; }
-
-  /* ── CANVA KEYWORDS ── */
-  .canva-section {
-    background: var(--card2);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 16px;
-    margin: 16px 0;
-  }
-  .canva-label { color: var(--gold); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 700; margin-bottom: 10px; }
-  .canva-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 8px; }
-  .canva-btn { display: inline-block; background: rgba(201,168,76,0.15); border: 1px solid var(--gold); color: var(--gold); padding: 6px 12px; border-radius: 6px; font-size: 0.8rem; text-decoration: none; transition: all 0.2s; text-align: center; }
-  .canva-btn:hover { background: rgba(201,168,76,0.25); text-decoration: none; }
-
-  /* ── COMPETITOR DISCOVERY ── */
-  .competitor-section {
-    background: var(--card2);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 16px;
-    margin: 16px 0;
-  }
-  .competitor-label { color: var(--blue); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 700; margin-bottom: 10px; }
-  .competitor-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 8px; }
-  .competitor-btn { display: inline-block; background: rgba(78,168,222,0.15); border: 1px solid var(--blue); color: var(--blue); padding: 6px 12px; border-radius: 6px; font-size: 0.8rem; text-decoration: none; transition: all 0.2s; text-align: center; }
-  .competitor-btn:hover { background: rgba(78,168,222,0.25); text-decoration: none; }
-
-  /* ── PRICING TABLE ── */
-  table { width: 100%; border-collapse: collapse; }
-  th { background: var(--gold-dim); color: var(--gold); font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.5px; text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--border); }
-  td { padding: 10px 14px; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
-  tr:last-child td { border-bottom: none; }
-  tr:hover td { background: rgba(255,255,255,0.02); }
-
-  /* ── BARS ── */
-  .bar-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
-  .bar-label { width: 140px; font-size: 0.85rem; color: var(--text); flex-shrink: 0; }
-  .bar-track { flex: 1; background: var(--border); border-radius: 4px; height: 8px; }
-  .bar-fill { height: 100%; border-radius: 4px; background: var(--gold); }
-  .bar-count { font-size: 0.8rem; color: var(--muted); width: 30px; text-align: right; }
-
-  /* ── GAPS ── */
-  .gap-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; }
-  .gap-card {
-    background: var(--card2);
-    border: 1px solid var(--border);
-    border-left: 3px solid var(--green);
-    border-radius: 8px;
-    padding: 12px 14px;
-  }
-  .gap-card .gap-name { color: var(--green); font-weight: 600; font-size: 0.9rem; }
-  .gap-card .gap-desc { color: var(--muted); font-size: 0.8rem; margin-top: 4px; }
-
-  /* ── CHECKLIST ── */
-  .checklist { list-style: none; }
-  .checklist li {
-    padding: 10px 0;
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    gap: 12px;
-    align-items: flex-start;
-  }
-  .checklist li:last-child { border-bottom: none; }
-  .check-box {
-    width: 20px; height: 20px;
-    border: 2px solid var(--border);
-    border-radius: 4px;
-    flex-shrink: 0;
-    margin-top: 2px;
-  }
-  .check-day { color: var(--gold); font-weight: 700; font-size: 0.82rem; min-width: 60px; }
-  .check-text { color: var(--text); font-size: 0.9rem; }
-
-  /* ── CALLOUT ── */
-  .callout {
-    background: var(--green-dim);
-    border: 2px solid var(--green);
-    border-radius: 12px;
-    padding: 20px 24px;
-    margin: 20px 0;
-  }
-  .callout-title { color: var(--green); font-weight: 700; font-size: 1rem; margin-bottom: 8px; }
-  .callout-body { color: var(--text); font-size: 0.92rem; }
-
-  .warn {
-    background: rgba(233,69,96,0.08);
-    border: 1px solid rgba(233,69,96,0.3);
-    border-radius: 10px;
-    padding: 14px 18px;
-    font-size: 0.88rem;
-    color: var(--text);
-  }
-  .warn strong { color: var(--accent); }
-
-  .footer {
-    text-align: center;
-    color: var(--muted);
-    font-size: 0.78rem;
-    margin-top: 60px;
-    padding-top: 20px;
-    border-top: 1px solid var(--border);
+  * { box-sizing:border-box; margin:0; padding:0; }
+  html { scroll-behavior:smooth; }
+  body { background:var(--bg); color:var(--text); font-family:'Segoe UI',system-ui,-apple-system,sans-serif; font-size:15px; line-height:1.7; padding:32px 20px 80px; }
+  .container { max-width:1060px; margin:0 auto; }
+  .toc { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:20px 24px; margin-bottom:36px; display:flex; flex-wrap:wrap; gap:10px 24px; align-items:center; }
+  .toc-label { color:var(--muted); font-size:0.78rem; text-transform:uppercase; letter-spacing:1px; margin-right:8px; }
+  .toc a { color:var(--gold); text-decoration:none; font-size:0.88rem; }
+  .toc a:hover { text-decoration:underline; }
+  .hero { background:linear-gradient(135deg,#12121F 0%,#0D1220 100%); border:1px solid var(--border); border-left:5px solid var(--gold); border-radius:16px; padding:40px 36px; margin-bottom:40px; position:relative; overflow:hidden; }
+  .hero::before { content:''; position:absolute; top:-60px; right:-60px; width:220px; height:220px; background:radial-gradient(circle,rgba(78,168,222,0.07) 0%,transparent 70%); border-radius:50%; }
+  .hero-badge { color:var(--blue); font-size:0.78rem; text-transform:uppercase; letter-spacing:2px; margin-bottom:12px; }
+  .hero h1 { font-size:2.1rem; color:white; font-weight:800; line-height:1.25; margin-bottom:10px; }
+  .hero .subtitle { color:var(--muted); font-size:1rem; margin-bottom:28px; }
+  .hero-stats { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:16px; border-top:1px solid var(--border); padding-top:24px; }
+  .stat-label { color:var(--muted); font-size:0.78rem; text-transform:uppercase; letter-spacing:0.5px; }
+  .stat-value { color:white; font-size:1.4rem; font-weight:700; margin-top:2px; }
+  .stat-value.gold { color:var(--gold); }
+  .stat-value.green { color:var(--green); }
+  section { margin-bottom:48px; }
+  .section-header { display:flex; align-items:center; gap:12px; margin-bottom:20px; padding-bottom:12px; border-bottom:2px solid var(--border); }
+  .section-icon { font-size:1.5rem; }
+  .section-title { font-size:1.35rem; font-weight:700; color:white; }
+  .section-sub { color:var(--muted); font-size:0.88rem; margin-left:auto; }
+  .card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:22px 24px; margin-bottom:14px; }
+  .card-title { color:var(--gold); font-weight:600; font-size:0.9rem; margin-bottom:12px; text-transform:uppercase; letter-spacing:0.5px; }
+  .card p { color:var(--text); font-size:0.95rem; }
+  .product-card { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:28px; margin-bottom:20px; position:relative; overflow:hidden; }
+  .product-card::before { content:''; position:absolute; top:0; left:0; width:4px; height:100%; }
+  .product-card.rank-1::before { background:var(--gold); }
+  .product-card.rank-2::before { background:#A8A8A8; }
+  .product-card.rank-3::before { background:#CD7F32; }
+  .product-card.rank-4::before { background:var(--blue); }
+  .product-card.rank-5::before { background:var(--purple); }
+  .product-rank { font-size:2rem; line-height:1; margin-bottom:8px; }
+  .product-name { font-size:1.3rem; font-weight:800; color:white; margin-bottom:6px; }
+  .product-meta { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px; }
+  .meta-chip { background:var(--card2); border:1px solid var(--border); border-radius:20px; padding:4px 12px; font-size:0.8rem; color:var(--text); }
+  .meta-chip span { color:var(--gold); font-weight:600; }
+  .step-card { background:var(--card2); border:1px solid var(--border); border-radius:10px; padding:12px 16px; margin-bottom:8px; display:flex; gap:14px; align-items:flex-start; }
+  .step-num { background:var(--gold); color:#0B0B14; border-radius:50%; width:24px; height:24px; min-width:24px; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:0.8rem; margin-top:2px; }
+  .step-text { font-size:0.9rem; color:var(--text); }
+  .seo-block { background:var(--card2); border:1px solid var(--border); border-radius:10px; padding:16px; margin-top:14px; }
+  .seo-label { color:var(--muted); font-size:0.75rem; text-transform:uppercase; letter-spacing:1px; margin-bottom:6px; }
+  .seo-value { color:white; font-weight:600; font-size:0.95rem; }
+  .etsy-tag { display:inline-block; background:var(--tag-bg); border:1px solid var(--gold); color:var(--gold); padding:3px 10px; border-radius:20px; font-size:0.76rem; margin:2px; }
+  .footer { text-align:center; color:var(--muted); font-size:0.78rem; margin-top:60px; padding-top:20px; border-top:1px solid var(--border); }
+  @media (max-width:768px) {
+    body { font-size:14px; padding:16px 12px 60px; }
+    .container { max-width:100%; }
+    .hero { padding:22px 16px; margin-bottom:20px; }
+    .hero h1 { font-size:1.45rem; }
+    .hero .subtitle { font-size:0.86rem; }
+    .hero-stats { grid-template-columns:repeat(2,1fr); gap:8px; padding-top:16px; }
+    .product-card { padding:16px; }
+    .card { padding:14px; }
+    .toc { gap:6px 12px; padding:12px 14px; }
+    table { display:block; overflow-x:auto; width:100%; }
+    .step-card { flex-direction:column; gap:8px; }
   }
 </style>
 </head>
 <body>
 <div class="container">
 
-  <!-- TOC -->
   <nav class="toc">
     <span class="toc-label">Jump to</span>
-    <a href="#competitors">Competitor Map</a>
-    <a href="#categories">What Sells</a>
-    <a href="#pricing">Pricing</a>
-    <a href="#gaps">Market Gaps</a>
-    <a href="#products">Top 5 to Build</a>
+    <a href="#products">Top 5 Products</a>
     <a href="#action">Action Plan</a>
   </nav>
 
-  <!-- HERO -->
   <div class="hero">
-    <div class="hero-badge">📚 Unified Product Brief — Language Learning Niche</div>
-    <h1>Your Complete Market Intelligence Report</h1>
-    <div class="subtitle">Based on 10 competitor shops · language products analyzed · Ready-to-build product specs</div>
+    <div class="hero-badge">📚 Language Learning Brief — Block 2</div>
+    <h1>Your Next 5 Products to Build</h1>
+    <div class="subtitle">Weeks 6–10 &nbsp;·&nbsp; 5 ready-to-build products with full specs</div>
     <div class="hero-stats">
       <div class="stat">
-        <div class="stat-label">Shops Analyzed</div>
-        <div class="stat-value gold">10</div>
+        <div class="stat-label">Products in Block</div>
+        <div class="stat-value gold">5</div>
       </div>
       <div class="stat">
-        <div class="stat-label">Top Niche</div>
-        <div class="stat-value gold">Japanese &amp; Korean</div>
+        <div class="stat-label">Current Week</div>
+        <div class="stat-value gold">Week 6</div>
       </div>
       <div class="stat">
         <div class="stat-label">Sweet Spot Price</div>
-        <div class="stat-value green">$4 – $8</div>
-      </div>
-      <div class="stat">
-        <div class="stat-label">Market Gaps Found</div>
-        <div class="stat-value">6 niches</div>
+        <div class="stat-value green">$3.99 – $7.99</div>
       </div>
       <div class="stat">
         <div class="stat-label">Generated</div>
-        <div class="stat-value" style="font-size:0.95rem;color:var(--muted)">May 2, 2026</div>
+        <div class="stat-value" style="font-size:0.95rem;color:var(--muted)">November 01, 2026</div>
       </div>
     </div>
   </div>
 
+  
   <div style="background:#12121F;border:1px solid #252538;border-radius:14px;padding:22px 26px;margin-bottom:36px;">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;flex-wrap:wrap;gap:8px;">
       <div>
         <div style="color:#C9A84C;font-size:0.75rem;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:4px;">5-Week Block Progress</div>
-        <div style="color:#E2E2E2;font-size:1.05rem;font-weight:700;">Week 5 of 5 &nbsp;·&nbsp; This Week: Travel Phrasebook — 5 Languages (Spanish, French, Italian, German, Portuguese)</div>
+        <div style="color:#E2E2E2;font-size:1.05rem;font-weight:700;">Week 1 of 5 &nbsp;·&nbsp; This Week: Spanish Verb Conjugation Charts (Present, Past, Future)</div>
       </div>
-      <div style="color:#6B7280;font-size:0.82rem;">0 weeks left in this block</div>
+      <div style="color:#6B7280;font-size:0.82rem;">4 weeks left in this block</div>
     </div>
     <div style="background:#1e1e30;border-radius:8px;height:7px;overflow:hidden;margin-bottom:18px;">
-      <div style="background:linear-gradient(90deg,#C9A84C,#e8c56a);height:100%;border-radius:8px;width:100%;"></div>
+      <div style="background:linear-gradient(90deg,#C9A84C,#e8c56a);height:100%;border-radius:8px;width:20%;"></div>
     </div>
     <div style="display:flex;gap:6px;justify-content:space-around;flex-wrap:wrap;">
       
           <div style="display:flex;flex-direction:column;align-items:center;gap:5px;flex:1;min-width:58px;max-width:112px;">
-            <div style="width:22px;height:22px;border-radius:50%;border:2px solid;background:#3DD68C;border-color:#3DD68C;"></div>
-            <div style="font-size:0.72rem;text-align:center;color:#3DD68C;">✓ Wk 1</div>
-            <div style="font-size:0.67rem;color:#6B7280;text-align:center;line-height:1.3;">Spanish Beginner Vocabulary Flashcards</div>
-          </div>
-          <div style="display:flex;flex-direction:column;align-items:center;gap:5px;flex:1;min-width:58px;max-width:112px;">
-            <div style="width:22px;height:22px;border-radius:50%;border:2px solid;background:#3DD68C;border-color:#3DD68C;"></div>
-            <div style="font-size:0.72rem;text-align:center;color:#3DD68C;">✓ Wk 2</div>
-            <div style="font-size:0.67rem;color:#6B7280;text-align:center;line-height:1.3;">Japanese Hiragana Practice Sheets</div>
-          </div>
-          <div style="display:flex;flex-direction:column;align-items:center;gap:5px;flex:1;min-width:58px;max-width:112px;">
-            <div style="width:22px;height:22px;border-radius:50%;border:2px solid;background:#3DD68C;border-color:#3DD68C;"></div>
-            <div style="font-size:0.72rem;text-align:center;color:#3DD68C;">✓ Wk 3</div>
-            <div style="font-size:0.67rem;color:#6B7280;text-align:center;line-height:1.3;">French Grammar Cheat Sheets</div>
-          </div>
-          <div style="display:flex;flex-direction:column;align-items:center;gap:5px;flex:1;min-width:58px;max-width:112px;">
-            <div style="width:22px;height:22px;border-radius:50%;border:2px solid;background:#3DD68C;border-color:#3DD68C;"></div>
-            <div style="font-size:0.72rem;text-align:center;color:#3DD68C;">✓ Wk 4</div>
-            <div style="font-size:0.67rem;color:#6B7280;text-align:center;line-height:1.3;">Korean Hangul Writing Practice Workbook</div>
-          </div>
-          <div style="display:flex;flex-direction:column;align-items:center;gap:5px;flex:1;min-width:58px;max-width:112px;">
             <div style="width:22px;height:22px;border-radius:50%;border:2px solid;background:#C9A84C;border-color:#C9A84C;box-shadow:0 0 8px rgba(201,168,76,0.6);"></div>
-            <div style="font-size:0.72rem;text-align:center;color:#C9A84C;font-weight:700;">▶ Wk 5</div>
-            <div style="font-size:0.67rem;color:#6B7280;text-align:center;line-height:1.3;">Travel Phrasebook</div>
+            <div style="font-size:0.72rem;text-align:center;color:#C9A84C;font-weight:700;">▶ Wk 6</div>
+            <div style="font-size:0.67rem;color:#6B7280;text-align:center;line-height:1.3;">Spanish Verb Conjugation Charts</div>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:5px;flex:1;min-width:58px;max-width:112px;">
+            <div style="width:22px;height:22px;border-radius:50%;border:2px solid;background:transparent;border-color:#252538;"></div>
+            <div style="font-size:0.72rem;text-align:center;color:#6B7280;">Wk 7</div>
+            <div style="font-size:0.67rem;color:#6B7280;text-align:center;line-height:1.3;">Spanish 200-Word Intermediate Vocabulary Flashcards</div>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:5px;flex:1;min-width:58px;max-width:112px;">
+            <div style="width:22px;height:22px;border-radius:50%;border:2px solid;background:transparent;border-color:#252538;"></div>
+            <div style="font-size:0.72rem;text-align:center;color:#6B7280;">Wk 8</div>
+            <div style="font-size:0.67rem;color:#6B7280;text-align:center;line-height:1.3;">Spanish Body Parts Flashcards</div>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:5px;flex:1;min-width:58px;max-width:112px;">
+            <div style="width:22px;height:22px;border-radius:50%;border:2px solid;background:transparent;border-color:#252538;"></div>
+            <div style="font-size:0.72rem;text-align:center;color:#6B7280;">Wk 9</div>
+            <div style="font-size:0.67rem;color:#6B7280;text-align:center;line-height:1.3;">Spanish Food and Drink Vocabulary Cards</div>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:5px;flex:1;min-width:58px;max-width:112px;">
+            <div style="width:22px;height:22px;border-radius:50%;border:2px solid;background:transparent;border-color:#252538;"></div>
+            <div style="font-size:0.72rem;text-align:center;color:#6B7280;">Wk 10</div>
+            <div style="font-size:0.67rem;color:#6B7280;text-align:center;line-height:1.3;">DELE A1/A2 Vocabulary Study Pack</div>
           </div>
     </div>
   </div>
-  <!-- ── SECTION 1: COMPETITOR MAP ── -->
-  <section id="competitors">
-    <div class="section-header">
-      <span class="section-icon">🗺️</span>
-      <span class="section-title">Competitor Map</span>
-      <span class="section-sub">Your starting list + researched additions</span>
-    </div>
 
-    <div class="card" style="margin-bottom:20px;">
-      <div class="card-title">Your Research List</div>
-      <div class="shop-grid">
 
-        <div class="shop-card anchor">
-          <div class="shop-name"><a href="https://www.etsy.com/shop/DigitalDoodlesToday" target="_blank">DigitalDoodlesToday</a> <span class="badge badge-gold">⭐ ANCHOR</span></div>
-          <div class="shop-sales">1,000+ sales</div>
-          <div class="shop-cats">Japanese language workbooks · JLPT study materials · Kanji practice</div>
-          <div class="shop-insight">Focuses purely on Japanese language materials. Their listing 1709897663 is a bestseller. Clean academic design with consistent Noto font usage. Study their thumbnail style — they put the Japanese script large on a white background, immediately signalling the language to searchers.</div>
-        </div>
-
-        <div class="shop-card">
-          <div class="shop-name"><a href="https://www.etsy.com/shop/MeeLiaDigital" target="_blank">MeeLiaDigital</a></div>
-          <div class="shop-sales">Growing</div>
-          <div class="shop-cats">Multilingual learning packs · Beginner language guides · Vocabulary sets</div>
-          <div class="shop-insight">Covers multiple languages rather than one — broader market reach but less niche authority. Strategy: start with one language niche and own it, then expand.</div>
-        </div>
-
-        <div class="shop-card anchor">
-          <div class="shop-name"><a href="https://www.etsy.com/shop/DanhaHan" target="_blank">DanhaHan</a> <span class="badge badge-green">RISING</span></div>
-          <div class="shop-sales">Active</div>
-          <div class="shop-cats">Korean language materials · K-pop vocabulary · Hangul workbooks</div>
-          <div class="shop-insight">Korean is the fastest-growing language niche on Etsy driven by K-pop/K-drama. "DanhaHan" is literally Korean words — authentic branding that resonates with Korean learners. The K-pop angle (vocabulary from songs) is underexplored and converts extremely well with 18–25 buyers.</div>
-        </div>
-
-        <div class="shop-card">
-          <div class="shop-name"><a href="https://www.etsy.com/shop/MusesofBlanc" target="_blank">MusesofBlanc</a></div>
-          <div class="shop-sales">Growing</div>
-          <div class="shop-cats">Aesthetic language learning packs · French vocabulary · European languages</div>
-          <div class="shop-insight">Premium aesthetic positioning — cream backgrounds, elegant typography, minimalist design. Targets language learners who also care about how their study materials look on their desk/Instagram. Higher price tolerance in this segment.</div>
-        </div>
-
-        <div class="shop-card anchor">
-          <div class="shop-name"><a href="https://www.etsy.com/listing/1874870104" target="_blank">JLPT Kanji N5–N1 Study Pack</a> <span class="badge badge-red">TRENDING</span></div>
-          <div class="shop-sales">High-performing listing</div>
-          <div class="shop-cats">JLPT study workbooks · Complete kanji curriculum · Exam preparation</div>
-          <div class="shop-insight">Exam-preparation materials command premium prices ($8.99–$15.99) because buyers perceive them as high-stakes tools. "JLPT N5" is a specific, high-intent keyword — buyers searching this know exactly what they want and convert faster.</div>
-        </div>
-
-        <div class="shop-card">
-          <div class="shop-name"><a href="https://www.etsy.com/listing/1766114142" target="_blank">Beginner Japanese Textbook</a></div>
-          <div class="shop-sales">High-performing listing</div>
-          <div class="shop-cats">Comprehensive Japanese beginner guides · Grammar + vocabulary combined</div>
-          <div class="shop-insight">Comprehensive "textbook-style" products justify higher prices ($9.99+). They compete less on price and more on completeness. A single comprehensive product can outsell 10 simple flashcard sets.</div>
-        </div>
-
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-title">Additional High-Performing Reference Shops</div>
-      <div class="shop-grid">
-
-        <div class="shop-card">
-          <div class="shop-name">Etsy Spanish Vocabulary Leaders</div>
-          <div class="shop-sales">10k–50k+ sales (category leaders)</div>
-          <div class="shop-cats">Spanish flashcards · Travel phrases · Conjugation packs</div>
-          <div class="shop-insight">Spanish is the #1 most-searched language on Etsy. Top Spanish flashcard shops have 10k–50k+ sales. High competition but massive market — sub-niching wins (irregular verbs, travel phrases, DELE exam prep).</div>
-        </div>
-
-        <div class="shop-card">
-          <div class="shop-name">French Grammar Niche</div>
-          <div class="shop-sales">Consistently top-10 in category</div>
-          <div class="shop-cats">French grammar cheat sheets · Conjugation tables · Vocabulary by theme</div>
-          <div class="shop-insight">French grammar cheat sheets are consistently top-10 in the language learning category. "French grammar" + "cheat sheet" = high-intent buyer. Very few shops do this well.</div>
-        </div>
-
-        <div class="shop-card">
-          <div class="shop-name">Korean Hangul Writers</div>
-          <div class="shop-sales">300% search growth 2023–2024</div>
-          <div class="shop-cats">Hangul practice worksheets · K-drama vocabulary · Beginner Korean</div>
-          <div class="shop-insight">Hangul practice worksheets saw 300% search growth in 2023–2024 driven by K-drama popularity. The buyer is 18–30, female, buying for fun/culture immersion — different motivations than traditional language students.</div>
-        </div>
-
-        <div class="shop-card">
-          <div class="shop-name">Multi-Language Travel Pack Sellers</div>
-          <div class="shop-sales">No dominant player yet</div>
-          <div class="shop-cats">Travel phrasebooks · 3–5 language bundles · Tourist essentials</div>
-          <div class="shop-insight">Travel phrasebooks covering 3–5 languages in one product have no dominant player. Pre-trip buyers search in May–June and December–January. A strong travel phrasebook bundle is a seasonal traffic magnet.</div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ── SECTION 2: WHAT SELLS ── -->
-  <section id="categories">
-    <div class="section-header">
-      <span class="section-icon">📊</span>
-      <span class="section-title">What's Selling (Category Breakdown)</span>
-      <span class="section-sub">Ranked by market saturation + demand signal</span>
-    </div>
-
-    <div class="card">
-      <table>
-        <thead>
-          <tr>
-            <th>Category</th>
-            <th>Demand</th>
-            <th>Competition</th>
-            <th>Opportunity</th>
-            <th>Best Example</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Spanish Vocabulary Flashcards</strong></td>
-            <td><span style="color:var(--green)">🔥 Very High</span></td>
-            <td><span style="color:var(--accent)">Very High</span></td>
-            <td><span style="color:var(--gold)">Good — sub-niche (travel, food, irregular verbs)</span></td>
-            <td>(market leaders)</td>
-          </tr>
-          <tr>
-            <td><strong>Japanese Hiragana / Katakana Sheets</strong></td>
-            <td><span style="color:var(--green)">🔥 Very High</span></td>
-            <td>Medium</td>
-            <td><span style="color:var(--green)">✅ Strong — growing demand</span></td>
-            <td>DigitalDoodlesToday</td>
-          </tr>
-          <tr>
-            <td><strong>JLPT Study Packs (N5–N3)</strong></td>
-            <td><span style="color:var(--green)">High</span></td>
-            <td>Low-Medium</td>
-            <td><span style="color:var(--green)">✅ Strong — exam-prep premium</span></td>
-            <td>JLPT listing</td>
-          </tr>
-          <tr>
-            <td><strong>Korean Hangul Workbooks</strong></td>
-            <td><span style="color:var(--green)">🔥 High + Rising</span></td>
-            <td><span style="color:var(--green)">Low</span></td>
-            <td><span style="color:var(--green)">🌟 Best growth niche right now</span></td>
-            <td>DanhaHan</td>
-          </tr>
-          <tr>
-            <td><strong>French Grammar Cheat Sheets</strong></td>
-            <td><span style="color:var(--green)">High</span></td>
-            <td><span style="color:var(--green)">Low</span></td>
-            <td><span style="color:var(--green)">✅ Underserved — almost no competition</span></td>
-            <td>MusesofBlanc</td>
-          </tr>
-          <tr>
-            <td><strong>German Grammar + Articles</strong></td>
-            <td>Medium</td>
-            <td><span style="color:var(--green)">Low</span></td>
-            <td><span style="color:var(--green)">✅ Good — der/die/das is a universal pain point</span></td>
-            <td>—</td>
-          </tr>
-          <tr>
-            <td><strong>Multi-Language Travel Phrasebooks</strong></td>
-            <td>Medium + Seasonal</td>
-            <td><span style="color:var(--green)">Very Low</span></td>
-            <td><span style="color:var(--green)">🌟 No dominant player</span></td>
-            <td>—</td>
-          </tr>
-          <tr>
-            <td><strong>Bilingual Kids Flashcards</strong></td>
-            <td>Medium + Rising</td>
-            <td><span style="color:var(--green)">Low</span></td>
-            <td><span style="color:var(--green)">✅ Great crossover with children's niche</span></td>
-            <td>—</td>
-          </tr>
-          <tr>
-            <td><strong>GCSE/IB Revision Packs</strong></td>
-            <td>Medium</td>
-            <td><span style="color:var(--green)">Low</span></td>
-            <td><span style="color:var(--green)">✅ Premium price — exam stress = conversion</span></td>
-            <td>—</td>
-          </tr>
-          <tr>
-            <td><strong>Language Study Planners</strong></td>
-            <td>Low-Medium</td>
-            <td><span style="color:var(--green)">Very Low</span></td>
-            <td>Good secondary product</td>
-            <td>—</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <!-- ── SECTION 3: PRICING ── -->
-  <section id="pricing">
-    <div class="section-header">
-      <span class="section-icon">💰</span>
-      <span class="section-title">Pricing Intelligence</span>
-      <span class="section-sub">What competitors charge and where you should land</span>
-    </div>
-
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
-      <div class="card">
-        <div class="card-title">Price Distribution Across Market</div>
-        <div class="bar-row"><span class="bar-label">Under $3</span><div class="bar-track"><div class="bar-fill" style="width:6%"></div></div><span class="bar-count">6%</span></div>
-        <div class="bar-row"><span class="bar-label">$3 – $5</span><div class="bar-track"><div class="bar-fill" style="width:35%"></div></div><span class="bar-count">35%</span></div>
-        <div class="bar-row"><span class="bar-label">$5 – $8</span><div class="bar-track"><div class="bar-fill" style="width:38%"></div></div><span class="bar-count">38%</span></div>
-        <div class="bar-row"><span class="bar-label">$8 – $15</span><div class="bar-track"><div class="bar-fill" style="width:16%"></div></div><span class="bar-count">16%</span></div>
-        <div class="bar-row"><span class="bar-label">Over $15</span><div class="bar-track"><div class="bar-fill" style="width:5%"></div></div><span class="bar-count">5%</span></div>
-      </div>
-      <div class="card">
-        <div class="card-title">Your Pricing Strategy</div>
-        <table>
-          <tr><td><strong>Launch price</strong></td><td style="color:var(--green);font-weight:700;">$3.99 – $4.99</td></tr>
-          <tr><td>After 10 reviews</td><td>Raise to $5.49 – $5.99</td></tr>
-          <tr><td>After 25 reviews</td><td>Raise to $6.49 – $7.99</td></tr>
-          <tr><td>Exam prep packs (JLPT/GCSE)</td><td>$8.99 – $12.99</td></tr>
-          <tr><td>Comprehensive textbook bundles</td><td>$9.99 – $15.99</td></tr>
-          <tr><td>Multi-language bundles</td><td>+$2 premium</td></tr>
-        </table>
-      </div>
-    </div>
-
-    <div class="callout">
-      <div class="callout-title">💡 Script Languages Command Higher Prices</div>
-      <div class="callout-body">Japanese, Korean, Arabic, and Chinese products consistently sell at $1–$2 more than equivalent Latin-alphabet products. Buyers know these materials require more expertise to produce — font selection, stroke order, character accuracy. This perceived difficulty = price premium you can capture from day one.</div>
-    </div>
-  </section>
-
-  <!-- ── SECTION 4: MARKET GAPS ── -->
-  <section id="gaps">
-    <div class="section-header">
-      <span class="section-icon">🎯</span>
-      <span class="section-title">Market Gaps — Build These First</span>
-      <span class="section-sub">Low competition, proven demand, no clear winner yet</span>
-    </div>
-
-    <div class="gap-grid">
-      <div class="gap-card">
-        <div class="gap-name">🇰🇷 Korean for K-Pop / K-Drama Fans</div>
-        <div class="gap-desc">DanhaHan is the only clear player. This buyer is 18–25, motivated by culture, not exams. 'Vocabulary from your favourite K-drama' is a hook no competitor has fully built.</div>
-      </div>
-      <div class="gap-card">
-        <div class="gap-name">🧪 GCSE / IB Language Revision Packs</div>
-        <div class="gap-desc">Exam-motivated buyers pay premium prices ($8.99+). Spanish, French, German GCSE revision flashcards have almost no dedicated Etsy sellers. Schools buy in bulk.</div>
-      </div>
-      <div class="gap-card">
-        <div class="gap-name">🌍 Multi-Language Travel Phrasebooks</div>
-        <div class="gap-desc">3–5 languages in one purchase. Pre-trip buyers (May–August, December) have no dominant seller to go to. Seasonal spike = recurring revenue.</div>
-      </div>
-      <div class="gap-card">
-        <div class="gap-name">👶 Bilingual Flashcards for Kids</div>
-        <div class="gap-desc">Spanish-English or French-English for children age 2–6. Crossover with children's niche. MyLamaMoon (children's shop) has 23k+ sales doing exactly this — almost no pure language sellers compete.</div>
-      </div>
-      <div class="gap-card">
-        <div class="gap-name">📚 Comprehensive Beginner Textbooks</div>
-        <div class="gap-desc">DigitalDoodlesToday and the JLPT listing prove comprehensive products justify $9.99+. One thorough beginner guide outperforms 10 flashcard sets in revenue.</div>
-      </div>
-      <div class="gap-card">
-        <div class="gap-name">✍️ Script Writing Practice (Arabic + Russian)</div>
-        <div class="gap-desc">Arabic and Russian alphabet practice sheets are almost uncontested. These scripts are intimidating for self-learners — a well-designed practice sheet fills a real gap.</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── SECTION 5: TOP 5 PRODUCTS TO BUILD ── -->
   <section id="products">
     <div class="section-header">
-      <span class="section-icon">🏗️</span>
-      <span class="section-title">Top 5 Products to Build (Ranked)</span>
-      <span class="section-sub">Complete specs — ready to open Canva</span>
+      <span class="section-icon">📖</span>
+      <span class="section-title">5 Products — One Per Week</span>
+      <span class="section-sub">Complete specs · ready to open Canva</span>
     </div>
 
-    <!-- PRODUCT 1 -->
-    <div class="product-card rank-1">
+    
+    <div class="product-card rank-1" style="box-shadow:0 0 0 2px #C9A84C,0 0 28px rgba(201,168,76,0.18);border-color:#C9A84C;">
       <div class="product-rank">🥇</div>
-      <div class="product-name">Spanish Beginner Vocabulary Flashcards (100 Words)</div>
+      <div class="product-name">Spanish Verb Conjugation Charts (Present, Past, Future)<span style="display:inline-block;background:rgba(201,168,76,0.15);color:#C9A84C;border:1px solid #C9A84C;border-radius:20px;padding:2px 10px;font-size:0.72rem;font-weight:700;margin-left:10px;vertical-align:middle;">▶ THIS WEEK</span></div>
       <div class="product-meta">
-        <span class="meta-chip">Price: <span>$3.99 launch → $5.99</span></span>
-        <span class="meta-chip">Build time: <span>3–4 hrs Canva</span></span>
-        <span class="meta-chip">Cards: <span>100 double-sided</span></span>
-        <span class="meta-chip">Format: <span>PDF Print-and-cut</span></span>
-        <span class="meta-chip">Demand: <span>🔥 Very High</span></span>
+        <span class="meta-chip">Price: <span>$4.99</span></span>
+        <span class="meta-chip">Format: <span>PDF reference sheets</span></span>
+        <span class="meta-chip" style="border-color:#4EA8DE;color:#4EA8DE;">Lang: <span style="color:#4EA8DE;">Spanish</span></span>
+        <span class="meta-chip" style="border-color:var(--gold);color:var(--gold);">Week 6</span>
       </div>
-
-      <div class="edge-box">
-        <div class="edge-label">Your Differentiation</div>
-        <div class="edge-body">Sub-niche to escape the Spanish flashcard bloodbath. Don't make 'Spanish vocabulary' — make 'Spanish Food + Restaurant Vocabulary' or 'Spanish for Travel.' The market is massive but generic decks are commoditized. Color-code by part of speech (nouns=blue, verbs=coral) — no top seller does this and buyers notice it in reviews.</div>
+      <div class="card" style="margin-bottom:14px;">
+        <div class="card-title">What To Build</div>
+        <p>Three double‑sided PDF pages, each a full conjugation chart for all regular and common irregular verbs in present, past and future; learners use them to reference and practice verb forms while writing or speaking.</p>
       </div>
-
-      <div class="product-grid">
-        <div class="detail-block">
-          <div class="detail-label">What to include</div>
-          <div class="detail-body"><ul>
-            <li>100 vocabulary cards</li>
-            <li>Front: Spanish word (large) + pronunciation in brackets</li>
-            <li>Back: English + example sentence</li>
-            <li>Organized by 8 categories (greetings, numbers, food, family, colors, body, common verbs, adjectives)</li>
-            <li>Bonus: 'How to Study' spaced repetition guide</li>
-            <li>4-cards-per-page layout as second file</li>
-          </ul></div>
-        </div>
-        <div class="detail-block">
-          <div class="detail-label">Design specs</div>
-          <div class="detail-body"><ul>
-            <li>Card size: 3.5×2.5 in or A6</li>
-            <li>Font: Lato/Montserrat (no serif — must be clean)</li>
-            <li>Color-code dots by part of speech in top corner</li>
-            <li>Cut guide lines on A4 layout</li>
-            <li>Works in both color and B&amp;W</li>
-            <li>Export: PDF Print + second file (4-up layout)</li>
-          </ul></div>
-        </div>
+      <div class="card" style="margin-bottom:14px;">
+        <div class="card-title">Why It Sells</div>
+        <p>Busy Spanish students and teachers buy it for quick classroom reference or self‑study, and the clear pastel design makes it a high‑click Etsy listing.</p>
       </div>
-
+      <div style="margin-bottom:14px;">
+        <div class="card-title" style="color:#C9A84C;font-size:0.85rem;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px;">How To Build in Canva</div>
+        <div class="step-card"><div class="step-num">1</div><div class="step-text">Open Canva → search "academic chart" template → select clean grid layout</div></div><div class="step-card"><div class="step-num">2</div><div class="step-text">Add three separate tables for Present, Past and Future tenses, labeling each row with pronouns in Spanish</div></div><div class="step-card"><div class="step-num">3</div><div class="step-text">Set font to Noto Sans Spanish, test accent rendering, and color‑code each tense with pastel shades</div></div><div class="step-card"><div class="step-num">4</div><div class="step-text">Insert example verb conjugations (hablar, comer, vivir) and include a small usage tip box</div></div><div class="step-card"><div class="step-num">5</div><div class="step-text">Export as PDF Print → upload to Etsy as a digital download</div></div>
+      </div>
       <div class="seo-block">
-        <div class="seo-label">Etsy Title (copy this)</div>
-        <div class="seo-value">Spanish Vocabulary Flashcards 100 Words | Beginner Printable | Color-Coded | Print and Cut | Instant Download PDF</div>
-        <div class="tag-row">
-          <div class="seo-label" style="margin-top:12px;">All 13 Tags</div>
-          <span class="tag">spanish flashcards</span><span class="tag">spanish vocabulary</span><span class="tag">learn spanish</span><span class="tag">spanish printable</span><span class="tag">spanish beginner</span><span class="tag">vocabulary cards</span><span class="tag">language learning</span><span class="tag">spanish words</span><span class="tag">printable flashcards</span><span class="tag">language flashcards</span><span class="tag">spanish study</span><span class="tag">language cards</span><span class="tag">spanish practice</span>
-        </div>
+        <div class="seo-label">Etsy Title</div>
+        <div class="seo-value">Spanish Verb Conjugation Charts – Present, Past & Future PDF Reference Sheets</div>
+        <div class="tag-row" style="margin-top:10px;"><span class="etsy-tag">spanish verbs</span><span class="etsy-tag">conjugation chart</span><span class="etsy-tag">pdf study guide</span><span class="etsy-tag">language printables</span><span class="etsy-tag">spanish learning</span><span class="etsy-tag">verb tenses</span><span class="etsy-tag">etsyseller</span></div>
       </div>
-
-      <div class="canva-section">
-        <div class="canva-label">🔍 Canva Search Keywords (Click to Find Templates)</div>
-        <div class="canva-grid">
-          <a href="https://www.canva.com/search?q=flashcard+template" target="_blank" class="canva-btn">flashcard template</a>
-          <a href="https://www.canva.com/search?q=vocabulary+cards+design" target="_blank" class="canva-btn">vocabulary cards design</a>
-          <a href="https://www.canva.com/search?q=language+learning+cards" target="_blank" class="canva-btn">language learning cards</a>
-          <a href="https://www.canva.com/search?q=print+and+cut+flashcard" target="_blank" class="canva-btn">print and cut flashcard</a>
-          <a href="https://www.canva.com/search?q=double+sided+card" target="_blank" class="canva-btn">double sided card</a>
-          <a href="https://www.canva.com/search?q=study+cards+template" target="_blank" class="canva-btn">study cards template</a>
-        </div>
-      </div>
-
-      <div class="competitor-section">
-        <div class="competitor-label">🎨 Competitor Design Inspiration</div>
-        <div class="competitor-grid">
-          <a href="https://www.etsy.com/search?q=spanish+vocabulary+flashcards&sort_on=score" target="_blank" class="competitor-btn">Etsy Top Designs</a>
-          <a href="https://www.etsy.com/search?q=spanish+flashcards+printable&sort_on=num_favorers_desc" target="_blank" class="competitor-btn">Most Favorited</a>
-          <a href="https://www.etsy.com/shop/MusesofBlanc" target="_blank" class="competitor-btn">MusesofBlanc</a>
-          <a href="https://www.etsy.com/shop/DigitalDoodlesToday" target="_blank" class="competitor-btn">DigitalDoodlesToday</a>
-          <a href="https://trends.pinterest.com/?country=US&term=spanish+flashcards" target="_blank" class="competitor-btn">Pinterest</a>
-        </div>
-      </div>
-      <div style="border-left:3px solid #3DD68C;background:#0f1f18;border-radius:0 8px 8px 0;padding:12px 16px;margin-top:14px;"><div style="color:#3DD68C;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">SEO Quick-Tips</div><div style="display:grid;gap:5px;font-size:0.82rem;"><div><span style="color:#6B7280;">Primary keyword:</span> <span style="color:#E2E2E2;font-weight:600;">spanish flashcards</span></div><div><span style="color:#6B7280;">Title first 30 chars</span> <span style="color:#6B7280;font-size:0.74rem;">(shows on mobile)</span><span style="color:#6B7280;">:</span> <span style="color:#E2E2E2;font-weight:600;">Spanish Vocabulary Flashcards </span></div><div><span style="color:#6B7280;">Etsy category:</span> <span style="color:#E2E2E2;">Paper &amp; Party Supplies &rarr; Stationery &rarr; Flashcards</span></div><div style="color:#6B7280;font-size:0.78rem;margin-top:4px;border-top:1px solid #252538;padding-top:6px;">Put primary keyword in first 30 title chars. Tags &ne; title words &mdash; use synonyms.</div></div></div>
+      <div style="border-left:3px solid #3DD68C;background:#0f1f18;border-radius:0 8px 8px 0;padding:12px 16px;margin-top:14px;"><div style="color:#3DD68C;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">SEO Quick-Tips</div><div style="display:grid;gap:5px;font-size:0.82rem;"><div><span style="color:#6B7280;">Primary keyword:</span> <span style="color:#E2E2E2;font-weight:600;">spanish verbs</span></div><div><span style="color:#6B7280;">Title first 30 chars</span> <span style="color:#6B7280;font-size:0.74rem;">(shows on mobile)</span><span style="color:#6B7280;">:</span> <span style="color:#E2E2E2;font-weight:600;">Spanish Verb Conjugation Chart</span></div><div><span style="color:#6B7280;">Etsy category:</span> <span style="color:#E2E2E2;">Paper &amp; Party Supplies &rarr; Stationery &rarr; Printables</span></div><div style="color:#6B7280;font-size:0.78rem;margin-top:4px;border-top:1px solid #252538;padding-top:6px;">Put primary keyword in first 30 title chars. Tags &ne; title words &mdash; use synonyms.</div></div></div>
       <div style="margin-top:14px;">
-        <button onclick="toggleExtra('ex_r1_w5')" style="background:#C9A84C;color:#0B0B14;border:none;border-radius:8px;padding:8px 16px;font-size:0.82rem;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px;">&#128203; Listing Description &amp; Modification Tools<span id="ex_r1_w5_arrow" style="transition:transform .25s;">&#9660;</span></button>
-        <div id="ex_r1_w5" style="display:none;margin-top:10px;">
+        <button onclick="toggleExtra('ex_r1_w6')" style="background:#C9A84C;color:#0B0B14;border:none;border-radius:8px;padding:8px 16px;font-size:0.82rem;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px;">&#128203; Listing Description &amp; Modification Tools<span id="ex_r1_w6_arrow" style="transition:transform .25s;">&#9660;</span></button>
+        <div id="ex_r1_w6" style="display:none;margin-top:10px;">
           <div style="margin-bottom:14px;">
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
-              <div style="color:#3DD68C;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Etsy Tags (13)</div>
-              <button onclick="copyTA('ex_r1_w5_tags', this)" style="background:#1e1e30;color:#3DD68C;border:1px solid #3DD68C;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy All</button>
+              <div style="color:#3DD68C;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Etsy Tags (7)</div>
+              <button onclick="copyTA('ex_r1_w6_tags', this)" style="background:#1e1e30;color:#3DD68C;border:1px solid #3DD68C;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy All</button>
             </div>
-            <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px;"><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">spanish flashcards</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">spanish vocabulary</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">learn spanish</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">spanish printable</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">spanish beginner</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">vocabulary cards</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">language learning</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">spanish words</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">basic spanish</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">spanish teaching</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">esl resources</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">spanish study</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">bilingual learning</span></div>
-            <textarea id="ex_r1_w5_tags" readonly style="display:none;">spanish flashcards, spanish vocabulary, learn spanish, spanish printable, spanish beginner, vocabulary cards, language learning, spanish words, basic spanish, spanish teaching, esl resources, spanish study, bilingual learning</textarea>
+            <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px;"><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">spanish verbs</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">conjugation chart</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">pdf study guide</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">language printables</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">spanish learning</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">verb tenses</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">etsyseller</span></div>
+            <textarea id="ex_r1_w6_tags" readonly style="display:none;">spanish verbs, conjugation chart, pdf study guide, language printables, spanish learning, verb tenses, etsyseller</textarea>
           </div>
           <div style="margin-bottom:14px;">
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
               <div style="color:#4EA8DE;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Full Etsy Description</div>
-              <button onclick="copyTA('ex_r1_w5_desc', this)" style="background:#1e1e30;color:#4EA8DE;border:1px solid #4EA8DE;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy</button>
+              <button onclick="copyTA('ex_r1_w6_desc', this)" style="background:#1e1e30;color:#4EA8DE;border:1px solid #4EA8DE;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy</button>
             </div>
-            <textarea id="ex_r1_w5_desc" readonly style="width:100%;min-height:260px;background:#1e1e30;color:#E2E2E2;border:1px solid #252538;border-radius:8px;padding:12px;font-family:monospace;font-size:0.8rem;line-height:1.5;resize:vertical;">Spanish Beginner Vocabulary Flashcards (100 Words) | Printable PDF | Instant Download
+            <textarea id="ex_r1_w6_desc" readonly style="width:100%;min-height:260px;background:#1e1e30;color:#E2E2E2;border:1px solid #252538;border-radius:8px;padding:12px;font-family:monospace;font-size:0.8rem;line-height:1.5;resize:vertical;">Spanish Verb Conjugation Charts (Present, Past, Future) | Printable PDF | Instant Download
 
-100 double-sided flashcards covering core beginner Spanish vocabulary across 8 categories (greetings, numbers, food, colors, family, body, verbs, adjectives). Each card has the Spanish word + pronunciation on the front and English + an example sentence on the back.
-
-────────────────────────────────────────
-WHAT'S INCLUDED
-────────────────────────────────────────
-• Format: PDF flashcards
-• High resolution: 300 dpi — prints sharp at home
-• Size: US Letter (8.5 x 11 in) — easy to resize to A4
-• Instant digital download — no physical item is shipped
-
-────────────────────────────────────────
-HOW TO DOWNLOAD &amp; PRINT
-────────────────────────────────────────
-1. Complete your purchase on Etsy
-2. Click the download link in your confirmation email (or go to Etsy &gt; Purchases &amp; Reviews)
-3. Open the PDF on your computer or tablet
-4. Print at home or at a local print shop — standard paper works great
-Print and cut out flashcards, or study from the screen on your tablet
-
-────────────────────────────────────────
-FILE DETAILS
-────────────────────────────────────────
-• File type: PDF
-• Resolution: 300 dpi
-• Compatible with Adobe Reader (free) and most PDF viewers
-• Digital product only — no physical item will be mailed
-
-────────────────────────────────────────
-FAQ
-────────────────────────────────────────
-Q: Can I print multiple copies?
-A: Yes! Your purchase covers unlimited personal-use prints.
-
-Q: Can I print on A4 paper?
-A: Yes — in your print settings, select 'Fit to Page' or 'Scale to A4' and it will resize automatically.
-
-Q: I can't find my download. Help?
-A: Check your Etsy account under Purchases &amp; Reviews, or look for the Etsy confirmation email. Still stuck? Message me and I'll help within 24 hours.
-
-Q: Can I share this file with others?
-A: This file is licensed for personal use only. Please do not redistribute or resell.
-
-────────────────────────────────────────
-Loved it? A quick review means the world to a small shop and helps other learners find this resource. Thank you!
-Questions? I respond within 24 hours.</textarea>
-          </div>
-          <div>
-            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
-              <div style="color:#9B72CF;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Modification Prompt</div>
-              <button onclick="copyTA('ex_r1_w5_prompt', this)" style="background:#1e1e30;color:#9B72CF;border:1px solid #9B72CF;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy</button>
-            </div>
-            <textarea id="ex_r1_w5_prompt" readonly style="width:100%;min-height:280px;background:#1e1e30;color:#E2E2E2;border:1px solid #252538;border-radius:8px;padding:12px;font-family:monospace;font-size:0.8rem;line-height:1.5;resize:vertical;">I have an Etsy digital printable product with the following details:
-
-Product name: Spanish Beginner Vocabulary Flashcards (100 Words)
-
-Format: PDF flashcards
-Current price: $4.99
-Current Etsy title: Spanish Vocabulary Flashcards Beginner | 100 Words | Printable PDF | Instant Download
-Current tags: spanish flashcards, spanish vocabulary, learn spanish, spanish printable, spanish beginner, vocabulary cards, language learning, spanish words, basic spanish, spanish teaching, esl resources, spanish study, bilingual learning
-
-I want to modify this product as follows:
-[DESCRIBE YOUR CHANGES HERE]
-
-Please return:
-1. Updated Etsy title (max 140 chars; put the primary keyword in the first 30 characters)
-2. All 13 Etsy tags (use synonyms — do NOT repeat words already in the title)
-3. Full Etsy description with: hook sentence, what's included, who it's for, how to download &amp; print, file details, FAQ (4 Q&amp;As), review request
-4. Suggested price (with brief reasoning)</textarea>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- PRODUCT 2 -->
-    <div class="product-card rank-2">
-      <div class="product-rank">🥈</div>
-      <div class="product-name">Japanese Hiragana Practice Sheets</div>
-      <div class="product-meta">
-        <span class="meta-chip">Price: <span>$3.99 launch → $4.99</span></span>
-        <span class="meta-chip">Build time: <span>2–3 hrs Canva</span></span>
-        <span class="meta-chip">Pages: <span>48</span></span>
-        <span class="meta-chip">Format: <span>PDF Worksheets</span></span>
-        <span class="meta-chip">Demand: <span>🔥 Very High</span></span>
-      </div>
-
-      <div class="edge-box">
-        <div class="edge-label">Your Differentiation</div>
-        <div class="edge-body">DigitalDoodlesToday owns a slice of this market but there's still room. Your edge: numbered stroke order on the first example character, then dotted trace boxes, then blank free-practice boxes — a three-stage learning progression no competitor does consistently. Also add a 'romaji to hiragana' self-quiz page at the back.</div>
-      </div>
-
-      <div class="product-grid">
-        <div class="detail-block">
-          <div class="detail-label">What to include</div>
-          <div class="detail-body"><ul>
-            <li>46 character pages (one per hiragana)</li>
-            <li>Large model character + numbered stroke order</li>
-            <li>6 dotted trace boxes</li>
-            <li>6 blank practice squares</li>
-            <li>Romaji pronunciation below</li>
-            <li>2 example words per character</li>
-            <li>2-page full reference chart (all 46 + romaji)</li>
-            <li>Self-quiz page (cover the hiragana, write from romaji)</li>
-          </ul></div>
-        </div>
-        <div class="detail-block">
-          <div class="detail-label">Design specs</div>
-          <div class="detail-body"><ul>
-            <li>Font: Noto Sans JP (MUST test every character renders at 72pt before building all 46)</li>
-            <li>Clean white background — high contrast for practice</li>
-            <li>Grid squares: 15mm minimum</li>
-            <li>Stroke order numbers: gold color</li>
-            <li>Export: PDF Print</li>
-          </ul></div>
-        </div>
-      </div>
-
-      <div class="seo-block">
-        <div class="seo-label">Etsy Title (copy this)</div>
-        <div class="seo-value">Japanese Hiragana Practice Sheets | Stroke Order + Trace + Blank Practice | 48 Pages | Printable PDF Instant Download</div>
-        <div class="tag-row">
-          <div class="seo-label" style="margin-top:12px;">All 13 Tags</div>
-          <span class="tag">hiragana practice</span><span class="tag">japanese writing</span><span class="tag">hiragana worksheet</span><span class="tag">learn japanese</span><span class="tag">japanese printable</span><span class="tag">stroke order</span><span class="tag">hiragana chart</span><span class="tag">hiragana workbook</span><span class="tag">japanese alphabet</span><span class="tag">writing practice</span><span class="tag">hiragana tracing</span><span class="tag">japanese beginner</span><span class="tag">language worksheet</span>
-        </div>
-      </div>
-
-      <div class="canva-section">
-        <div class="canva-label">🔍 Canva Search Keywords (Click to Find Templates)</div>
-        <div class="canva-grid">
-          <a href="https://www.canva.com/search?q=handwriting+practice+worksheet" target="_blank" class="canva-btn">handwriting practice worksheet</a>
-          <a href="https://www.canva.com/search?q=japanese+grid+paper" target="_blank" class="canva-btn">japanese grid paper</a>
-          <a href="https://www.canva.com/search?q=character+practice+sheet" target="_blank" class="canva-btn">character practice sheet</a>
-          <a href="https://www.canva.com/search?q=writing+worksheet+template" target="_blank" class="canva-btn">writing worksheet template</a>
-          <a href="https://www.canva.com/search?q=stroke+order+guide" target="_blank" class="canva-btn">stroke order guide</a>
-          <a href="https://www.canva.com/search?q=language+practice+pages" target="_blank" class="canva-btn">language practice pages</a>
-        </div>
-      </div>
-
-      <div class="competitor-section">
-        <div class="competitor-label">🎨 Competitor Design Inspiration</div>
-        <div class="competitor-grid">
-          <a href="https://www.etsy.com/search?q=hiragana+practice+sheets&sort_on=score" target="_blank" class="competitor-btn">Etsy Top Designs</a>
-          <a href="https://www.etsy.com/search?q=japanese+writing+worksheets&sort_on=num_favorers_desc" target="_blank" class="competitor-btn">Most Favorited</a>
-          <a href="https://www.etsy.com/shop/DigitalDoodlesToday" target="_blank" class="competitor-btn">DigitalDoodlesToday</a>
-          <a href="https://www.etsy.com/listing/1874870104" target="_blank" class="competitor-btn">JLPT listing</a>
-          <a href="https://trends.pinterest.com/?country=US&term=hiragana+practice" target="_blank" class="competitor-btn">Pinterest</a>
-        </div>
-      </div>
-      <div style="border-left:3px solid #3DD68C;background:#0f1f18;border-radius:0 8px 8px 0;padding:12px 16px;margin-top:14px;"><div style="color:#3DD68C;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">SEO Quick-Tips</div><div style="display:grid;gap:5px;font-size:0.82rem;"><div><span style="color:#6B7280;">Primary keyword:</span> <span style="color:#E2E2E2;font-weight:600;">hiragana practice</span></div><div><span style="color:#6B7280;">Title first 30 chars</span> <span style="color:#6B7280;font-size:0.74rem;">(shows on mobile)</span><span style="color:#6B7280;">:</span> <span style="color:#E2E2E2;font-weight:600;">Japanese Hiragana Practice She</span></div><div><span style="color:#6B7280;">Etsy category:</span> <span style="color:#E2E2E2;">Paper &amp; Party Supplies &rarr; Stationery &rarr; Printables</span></div><div style="color:#6B7280;font-size:0.78rem;margin-top:4px;border-top:1px solid #252538;padding-top:6px;">Put primary keyword in first 30 title chars. Tags &ne; title words &mdash; use synonyms.</div></div></div>
-      <div style="margin-top:14px;">
-        <button onclick="toggleExtra('ex_r2_w5')" style="background:#C9A84C;color:#0B0B14;border:none;border-radius:8px;padding:8px 16px;font-size:0.82rem;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px;">&#128203; Listing Description &amp; Modification Tools<span id="ex_r2_w5_arrow" style="transition:transform .25s;">&#9660;</span></button>
-        <div id="ex_r2_w5" style="display:none;margin-top:10px;">
-          <div style="margin-bottom:14px;">
-            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
-              <div style="color:#3DD68C;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Etsy Tags (13)</div>
-              <button onclick="copyTA('ex_r2_w5_tags', this)" style="background:#1e1e30;color:#3DD68C;border:1px solid #3DD68C;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy All</button>
-            </div>
-            <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px;"><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">hiragana practice</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">japanese writing</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">hiragana worksheet</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">learn japanese</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">japanese printable</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">stroke order</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">hiragana chart</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">japanese alphabet</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">hiragana learning</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">japanese language</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">kana worksheet</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">jlpt study</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">japanese beginner</span></div>
-            <textarea id="ex_r2_w5_tags" readonly style="display:none;">hiragana practice, japanese writing, hiragana worksheet, learn japanese, japanese printable, stroke order, hiragana chart, japanese alphabet, hiragana learning, japanese language, kana worksheet, jlpt study, japanese beginner</textarea>
-          </div>
-          <div style="margin-bottom:14px;">
-            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
-              <div style="color:#4EA8DE;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Full Etsy Description</div>
-              <button onclick="copyTA('ex_r2_w5_desc', this)" style="background:#1e1e30;color:#4EA8DE;border:1px solid #4EA8DE;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy</button>
-            </div>
-            <textarea id="ex_r2_w5_desc" readonly style="width:100%;min-height:260px;background:#1e1e30;color:#E2E2E2;border:1px solid #252538;border-radius:8px;padding:12px;font-family:monospace;font-size:0.8rem;line-height:1.5;resize:vertical;">Japanese Hiragana Practice Sheets | Printable PDF | Instant Download
-
-48 pages: 46 character practice sheets with stroke-order guide, trace lines, and blank practice boxes, plus a 2-page full hiragana reference chart. Covers the complete hiragana syllabary for absolute beginners.
-
-────────────────────────────────────────
-WHAT'S INCLUDED
-────────────────────────────────────────
-• Format: PDF worksheets
-• High resolution: 300 dpi — prints sharp at home
-• Size: US Letter (8.5 x 11 in) — easy to resize to A4
-• Instant digital download — no physical item is shipped
-
-────────────────────────────────────────
-HOW TO DOWNLOAD &amp; PRINT
-────────────────────────────────────────
-1. Complete your purchase on Etsy
-2. Click the download link in your confirmation email (or go to Etsy &gt; Purchases &amp; Reviews)
-3. Open the PDF on your computer or tablet
-4. Print at home or at a local print shop — standard paper works great
-Print and cut out flashcards, or study from the screen on your tablet
-
-────────────────────────────────────────
-FILE DETAILS
-────────────────────────────────────────
-• File type: PDF
-• Resolution: 300 dpi
-• Compatible with Adobe Reader (free) and most PDF viewers
-• Digital product only — no physical item will be mailed
-
-────────────────────────────────────────
-FAQ
-────────────────────────────────────────
-Q: Can I print multiple copies?
-A: Yes! Your purchase covers unlimited personal-use prints.
-
-Q: Can I print on A4 paper?
-A: Yes — in your print settings, select 'Fit to Page' or 'Scale to A4' and it will resize automatically.
-
-Q: I can't find my download. Help?
-A: Check your Etsy account under Purchases &amp; Reviews, or look for the Etsy confirmation email. Still stuck? Message me and I'll help within 24 hours.
-
-Q: Can I share this file with others?
-A: This file is licensed for personal use only. Please do not redistribute or resell.
-
-────────────────────────────────────────
-Loved it? A quick review means the world to a small shop and helps other learners find this resource. Thank you!
-Questions? I respond within 24 hours.</textarea>
-          </div>
-          <div>
-            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
-              <div style="color:#9B72CF;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Modification Prompt</div>
-              <button onclick="copyTA('ex_r2_w5_prompt', this)" style="background:#1e1e30;color:#9B72CF;border:1px solid #9B72CF;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy</button>
-            </div>
-            <textarea id="ex_r2_w5_prompt" readonly style="width:100%;min-height:280px;background:#1e1e30;color:#E2E2E2;border:1px solid #252538;border-radius:8px;padding:12px;font-family:monospace;font-size:0.8rem;line-height:1.5;resize:vertical;">I have an Etsy digital printable product with the following details:
-
-Product name: Japanese Hiragana Practice Sheets
-
-Format: PDF worksheets
-Current price: $3.99
-Current Etsy title: Japanese Hiragana Practice Sheets | 46 Characters + Stroke Order | Printable PDF Worksheet
-Current tags: hiragana practice, japanese writing, hiragana worksheet, learn japanese, japanese printable, stroke order, hiragana chart, japanese alphabet, hiragana learning, japanese language, kana worksheet, jlpt study, japanese beginner
-
-I want to modify this product as follows:
-[DESCRIBE YOUR CHANGES HERE]
-
-Please return:
-1. Updated Etsy title (max 140 chars; put the primary keyword in the first 30 characters)
-2. All 13 Etsy tags (use synonyms — do NOT repeat words already in the title)
-3. Full Etsy description with: hook sentence, what's included, who it's for, how to download &amp; print, file details, FAQ (4 Q&amp;As), review request
-4. Suggested price (with brief reasoning)</textarea>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- PRODUCT 3 -->
-    <div class="product-card rank-3">
-      <div class="product-rank">🥉</div>
-      <div class="product-name">French Grammar Cheat Sheets (10 Essential Rules)</div>
-      <div class="product-meta">
-        <span class="meta-chip">Price: <span>$4.99 launch → $6.99</span></span>
-        <span class="meta-chip">Build time: <span>2–3 hrs Canva</span></span>
-        <span class="meta-chip">Pages: <span>11</span></span>
-        <span class="meta-chip">Format: <span>PDF Reference Sheets</span></span>
-        <span class="meta-chip">Demand: <span>High</span></span>
-      </div>
-
-      <div class="edge-box">
-        <div class="edge-label">Your Differentiation</div>
-        <div class="edge-body">MusesofBlanc does aesthetic French products but grammar cheat sheets are almost empty on Etsy. Your differentiation: each page = rule + formula in a highlighted box + 5 example sentences in a table + a 'Common Mistake to Avoid' callout. This 4-part structure makes every page scannable in 30 seconds — perfect for students cramming before a test.</div>
-      </div>
-
-      <div class="product-grid">
-        <div class="detail-block">
-          <div class="detail-label">What to include</div>
-          <div class="detail-body"><ul>
-            <li>10 grammar rule pages: present tense conjugation, gender + articles (le/la/les), adjective agreement, negation (ne...pas), question formation, passé composé, futur simple, pronouns, prepositions, irregular verbs top 20</li>
-            <li>Bonus: A5 double-sided 'Quick Reference Card' buyers can print and carry</li>
-          </ul></div>
-        </div>
-        <div class="detail-block">
-          <div class="detail-label">Design specs</div>
-          <div class="detail-body"><ul>
-            <li>Single-page per rule — information dense</li>
-            <li>Font: Lato (headings bold) + Lato Regular (body)</li>
-            <li>Colors: Navy + white + gold accent callout boxes</li>
-            <li>Rule formula in a gold-bordered box</li>
-            <li>Example sentences in a table (not bullet list)</li>
-            <li>Export: PDF Print</li>
-          </ul></div>
-        </div>
-      </div>
-
-      <div class="seo-block">
-        <div class="seo-label">Etsy Title (copy this)</div>
-        <div class="seo-value">French Grammar Cheat Sheets | 10 Essential Rules | Quick Reference Study Guide | Printable PDF Instant Download</div>
-        <div class="tag-row">
-          <div class="seo-label" style="margin-top:12px;">All 13 Tags</div>
-          <span class="tag">french grammar</span><span class="tag">french cheat sheet</span><span class="tag">learn french</span><span class="tag">french study guide</span><span class="tag">french printable</span><span class="tag">grammar reference</span><span class="tag">french conjugation</span><span class="tag">french verbs</span><span class="tag">french language</span><span class="tag">grammar cheat sheet</span><span class="tag">french worksheet</span><span class="tag">language study</span><span class="tag">french beginner</span>
-        </div>
-      </div>
-
-      <div class="canva-section">
-        <div class="canva-label">🔍 Canva Search Keywords (Click to Find Templates)</div>
-        <div class="canva-grid">
-          <a href="https://www.canva.com/search?q=cheat+sheet+template" target="_blank" class="canva-btn">cheat sheet template</a>
-          <a href="https://www.canva.com/search?q=grammar+reference+sheet" target="_blank" class="canva-btn">grammar reference sheet</a>
-          <a href="https://www.canva.com/search?q=study+guide+design" target="_blank" class="canva-btn">study guide design</a>
-          <a href="https://www.canva.com/search?q=rule+summary+page" target="_blank" class="canva-btn">rule summary page</a>
-          <a href="https://www.canva.com/search?q=language+worksheet" target="_blank" class="canva-btn">language worksheet</a>
-          <a href="https://www.canva.com/search?q=quick+reference+card" target="_blank" class="canva-btn">quick reference card</a>
-        </div>
-      </div>
-
-      <div class="competitor-section">
-        <div class="competitor-label">🎨 Competitor Design Inspiration</div>
-        <div class="competitor-grid">
-          <a href="https://www.etsy.com/search?q=french+grammar+cheat+sheet&sort_on=score" target="_blank" class="competitor-btn">Etsy Top Designs</a>
-          <a href="https://www.etsy.com/search?q=french+grammar+printable&sort_on=num_favorers_desc" target="_blank" class="competitor-btn">Most Favorited</a>
-          <a href="https://www.etsy.com/shop/MusesofBlanc" target="_blank" class="competitor-btn">MusesofBlanc</a>
-          <a href="https://www.etsy.com/shop/MeeLiaDigital" target="_blank" class="competitor-btn">MeeLiaDigital</a>
-          <a href="https://trends.pinterest.com/?country=US&term=french+grammar+cheat+sheet" target="_blank" class="competitor-btn">Pinterest</a>
-        </div>
-      </div>
-      <div style="border-left:3px solid #3DD68C;background:#0f1f18;border-radius:0 8px 8px 0;padding:12px 16px;margin-top:14px;"><div style="color:#3DD68C;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">SEO Quick-Tips</div><div style="display:grid;gap:5px;font-size:0.82rem;"><div><span style="color:#6B7280;">Primary keyword:</span> <span style="color:#E2E2E2;font-weight:600;">french grammar</span></div><div><span style="color:#6B7280;">Title first 30 chars</span> <span style="color:#6B7280;font-size:0.74rem;">(shows on mobile)</span><span style="color:#6B7280;">:</span> <span style="color:#E2E2E2;font-weight:600;">French Grammar Cheat Sheets | </span></div><div><span style="color:#6B7280;">Etsy category:</span> <span style="color:#E2E2E2;">Paper &amp; Party Supplies &rarr; Stationery &rarr; Printables</span></div><div style="color:#6B7280;font-size:0.78rem;margin-top:4px;border-top:1px solid #252538;padding-top:6px;">Put primary keyword in first 30 title chars. Tags &ne; title words &mdash; use synonyms.</div></div></div>
-      <div style="margin-top:14px;">
-        <button onclick="toggleExtra('ex_r3_w5')" style="background:#C9A84C;color:#0B0B14;border:none;border-radius:8px;padding:8px 16px;font-size:0.82rem;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px;">&#128203; Listing Description &amp; Modification Tools<span id="ex_r3_w5_arrow" style="transition:transform .25s;">&#9660;</span></button>
-        <div id="ex_r3_w5" style="display:none;margin-top:10px;">
-          <div style="margin-bottom:14px;">
-            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
-              <div style="color:#3DD68C;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Etsy Tags (13)</div>
-              <button onclick="copyTA('ex_r3_w5_tags', this)" style="background:#1e1e30;color:#3DD68C;border:1px solid #3DD68C;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy All</button>
-            </div>
-            <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px;"><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">french grammar</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">french cheat sheet</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">learn french</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">french study guide</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">french printable</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">grammar reference</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">french conjugation</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">french language</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">french learning</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">french teacher</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">french worksheet</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">learn francais</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">french beginner</span></div>
-            <textarea id="ex_r3_w5_tags" readonly style="display:none;">french grammar, french cheat sheet, learn french, french study guide, french printable, grammar reference, french conjugation, french language, french learning, french teacher, french worksheet, learn francais, french beginner</textarea>
-          </div>
-          <div style="margin-bottom:14px;">
-            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
-              <div style="color:#4EA8DE;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Full Etsy Description</div>
-              <button onclick="copyTA('ex_r3_w5_desc', this)" style="background:#1e1e30;color:#4EA8DE;border:1px solid #4EA8DE;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy</button>
-            </div>
-            <textarea id="ex_r3_w5_desc" readonly style="width:100%;min-height:260px;background:#1e1e30;color:#E2E2E2;border:1px solid #252538;border-radius:8px;padding:12px;font-family:monospace;font-size:0.8rem;line-height:1.5;resize:vertical;">French Grammar Cheat Sheets (10 Essential Rules) | Printable PDF | Instant Download
-
-10 single-page reference sheets covering the most essential French grammar rules, each with the rule, formula, examples, and a common mistake callout. Plus a bonus double-sided summary card.
+Three double‑sided PDF pages, each a full conjugation chart for all regular and common irregular verbs in present, past and future; learners use them to reference and practice verb forms while writing or speaking.
 
 ────────────────────────────────────────
 WHAT'S INCLUDED
@@ -1154,178 +252,16 @@ Questions? I respond within 24 hours.</textarea>
           <div>
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
               <div style="color:#9B72CF;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Modification Prompt</div>
-              <button onclick="copyTA('ex_r3_w5_prompt', this)" style="background:#1e1e30;color:#9B72CF;border:1px solid #9B72CF;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy</button>
+              <button onclick="copyTA('ex_r1_w6_prompt', this)" style="background:#1e1e30;color:#9B72CF;border:1px solid #9B72CF;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy</button>
             </div>
-            <textarea id="ex_r3_w5_prompt" readonly style="width:100%;min-height:280px;background:#1e1e30;color:#E2E2E2;border:1px solid #252538;border-radius:8px;padding:12px;font-family:monospace;font-size:0.8rem;line-height:1.5;resize:vertical;">I have an Etsy digital printable product with the following details:
+            <textarea id="ex_r1_w6_prompt" readonly style="width:100%;min-height:280px;background:#1e1e30;color:#E2E2E2;border:1px solid #252538;border-radius:8px;padding:12px;font-family:monospace;font-size:0.8rem;line-height:1.5;resize:vertical;">I have an Etsy digital printable product with the following details:
 
-Product name: French Grammar Cheat Sheets (10 Essential Rules)
-
+Product name: Spanish Verb Conjugation Charts (Present, Past, Future)
+Language: Spanish
 Format: PDF reference sheets
-Current price: $5.99
-Current Etsy title: French Grammar Cheat Sheets | 10 Essential Rules | Study Guide | Printable PDF Instant Download
-Current tags: french grammar, french cheat sheet, learn french, french study guide, french printable, grammar reference, french conjugation, french language, french learning, french teacher, french worksheet, learn francais, french beginner
-
-I want to modify this product as follows:
-[DESCRIBE YOUR CHANGES HERE]
-
-Please return:
-1. Updated Etsy title (max 140 chars; put the primary keyword in the first 30 characters)
-2. All 13 Etsy tags (use synonyms — do NOT repeat words already in the title)
-3. Full Etsy description with: hook sentence, what's included, who it's for, how to download &amp; print, file details, FAQ (4 Q&amp;As), review request
-4. Suggested price (with brief reasoning)</textarea>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- PRODUCT 4 -->
-    <div class="product-card rank-4">
-      <div class="product-rank" style="font-size:1.6rem">4️⃣</div>
-      <div class="product-name">Korean Hangul Writing Practice Workbook</div>
-      <div class="product-meta">
-        <span class="meta-chip">Price: <span>$3.99 launch → $5.49</span></span>
-        <span class="meta-chip">Build time: <span>2–3 hrs Canva</span></span>
-        <span class="meta-chip">Pages: <span>47</span></span>
-        <span class="meta-chip">Format: <span>PDF Workbook</span></span>
-        <span class="meta-chip">Demand: <span>🔥 High + Rising</span></span>
-      </div>
-
-      <div class="edge-box">
-        <div class="edge-label">Your Differentiation</div>
-        <div class="edge-body">DanhaHan owns part of this market but the Korean niche is growing faster than supply. Your angle: add a K-pop/K-drama framing — 'Learn to read the words in your favourite K-drama' on the cover. This specific hook converts 18–25 buyers far better than a generic 'Korean alphabet workbook' title. Also add a 'Common K-Drama Words' bonus page of 20 words after the alphabet.</div>
-      </div>
-
-      <div class="product-grid">
-        <div class="detail-block">
-          <div class="detail-label">What to include</div>
-          <div class="detail-body"><ul>
-            <li>24 consonant pages + 10 vowel pages + 6 combination practice pages</li>
-            <li>Each page: large character + romanisation + stroke order + 6 trace + 6 blank</li>
-            <li>2-page full Hangul reference chart</li>
-            <li>Bonus: 20 common K-drama vocabulary words</li>
-            <li>Bonus: How to type Korean on your phone (1 page)</li>
-          </ul></div>
-        </div>
-        <div class="detail-block">
-          <div class="detail-label">Design specs</div>
-          <div class="detail-body"><ul>
-            <li>Font: Noto Sans KR (test ALL characters at 72pt before building all 40 pages)</li>
-            <li>K-pop/K-drama inspired cover (bold, colorful, youthful) but clean interior pages</li>
-            <li>Character practice grid: 15mm squares</li>
-            <li>Export: PDF Print</li>
-          </ul></div>
-        </div>
-      </div>
-
-      <div class="seo-block">
-        <div class="seo-label">Etsy Title (copy this)</div>
-        <div class="seo-value">Korean Hangul Practice Workbook | Stroke Order + Trace + Blank | 47 Pages | K-Drama Vocabulary Bonus | Printable PDF</div>
-        <div class="tag-row">
-          <div class="seo-label" style="margin-top:12px;">All 13 Tags</div>
-          <span class="tag">hangul practice</span><span class="tag">korean writing</span><span class="tag">hangul worksheet</span><span class="tag">learn korean</span><span class="tag">korean printable</span><span class="tag">hangul workbook</span><span class="tag">korean alphabet</span><span class="tag">hangul tracing</span><span class="tag">korean beginner</span><span class="tag">k-pop language</span><span class="tag">korean language</span><span class="tag">writing practice</span><span class="tag">hangul chart</span>
-        </div>
-      </div>
-
-      <div class="canva-section">
-        <div class="canva-label">🔍 Canva Search Keywords (Click to Find Templates)</div>
-        <div class="canva-grid">
-          <a href="https://www.canva.com/search?q=korean+writing+practice" target="_blank" class="canva-btn">korean writing practice</a>
-          <a href="https://www.canva.com/search?q=hangul+worksheet+template" target="_blank" class="canva-btn">hangul worksheet template</a>
-          <a href="https://www.canva.com/search?q=character+grid+paper" target="_blank" class="canva-btn">character grid paper</a>
-          <a href="https://www.canva.com/search?q=stroke+order+worksheet" target="_blank" class="canva-btn">stroke order worksheet</a>
-          <a href="https://www.canva.com/search?q=korean+alphabet+chart" target="_blank" class="canva-btn">korean alphabet chart</a>
-          <a href="https://www.canva.com/search?q=practice+workbook+pages" target="_blank" class="canva-btn">practice workbook pages</a>
-        </div>
-      </div>
-
-      <div class="competitor-section">
-        <div class="competitor-label">🎨 Competitor Design Inspiration</div>
-        <div class="competitor-grid">
-          <a href="https://www.etsy.com/search?q=hangul+practice+sheets&sort_on=score" target="_blank" class="competitor-btn">Etsy Top Designs</a>
-          <a href="https://www.etsy.com/search?q=korean+writing+practice&sort_on=num_favorers_desc" target="_blank" class="competitor-btn">Most Favorited</a>
-          <a href="https://www.etsy.com/shop/DanhaHan" target="_blank" class="competitor-btn">DanhaHan</a>
-          <a href="https://www.etsy.com/shop/MeeLiaDigital" target="_blank" class="competitor-btn">MeeLiaDigital</a>
-          <a href="https://trends.pinterest.com/?country=US&term=hangul+practice" target="_blank" class="competitor-btn">Pinterest</a>
-        </div>
-      </div>
-      <div style="border-left:3px solid #3DD68C;background:#0f1f18;border-radius:0 8px 8px 0;padding:12px 16px;margin-top:14px;"><div style="color:#3DD68C;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">SEO Quick-Tips</div><div style="display:grid;gap:5px;font-size:0.82rem;"><div><span style="color:#6B7280;">Primary keyword:</span> <span style="color:#E2E2E2;font-weight:600;">hangul practice</span></div><div><span style="color:#6B7280;">Title first 30 chars</span> <span style="color:#6B7280;font-size:0.74rem;">(shows on mobile)</span><span style="color:#6B7280;">:</span> <span style="color:#E2E2E2;font-weight:600;">Korean Hangul Practice Workboo</span></div><div><span style="color:#6B7280;">Etsy category:</span> <span style="color:#E2E2E2;">Paper &amp; Party Supplies &rarr; Stationery &rarr; Printables</span></div><div style="color:#6B7280;font-size:0.78rem;margin-top:4px;border-top:1px solid #252538;padding-top:6px;">Put primary keyword in first 30 title chars. Tags &ne; title words &mdash; use synonyms.</div></div></div>
-      <div style="margin-top:14px;">
-        <button onclick="toggleExtra('ex_r4_w5')" style="background:#C9A84C;color:#0B0B14;border:none;border-radius:8px;padding:8px 16px;font-size:0.82rem;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px;">&#128203; Listing Description &amp; Modification Tools<span id="ex_r4_w5_arrow" style="transition:transform .25s;">&#9660;</span></button>
-        <div id="ex_r4_w5" style="display:none;margin-top:10px;">
-          <div style="margin-bottom:14px;">
-            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
-              <div style="color:#3DD68C;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Etsy Tags (13)</div>
-              <button onclick="copyTA('ex_r4_w5_tags', this)" style="background:#1e1e30;color:#3DD68C;border:1px solid #3DD68C;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy All</button>
-            </div>
-            <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px;"><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">hangul practice</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">korean writing</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">hangul worksheet</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">learn korean</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">korean printable</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">hangul workbook</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">korean alphabet</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">korean language</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">hangul learning</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">topik study</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">korean beginner</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">hangul chart</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">korean worksheet</span></div>
-            <textarea id="ex_r4_w5_tags" readonly style="display:none;">hangul practice, korean writing, hangul worksheet, learn korean, korean printable, hangul workbook, korean alphabet, korean language, hangul learning, topik study, korean beginner, hangul chart, korean worksheet</textarea>
-          </div>
-          <div style="margin-bottom:14px;">
-            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
-              <div style="color:#4EA8DE;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Full Etsy Description</div>
-              <button onclick="copyTA('ex_r4_w5_desc', this)" style="background:#1e1e30;color:#4EA8DE;border:1px solid #4EA8DE;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy</button>
-            </div>
-            <textarea id="ex_r4_w5_desc" readonly style="width:100%;min-height:260px;background:#1e1e30;color:#E2E2E2;border:1px solid #252538;border-radius:8px;padding:12px;font-family:monospace;font-size:0.8rem;line-height:1.5;resize:vertical;">Korean Hangul Writing Practice Workbook | Printable PDF | Instant Download
-
-A 47-page workbook covering all 40 Hangul characters with stroke-order guides, trace lines, blank practice grids, and a romanisation key. Includes a full Hangul reference chart and 5 pages of common beginner words.
-
-────────────────────────────────────────
-WHAT'S INCLUDED
-────────────────────────────────────────
-• Format: PDF workbook
-• High resolution: 300 dpi — prints sharp at home
-• Size: US Letter (8.5 x 11 in) — easy to resize to A4
-• Instant digital download — no physical item is shipped
-
-────────────────────────────────────────
-HOW TO DOWNLOAD &amp; PRINT
-────────────────────────────────────────
-1. Complete your purchase on Etsy
-2. Click the download link in your confirmation email (or go to Etsy &gt; Purchases &amp; Reviews)
-3. Open the PDF on your computer or tablet
-4. Print at home or at a local print shop — standard paper works great
-Print and cut out flashcards, or study from the screen on your tablet
-
-────────────────────────────────────────
-FILE DETAILS
-────────────────────────────────────────
-• File type: PDF
-• Resolution: 300 dpi
-• Compatible with Adobe Reader (free) and most PDF viewers
-• Digital product only — no physical item will be mailed
-
-────────────────────────────────────────
-FAQ
-────────────────────────────────────────
-Q: Can I print multiple copies?
-A: Yes! Your purchase covers unlimited personal-use prints.
-
-Q: Can I print on A4 paper?
-A: Yes — in your print settings, select 'Fit to Page' or 'Scale to A4' and it will resize automatically.
-
-Q: I can't find my download. Help?
-A: Check your Etsy account under Purchases &amp; Reviews, or look for the Etsy confirmation email. Still stuck? Message me and I'll help within 24 hours.
-
-Q: Can I share this file with others?
-A: This file is licensed for personal use only. Please do not redistribute or resell.
-
-────────────────────────────────────────
-Loved it? A quick review means the world to a small shop and helps other learners find this resource. Thank you!
-Questions? I respond within 24 hours.</textarea>
-          </div>
-          <div>
-            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
-              <div style="color:#9B72CF;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Modification Prompt</div>
-              <button onclick="copyTA('ex_r4_w5_prompt', this)" style="background:#1e1e30;color:#9B72CF;border:1px solid #9B72CF;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy</button>
-            </div>
-            <textarea id="ex_r4_w5_prompt" readonly style="width:100%;min-height:280px;background:#1e1e30;color:#E2E2E2;border:1px solid #252538;border-radius:8px;padding:12px;font-family:monospace;font-size:0.8rem;line-height:1.5;resize:vertical;">I have an Etsy digital printable product with the following details:
-
-Product name: Korean Hangul Writing Practice Workbook
-
-Format: PDF workbook
 Current price: $4.99
-Current Etsy title: Korean Hangul Practice Workbook | Writing Sheets + Stroke Order | Printable PDF Instant Download
-Current tags: hangul practice, korean writing, hangul worksheet, learn korean, korean printable, hangul workbook, korean alphabet, korean language, hangul learning, topik study, korean beginner, hangul chart, korean worksheet
+Current Etsy title: Spanish Verb Conjugation Charts – Present, Past &amp; Future PDF Reference Sheets
+Current tags: spanish verbs, conjugation chart, pdf study guide, language printables, spanish learning, verb tenses, etsyseller
 
 I want to modify this product as follows:
 [DESCRIBE YOUR CHANGES HERE]
@@ -1340,103 +276,57 @@ Please return:
       </div>
     </div>
 
-    <!-- PRODUCT 5 -->
-    <div class="product-card rank-5" style="box-shadow:0 0 0 2px #C9A84C,0 0 28px rgba(201,168,76,0.18);border-color:#C9A84C;">
-      <div class="product-rank" style="font-size:1.6rem">5️⃣</div>
-      <div class="product-name">Travel Phrasebook — 5 Languages</div>
+    <div class="product-card rank-2">
+      <div class="product-rank">🥈</div>
+      <div class="product-name">Spanish 200-Word Intermediate Vocabulary Flashcards</div>
       <div class="product-meta">
-        <span class="meta-chip">Price: <span>$5.99 launch → $7.99</span></span>
-        <span class="meta-chip">Build time: <span>3–4 hrs Canva</span></span>
-        <span class="meta-chip">Pages: <span>45+</span></span>
-        <span class="meta-chip">Format: <span>PDF Phrasebook + Wallet Cards</span></span>
-        <span class="meta-chip">Demand: <span>Medium + Seasonal</span></span>
+        <span class="meta-chip">Price: <span>$5.99</span></span>
+        <span class="meta-chip">Format: <span>PDF flashcards</span></span>
+        <span class="meta-chip" style="border-color:#4EA8DE;color:#4EA8DE;">Lang: <span style="color:#4EA8DE;">Spanish</span></span>
+        <span class="meta-chip" style="border-color:#A8A8A8;color:#A8A8A8;">Week 7</span>
       </div>
-
-      <div class="edge-box">
-        <div class="edge-label">Your Differentiation</div>
-        <div class="edge-body">No dominant player owns the multi-language travel phrasebook on Etsy. Your edge: sell it with a separate 'wallet card' file — one folded A6 card per language with the top 20 phrases. Buyers love having a physical card in their passport. Include a 'Pronunciation Cheat Code' page per language using phonetic English approximations (not IPA) — travelers don't know IPA but they understand 'say: bon-ZHOOR'.</div>
+      <div class="card" style="margin-bottom:14px;">
+        <div class="card-title">What To Build</div>
+        <p>A PDF containing 200 double‑sided flashcards, each showing a Spanish term on the front and its English meaning plus a usage sentence on the back; learners cut, shuffle, and quiz themselves.</p>
       </div>
-
-      <div class="product-grid">
-        <div class="detail-block">
-          <div class="detail-label">What to include</div>
-          <div class="detail-body"><ul>
-            <li>5 language sections (Spanish, French, Italian, German, Portuguese)</li>
-            <li>Each: Greetings, Numbers 1–20, Directions, Restaurant, Shopping, Emergencies, Hotel — 10 phrases per topic per language</li>
-            <li>Pronunciation in plain phonetic English after each phrase</li>
-            <li>Wallet card file: top 20 phrases per language, folds to A6/business card size</li>
-            <li>Total: 45+ pages + 5 wallet card files</li>
-          </ul></div>
-        </div>
-        <div class="detail-block">
-          <div class="detail-label">Design specs</div>
-          <div class="detail-body"><ul>
-            <li>Compact A5 or half-letter portrait</li>
-            <li>Font: Clean sans-serif throughout</li>
-            <li>Color: Flag-color accent per language section (subtle — not gaudy)</li>
-            <li>Phonetic pronunciation in italics + muted color</li>
-            <li>Wallet card: A4 sheet folded to A6 — include fold guide</li>
-            <li>Export: Main PDF + separate wallet cards file</li>
-          </ul></div>
-        </div>
+      <div class="card" style="margin-bottom:14px;">
+        <div class="card-title">Why It Sells</div>
+        <p>Intermediate learners need fresh vocabulary for exams and conversation, and the ready‑to‑print format with themed groups drives fast Etsy sales.</p>
       </div>
-
+      <div style="margin-bottom:14px;">
+        <div class="card-title" style="color:#C9A84C;font-size:0.85rem;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px;">How To Build in Canva</div>
+        <div class="step-card"><div class="step-num">1</div><div class="step-text">Open Canva → search "flashcard" template → choose minimalist pastel style</div></div><div class="step-card"><div class="step-num">2</div><div class="step-text">Create 200 cards, front side with the Spanish word in Noto Serif, back side with English translation and example sentence</div></div><div class="step-card"><div class="step-num">3</div><div class="step-text">Group words by theme (travel, emotions, daily routine) and add small icon for each category</div></div><div class="step-card"><div class="step-num">4</div><div class="step-text">Apply a consistent color border, verify accent marks display correctly in Noto Serif</div></div><div class="step-card"><div class="step-num">5</div><div class="step-text">Export as PDF Print (double‑sided) → list on Etsy as a digital download</div></div>
+      </div>
       <div class="seo-block">
-        <div class="seo-label">Etsy Title (copy this)</div>
-        <div class="seo-value">Travel Phrasebook Printable 5 Languages | Spanish French Italian German Portuguese | Wallet Card | Instant Download</div>
-        <div class="tag-row">
-          <div class="seo-label" style="margin-top:12px;">All 13 Tags</div>
-          <span class="tag">travel phrasebook</span><span class="tag">language phrasebook</span><span class="tag">travel printable</span><span class="tag">phrasebook printable</span><span class="tag">travel essentials</span><span class="tag">language guide</span><span class="tag">europe travel</span><span class="tag">spanish phrasebook</span><span class="tag">french phrasebook</span><span class="tag">travel vocabulary</span><span class="tag">tourist phrases</span><span class="tag">travel companion</span><span class="tag">multi language</span>
-        </div>
+        <div class="seo-label">Etsy Title</div>
+        <div class="seo-value">Spanish 200-Word Intermediate Vocabulary Flashcards – Printable PDF Study Set</div>
+        <div class="tag-row" style="margin-top:10px;"><span class="etsy-tag">spanish vocab</span><span class="etsy-tag">intermediate flashcards</span><span class="etsy-tag">pdf vocab pack</span><span class="etsy-tag">language study</span><span class="etsy-tag">spanish words</span><span class="etsy-tag">learn spanish</span><span class="etsy-tag">digital download</span></div>
       </div>
-
-      <div class="canva-section">
-        <div class="canva-label">🔍 Canva Search Keywords (Click to Find Templates)</div>
-        <div class="canva-grid">
-          <a href="https://www.canva.com/search?q=travel+phrasebook+template" target="_blank" class="canva-btn">travel phrasebook template</a>
-          <a href="https://www.canva.com/search?q=pocket+guide+design" target="_blank" class="canva-btn">pocket guide design</a>
-          <a href="https://www.canva.com/search?q=compact+booklet" target="_blank" class="canva-btn">compact booklet</a>
-          <a href="https://www.canva.com/search?q=travel+card+printable" target="_blank" class="canva-btn">travel card printable</a>
-          <a href="https://www.canva.com/search?q=language+guide+layout" target="_blank" class="canva-btn">language guide layout</a>
-          <a href="https://www.canva.com/search?q=wallet+card+template" target="_blank" class="canva-btn">wallet card template</a>
-        </div>
-      </div>
-
-      <div class="competitor-section">
-        <div class="competitor-label">🎨 Competitor Design Inspiration</div>
-        <div class="competitor-grid">
-          <a href="https://www.etsy.com/search?q=travel+phrasebook+printable&sort_on=score" target="_blank" class="competitor-btn">Etsy Top Designs</a>
-          <a href="https://www.etsy.com/search?q=travel+phrases+printable&sort_on=num_favorers_desc" target="_blank" class="competitor-btn">Most Favorited</a>
-          <a href="https://www.etsy.com/shop/DigitalDoodlesToday" target="_blank" class="competitor-btn">DigitalDoodlesToday</a>
-          <a href="https://www.etsy.com/shop/DanhaHan" target="_blank" class="competitor-btn">DanhaHan</a>
-          <a href="https://trends.pinterest.com/?country=US&term=travel+phrasebook" target="_blank" class="competitor-btn">Pinterest</a>
-        </div>
-      </div>
-      <div style="border-left:3px solid #3DD68C;background:#0f1f18;border-radius:0 8px 8px 0;padding:12px 16px;margin-top:14px;"><div style="color:#3DD68C;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">SEO Quick-Tips</div><div style="display:grid;gap:5px;font-size:0.82rem;"><div><span style="color:#6B7280;">Primary keyword:</span> <span style="color:#E2E2E2;font-weight:600;">travel phrasebook</span></div><div><span style="color:#6B7280;">Title first 30 chars</span> <span style="color:#6B7280;font-size:0.74rem;">(shows on mobile)</span><span style="color:#6B7280;">:</span> <span style="color:#E2E2E2;font-weight:600;">Travel Phrasebook Printable | </span></div><div><span style="color:#6B7280;">Etsy category:</span> <span style="color:#E2E2E2;">Books, Movies &amp; Music &rarr; Books &rarr; Language Instruction</span></div><div style="color:#6B7280;font-size:0.78rem;margin-top:4px;border-top:1px solid #252538;padding-top:6px;">Put primary keyword in first 30 title chars. Tags &ne; title words &mdash; use synonyms.</div></div></div>
+      <div style="border-left:3px solid #3DD68C;background:#0f1f18;border-radius:0 8px 8px 0;padding:12px 16px;margin-top:14px;"><div style="color:#3DD68C;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">SEO Quick-Tips</div><div style="display:grid;gap:5px;font-size:0.82rem;"><div><span style="color:#6B7280;">Primary keyword:</span> <span style="color:#E2E2E2;font-weight:600;">spanish vocab</span></div><div><span style="color:#6B7280;">Title first 30 chars</span> <span style="color:#6B7280;font-size:0.74rem;">(shows on mobile)</span><span style="color:#6B7280;">:</span> <span style="color:#E2E2E2;font-weight:600;">Spanish 200-Word Intermediate </span></div><div><span style="color:#6B7280;">Etsy category:</span> <span style="color:#E2E2E2;">Paper &amp; Party Supplies &rarr; Stationery &rarr; Flashcards</span></div><div style="color:#6B7280;font-size:0.78rem;margin-top:4px;border-top:1px solid #252538;padding-top:6px;">Put primary keyword in first 30 title chars. Tags &ne; title words &mdash; use synonyms.</div></div></div>
       <div style="margin-top:14px;">
-        <button onclick="toggleExtra('ex_r5_w5')" style="background:#C9A84C;color:#0B0B14;border:none;border-radius:8px;padding:8px 16px;font-size:0.82rem;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px;">&#128203; Listing Description &amp; Modification Tools<span id="ex_r5_w5_arrow" style="transition:transform .25s;">&#9660;</span></button>
-        <div id="ex_r5_w5" style="display:none;margin-top:10px;">
+        <button onclick="toggleExtra('ex_r2_w6')" style="background:#C9A84C;color:#0B0B14;border:none;border-radius:8px;padding:8px 16px;font-size:0.82rem;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px;">&#128203; Listing Description &amp; Modification Tools<span id="ex_r2_w6_arrow" style="transition:transform .25s;">&#9660;</span></button>
+        <div id="ex_r2_w6" style="display:none;margin-top:10px;">
           <div style="margin-bottom:14px;">
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
-              <div style="color:#3DD68C;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Etsy Tags (13)</div>
-              <button onclick="copyTA('ex_r5_w5_tags', this)" style="background:#1e1e30;color:#3DD68C;border:1px solid #3DD68C;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy All</button>
+              <div style="color:#3DD68C;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Etsy Tags (7)</div>
+              <button onclick="copyTA('ex_r2_w6_tags', this)" style="background:#1e1e30;color:#3DD68C;border:1px solid #3DD68C;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy All</button>
             </div>
-            <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px;"><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">travel phrasebook</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">language phrases</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">travel printable</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">phrasebook printable</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">travel essentials</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">language guide</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">europe travel</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">travel guide</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">vacation phrases</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">backpacker tips</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">tourist phrases</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">multilingual</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">phrase guide</span></div>
-            <textarea id="ex_r5_w5_tags" readonly style="display:none;">travel phrasebook, language phrases, travel printable, phrasebook printable, travel essentials, language guide, europe travel, travel guide, vacation phrases, backpacker tips, tourist phrases, multilingual, phrase guide</textarea>
+            <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px;"><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">spanish vocab</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">intermediate flashcards</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">pdf vocab pack</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">language study</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">spanish words</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">learn spanish</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">digital download</span></div>
+            <textarea id="ex_r2_w6_tags" readonly style="display:none;">spanish vocab, intermediate flashcards, pdf vocab pack, language study, spanish words, learn spanish, digital download</textarea>
           </div>
           <div style="margin-bottom:14px;">
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
               <div style="color:#4EA8DE;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Full Etsy Description</div>
-              <button onclick="copyTA('ex_r5_w5_desc', this)" style="background:#1e1e30;color:#4EA8DE;border:1px solid #4EA8DE;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy</button>
+              <button onclick="copyTA('ex_r2_w6_desc', this)" style="background:#1e1e30;color:#4EA8DE;border:1px solid #4EA8DE;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy</button>
             </div>
-            <textarea id="ex_r5_w5_desc" readonly style="width:100%;min-height:260px;background:#1e1e30;color:#E2E2E2;border:1px solid #252538;border-radius:8px;padding:12px;font-family:monospace;font-size:0.8rem;line-height:1.5;resize:vertical;">Travel Phrasebook — 5 Languages (Spanish, French, Italian, German, Portuguese) | Printable PDF | Instant Download
+            <textarea id="ex_r2_w6_desc" readonly style="width:100%;min-height:260px;background:#1e1e30;color:#E2E2E2;border:1px solid #252538;border-radius:8px;padding:12px;font-family:monospace;font-size:0.8rem;line-height:1.5;resize:vertical;">Spanish 200-Word Intermediate Vocabulary Flashcards | Printable PDF | Instant Download
 
-A 40+ page compact phrasebook covering 5 European languages across 7 travel scenarios (50 phrases per language = 250 phrases total), plus a wallet-sized quick reference card for each language.
+A PDF containing 200 double‑sided flashcards, each showing a Spanish term on the front and its English meaning plus a usage sentence on the back; learners cut, shuffle, and quiz themselves.
 
 ────────────────────────────────────────
 WHAT'S INCLUDED
 ────────────────────────────────────────
-• Format: PDF phrasebook
+• Format: PDF flashcards
 • High resolution: 300 dpi — prints sharp at home
 • Size: US Letter (8.5 x 11 in) — easy to resize to A4
 • Instant digital download — no physical item is shipped
@@ -1480,16 +370,16 @@ Questions? I respond within 24 hours.</textarea>
           <div>
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
               <div style="color:#9B72CF;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Modification Prompt</div>
-              <button onclick="copyTA('ex_r5_w5_prompt', this)" style="background:#1e1e30;color:#9B72CF;border:1px solid #9B72CF;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy</button>
+              <button onclick="copyTA('ex_r2_w6_prompt', this)" style="background:#1e1e30;color:#9B72CF;border:1px solid #9B72CF;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy</button>
             </div>
-            <textarea id="ex_r5_w5_prompt" readonly style="width:100%;min-height:280px;background:#1e1e30;color:#E2E2E2;border:1px solid #252538;border-radius:8px;padding:12px;font-family:monospace;font-size:0.8rem;line-height:1.5;resize:vertical;">I have an Etsy digital printable product with the following details:
+            <textarea id="ex_r2_w6_prompt" readonly style="width:100%;min-height:280px;background:#1e1e30;color:#E2E2E2;border:1px solid #252538;border-radius:8px;padding:12px;font-family:monospace;font-size:0.8rem;line-height:1.5;resize:vertical;">I have an Etsy digital printable product with the following details:
 
-Product name: Travel Phrasebook — 5 Languages (Spanish, French, Italian, German, Portuguese)
-
-Format: PDF phrasebook
-Current price: $6.99
-Current Etsy title: Travel Phrasebook Printable | 5 Languages Spanish French Italian German Portuguese | Instant Download
-Current tags: travel phrasebook, language phrases, travel printable, phrasebook printable, travel essentials, language guide, europe travel, travel guide, vacation phrases, backpacker tips, tourist phrases, multilingual, phrase guide
+Product name: Spanish 200-Word Intermediate Vocabulary Flashcards
+Language: Spanish
+Format: PDF flashcards
+Current price: $5.99
+Current Etsy title: Spanish 200-Word Intermediate Vocabulary Flashcards – Printable PDF Study Set
+Current tags: spanish vocab, intermediate flashcards, pdf vocab pack, language study, spanish words, learn spanish, digital download
 
 I want to modify this product as follows:
 [DESCRIBE YOUR CHANGES HERE]
@@ -1503,9 +393,364 @@ Please return:
         </div>
       </div>
     </div>
+
+    <div class="product-card rank-3">
+      <div class="product-rank">🥉</div>
+      <div class="product-name">Spanish Body Parts Flashcards</div>
+      <div class="product-meta">
+        <span class="meta-chip">Price: <span>$3.99</span></span>
+        <span class="meta-chip">Format: <span>PDF flashcards</span></span>
+        <span class="meta-chip" style="border-color:#4EA8DE;color:#4EA8DE;">Lang: <span style="color:#4EA8DE;">Spanish</span></span>
+        <span class="meta-chip" style="border-color:#CD7F32;color:#CD7F32;">Week 8</span>
+      </div>
+      <div class="card" style="margin-bottom:14px;">
+        <div class="card-title">What To Build</div>
+        <p>A PDF of 30 double‑sided flashcards featuring Spanish body part names with images on the front and phonetic tips plus English on the back; learners practice naming and pronunciation.</p>
+      </div>
+      <div class="card" style="margin-bottom:14px;">
+        <div class="card-title">Why It Sells</div>
+        <p>Parents, teachers, and beginners seek fun visual tools for anatomy vocab, and the printable, audio‑linked design makes it an Etsy favorite.</p>
+      </div>
+      <div style="margin-bottom:14px;">
+        <div class="card-title" style="color:#C9A84C;font-size:0.85rem;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px;">How To Build in Canva</div>
+        <div class="step-card"><div class="step-num">1</div><div class="step-text">Open Canva → search "educational flashcard" template → select bright, child‑friendly layout</div></div><div class="step-card"><div class="step-num">2</div><div class="step-text">Add 30 cards, front side with an illustrated body part label in Noto Sans, back side with pronunciation guide and English equivalent</div></div><div class="step-card"><div class="step-num">3</div><div class="step-text">Use simple icons and pastel colors, ensuring diacritics show correctly in Noto Sans</div></div><div class="step-card"><div class="step-num">4</div><div class="step-text">Include a QR code linking to audio pronunciation for each term</div></div><div class="step-card"><div class="step-num">5</div><div class="step-text">Export as PDF Print → upload to Etsy as a digital download</div></div>
+      </div>
+      <div class="seo-block">
+        <div class="seo-label">Etsy Title</div>
+        <div class="seo-value">Spanish Body Parts Flashcards – Printable PDF for Kids & Adults</div>
+        <div class="tag-row" style="margin-top:10px;"><span class="etsy-tag">spanish body parts</span><span class="etsy-tag">flashcards pdf</span><span class="etsy-tag">language teaching</span><span class="etsy-tag">spanish kids</span><span class="etsy-tag">vocab cards</span><span class="etsy-tag">learn spanish</span><span class="etsy-tag">digital printable</span></div>
+      </div>
+      <div style="border-left:3px solid #3DD68C;background:#0f1f18;border-radius:0 8px 8px 0;padding:12px 16px;margin-top:14px;"><div style="color:#3DD68C;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">SEO Quick-Tips</div><div style="display:grid;gap:5px;font-size:0.82rem;"><div><span style="color:#6B7280;">Primary keyword:</span> <span style="color:#E2E2E2;font-weight:600;">spanish body parts</span></div><div><span style="color:#6B7280;">Title first 30 chars</span> <span style="color:#6B7280;font-size:0.74rem;">(shows on mobile)</span><span style="color:#6B7280;">:</span> <span style="color:#E2E2E2;font-weight:600;">Spanish Body Parts Flashcards </span></div><div><span style="color:#6B7280;">Etsy category:</span> <span style="color:#E2E2E2;">Paper &amp; Party Supplies &rarr; Stationery &rarr; Flashcards</span></div><div style="color:#6B7280;font-size:0.78rem;margin-top:4px;border-top:1px solid #252538;padding-top:6px;">Put primary keyword in first 30 title chars. Tags &ne; title words &mdash; use synonyms.</div></div></div>
+      <div style="margin-top:14px;">
+        <button onclick="toggleExtra('ex_r3_w6')" style="background:#C9A84C;color:#0B0B14;border:none;border-radius:8px;padding:8px 16px;font-size:0.82rem;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px;">&#128203; Listing Description &amp; Modification Tools<span id="ex_r3_w6_arrow" style="transition:transform .25s;">&#9660;</span></button>
+        <div id="ex_r3_w6" style="display:none;margin-top:10px;">
+          <div style="margin-bottom:14px;">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+              <div style="color:#3DD68C;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Etsy Tags (7)</div>
+              <button onclick="copyTA('ex_r3_w6_tags', this)" style="background:#1e1e30;color:#3DD68C;border:1px solid #3DD68C;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy All</button>
+            </div>
+            <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px;"><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">spanish body parts</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">flashcards pdf</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">language teaching</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">spanish kids</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">vocab cards</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">learn spanish</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">digital printable</span></div>
+            <textarea id="ex_r3_w6_tags" readonly style="display:none;">spanish body parts, flashcards pdf, language teaching, spanish kids, vocab cards, learn spanish, digital printable</textarea>
+          </div>
+          <div style="margin-bottom:14px;">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
+              <div style="color:#4EA8DE;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Full Etsy Description</div>
+              <button onclick="copyTA('ex_r3_w6_desc', this)" style="background:#1e1e30;color:#4EA8DE;border:1px solid #4EA8DE;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy</button>
+            </div>
+            <textarea id="ex_r3_w6_desc" readonly style="width:100%;min-height:260px;background:#1e1e30;color:#E2E2E2;border:1px solid #252538;border-radius:8px;padding:12px;font-family:monospace;font-size:0.8rem;line-height:1.5;resize:vertical;">Spanish Body Parts Flashcards | Printable PDF | Instant Download
+
+A PDF of 30 double‑sided flashcards featuring Spanish body part names with images on the front and phonetic tips plus English on the back; learners practice naming and pronunciation.
+
+────────────────────────────────────────
+WHAT'S INCLUDED
+────────────────────────────────────────
+• Format: PDF flashcards
+• High resolution: 300 dpi — prints sharp at home
+• Size: US Letter (8.5 x 11 in) — easy to resize to A4
+• Instant digital download — no physical item is shipped
+
+────────────────────────────────────────
+HOW TO DOWNLOAD &amp; PRINT
+────────────────────────────────────────
+1. Complete your purchase on Etsy
+2. Click the download link in your confirmation email (or go to Etsy &gt; Purchases &amp; Reviews)
+3. Open the PDF on your computer or tablet
+4. Print at home or at a local print shop — standard paper works great
+Print and cut out flashcards, or study from the screen on your tablet
+
+────────────────────────────────────────
+FILE DETAILS
+────────────────────────────────────────
+• File type: PDF
+• Resolution: 300 dpi
+• Compatible with Adobe Reader (free) and most PDF viewers
+• Digital product only — no physical item will be mailed
+
+────────────────────────────────────────
+FAQ
+────────────────────────────────────────
+Q: Can I print multiple copies?
+A: Yes! Your purchase covers unlimited personal-use prints.
+
+Q: Can I print on A4 paper?
+A: Yes — in your print settings, select 'Fit to Page' or 'Scale to A4' and it will resize automatically.
+
+Q: I can't find my download. Help?
+A: Check your Etsy account under Purchases &amp; Reviews, or look for the Etsy confirmation email. Still stuck? Message me and I'll help within 24 hours.
+
+Q: Can I share this file with others?
+A: This file is licensed for personal use only. Please do not redistribute or resell.
+
+────────────────────────────────────────
+Loved it? A quick review means the world to a small shop and helps other learners find this resource. Thank you!
+Questions? I respond within 24 hours.</textarea>
+          </div>
+          <div>
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
+              <div style="color:#9B72CF;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Modification Prompt</div>
+              <button onclick="copyTA('ex_r3_w6_prompt', this)" style="background:#1e1e30;color:#9B72CF;border:1px solid #9B72CF;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy</button>
+            </div>
+            <textarea id="ex_r3_w6_prompt" readonly style="width:100%;min-height:280px;background:#1e1e30;color:#E2E2E2;border:1px solid #252538;border-radius:8px;padding:12px;font-family:monospace;font-size:0.8rem;line-height:1.5;resize:vertical;">I have an Etsy digital printable product with the following details:
+
+Product name: Spanish Body Parts Flashcards
+Language: Spanish
+Format: PDF flashcards
+Current price: $3.99
+Current Etsy title: Spanish Body Parts Flashcards – Printable PDF for Kids &amp; Adults
+Current tags: spanish body parts, flashcards pdf, language teaching, spanish kids, vocab cards, learn spanish, digital printable
+
+I want to modify this product as follows:
+[DESCRIBE YOUR CHANGES HERE]
+
+Please return:
+1. Updated Etsy title (max 140 chars; put the primary keyword in the first 30 characters)
+2. All 13 Etsy tags (use synonyms — do NOT repeat words already in the title)
+3. Full Etsy description with: hook sentence, what's included, who it's for, how to download &amp; print, file details, FAQ (4 Q&amp;As), review request
+4. Suggested price (with brief reasoning)</textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card rank-4">
+      <div class="product-rank">4️⃣</div>
+      <div class="product-name">Spanish Food and Drink Vocabulary Cards</div>
+      <div class="product-meta">
+        <span class="meta-chip">Price: <span>$4.99</span></span>
+        <span class="meta-chip">Format: <span>PDF flashcards</span></span>
+        <span class="meta-chip" style="border-color:#4EA8DE;color:#4EA8DE;">Lang: <span style="color:#4EA8DE;">Spanish</span></span>
+        <span class="meta-chip" style="border-color:var(--blue);color:var(--blue);">Week 9</span>
+      </div>
+      <div class="card" style="margin-bottom:14px;">
+        <div class="card-title">What To Build</div>
+        <p>A PDF set of 50 double‑sided flashcards showing a picture and Spanish name of foods and drinks on the front, with English meaning, gender, and a sample sentence on the back; learners use them for restaurant practice or grocery shopping.</p>
+      </div>
+      <div class="card" style="margin-bottom:14px;">
+        <div class="card-title">Why It Sells</div>
+        <p>Travelers and cooking enthusiasts need quick vocab for menus, and the attractive printable set meets that demand on Etsy.</p>
+      </div>
+      <div style="margin-bottom:14px;">
+        <div class="card-title" style="color:#C9A84C;font-size:0.85rem;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px;">How To Build in Canva</div>
+        <div class="step-card"><div class="step-num">1</div><div class="step-text">Open Canva → search "kitchen flashcard" template → choose clean pastel background</div></div><div class="step-card"><div class="step-num">2</div><div class="step-text">Design 50 cards, front side with a food/drink illustration and Spanish term in Noto Sans, back side with English translation and gender article</div></div><div class="step-card"><div class="step-num">3</div><div class="step-text">Group cards by category (fruits, meats, beverages) and add tiny icons for quick scanning</div></div><div class="step-card"><div class="step-num">4</div><div class="step-text">Check accent and ñ rendering in Noto Sans, adjust line spacing for readability</div></div><div class="step-card"><div class="step-num">5</div><div class="step-text">Export as PDF Print (double‑sided) → list on Etsy as a digital download</div></div>
+      </div>
+      <div class="seo-block">
+        <div class="seo-label">Etsy Title</div>
+        <div class="seo-value">Spanish Food & Drink Vocabulary Cards – Printable PDF Flashcard Set</div>
+        <div class="tag-row" style="margin-top:10px;"><span class="etsy-tag">spanish food vocab</span><span class="etsy-tag">drink flashcards</span><span class="etsy-tag">pdf language</span><span class="etsy-tag">food vocab pack</span><span class="etsy-tag">spanish learning</span><span class="etsy-tag">kitchen spanish</span><span class="etsy-tag">digital download</span></div>
+      </div>
+      <div style="border-left:3px solid #3DD68C;background:#0f1f18;border-radius:0 8px 8px 0;padding:12px 16px;margin-top:14px;"><div style="color:#3DD68C;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">SEO Quick-Tips</div><div style="display:grid;gap:5px;font-size:0.82rem;"><div><span style="color:#6B7280;">Primary keyword:</span> <span style="color:#E2E2E2;font-weight:600;">spanish food vocab</span></div><div><span style="color:#6B7280;">Title first 30 chars</span> <span style="color:#6B7280;font-size:0.74rem;">(shows on mobile)</span><span style="color:#6B7280;">:</span> <span style="color:#E2E2E2;font-weight:600;">Spanish Food &amp; Drink Vocabular</span></div><div><span style="color:#6B7280;">Etsy category:</span> <span style="color:#E2E2E2;">Paper &amp; Party Supplies &rarr; Stationery &rarr; Flashcards</span></div><div style="color:#6B7280;font-size:0.78rem;margin-top:4px;border-top:1px solid #252538;padding-top:6px;">Put primary keyword in first 30 title chars. Tags &ne; title words &mdash; use synonyms.</div></div></div>
+      <div style="margin-top:14px;">
+        <button onclick="toggleExtra('ex_r4_w6')" style="background:#C9A84C;color:#0B0B14;border:none;border-radius:8px;padding:8px 16px;font-size:0.82rem;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px;">&#128203; Listing Description &amp; Modification Tools<span id="ex_r4_w6_arrow" style="transition:transform .25s;">&#9660;</span></button>
+        <div id="ex_r4_w6" style="display:none;margin-top:10px;">
+          <div style="margin-bottom:14px;">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+              <div style="color:#3DD68C;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Etsy Tags (7)</div>
+              <button onclick="copyTA('ex_r4_w6_tags', this)" style="background:#1e1e30;color:#3DD68C;border:1px solid #3DD68C;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy All</button>
+            </div>
+            <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px;"><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">spanish food vocab</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">drink flashcards</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">pdf language</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">food vocab pack</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">spanish learning</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">kitchen spanish</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">digital download</span></div>
+            <textarea id="ex_r4_w6_tags" readonly style="display:none;">spanish food vocab, drink flashcards, pdf language, food vocab pack, spanish learning, kitchen spanish, digital download</textarea>
+          </div>
+          <div style="margin-bottom:14px;">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
+              <div style="color:#4EA8DE;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Full Etsy Description</div>
+              <button onclick="copyTA('ex_r4_w6_desc', this)" style="background:#1e1e30;color:#4EA8DE;border:1px solid #4EA8DE;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy</button>
+            </div>
+            <textarea id="ex_r4_w6_desc" readonly style="width:100%;min-height:260px;background:#1e1e30;color:#E2E2E2;border:1px solid #252538;border-radius:8px;padding:12px;font-family:monospace;font-size:0.8rem;line-height:1.5;resize:vertical;">Spanish Food and Drink Vocabulary Cards | Printable PDF | Instant Download
+
+A PDF set of 50 double‑sided flashcards showing a picture and Spanish name of foods and drinks on the front, with English meaning, gender, and a sample sentence on the back; learners use them for restaurant practice or grocery shopping.
+
+────────────────────────────────────────
+WHAT'S INCLUDED
+────────────────────────────────────────
+• Format: PDF flashcards
+• High resolution: 300 dpi — prints sharp at home
+• Size: US Letter (8.5 x 11 in) — easy to resize to A4
+• Instant digital download — no physical item is shipped
+
+────────────────────────────────────────
+HOW TO DOWNLOAD &amp; PRINT
+────────────────────────────────────────
+1. Complete your purchase on Etsy
+2. Click the download link in your confirmation email (or go to Etsy &gt; Purchases &amp; Reviews)
+3. Open the PDF on your computer or tablet
+4. Print at home or at a local print shop — standard paper works great
+Print and cut out flashcards, or study from the screen on your tablet
+
+────────────────────────────────────────
+FILE DETAILS
+────────────────────────────────────────
+• File type: PDF
+• Resolution: 300 dpi
+• Compatible with Adobe Reader (free) and most PDF viewers
+• Digital product only — no physical item will be mailed
+
+────────────────────────────────────────
+FAQ
+────────────────────────────────────────
+Q: Can I print multiple copies?
+A: Yes! Your purchase covers unlimited personal-use prints.
+
+Q: Can I print on A4 paper?
+A: Yes — in your print settings, select 'Fit to Page' or 'Scale to A4' and it will resize automatically.
+
+Q: I can't find my download. Help?
+A: Check your Etsy account under Purchases &amp; Reviews, or look for the Etsy confirmation email. Still stuck? Message me and I'll help within 24 hours.
+
+Q: Can I share this file with others?
+A: This file is licensed for personal use only. Please do not redistribute or resell.
+
+────────────────────────────────────────
+Loved it? A quick review means the world to a small shop and helps other learners find this resource. Thank you!
+Questions? I respond within 24 hours.</textarea>
+          </div>
+          <div>
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
+              <div style="color:#9B72CF;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Modification Prompt</div>
+              <button onclick="copyTA('ex_r4_w6_prompt', this)" style="background:#1e1e30;color:#9B72CF;border:1px solid #9B72CF;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy</button>
+            </div>
+            <textarea id="ex_r4_w6_prompt" readonly style="width:100%;min-height:280px;background:#1e1e30;color:#E2E2E2;border:1px solid #252538;border-radius:8px;padding:12px;font-family:monospace;font-size:0.8rem;line-height:1.5;resize:vertical;">I have an Etsy digital printable product with the following details:
+
+Product name: Spanish Food and Drink Vocabulary Cards
+Language: Spanish
+Format: PDF flashcards
+Current price: $4.99
+Current Etsy title: Spanish Food &amp; Drink Vocabulary Cards – Printable PDF Flashcard Set
+Current tags: spanish food vocab, drink flashcards, pdf language, food vocab pack, spanish learning, kitchen spanish, digital download
+
+I want to modify this product as follows:
+[DESCRIBE YOUR CHANGES HERE]
+
+Please return:
+1. Updated Etsy title (max 140 chars; put the primary keyword in the first 30 characters)
+2. All 13 Etsy tags (use synonyms — do NOT repeat words already in the title)
+3. Full Etsy description with: hook sentence, what's included, who it's for, how to download &amp; print, file details, FAQ (4 Q&amp;As), review request
+4. Suggested price (with brief reasoning)</textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card rank-5">
+      <div class="product-rank">5️⃣</div>
+      <div class="product-name">DELE A1/A2 Vocabulary Study Pack</div>
+      <div class="product-meta">
+        <span class="meta-chip">Price: <span>$6.99</span></span>
+        <span class="meta-chip">Format: <span>PDF study pack</span></span>
+        <span class="meta-chip" style="border-color:#4EA8DE;color:#4EA8DE;">Lang: <span style="color:#4EA8DE;">Spanish</span></span>
+        <span class="meta-chip" style="border-color:var(--purple);color:var(--purple);">Week 10</span>
+      </div>
+      <div class="card" style="margin-bottom:14px;">
+        <div class="card-title">What To Build</div>
+        <p>A 30‑page PDF containing organized A1 and A2 word lists, audio QR codes, example sentences, and short quizzes; learners study, listen, and test themselves for the DELE exam.</p>
+      </div>
+      <div class="card" style="margin-bottom:14px;">
+        <div class="card-title">Why It Sells</div>
+        <p>DELE candidates search for focused, exam‑specific vocab packs, and this comprehensive printable study aid converts well on Etsy.</p>
+      </div>
+      <div style="margin-bottom:14px;">
+        <div class="card-title" style="color:#C9A84C;font-size:0.85rem;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px;">How To Build in Canva</div>
+        <div class="step-card"><div class="step-num">1</div><div class="step-text">Open Canva → search "study guide" template → pick professional layout with sections</div></div><div class="step-card"><div class="step-num">2</div><div class="step-text">Create sections for A1 and A2 vocab, each page listing words in Noto Serif with accent marks, definition, and example sentence</div></div><div class="step-card"><div class="step-num">3</div><div class="step-text">Add a QR‑code column linking to audio pronunciation, and color‑code difficulty levels</div></div><div class="step-card"><div class="step-num">4</div><div class="step-text">Insert a mini‑quiz at the end of each level, testing recall with fill‑in‑the‑blank format</div></div><div class="step-card"><div class="step-num">5</div><div class="step-text">Export as PDF Print → upload to Etsy as a digital download</div></div>
+      </div>
+      <div class="seo-block">
+        <div class="seo-label">Etsy Title</div>
+        <div class="seo-value">DELE A1/A2 Vocabulary Study Pack – Printable PDF for Exam Prep</div>
+        <div class="tag-row" style="margin-top:10px;"><span class="etsy-tag">dele a1</span><span class="etsy-tag">dele a2 vocab</span><span class="etsy-tag">spanish exam</span><span class="etsy-tag">study pack pdf</span><span class="etsy-tag">language test</span><span class="etsy-tag">spanish prep</span><span class="etsy-tag">digital study</span></div>
+      </div>
+      <div style="border-left:3px solid #3DD68C;background:#0f1f18;border-radius:0 8px 8px 0;padding:12px 16px;margin-top:14px;"><div style="color:#3DD68C;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">SEO Quick-Tips</div><div style="display:grid;gap:5px;font-size:0.82rem;"><div><span style="color:#6B7280;">Primary keyword:</span> <span style="color:#E2E2E2;font-weight:600;">dele a1</span></div><div><span style="color:#6B7280;">Title first 30 chars</span> <span style="color:#6B7280;font-size:0.74rem;">(shows on mobile)</span><span style="color:#6B7280;">:</span> <span style="color:#E2E2E2;font-weight:600;">DELE A1/A2 Vocabulary Study Pa</span></div><div><span style="color:#6B7280;">Etsy category:</span> <span style="color:#E2E2E2;">Paper &amp; Party Supplies &rarr; Stationery &rarr; Printables</span></div><div style="color:#6B7280;font-size:0.78rem;margin-top:4px;border-top:1px solid #252538;padding-top:6px;">Put primary keyword in first 30 title chars. Tags &ne; title words &mdash; use synonyms.</div></div></div>
+      <div style="margin-top:14px;">
+        <button onclick="toggleExtra('ex_r5_w6')" style="background:#C9A84C;color:#0B0B14;border:none;border-radius:8px;padding:8px 16px;font-size:0.82rem;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px;">&#128203; Listing Description &amp; Modification Tools<span id="ex_r5_w6_arrow" style="transition:transform .25s;">&#9660;</span></button>
+        <div id="ex_r5_w6" style="display:none;margin-top:10px;">
+          <div style="margin-bottom:14px;">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+              <div style="color:#3DD68C;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Etsy Tags (7)</div>
+              <button onclick="copyTA('ex_r5_w6_tags', this)" style="background:#1e1e30;color:#3DD68C;border:1px solid #3DD68C;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy All</button>
+            </div>
+            <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px;"><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">dele a1</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">dele a2 vocab</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">spanish exam</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">study pack pdf</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">language test</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">spanish prep</span><span style="background:#0f1f18;color:#3DD68C;border:1px solid #3DD68C;border-radius:20px;padding:3px 10px;font-size:0.75rem;">digital study</span></div>
+            <textarea id="ex_r5_w6_tags" readonly style="display:none;">dele a1, dele a2 vocab, spanish exam, study pack pdf, language test, spanish prep, digital study</textarea>
+          </div>
+          <div style="margin-bottom:14px;">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
+              <div style="color:#4EA8DE;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Full Etsy Description</div>
+              <button onclick="copyTA('ex_r5_w6_desc', this)" style="background:#1e1e30;color:#4EA8DE;border:1px solid #4EA8DE;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy</button>
+            </div>
+            <textarea id="ex_r5_w6_desc" readonly style="width:100%;min-height:260px;background:#1e1e30;color:#E2E2E2;border:1px solid #252538;border-radius:8px;padding:12px;font-family:monospace;font-size:0.8rem;line-height:1.5;resize:vertical;">DELE A1/A2 Vocabulary Study Pack | Printable PDF | Instant Download
+
+A 30‑page PDF containing organized A1 and A2 word lists, audio QR codes, example sentences, and short quizzes; learners study, listen, and test themselves for the DELE exam.
+
+────────────────────────────────────────
+WHAT'S INCLUDED
+────────────────────────────────────────
+• Format: PDF study pack
+• High resolution: 300 dpi — prints sharp at home
+• Size: US Letter (8.5 x 11 in) — easy to resize to A4
+• Instant digital download — no physical item is shipped
+
+────────────────────────────────────────
+HOW TO DOWNLOAD &amp; PRINT
+────────────────────────────────────────
+1. Complete your purchase on Etsy
+2. Click the download link in your confirmation email (or go to Etsy &gt; Purchases &amp; Reviews)
+3. Open the PDF on your computer or tablet
+4. Print at home or at a local print shop — standard paper works great
+Print and cut out flashcards, or study from the screen on your tablet
+
+────────────────────────────────────────
+FILE DETAILS
+────────────────────────────────────────
+• File type: PDF
+• Resolution: 300 dpi
+• Compatible with Adobe Reader (free) and most PDF viewers
+• Digital product only — no physical item will be mailed
+
+────────────────────────────────────────
+FAQ
+────────────────────────────────────────
+Q: Can I print multiple copies?
+A: Yes! Your purchase covers unlimited personal-use prints.
+
+Q: Can I print on A4 paper?
+A: Yes — in your print settings, select 'Fit to Page' or 'Scale to A4' and it will resize automatically.
+
+Q: I can't find my download. Help?
+A: Check your Etsy account under Purchases &amp; Reviews, or look for the Etsy confirmation email. Still stuck? Message me and I'll help within 24 hours.
+
+Q: Can I share this file with others?
+A: This file is licensed for personal use only. Please do not redistribute or resell.
+
+────────────────────────────────────────
+Loved it? A quick review means the world to a small shop and helps other learners find this resource. Thank you!
+Questions? I respond within 24 hours.</textarea>
+          </div>
+          <div>
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
+              <div style="color:#9B72CF;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Modification Prompt</div>
+              <button onclick="copyTA('ex_r5_w6_prompt', this)" style="background:#1e1e30;color:#9B72CF;border:1px solid #9B72CF;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Copy</button>
+            </div>
+            <textarea id="ex_r5_w6_prompt" readonly style="width:100%;min-height:280px;background:#1e1e30;color:#E2E2E2;border:1px solid #252538;border-radius:8px;padding:12px;font-family:monospace;font-size:0.8rem;line-height:1.5;resize:vertical;">I have an Etsy digital printable product with the following details:
+
+Product name: DELE A1/A2 Vocabulary Study Pack
+Language: Spanish
+Format: PDF study pack
+Current price: $6.99
+Current Etsy title: DELE A1/A2 Vocabulary Study Pack – Printable PDF for Exam Prep
+Current tags: dele a1, dele a2 vocab, spanish exam, study pack pdf, language test, spanish prep, digital study
+
+I want to modify this product as follows:
+[DESCRIBE YOUR CHANGES HERE]
+
+Please return:
+1. Updated Etsy title (max 140 chars; put the primary keyword in the first 30 characters)
+2. All 13 Etsy tags (use synonyms — do NOT repeat words already in the title)
+3. Full Etsy description with: hook sentence, what's included, who it's for, how to download &amp; print, file details, FAQ (4 Q&amp;As), review request
+4. Suggested price (with brief reasoning)</textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </section>
 
-
+  
   <!-- DYNAMIC ACTION PLAN — injected by language_brief_generator.py -->
   <style>
     .ap-item { cursor:pointer; display:flex; gap:14px; align-items:flex-start;
@@ -1532,7 +777,7 @@ Please return:
     <div class="section-header">
       <span class="section-icon">✅</span>
       <span class="section-title">This Week&#39;s Action Plan</span>
-      <span class="section-sub">Week 5 &nbsp;·&nbsp; Travel Phrasebook — 5 Languages (Spanish, French, Italian, German, Portuguese)</span>
+      <span class="section-sub">Week 6 &nbsp;·&nbsp; Spanish Verb Conjugation Charts (Present, Past, Future)</span>
     </div>
 
     <div style="background:#12121F;border:1px solid #252538;border-radius:12px;
@@ -1562,21 +807,21 @@ Please return:
             <span style="color:#6B7280;font-size:0.75rem;margin-left:auto;">3 steps</span>
           </div>
           <div style="padding:2px 18px 10px;">
-          <div class="ap-item" data-id="ll_ap_w5_s1" onclick="toggleAP('ll_ap_w5_s1')">
+          <div class="ap-item" data-id="ll_ap_w6_s1" onclick="toggleAP('ll_ap_w6_s1')">
             <div class="ap-check"></div>
             <div style="flex:1;">
-              <div class="ap-text">Search Etsy for <strong>"travel phrasebook 5 languages spanish, french, italian, german, portuguese"</strong> — screenshot the first 8 listings. Note each one's price, card/page count, review count, and thumbnail style. This is your competitive landscape before you build anything.</div>
+              <div class="ap-text">Search Etsy for <strong>"spanish verb conjugation charts present, past, future"</strong> — screenshot the first 8 listings. Note each one's price, card/page count, review count, and thumbnail style. This is your competitive landscape before you build anything.</div>
               <div class="ap-time">~30 min</div>
             </div>
           </div>
-          <div class="ap-item" data-id="ll_ap_w5_s2" onclick="toggleAP('ll_ap_w5_s2')">
+          <div class="ap-item" data-id="ll_ap_w6_s2" onclick="toggleAP('ll_ap_w6_s2')">
             <div class="ap-check"></div>
             <div style="flex:1;">
               <div class="ap-text">Click the top 2–3 bestsellers and read ALL their 1–3 star reviews. Common language product complaints: 'font too hard to read', 'not enough example sentences', 'wish it had pronunciation guides', 'too basic'. Each complaint is a gap your product can fill.</div>
               <div class="ap-time">~15 min</div>
             </div>
           </div>
-          <div class="ap-item" data-id="ll_ap_w5_s3" onclick="toggleAP('ll_ap_w5_s3')">
+          <div class="ap-item" data-id="ll_ap_w6_s3" onclick="toggleAP('ll_ap_w6_s3')">
             <div class="ap-check"></div>
             <div style="flex:1;">
               <div class="ap-text">Open Pinterest, search the same keyword, save 10–15 images to a mood-board folder in Canva: card layouts, color schemes, fonts for the target script, styles that feel study-worthy and approachable.</div>
@@ -1592,14 +837,14 @@ Please return:
             <span style="color:#6B7280;font-size:0.75rem;margin-left:auto;">2 steps</span>
           </div>
           <div style="padding:2px 18px 10px;">
-          <div class="ap-item" data-id="ll_ap_w5_s4" onclick="toggleAP('ll_ap_w5_s4')">
+          <div class="ap-item" data-id="ll_ap_w6_s4" onclick="toggleAP('ll_ap_w6_s4')">
             <div class="ap-check"></div>
             <div style="flex:1;">
               <div class="ap-text">Write your complete content list before touching Canva — e.g. <em>100 vocabulary cards: front = word + pronunciation, back = English + example sentence; bonus: 2-page reference chart + study tips page</em>. Target <strong>50+ cards or 20+ pages minimum</strong> — buyers compare counts in reviews.</div>
               <div class="ap-time">~15 min</div>
             </div>
           </div>
-          <div class="ap-item" data-id="ll_ap_w5_s5" onclick="toggleAP('ll_ap_w5_s5')">
+          <div class="ap-item" data-id="ll_ap_w6_s5" onclick="toggleAP('ll_ap_w6_s5')">
             <div class="ap-check"></div>
             <div style="flex:1;">
               <div class="ap-text">For non-Latin scripts (Japanese, Korean, Arabic, Chinese): open Canva NOW and test your chosen Noto font at your target print size. Type 5 sample characters and export a test page → confirm every character renders correctly and legibly. Fix the font before building 50 cards, not after.</div>
@@ -1615,21 +860,21 @@ Please return:
             <span style="color:#6B7280;font-size:0.75rem;margin-left:auto;">3 steps</span>
           </div>
           <div style="padding:2px 18px 10px;">
-          <div class="ap-item" data-id="ll_ap_w5_s6" onclick="toggleAP('ll_ap_w5_s6')">
+          <div class="ap-item" data-id="ll_ap_w6_s6" onclick="toggleAP('ll_ap_w6_s6')">
             <div class="ap-check"></div>
             <div style="flex:1;">
               <div class="ap-text">Open Canva → follow the 5 build steps in the brief above → work through every card or page on your content list in order. Duplicate pages/cards rather than creating from scratch — one layout change propagates everywhere.</div>
               <div class="ap-time">2–4 hrs</div>
             </div>
           </div>
-          <div class="ap-item" data-id="ll_ap_w5_s7" onclick="toggleAP('ll_ap_w5_s7')">
+          <div class="ap-item" data-id="ll_ap_w6_s7" onclick="toggleAP('ll_ap_w6_s7')">
             <div class="ap-check"></div>
             <div style="flex:1;">
               <div class="ap-text">Proof every card/page before exporting: consistent fonts, foreign characters rendering correctly, pronunciation guides accurate, example sentences grammatically correct (use DeepL or a native speaker check for key sentences). Fix everything now.</div>
               <div class="ap-time">~20 min</div>
             </div>
           </div>
-          <div class="ap-item" data-id="ll_ap_w5_s8" onclick="toggleAP('ll_ap_w5_s8')">
+          <div class="ap-item" data-id="ll_ap_w6_s8" onclick="toggleAP('ll_ap_w6_s8')">
             <div class="ap-check"></div>
             <div style="flex:1;">
               <div class="ap-text"><strong>Export as "PDF Print"</strong> (not "Standard PDF"). PDF Print preserves 300 dpi — foreign script characters that look fine on screen can become blurry at Standard quality. If making flashcards, also export a '4-up per page' version as a second file.</div>
@@ -1645,14 +890,14 @@ Please return:
             <span style="color:#6B7280;font-size:0.75rem;margin-left:auto;">2 steps</span>
           </div>
           <div style="padding:2px 18px 10px;">
-          <div class="ap-item" data-id="ll_ap_w5_s9" onclick="toggleAP('ll_ap_w5_s9')">
+          <div class="ap-item" data-id="ll_ap_w6_s9" onclick="toggleAP('ll_ap_w6_s9')">
             <div class="ap-check"></div>
             <div style="flex:1;">
               <div class="ap-text"><strong>Thumbnail first.</strong> Language learning thumbnails that convert show the foreign script prominently — a buyer searching 'Japanese flashcards' needs to immediately see Japanese characters. Add text callouts: card/page count, language name, 'Instant Download'. Test it: does your thumbnail clearly signal the language before a buyer can read the text?</div>
               <div class="ap-time">~30 min</div>
             </div>
           </div>
-          <div class="ap-item" data-id="ll_ap_w5_s10" onclick="toggleAP('ll_ap_w5_s10')">
+          <div class="ap-item" data-id="ll_ap_w6_s10" onclick="toggleAP('ll_ap_w6_s10')">
             <div class="ap-check"></div>
             <div style="flex:1;">
               <div class="ap-text">Create 4–6 supporting images: 2 card/page samples showing front AND back, 1 lifestyle mockup (cards spread on a desk with a highlighter — use Canva's mockup feature or Placeit.net free tier), 1 'What's included' overview page, 1 close-up showing the foreign script clearly at full size.</div>
@@ -1668,14 +913,14 @@ Please return:
             <span style="color:#6B7280;font-size:0.75rem;margin-left:auto;">2 steps</span>
           </div>
           <div style="padding:2px 18px 10px;">
-          <div class="ap-item" data-id="ll_ap_w5_s11" onclick="toggleAP('ll_ap_w5_s11')">
+          <div class="ap-item" data-id="ll_ap_w6_s11" onclick="toggleAP('ll_ap_w6_s11')">
             <div class="ap-check"></div>
             <div style="flex:1;">
               <div class="ap-text">Create your Etsy listing. <strong>Paste the Etsy title exactly as shown</strong> in the brief. Description: lead with what's included and card/page count, then how to download and print, then FAQs. Use all 7 tags from the brief plus 6 more variations (aim for all 13 Etsy slots).</div>
               <div class="ap-time">~25 min</div>
             </div>
           </div>
-          <div class="ap-item" data-id="ll_ap_w5_s12" onclick="toggleAP('ll_ap_w5_s12')">
+          <div class="ap-item" data-id="ll_ap_w6_s12" onclick="toggleAP('ll_ap_w6_s12')">
             <div class="ap-check"></div>
             <div style="flex:1;">
               <div class="ap-text">Set your launch price, upload all images (thumbnail first) and your PDF. Hit Publish. Then: test-download your own listing → open the PDF → confirm all foreign characters render correctly in the downloaded file.</div>
@@ -1691,21 +936,21 @@ Please return:
             <span style="color:#6B7280;font-size:0.75rem;margin-left:auto;">3 steps</span>
           </div>
           <div style="padding:2px 18px 10px;">
-          <div class="ap-item" data-id="ll_ap_w5_s13" onclick="toggleAP('ll_ap_w5_s13')">
+          <div class="ap-item" data-id="ll_ap_w6_s13" onclick="toggleAP('ll_ap_w6_s13')">
             <div class="ap-check"></div>
             <div style="flex:1;">
               <div class="ap-text">Post 2–3 Pinterest pins linking to your Etsy listing. Pin to boards like 'Language Learning Resources', 'Learn [Language]', 'Study Printables'. Language learners are also active on Reddit — share a genuine free sample page in the relevant subreddit (r/languagelearning, r/LearnSpanish, r/LearnJapanese) as a resource to drive organic traffic.</div>
               <div class="ap-time">~20 min</div>
             </div>
           </div>
-          <div class="ap-item" data-id="ll_ap_w5_s14" onclick="toggleAP('ll_ap_w5_s14')">
+          <div class="ap-item" data-id="ll_ap_w6_s14" onclick="toggleAP('ll_ap_w6_s14')">
             <div class="ap-check"></div>
             <div style="flex:1;">
               <div class="ap-text">After your first sale, message the buyer: <em>"Thanks so much! Hope the [product name] is helpful for your [language] studies. If you have a moment, a review means everything to a small shop 🙏"</em></div>
               <div class="ap-time">~2 min</div>
             </div>
           </div>
-          <div class="ap-item" data-id="ll_ap_w5_s15" onclick="toggleAP('ll_ap_w5_s15')">
+          <div class="ap-item" data-id="ll_ap_w6_s15" onclick="toggleAP('ll_ap_w6_s15')">
             <div class="ap-check"></div>
             <div style="flex:1;">
               <div class="ap-text">At the 2-week mark: Etsy Stats → Search Terms. Language products often rank for the specific language name + product type. If you see searches for a related language (e.g., you sell Spanish flashcards but people find you searching 'French flashcards') — that's your next product to build.</div>
@@ -1718,7 +963,7 @@ Please return:
 
   <script>
     (function() {
-      var KEY = 'bell_ll_ap_w5';
+      var KEY = 'bell_ll_ap_w6';
       function save(id, val) {
         var d = JSON.parse(localStorage.getItem(KEY) || '{}');
         d[id] = val; localStorage.setItem(KEY, JSON.stringify(d));
@@ -1747,9 +992,8 @@ Please return:
 
 
   <div class="footer">
-    Unified Product Brief · Language Learning Niche · Generated May 2, 2026<br>
-    Based on analysis of 10 competitor shops including DigitalDoodlesToday (1k+ sales), DanhaHan (Korean niche), MusesofBlanc (premium aesthetic)<br>
-    <strong style="color:var(--gold)">You have all the data. Open Canva and start building.</strong>
+    The Bell Newsletter &nbsp;·&nbsp; Language Learning Brief &nbsp;·&nbsp; Block 2 &nbsp;·&nbsp; November 01, 2026<br>
+    New brief generated every 5 weeks · New topic every Monday
   </div>
 
 </div>

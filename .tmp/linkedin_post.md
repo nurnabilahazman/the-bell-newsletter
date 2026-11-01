@@ -1,21 +1,28 @@
-# LinkedIn Post — Week 3
-# Type: lesson_learned
-# Generated: 2026-10-25 19:25
+# LinkedIn Post — Week 4
+# Type: tool_tip
+# Generated: 2026-11-01 20:56
 
 ---
 
-My first Claude prompt wrote **0** posts.
+Most people ask Claude “summarize this PDF” and get a wall of text with no page numbers.  
 
-I assumed the prompt “write a LinkedIn post from this article” would spit out a ready‑to‑publish copy.  
+I tried that last night, got a 2‑page dump, then realized I needed the exact location for each answer.  
 
-Claude returned a list of headlines, then a paragraph that was half the original article. Nothing was formatted for LinkedIn, and the tone was off.
+The fix is a single prompt that tells Claude to treat the uploaded file as a searchable knowledge base and always return the source page.  
 
-I tweaked the prompt: added “use short paragraphs, 1‑2 sentences each, and keep the voice direct, like Nabilah’s LinkedIn style.”  
+Here’s the prompt I use:
 
-Claude now gave me a full post, ready to copy‑paste, with the right line breaks. The trick was telling the model *exactly* how the output should look, not just what content to include.
+```
+You are a helpful assistant. I will upload a PDF.  
+When I ask a question, search the document, give a concise answer, and end with “Source: page X”.  
+If the answer isn’t in the file, say “I don’t know”.  
+Only use information from the PDF.
+```
 
-What I now know: the AI needs the *format* instructions up front. Without specifying paragraph length, line breaks, and tone, you get generic text that still needs heavy editing.
+Upload any PDF, paste the prompt, then ask, e.g., “What is the refund policy?” and Claude replies with the answer **and** “Source: page 7”.  
 
-If you’re building a content generator, write the format rules into the prompt first, then add the content instructions.  
+No code, no extra tools – just Claude’s built‑in file handling.  
 
-Follow — I post weekly on building with Claude from Malaysia.
+Save this prompt, paste it next time you need a Q&A bot that actually points to the right page.  
+
+♻️ Repost if this would save you time.
