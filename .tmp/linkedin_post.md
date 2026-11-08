@@ -1,28 +1,31 @@
-# LinkedIn Post — Week 4
-# Type: tool_tip
-# Generated: 2026-11-01 20:56
+# LinkedIn Post — Week 5
+# Type: building_from_zero
+# Generated: 2026-11-08 20:56
 
 ---
 
-Most people ask Claude “summarize this PDF” and get a wall of text with no page numbers.  
+My OCR script turned my receipt into a blank PDF – three minutes of work vanished.  
 
-I tried that last night, got a 2‑page dump, then realized I needed the exact location for each answer.  
+I snapped a lunch receipt, fed the image to Claude, expected line items.  
 
-The fix is a single prompt that tells Claude to treat the uploaded file as a searchable knowledge base and always return the source page.  
+Claude read the text, but the layout confused it and returned “no data”.  
 
-Here’s the prompt I use:
+I tried a different prompt: “extract table from image”. Same result.  
 
-```
-You are a helpful assistant. I will upload a PDF.  
-When I ask a question, search the document, give a concise answer, and end with “Source: page X”.  
-If the answer isn’t in the file, say “I don’t know”.  
-Only use information from the PDF.
-```
+Then I realized the photo was taken under fluorescent light, causing glare.  
 
-Upload any PDF, paste the prompt, then ask, e.g., “What is the refund policy?” and Claude replies with the answer **and** “Source: page 7”.  
+I retook the photo with my phone’s flash, trimmed the edges, and ran it again.  
 
-No code, no extra tools – just Claude’s built‑in file handling.  
+Now the script pulled every line, total, and tax amount into a CSV file.  
 
-Save this prompt, paste it next time you need a Q&A bot that actually points to the right page.  
+I piped that CSV straight into my expense spreadsheet – no manual entry.  
 
-♻️ Repost if this would save you time.
+It’s only the first week of this receipt‑to‑expense pipeline, so I’ve logged 0 paid users and 3 free testers.  
+
+Their feedback? “Nice, but it crashes when the receipt is crumpled.”  
+
+I’m debugging the edge cases now, and the SaaS dashboard shows the crash logs.  
+
+If you’re stuck at “my AI reads nothing”, check lighting, angle, and clean the image first.  
+
+♻️ Repost if this would have saved you an hour of trial‑and‑error.

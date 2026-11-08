@@ -1,6 +1,6 @@
 {
-  "current_week": 5,
-  "post_type_index": 0,
+  "current_week": 6,
+  "post_type_index": 1,
   "history": [
     {
       "week": 1,
@@ -21,6 +21,11 @@
       "week": 4,
       "post_type": "tool_tip",
       "date": "2026-11-01"
+    },
+    {
+      "week": 5,
+      "post_type": "building_from_zero",
+      "date": "2026-11-08"
     }
   ]
 }

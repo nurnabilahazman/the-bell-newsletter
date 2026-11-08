@@ -6,7 +6,7 @@
     "Emergency Fund Tracker",
     "Sinking Funds Planner"
   ],
-  "current_week": 6,
+  "current_week": 7,
   "history": [
     {
       "week": 1,
@@ -43,7 +43,13 @@
       "topic": "Annual Budget Planner",
       "date": "2026-11-01",
       "block": 2
+    },
+    {
+      "week": 7,
+      "topic": "Debt Payoff Tracker",
+      "date": "2026-11-08",
+      "block": 2
     }
   ],
-  "last_run": "2026-11-01T20:55:26.625546"
+  "last_run": "2026-11-08T20:56:12.516290"
 }

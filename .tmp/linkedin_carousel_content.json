@@ -1,28 +1,28 @@
 {
-  "week": 4,
-  "post_type": "tool_tip",
-  "cover_title": "Get Page Numbers from Claude",
-  "cover_subtitle": "Turn any PDF into a searchable Q&A bot in seconds",
+  "week": 5,
+  "post_type": "building_from_zero",
+  "cover_title": "Receipt OCR Got Me Stuck",
+  "cover_subtitle": "Fix lighting, get data, automate expenses",
   "slides": [
     {
-      "title": "Why the default fails",
-      "body": "→ Claude returns text only. → No reference to where the info lives. → You can’t verify or cite it."
+      "title": "The problem",
+      "body": "→ Photo taken under fluorescent light → glare obscured text → Claude returned empty result."
     },
     {
-      "title": "The prompt that fixes it",
-      "body": "→ Tell Claude you’re uploading a PDF. → Ask for concise answers. → Require “Source: page X” at the end of every reply."
+      "title": "First attempt",
+      "body": "→ Prompted “extract table from image” → same empty output → assumed AI fault."
     },
     {
-      "title": "How to use it",
-      "body": "1️⃣ Upload your PDF in Claude’s UI. 2️⃣ Paste the prompt above. 3️⃣ Ask any question about the document."
+      "title": "The simple fix",
+      "body": "→ Retake with phone flash → crop borders → run again → full line items appear."
     },
     {
-      "title": "Example query",
-      "body": "“What are the late‑payment fees?” → Claude replies: “Late‑payment fees are 2% per month. Source: page 12.”"
+      "title": "Automate the flow",
+      "body": "→ CSV generated → import into Google Sheets → expense row created automatically."
     },
     {
-      "title": "Tips for best results",
-      "body": "• Use clear, short questions. • Keep PDFs under 10 MB for faster responses. • Verify the page numbers if the doc has complex layouts."
+      "title": "Next steps",
+      "body": "→ Test crumpled receipts → add pre‑processing script → reduce crashes."
     }
   ],
   "last_slide": "Follow for weekly posts on building with AI from scratch."

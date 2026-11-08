@@ -6,7 +6,7 @@
     "Spanish Food and Drink Vocabulary Cards",
     "DELE A1/A2 Vocabulary Study Pack"
   ],
-  "current_week": 6,
+  "current_week": 7,
   "history": [
     {
       "week": 1,
@@ -43,7 +43,13 @@
       "topic": "Spanish Verb Conjugation Charts (Present, Past, Future)",
       "date": "2026-11-01",
       "block": 2
+    },
+    {
+      "week": 7,
+      "topic": "Spanish 200-Word Intermediate Vocabulary Flashcards",
+      "date": "2026-11-08",
+      "block": 2
     }
   ],
-  "last_run": "2026-11-01T20:55:30.360980"
+  "last_run": "2026-11-08T20:56:12.698313"
 }

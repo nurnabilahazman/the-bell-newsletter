@@ -1,4 +1,4 @@
-# The Bell — Week 7 · November 01, 2026
+# The Bell — Week 8 · November 08, 2026
 
 >>>TAGLINE
 Build. Ship. Earn.
@@ -6,31 +6,30 @@ Build. Ship. Earn.
 
 ## 🛠️ SECTION 1 — Project of the Week
 
-**Week 7 of 12: Social Media Post Generator**
+**Week 8 of 12: Document Q&A Bot**
 
-*Content automation*
+*AI + file handling*
 
 Paste the prompt below into Claude. Follow each step. You'll have a working tool by the end of the session.
 
 >>>PROMPT
-You are helping me build a Python tool that generates a week of social media content from a single input. Here is exactly what I need:
+You are helping me build a Python document Q&A tool. Here is exactly what I need:
 
-1. Accept one of these as input: a URL (article), a topic (text), or a plain paragraph
-2. If URL, scrape the article content first
-3. Use Groq AI to generate all of these from the input:
-   - 3 Twitter/X posts (under 280 chars each, punchy, with hashtags)
-   - 1 LinkedIn post (professional, 150-200 words, with a hook opening)
-   - 1 Instagram caption (conversational, with 10 relevant hashtags)
-   - 1 short-form video script (under 60 seconds, hook + value + CTA)
-4. Save all outputs to a Google Sheet with columns: platform, post_text, character_count, date_generated
-5. Also save a formatted .txt file with all posts neatly separated
+1. Accept a PDF file as input
+2. Extract all text from the PDF, split into chunks of 500 words with 50-word overlap
+3. For each question the user asks, find the 3 most relevant chunks using simple keyword matching + sentence similarity
+4. Send those chunks + the question to Groq AI and get a precise answer with page number references
+5. Keep a conversation history so follow-up questions work correctly
+6. Save the full Q&A session to a .txt log file
+7. Build a simple command-line interface: user types question, gets answer, types next question, types 'quit' to exit
+8. Use: PyPDF2, groq, python-dotenv
 
 Please:
 a) Write the complete script
 b) List every pip install
-c) Show me how to adjust the tone (professional vs casual vs funny)
-d) How would I schedule this to run every Monday morning automatically?
-e) What prompt changes would make the posts feel more human and less AI-generated?
+c) Handle PDFs that are scanned images (no selectable text) — what library handles that?
+d) Show me an example session with a real question and answer
+e) What would I need to add to make this work as a simple web page?
 >>>END
 
 >>>DOC
@@ -46,88 +45,88 @@ One product per theme. Research done. Prompt ready. Just paste and create.
 
 ### 🗂️ Productivity & Trackers
 
-**This week's product:** Paycheck‑to‑Paycheck Budget & Goal Tracker
+**This week's product:** Paycheck‑to‑Paycheck Budget Tracker
 
-**Store inspiration:** [Wilson’s Etsy shop — Best‑selling budget spreadsheet priced at $7.99, praised for clean Google‑Sheets layout and instant editability](https://www.businessinsider.com/how-to-make-passive-income-selling-on-etsy-creator-influencer-2022-3)
+**Store inspiration:** [“2024 2025 Budget Spreadsheet” on Etsy Indonesia — Simple, all‑in‑one layout with clear monthly, annual, and debt sections that lets users see the whole picture at a glance](https://www.etsy.com/market/2024_2025_budget_spreadsheet)
 
 **What buyers love:**
-- Easy copy‑and‑paste formulas
-- Color‑coded expense categories
-- Printable summary page
+- Instant visual cash‑flow overview
+- Editable formulas that auto‑update
+- Printable summary sheet
 
 **Your edge — make it better:**
-- Add a monthly net‑worth dashboard
-- Include a “quick‑add” expense pop‑up sheet
-- Use Bell colour palette for a premium look
+- Add a “Year‑End Savings Goal” dashboard with progress bar
+- Include a “Bill Due Calendar” tab with conditional‑format reminders
+- Offer a ready‑to‑print “Financial Freedom Checklist” PDF
 
 **How to build it in Canva:**
-1. Open Canva → search "minimal budget template" and select a clean yearly layout
-2. Add monthly overview pages with income, expenses, and balance sections
-3. Create quarterly review spreads with goal check‑ins and variance charts
-4. Insert a yearly summary page for total income, expenses, and savings rate
+1. Open Canva → search "debt tracker" and choose a modern grid design
+2. Add a master debt list table with columns for creditor, balance, rate, and minimum payment
+3. Create separate snowball and avalanche schedule pages for monthly payment allocation
+4. Include progress bar charts for each debt and an overall payoff timeline
 5. Export as PDF Print → upload to Etsy as a digital download
 
-**Launch price:** $5.99
-**Etsy title:** Annual Budget Planner PDF Printable – Simple Yearly Finance Tracker for Home & Business
-**Tags:** budget planner, annual budget, finance tracker, printable pdf, money management, budget template, 2024 planner
+**Launch price:** $4.49
+**Etsy title:** Debt Payoff Tracker PDF Printable – Fast‑Track Debt Snowball & Avalanche Planner
+**Tags:** debt tracker, payoff planner, budget printable, debt snowball, finance tool, debt avalanche, money saver
 
 [📋 View this week's full brief →](https://htmlpreview.github.io/?https://github.com/nurnabilahazman/the-bell-newsletter/blob/main/docs/current_productivity_brief.html)
 
 ### 📚 Language Learning
 
-**This week's product:** Beginner Japanese Hiragana & Katakana Practice Workbook
+**This week's product:** Beginner Japanese Hiragana Workbook
 
-**Store inspiration:** [HiraganaSheets Etsy store — Bundles of practice charts and quizzes priced at $4.99, praised for printable clarity and instant download](https://www.etsy.com/market/hiragana_sheets)
+**Store inspiration:** [“Korean Workbook” on Etsy Türkiye — Offers a complete set of practice pages, clear stroke order graphics, and printable answer key that learners love for self‑study](https://www.etsy.com/market/korean_workbook)
 
 **What buyers love:**
-- Large printable grids
-- Built‑in self‑check answer key
-- Cute kanji‑style illustrations
+- Large printable practice grids
+- Step‑by‑step stroke order diagrams
+- Answer key for self‑check
 
 **Your edge — make it better:**
-- Add QR‑code links to audio pronunciation
-- Include a “stroke order” animation sheet (GIF)
-- Use Bell gold for header accents to stand out on Etsy thumbnails
+- Include QR codes linking to short pronunciation audio clips
+- Add a “Daily 5‑Minute Review” checklist page
+- Provide a printable “Kana Flashcard” sheet with cut‑out squares
 
 **How to build it in Canva:**
-1. Open Canva → search "academic chart" template → select clean grid layout
-2. Add three separate tables for Present, Past and Future tenses, labeling each row with pronouns in Spanish
-3. Set font to Noto Sans Spanish, test accent rendering, and color‑code each tense with pastel shades
-4. Insert example verb conjugations (hablar, comer, vivir) and include a small usage tip box
-5. Export as PDF Print → upload to Etsy as a digital download
+1. Open Canva → search "flashcard" template → choose minimalist pastel style
+2. Create 200 cards, front side with the Spanish word in Noto Serif, back side with English translation and example sentence
+3. Group words by theme (travel, emotions, daily routine) and add small icon for each category
+4. Apply a consistent color border, verify accent marks display correctly in Noto Serif
+5. Export as PDF Print (double‑sided) → list on Etsy as a digital download
 
-**Launch price:** $4.99
-**Etsy title:** Spanish Verb Conjugation Charts – Present, Past & Future PDF Reference Sheets
-**Tags:** spanish verbs, conjugation chart, pdf study guide, language printables, spanish learning, verb tenses, etsyseller
+**Launch price:** $5.99
+**Etsy title:** Spanish 200-Word Intermediate Vocabulary Flashcards – Printable PDF Study Set
+**Tags:** spanish vocab, intermediate flashcards, pdf vocab pack, language study, spanish words, learn spanish, digital download
 
 [📋 View this week's full brief →](https://htmlpreview.github.io/?https://github.com/nurnabilahazman/the-bell-newsletter/blob/main/docs/current_language_brief.html)
 
 ### 👶 Children's Activities
 
-**This week's product:** Preschool Activity Binder – 30‑Page Printable Pack
+**This week's product:** Color and Shape Flashcards Pack
 
-**Store inspiration:** [Busy Book Co. — Low‑competition preschool bundle sold at $12.99, highlighted for its all‑in‑one activity binder format and vibrant, kid‑friendly design](https://www.thebump.com/a/best-toddlers-busy-books)
+**Store inspiration:** [“Busy Book Best Seller” on Etsy Brazil — Highly visual, simple cut‑out pages that parents can print and assemble quickly, with bright colours and clear icons that kids instantly recognize](https://www.etsy.com/market/busy_book_best_seller)
 
 **What buyers love:**
-- Ready‑to‑print binder pages
-- Variety of activities (tracing, counting, coloring)
-- Simple “cut‑and‑bind” instructions
+- Vibrant colour palette
+- Easy‑to‑cut die‑cut outlines
+- Immediate play value out of the box
 
 **Your edge — make it better:**
-- Include a printable “binder cover” with a tear‑off pocket
-- Add a reusable sticker sheet for reward tracking
-- Use Bell gold accents to create a cohesive brand look on Etsy listings
+- Add a “Matching Game” sheet with QR‑code‑linked audio prompts
+- Include a laminated version suggestion with printable “Protective Sleeve” page
+- Provide a printable “Progress Tracker” where kids can stamp completed sets
 
 **How to build it in Canva:**
-1. Open Canva → search "preschool binder template" → choose a bright, 8.5×11 layout
-2. Add sections: alphabet tracing, counting worksheets, shape matching, simple puzzles, and a progress checklist
-3. Insert playful icons and color‑coded headers for each activity type
-4. Create printable tabs on the side and a printable cover page with space for the child's name
+1. Open Canva → search "flashcard template" → select a 3×5 inch vertical design
+2. Create 24 cards: 12 solid color cards and 12 basic shape cards with bold labels
+3. Add a simple border and a cute animal illustration on each card for visual interest
+4. Duplicate the layout, replace colors and shapes, then arrange two‑sided pages for easy printing
 5. Export as PDF Print → upload to Etsy as a digital download
 
-**Launch price:** $5.99
-**Etsy title:** Preschool Activity Binder PDF for Ages 3-5 – Printable Learning Pack
-**Tags:** preschool, activitybinder, printable, kidslearning, earlymath, alphabet, homework
+**Launch price:** $4.49
+**Etsy title:** Color & Shape Flashcards PDF for Ages 2-4 – Printable Early Learning Cards
+**Tags:** flashcards, colorlearning, shapecards, toddler, preschool, printable, earlylearning
 
 [📋 View this week's full brief →](https://htmlpreview.github.io/?https://github.com/nurnabilahazman/the-bell-newsletter/blob/main/docs/current_brief.html)
 
@@ -137,9 +136,9 @@ One product per theme. Research done. Prompt ready. Just paste and create.
 
 *YouTube & Podcast Summaries in Seconds*
 
-**Phase:** Launch · Week 7 of 8
+**Phase:** Growth · Week 8 of 8
 
-**This week's task:** Get first 10 users — post in 5 relevant Reddit communities, reach out to 10 YouTubers directly
+**This week's task:** First revenue review — how many free users, how many paid, what do they say, what to improve
 
 
 >>>DOC
@@ -151,11 +150,11 @@ Full Bell Transcript roadmap, tech stack, competitor analysis, and how to get fi
 
 ## ⚡ SECTION 4 — Quick Wins This Week
 
-**1. Polish the Visual Preview** — Create a mock‑up image that shows the PDF opened on a tablet with a few pages filled in; replace empty fields with sample data to demonstrate immediate usability.
+**1. Polish the Visuals** — Add a preview image that shows one fully‑filled flashcard set and the matching game board; use the gold accent to highlight the completed cards so shoppers can picture the finished product.
 
-**2. Price Based on Value Tier** — Set the preschool binder at $12.99 (mid‑range) and the budget tracker at $7.99; include a “Bonus Sheet” for the higher‑priced product to justify the cost.
+**2. Price for Value** — List the pack at $9.99 and include a “Bonus 12 extra cards” note; bundle a printable “Progress Tracker” as a free add‑on to justify the price and improve perceived value.
 
-**3. Leverage Early Reviews** — Offer the first 5 buyers a 20 % discount in exchange for a quick screenshot review; upload those reviews to your Etsy listing within 48 hours to boost social proof.
+**3. Get the First Sale Fast** — Run a 24‑hour launch on TikTok with a quick cut‑out demo video, add the #EtsyFinds and #KidsLearning hashtags, and link directly to the Etsy listing in the video description to drive immediate traffic.
 
 ---
 
