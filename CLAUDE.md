@@ -79,6 +79,7 @@ Whenever I ask to **add, write, generate, edit, fix, review or improve a lesson*
 Key facts so you don't have to rediscover them:
 - "Week N" on the site means syllabus lesson **S-N** (e.g. week 10 = S-10 Loops), not the `/weekN/` AI tools.
 - Lesson source of truth: `content/syllabus_lessons/S-NN_*.md` and `config/coding_syllabus.json` (quiz, copy-prompt, project) in this repo. Copy to the website repo only with `python3 tools/sync_lessons_to_site.py`.
+- Permanent weekly editorial and carousel contract: `docs/THE_BELL_MASTER_GUIDE.md`. Read it before writing lesson explanations, 11-slide storyboards, carousel images or LinkedIn captions. Preserve the standard PREDICT FIRST, TRY IT YOURSELF, NOW TRY IT and CHECK YOURSELF interactions.
 - Website repo: `../Week 1_Excel Formula Generator/` (github.com/nurnabilahazman/the-bell, Render deploys on push). Interactive components: `templates/partials/lesson_components.html`, per lesson `templates/lesson_widgets/S-NN.html`. Real recorded runs: `tools/build_traces.py`.
 - Accuracy is the top priority: we publish lessons people learn from. Every code example must be run; every output and error must be recorded from a real run, never typed by hand.
 - Tests before every push (separately, never chained): `tools/lesson_qa.py`, `tools/test_lesson_widgets.py`, `tools/test_s10_interactions.py`, `tools/audit_site.py`, `tools/smoke_test.py`. Then re-run against the live site after Render deploys.

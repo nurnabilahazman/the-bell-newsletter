@@ -621,7 +621,7 @@
             "hint": "One of these adds to the end, one empties the file first."
           },
           {
-            "question": "If the expense log adds Rent,1000 on every run, what running total does the second run print?",
+            "question": "Starting with an empty expenses.txt, if the expense log adds Rent,1000 on every run, what running total does the second run print?",
             "type": "text",
             "answer": "2000.0",
             "explanation": "After two runs the file holds two lines of 1000. The loop adds them up, and float makes the total 2000.0.",
