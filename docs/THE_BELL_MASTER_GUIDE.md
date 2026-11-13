@@ -37,6 +37,10 @@ Also preserve the lesson's existing **Open tool**, **Copy prompt**, and **Previe
 
 A lesson may additionally have **WATCH IT RUN** (line-by-line execution viewer). If it exists, show what it actually does and which buttons the reader can press.
 
+For detailed code teaching, prefer the **Part E pattern** over a long paragraph: show the complete code once, let readers click numbered steps, highlight the exact corresponding line, and give one short worked explanation. If a scenario changes, keep the selected step and update the shown values and results. Use visual before/after comparisons for important concepts (such as file modes), with real Python behaviour and clear reset controls.
+
+The current site's targeted Markdown renderer does **not** support `###` subheadings, pipe tables, or `*` bullet markers correctly. Use supported `##` headings, `-` bullets, numbered lists, code fences, short paragraphs and `[[widget:name]]` placeholders. Never let raw formatting symbols appear on the public page.
+
 These sections are NOT generic labels to display and remove. Keep their identities, interactive functionality, placement in the lesson, and site-wide styling. Improve specific content without forcing changes to other lessons.
 
 ## 4. Technical review before content design

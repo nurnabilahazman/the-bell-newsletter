@@ -1,39 +1,33 @@
 # Reading and Writing Files
 
 ## The idea
-Imagine you keep a notebook for your expenses.
+**What if your expense notebook forgot yesterday's spending?**
 
-Today you write **Rent: RM1,000**. Next week you open the notebook again. The rent entry is still there. You can add **Food: RM50.50** and see that you have spent **RM1,050.50** in total.
+On Monday you write **Rent: RM1,000**. On Tuesday you add **Food: RM50.50**. Both entries stay in the notebook, even after you close it.
 
-A Python program normally loses the values in its variables when it finishes. But a **file** can keep information for the next time the program runs.
+A Python program normally loses the values in its variables when it finishes. A **file** helps it remember. You can save information in a file and read it again next time.
 
-Think of it this way:
-* **Write**: Put a new expense into your notebook.
-* **Read**: Open the notebook and look at your saved expenses.
+[[widget:expense-story]]
 
-### Three tiny letters, three different actions
-Imagine your file already contains `Rent,1000`.
+**Python has three ways to open our expense file.** Which one should we choose?
 
-| Mode | What Python does | What happens to Rent? |
-| --- | --- | --- |
-| `"a"` (append) | Adds a new line at the end. | **Kept.** |
-| `"w"` (write) | Empties the file first, then writes. | **Deleted.** |
-| `"r"` (read) | Looks at the saved lines without changing them. | **Kept.** |
+[[widget:file-mode-compare]]
 
-Remember: **"a" adds, "w" starts over, "r" reads.** In this project, we use `"a"` to save expenses and `"r"` to add them up.
+Remember: **"a" adds, "w" starts over, and "r" reads.** These letters are called *file modes*. They tell Python what it can do with an open file.
 
 ## The project: Expense Log
-Let's build a small program that remembers what you spent.
+We'll build a program that saves every expense in a text file named `expenses.txt`. A `.txt` file is like a simple notebook on your computer.
 
-Each time you run it, the program does two jobs:
-1. It adds `Rent,1000` to a text file called `expenses.txt`.
-2. It opens that file again, reads the amounts, and adds them together.
+The program adds `Rent,1000`, reads the saved expenses, and shows the total.
 
-**Start with no `expenses.txt` file, or an empty one.** The first run shows `1000.0`. Run the program again and it shows `2000.0`, because both entries are saved.
+Starting with an **empty file**, the first run shows `Running total: 1000.0`. Run it again, and the total becomes `2000.0` because the file kept the first entry.
 
 ## Building it
-Here's the complete Python code. We'll understand it in small pieces below.
+Here is the real Python program. **Click steps 1 to 8** to highlight the matching line and see what it does. You can also switch between the first and second run without losing your place.
 
+[[widget:file-code-walkthrough]]
+
+:::details Copy the complete Python code and see its output
 ```python
 with open("expenses.txt", "a") as file:
     file.write("Rent,1000\n")
@@ -49,73 +43,31 @@ print(f"Running total: {total}")
 ```output
 Running total: 1000.0
 ```
+:::
 
-### Part 1: Save one expense
-Look at the first two lines:
+**The main idea:** `open()` opens the file. `"a"` keeps old expenses while adding a new one. `file.write()` adds text. The `\n` starts a new line.
 
-* `open("expenses.txt", "a")`: Find the file named `expenses.txt` and open it for adding. If it does not exist, Python creates it. The `"a"` tells Python **not to erase old entries**.
-* `with ... as file:`: Call this opened file `file` inside the indented code. Think of `file` as the name of the notebook while it is open. The `with` block closes it automatically when the block ends.
-* `file.write("Rent,1000\n")`: Add the text `Rent,1000`. The comma separates the item from its amount. `\n` tells Python to start a **new line**, ready for the next expense.
+Then `"r"` opens the file for reading. The `for` loop reads one line at a time. `split(",")` separates the expense name from the amount. `parts[1]` picks the second piece, because Python starts counting at zero. `float()` turns that text into a number, and `total` adds the amounts together. Finally, `print()` shows the total.
 
-After the first run, `expenses.txt` looks like this:
+**What about `with ... as file`?** It gives the opened file a short name and closes it automatically after the indented block. Closing finishes pending buffered writes, although some data can be flushed earlier.
 
-```text
-Rent,1000
-```
+This beginner example expects each expense to look like `item,amount`, such as `Rent,1000`. Incorrectly formatted lines may cause an error.
 
-### Part 2: Read the saved expenses
-Now we want to add up the amounts in our notebook.
-
-* `total = 0`: Start with nothing spent yet.
-* `open("expenses.txt", "r")`: Open the same file to **read** it. The `"r"` does not change what's in the file.
-* `for line in file:`: Take one saved line at a time. If there are three expenses, this loop goes through three lines.
-* `parts = line.split(",")`: Cut the line at the comma. `Rent,1000\n` becomes `["Rent", "1000\n"]`. Think of it as two labelled pieces: the item and the amount.
-* `parts[1]`: Pick the **second** piece, which is the amount. Python counts positions starting at `0`.
-* `float(parts[1])`: Turn the amount from text into a number. For example, `"1000\n"` becomes `1000.0`.
-* `total = total + float(parts[1])`: Add that number to our running total. Repeat for each line.
-* `print(f"Running total: {total}")`: Show the final amount on screen. The `f` lets Python put the value of `total` inside the message.
-
-**Why convert the text?** Python reads file contents as text. We use `float()` because numbers can be added, but expense amounts stored as text cannot be added like numbers.
-
-### What changes on the second run?
-The program adds another `Rent,1000` line, because we used `"a"`.
-
-```text
-Rent,1000
-Rent,1000
-```
-
-Now Python reads **both** lines: `1000.0 + 1000.0 = 2000.0`.
-
-Closing a file finishes any pending buffered writes. Some writes may already have been sent earlier. That's why we use `with open(...)`: Python closes the file for us even if something goes wrong inside the block.
-
-**One rule for this beginner project:** Write each expense as `item,amount`, like `Rent,1000`. If a line is missing its amount or contains letters where a number should be, this simple version can raise an error.
+**PREDICT FIRST:** If the file starts empty and you run the same program twice, what does the second run print?
 
 [[widget:second-run-predict]]
 
-### Try it yourself
-You don't need to install Python to experiment here. Try pressing **Run the program** three times with `"a"` selected. Watch the file grow and the total increase.
-
-Then select `"w"` and run it again. Watch the old entries disappear. Use **Reset** when you want to start with an empty pretend file.
-
-This activity runs in JavaScript and imitates Python's file behaviour. It does **not** create a real file on your computer.
+**TRY IT YOURSELF:** Choose `"a"` or `"w"`, enter an expense, and run the program. Watch how the saved file and running total change. Reset starts with an empty pretend file. The simulation uses JavaScript; no file is saved to your device.
 
 [[widget:file-sim]]
 
 ## Why this matters
-Think about a bank statement or a spreadsheet export. A program can open a saved file, read its rows, and calculate a total.
-
-The same idea helps with expense records, client lists, and saved settings. Files let your program use information from an earlier run.
+Imagine downloading a bank statement. Python can read the saved rows and add up the amounts. You could also use files to keep a client list or save information for next time.
 
 ## The mistake beginners make here
-**Be careful with `"w"`.** It does not mean "add one more expense." It means "start over." Opening an existing file with `"w"` clears its contents immediately.
+**Using `"w"` instead of `"a"` can erase your expense history.** When Python opens an existing file in `"w"` mode, it clears the old contents right away.
 
-Imagine your file contains `Rent,1000` and `Food,50.5`:
-* Open with `"a"` and write `Transport,20`: **all three** entries stay.
-* Open with `"w"` and write `Transport,20`: **only the new entry** remains.
-* Open with `"r"`: you can read the existing entries, but not write with that read-only file handle.
-
-Use `"a"` when you want to keep the expense history. Use `"w"` only when you intentionally want to replace it.
+Use `"a"` to add new expenses without deleting the old ones. Use `"w"` only when you really want to replace the contents. Use `"r"` when you want to read the saved information.
 
 ## What's next
 Next, we'll learn about **installing packages and virtual environments**: how to add tools that don't come with Python, and keep each project's tools separate.
